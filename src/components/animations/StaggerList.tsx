@@ -17,7 +17,7 @@ export function StaggerList({
   children,
   stagger = 0.12,
   duration = 0.6,
-  selector = "> *",
+  selector = ":scope > *",
   className,
   ...props
 }: StaggerListProps) {
@@ -28,7 +28,14 @@ export function StaggerList({
       const container = containerRef.current;
       if (!container) return;
 
-      const items = container.querySelectorAll(selector);
+      const items =
+        !selector || selector === "> *" || selector === ":scope > *"
+          ? Array.from(container.children)
+          : Array.from(
+              container.querySelectorAll(
+                selector.startsWith(">") ? `:scope ${selector}` : selector
+              )
+            );
       if (!items.length) return;
 
       gsap.fromTo(

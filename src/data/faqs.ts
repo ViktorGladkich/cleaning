@@ -2,23 +2,23 @@ import { FaqItem } from "@/types";
 
 export const FAQS: FaqItem[] = [
   {
-    question: "Нужно ли мне находиться дома во время уборки?",
-    answer: "Нет, ваше присутствие необязательно. Вы можете впустить клинера или передать ключи консьержу/курьеру, а вернуться уже к идеальной чистоте и принять работу.",
+    question: "Muss ich während der Reinigung anwesend sein?",
+    answer: "Nein, Ihre Anwesenheit ist nicht erforderlich. Viele unserer Kunden in Chemnitz übergeben den Schlüssel vorab oder deponieren ihn sicher. Sie kommen einfach in ein sauber duftendes Zuhause zurück.",
   },
   {
-    question: "Что клинеры привозят с собой?",
-    answer: "Клинеры приезжают со всем необходимым арсеналом: профессиональные моющие средства, салфетки из микрофибры разных цветов для разных зон, телескопический инвентарь, швабры и при необходимости пылесосы или парогенераторы.",
+    question: "Bringen Ihre Reinigungskräfte alle Putzmittel und Geräte mit?",
+    answer: "Ja, unser Team ist komplett ausgestattet: professionelle Kärcher Geräte, farbcodierte Mikrofasertücher für höchste Hygiene sowie ökologische, materialschonende Markenreiniger.",
   },
   {
-    question: "Безопасны ли ваши моющие средства для детей и животных?",
-    answer: "Да, мы используем сертифицированные гипоаллергенные составы европейских брендов (Kiehl, Pramol, Buzil). Они не содержат токсичных хлорных соединений и безопасны для младенцев и домашних питомцев.",
+    question: "Sind meine Räumlichkeiten und Gegenstände versichert?",
+    answer: "Selbstverständlich. Wir verfügen über eine umfassende Betriebshaftpflichtversicherung bis zu 5.000.000 € Deckungssumme für Personen-, Sach- und Vermögensschäden.",
   },
   {
-    question: "Несете ли вы материальную ответственность за имущество?",
-    answer: "Да, все наши заказы застрахованы, а клинеры проходят тщательную проверку службы безопасности и многоступенчатый тренинг. В случае непредвиденных повреждений ущерб компенсируется в полном объеме.",
+    question: "Sind die verwendeten Reinigungsmittel sicher für Kinder und Haustiere?",
+    answer: "Ja, wir legen großen Wert auf Umwelt- und Gesundheitsverträglichkeit. Unsere Reiniger sind biologisch abbaubar, frei von aggressiven Chlorverbindungen und sicher für Allergiker, Kinder und Haustiere.",
   },
   {
-    question: "Как происходит оплата?",
-    answer: "Оплата производится только после завершения уборки и проверки вами качества выполненных работ. Принимаем оплату картой, по QR-коду (СБП), наличными или по безналичному расчету для юридических лиц.",
+    question: "Welche Zahlungsmethoden stehen zur Verfügung?",
+    answer: "Sie zahlen bequem nach der Reinigung per Rechnung, Überweisung, PayPal oder EC-Karte. Firmenkunden erhalten eine ordnungsgemäße Rechnung mit ausgewiesener Mehrwertsteuer.",
   },
 ];

@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,9 +9,9 @@ import { ServiceIcon } from "@/components/ui/ServiceIcon";
 import { SERVICES } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Все клининговые услуги",
+  title: "Reinigungsleistungen in Chemnitz",
   description:
-    "Полный каталог услуг клининговой компании: поддерживающая, генеральная уборка, уборка после ремонта, мойка окон и химчистка мебели.",
+    "Komplettes Leistungsangebot von GlanzWerk Chemnitz: Unterhaltsreinigung, Grundreinigung, Baufeinreinigung, Fensterreinigung, Polsterreinigung und Büroreinigung.",
 };
 
 export default function ServicesPage() {
@@ -20,9 +19,9 @@ export default function ServicesPage() {
     <div className="py-12 sm:py-16">
       <Container>
         <SectionHeading
-          badge="Каталог услуг"
-          title="Профессиональные клининговые услуги"
-          subtitle="Мы берем на себя все заботы по наведению порядка в квартирах, домах и коммерческих помещениях"
+          badge="Leistungskatalog"
+          title="Unsere Reinigungsdienste in Chemnitz"
+          subtitle="Zuverlässige und sorgfältige Reinigung für Privatwohnungen, Häuser und gewerbliche Objekte in ganz Chemnitz"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -30,10 +29,10 @@ export default function ServicesPage() {
             <Card key={service.id} className="flex flex-col justify-between p-7">
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#1a77ed] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
                     <ServiceIcon name={service.iconName} className="w-6 h-6" />
                   </div>
-                  {service.popular && <Badge variant="emerald">Хит</Badge>}
+                  {service.popular && <Badge variant="blue">Beliebt</Badge>}
                 </div>
 
                 <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
@@ -44,13 +43,13 @@ export default function ServicesPage() {
                 </p>
 
                 <div className="flex items-center gap-2 text-xs text-neutral-500 mb-6 bg-neutral-50 dark:bg-neutral-800/50 p-2.5 rounded-lg">
-                  <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Длительность: {service.duration}</span>
+                  <Clock className="w-4 h-4 text-[#1a77ed] shrink-0" />
+                  <span>Dauer: {service.duration}</span>
                 </div>
 
                 <div className="space-y-2 mb-6">
                   <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
-                    Что входит:
+                    Leistungsumfang:
                   </span>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
@@ -58,7 +57,7 @@ export default function ServicesPage() {
                         key={idx}
                         className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#1a77ed] shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -68,9 +67,9 @@ export default function ServicesPage() {
 
               <div className="pt-6 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-neutral-500 block">От</span>
+                  <span className="text-xs text-neutral-500 block">Ab</span>
                   <span className="text-lg font-bold text-neutral-900 dark:text-white">
-                    {service.priceFrom.toLocaleString("ru-RU")} ₽
+                    {service.priceFrom} €
                   </span>
                   <span className="text-xs text-neutral-500 block">
                     {service.priceUnit}
@@ -83,7 +82,7 @@ export default function ServicesPage() {
                   size="sm"
                   icon={<ArrowRight className="w-4 h-4" />}
                 >
-                  Заказать
+                  Details
                 </Button>
               </div>
             </Card>

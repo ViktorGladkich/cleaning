@@ -14,6 +14,7 @@ export default function ContactsPage() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    email: "",
     service: SERVICES[0].title,
     address: "",
     comment: "",
@@ -28,9 +29,9 @@ export default function ContactsPage() {
     <div className="py-12 sm:py-16">
       <Container>
         <SectionHeading
-          badge="Контакты"
-          title="Свяжитесь с нами"
-          subtitle="Оставьте заявку на расчет стоимости уборки или позвоните нам прямо сейчас"
+          badge="Kontakt & Anfahrt"
+          title="Wir sind für Sie da in Chemnitz"
+          subtitle="Fordern Sie unverbindlich Ihr persönliches Angebot an oder rufen Sie uns direkt an"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-12 items-start">
@@ -38,23 +39,23 @@ export default function ContactsPage() {
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">
-                Всегда на связи
+                Persönliche Beratung vor Ort
               </h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                Наши операторы работают ежедневно без выходных. Ответим на любые вопросы, поможем подобрать нужный тип уборки и рассчитаем точную смету.
+                Unser Chemnitzer Kundenservice berät Sie gern unverbindlich. Gerne vereinbaren wir eine kostenlose Besichtigung bei Ihnen vor Ort für ein maßgeschneidertes Festpreisangebot.
               </p>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-neutral-500 block">Телефон</span>
+                  <span className="text-xs text-neutral-500 block">Telefon Chemnitz</span>
                   <a
                     href={`tel:${COMPANY_INFO.phoneRaw}`}
-                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-emerald-600 transition"
+                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-[#1a77ed] transition"
                   >
                     {COMPANY_INFO.phone}
                   </a>
@@ -62,14 +63,14 @@ export default function ContactsPage() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-neutral-500 block">Электронная почта</span>
+                  <span className="text-xs text-neutral-500 block">E-Mail</span>
                   <a
                     href={`mailto:${COMPANY_INFO.email}`}
-                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-emerald-600 transition"
+                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-[#1a77ed] transition"
                   >
                     {COMPANY_INFO.email}
                   </a>
@@ -77,11 +78,11 @@ export default function ContactsPage() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-neutral-500 block">График работы</span>
+                  <span className="text-xs text-neutral-500 block">Öffnungszeiten</span>
                   <span className="font-semibold text-sm text-neutral-900 dark:text-white">
                     {COMPANY_INFO.workingHours}
                   </span>
@@ -89,11 +90,11 @@ export default function ContactsPage() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-neutral-500 block">Главный офис</span>
+                  <span className="text-xs text-neutral-500 block">Büro Chemnitz</span>
                   <span className="font-semibold text-sm text-neutral-900 dark:text-white">
                     {COMPANY_INFO.address}
                   </span>
@@ -104,17 +105,17 @@ export default function ContactsPage() {
 
           {/* Form Column */}
           <div className="lg:col-span-7">
-            <Card className="p-8 sm:p-10 shadow-xl border-emerald-500/20">
+            <Card className="p-8 sm:p-10 shadow-xl border-blue-500/20">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-950 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-950 text-[#1a77ed] rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">
-                    Заявка успешно принята!
+                    Vielen Dank für Ihre Anfrage!
                   </h3>
                   <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md mx-auto">
-                    Спасибо, {formData.name || "уважаемый клиент"}! Наш менеджер перезвонит вам по номеру {formData.phone} в течение 5 минут для согласования деталей.
+                    Wir haben Ihre Daten erhalten, {formData.name || "Sehr geehrte(r) Kunde/in"}. Ein Mitarbeiter unseres Chemnitzer Büros meldet sich in Kürze unter {formData.phone || formData.email} bei Ihnen.
                   </p>
                   <Button
                     onClick={() => setSubmitted(false)}
@@ -122,24 +123,24 @@ export default function ContactsPage() {
                     size="sm"
                     className="mt-4"
                   >
-                    Отправить еще одну заявку
+                    Weitere Anfrage stellen
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">
-                      Заказ уборки онлайн
+                      Reinigungsangebot anfordern
                     </h3>
                     <p className="text-xs text-neutral-500 mt-1">
-                      Заполните поля ниже, и мы рассчитаем точную цену
+                      Füllen Sie das Formular aus – wir erstellen Ihnen zeitnah ein Festpreisangebot
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
-                        Ваше имя *
+                        Ihr Name *
                       </label>
                       <input
                         type="text"
@@ -148,14 +149,14 @@ export default function ContactsPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, name: e.target.value })
                         }
-                        placeholder="Константин"
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        placeholder="Max Mustermann"
+                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
-                        Телефон *
+                        Telefonnummer *
                       </label>
                       <input
                         type="tel"
@@ -164,26 +165,26 @@ export default function ContactsPage() {
                         onChange={(e) =>
                           setFormData({ ...formData, phone: e.target.value })
                         }
-                        placeholder="+7 (999) 000-00-00"
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                        placeholder="+49 (0) 371..."
+                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
                       />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
-                      Тип услуги
+                      Gewünschte Leistung
                     </label>
                     <select
                       value={formData.service}
                       onChange={(e) =>
                         setFormData({ ...formData, service: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
                     >
                       {SERVICES.map((s) => (
                         <option key={s.id} value={s.title}>
-                          {s.title} (от {s.priceFrom} ₽)
+                          {s.title} (ab {s.priceFrom} €)
                         </option>
                       ))}
                     </select>
@@ -191,7 +192,7 @@ export default function ContactsPage() {
 
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
-                      Адрес или район
+                      Standort / Stadtteil in Chemnitz & PLZ
                     </label>
                     <input
                       type="text"
@@ -199,14 +200,14 @@ export default function ContactsPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, address: e.target.value })
                       }
-                      placeholder="Москва, ул. Ленина, д. 5"
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      placeholder="z. B. Chemnitz Kaßberg, 09112"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
-                      Комментарий / пожелания
+                      Angaben zum Objekt / Wünsche
                     </label>
                     <textarea
                       rows={3}
@@ -214,8 +215,8 @@ export default function ContactsPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, comment: e.target.value })
                       }
-                      placeholder="Укажите площадь квартиры, количество комнат или дополнительные пожелания..."
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                      placeholder="Zimmeranzahl, Quadratmeter, gewünschter Wochentag oder Besonderheiten..."
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
                     />
                   </div>
 
@@ -226,11 +227,11 @@ export default function ContactsPage() {
                     className="w-full"
                     icon={<Send className="w-4 h-4" />}
                   >
-                    Отправить заявку
+                    Anfrage absenden
                   </Button>
 
                   <p className="text-[11px] text-neutral-400 text-center">
-                    Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+                    Mit dem Absenden stimmen Sie unserer Datenschutzerklärung zu. Keine Werbeflut.
                   </p>
                 </form>
               )}

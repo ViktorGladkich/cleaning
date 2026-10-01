@@ -1,31 +1,31 @@
 import { CompanyInfo, NavItem } from "@/types";
 
 export const COMPANY_INFO: CompanyInfo = {
-  name: "Чистый Дом",
-  tagline: "Профессиональный клининг квартир, домов и офисов",
-  phone: "+7 (999) 123-45-67",
-  phoneRaw: "+79991234567",
-  email: "info@clean-pro.ru",
-  address: "г. Москва, ул. Примерная, д. 10, оф. 402",
-  workingHours: "Пн-Вс: 08:00 — 22:00",
+  name: "Tadiks Cleaning",
+  tagline: "Professionelle Gebäudereinigung & Haushaltshilfe in Chemnitz und Umgebung",
+  phone: "+49 (0) 371 995 4820",
+  phoneRaw: "+493719954820",
+  email: "kontakt@tadiks-cleaning.de",
+  address: "Theaterplatz 4, 09111 Chemnitz",
+  workingHours: "Mo. – Sa.: 07:00 – 19:30 Uhr",
   socials: {
-    telegram: "https://t.me/example",
-    whatsapp: "https://wa.me/79991234567",
+    whatsapp: "https://wa.me/493719954820",
+    telegram: "https://t.me/glanzwerk_chemnitz",
   },
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Главная", href: "/" },
-  { label: "Услуги", href: "/services" },
-  { label: "Цены", href: "/pricing" },
-  { label: "О компании", href: "/about" },
-  { label: "Отзывы", href: "/reviews" },
-  { label: "Контакты", href: "/contacts" },
+  { label: "Startseite", href: "/" },
+  { label: "Leistungen", href: "/services" },
+  { label: "Preise", href: "/pricing" },
+  { label: "Über uns", href: "/about" },
+  { label: "Bewertungen", href: "/reviews" },
+  { label: "Kontakt", href: "/contacts" },
 ];
 
 export const SERVICE_CATEGORIES = [
-  { id: "all", label: "Все услуги" },
-  { id: "apartments", label: "Квартиры и дома" },
-  { id: "commercial", label: "Офисы и бизнес" },
-  { id: "special", label: "Специальный клининг" },
+  { id: "all", label: "Alle Leistungen" },
+  { id: "residential", label: "Privathaushalte & Wohnungen" },
+  { id: "commercial", label: "Büro- & Gewerbereinigung" },
+  { id: "special", label: "Sonderreinigung" },
 ] as const;

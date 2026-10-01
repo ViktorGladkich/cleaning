@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/Button";
 import { REVIEWS } from "@/data/reviews";
 
 export const metadata: Metadata = {
-  title: "Отзывы клиентов о клининге",
+  title: "Kundenbewertungen — GlanzWerk Chemnitz",
   description:
-    "Реальные отзывы наших клиентов об уборке квартир, домов и химчистке мебели. Рейтинг 4.9 из 5.0.",
+    "Echte Bewertungen unserer Kunden aus Chemnitz zur Wohnungs-, Fenster- und Büroreinigung. Bewertung 4.9 von 5.0.",
 };
 
 export default function ReviewsPage() {
@@ -18,23 +18,23 @@ export default function ReviewsPage() {
     <div className="py-12 sm:py-16">
       <Container>
         <SectionHeading
-          badge="Отзывы"
-          title="Впечатления наших клиентов"
-          subtitle="Честная обратная связь от тех, кто уже доверил нам чистоту в своем доме"
+          badge="Erfahrungsberichte"
+          title="Was Chemnitzer Kunden sagen"
+          subtitle="Authentisches Feedback von privaten und gewerblichen Auftraggebern aus Chemnitz und Umgebung"
         />
 
         {/* Rating summary */}
-        <div className="max-w-xl mx-auto my-10 p-6 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 text-center flex flex-col items-center">
+        <div className="max-w-xl mx-auto my-10 p-6 rounded-2xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/60 text-center flex flex-col items-center">
           <div className="flex items-center gap-1.5 text-amber-500 mb-2">
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-6 h-6 fill-amber-500" />
             ))}
           </div>
           <span className="text-3xl font-extrabold text-neutral-900 dark:text-white">
-            4.9 из 5.0
+            4.9 von 5.0 Sternen
           </span>
           <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-            На основе более 850 оценок в Яндекс и Google картах
+            Basierend auf über 850 Kundenrezensionen in Sachsen
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function ReviewsPage() {
 
         <div className="mt-16 text-center">
           <Button href="/contacts" size="lg" icon={<MessageSquare className="w-4 h-4" />}>
-            Оставить заявку на уборку
+            Jetzt Reinigungsanfrage stellen
           </Button>
         </div>
       </Container>
