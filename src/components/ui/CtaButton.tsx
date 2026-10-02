@@ -32,7 +32,6 @@ export function CtaButton({
   href,
   onClick,
   children = "",
-  variant = "primary",
   size = "md",
   className,
   arrowClassName,

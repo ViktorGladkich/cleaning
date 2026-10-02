@@ -17,9 +17,10 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     // 2. Add Lenis's requestAnimationFrame to GSAP's ticker
     // This is CRITICAL for preventing sticky element jitter and ScrollTrigger desync
-    gsap.ticker.add((time) => {
+    const update = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
+    gsap.ticker.add(update);
 
     // 3. Disable GSAP's lag smoothing to avoid conflicts with Lenis's own smoothing
     gsap.ticker.lagSmoothing(0);
@@ -27,9 +28,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     return () => {
       // Cleanup to prevent memory leaks
       lenis.destroy();
-      gsap.ticker.remove((time) => {
-        lenis.raf(time * 1000);
-      });
+      gsap.ticker.remove(update);
     };
   }, []);
 

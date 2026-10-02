@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Link from "next/link";
 import { Play, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { gsap } from "@/lib/gsap";
 
 export function HeroVideoCard() {
   const [isPlaying, setIsPlaying] = useState(true);
