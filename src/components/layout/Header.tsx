@@ -134,7 +134,7 @@ export function Header() {
                 <RollingText duplicateClassName="text-brand-navy">Leistungen</RollingText>
                 <ChevronDown
                   className={cn(
-                    "w-3.5 h-3.5 shrink-0 transition-all duration-200 text-brand-navy group-hover:text-brand-navy translate-y-px",
+                    "w-3.5 h-3.5 shrink-0 transition-all duration-300 text-brand-navy group-hover:text-brand-navy translate-y-px",
                     isOpen && "rotate-180 text-brand-navy"
                   )}
                 />

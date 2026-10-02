@@ -22,7 +22,7 @@ export function RollingText({
   children,
   className,
   duplicateClassName,
-  duration = 0.28,
+  duration = 0.55,
   isActive = false,
   ...props
 }: RollingTextProps) {
@@ -34,8 +34,6 @@ export function RollingText({
   useEffect(() => {
     const el = containerRef.current;
     const track = trackRef.current;
-    const layer1 = layer1Ref.current;
-    const layer2 = layer2Ref.current;
     if (!el || !track) return;
 
     // Attach to the parent interactive element (<a> or <button>) if present, otherwise el
@@ -45,7 +43,7 @@ export function RollingText({
       gsap.to(track, {
         yPercent: -50,
         duration,
-        ease: "power2.out",
+        ease: "power3.out",
         overwrite: "auto",
       });
     };
@@ -53,8 +51,8 @@ export function RollingText({
     const onLeave = () => {
       gsap.to(track, {
         yPercent: 0,
-        duration: duration * 0.9,
-        ease: "power2.out",
+        duration: duration * 0.88,
+        ease: "power3.out",
         overwrite: "auto",
       });
     };
