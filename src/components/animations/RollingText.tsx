@@ -28,10 +28,14 @@ export function RollingText({
 }: RollingTextProps) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const trackRef = useRef<HTMLSpanElement>(null);
+  const layer1Ref = useRef<HTMLSpanElement>(null);
+  const layer2Ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = containerRef.current;
     const track = trackRef.current;
+    const layer1 = layer1Ref.current;
+    const layer2 = layer2Ref.current;
     if (!el || !track) return;
 
     // Attach to the parent interactive element (<a> or <button>) if present, otherwise el
@@ -69,7 +73,7 @@ export function RollingText({
       ref={containerRef}
       className={cn(
         "relative inline-block h-[1.3em] overflow-hidden align-middle select-none",
-        isActive && "text-[#1a77ed] font-semibold",
+        isActive && "text-[var(--color-brand-navy)] font-semibold",
         className
       )}
       {...props}
@@ -80,16 +84,20 @@ export function RollingText({
         style={{ transform: "translateY(0%)" }}
       >
         {/* Layer 1: Normal state */}
-        <span className="inline-flex items-center h-[1.3em] leading-none whitespace-nowrap">
+        <span
+          ref={layer1Ref}
+          className="inline-flex items-center h-[1.3em] leading-none whitespace-nowrap"
+        >
           {children}
         </span>
 
-        {/* Layer 2: Hover state */}
+        {/* Layer 2: Hover state (starts at opacity: 0 to prevent any sub-pixel bleed) */}
         <span
+          ref={layer2Ref}
           aria-hidden="true"
           className={cn(
             "inline-flex items-center h-[1.3em] leading-none whitespace-nowrap",
-            duplicateClassName || "text-[#1a77ed]"
+            duplicateClassName || "text-[var(--color-brand-navy)]"
           )}
         >
           {children}

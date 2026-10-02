@@ -1,22 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #FAFAFA;
+  --foreground: #3D568F;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --color-brand-cream: #FAFAFA;
+  --color-brand-navy: #3D568F;
+  --color-brand-light-blue: #9FBAF1;
+  --color-brand-lime: #EAF3B2;
+  --font-sans: var(--font-satoshi), var(--font-general-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-satoshi), sans-serif;
+  --font-body: var(--font-general-sans), sans-serif;
 }
 
 html {
-  scroll-behavior: smooth;
   scrollbar-gutter: stable;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-satoshi), var(--font-general-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
+  font-family: var(--font-general-sans), var(--font-satoshi), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings and titles use Fontshare Satoshi for modern European neo-grotesque geometry */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-satoshi), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Body copy, descriptions, navigation and inputs use Fontshare General Sans for pristine clarity */
+p, span, a, li, button, input, textarea {
+  font-family: var(--font-general-sans), var(--font-satoshi), sans-serif;
 }

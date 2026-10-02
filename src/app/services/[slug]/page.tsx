@@ -62,7 +62,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
         <div className="mb-8">
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[#1a77ed] transition"
+            className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-[var(--color-brand-navy)] transition"
           >
             <ArrowLeft className="w-4 h-4" />
             Zurück zur Leistungsübersicht
@@ -74,7 +74,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           <div className="lg:col-span-8 space-y-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#1a77ed] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-brand-navy)] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
                   <ServiceIcon name={service.iconName} className="w-6 h-6" />
                 </div>
                 {service.popular && <Badge variant="blue">Beliebte Leistung</Badge>}
@@ -99,7 +99,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                     key={idx}
                     className="flex items-start gap-3 text-sm text-neutral-700 dark:text-neutral-300"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-[#1a77ed] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -117,7 +117,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
                     key={idx}
                     className="p-4 rounded-xl bg-white dark:bg-neutral-800/80 border border-neutral-200/60 dark:border-neutral-700/60 text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200"
                   >
-                    <Sparkles className="w-4 h-4 text-[#1a77ed] mb-2" />
+                    <Sparkles className="w-4 h-4 text-[var(--color-brand-navy)] mb-2" />
                     {item}
                   </div>
                 ))}
@@ -128,7 +128,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           {/* Sticky Booking Sidebar */}
           <div className="lg:col-span-4 lg:sticky lg:top-28">
             <Card className="p-6 sm:p-8 shadow-xl border-blue-500/20">
-              <span className="text-xs uppercase tracking-wider font-semibold text-[#1a77ed]">
+              <span className="text-xs uppercase tracking-wider font-semibold text-[var(--color-brand-navy)]">
                 Preisübersicht
               </span>
               <div className="my-3">
@@ -142,7 +142,7 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
 
               <div className="py-4 border-y border-neutral-100 dark:border-neutral-800 space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#1a77ed] shrink-0" />
+                  <Clock className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0" />
                   <span>Richtzeit: {service.duration}</span>
                 </div>
                 <div className="flex items-center gap-2">

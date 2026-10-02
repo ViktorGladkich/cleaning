@@ -30,7 +30,7 @@ export default function PricingPage() {
               key={plan.id}
               className={`flex flex-col justify-between p-8 relative ${
                 plan.isPopular
-                  ? "border-2 border-[#1a77ed] shadow-xl shadow-blue-500/10"
+                  ? "border-2 border-[var(--color-brand-navy)] shadow-xl shadow-blue-500/10"
                   : ""
               }`}
             >
@@ -61,7 +61,7 @@ export default function PricingPage() {
                       key={idx}
                       className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2.5"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-[#1a77ed] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -103,7 +103,7 @@ export default function PricingPage() {
                   </h4>
                   <span className="text-xs text-neutral-400">pro {extra.unit}</span>
                 </div>
-                <span className="font-bold text-[#1a77ed] text-sm">
+                <span className="font-bold text-[var(--color-brand-navy)] text-sm">
                   {extra.price} €
                 </span>
               </div>

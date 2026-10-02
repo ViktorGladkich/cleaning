@@ -48,14 +48,14 @@ export default function ContactsPage() {
 
             <div className="space-y-4">
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[var(--color-brand-navy)] dark:bg-blue-950 dark:text-sky-400">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-xs text-neutral-500 block">Telefon Chemnitz</span>
                   <a
                     href={`tel:${COMPANY_INFO.phoneRaw}`}
-                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-[#1a77ed] transition"
+                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-[var(--color-brand-navy)] transition"
                   >
                     {COMPANY_INFO.phone}
                   </a>
@@ -63,14 +63,14 @@ export default function ContactsPage() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[var(--color-brand-navy)] dark:bg-blue-950 dark:text-sky-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <span className="text-xs text-neutral-500 block">E-Mail</span>
                   <a
                     href={`mailto:${COMPANY_INFO.email}`}
-                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-[#1a77ed] transition"
+                    className="font-semibold text-base text-neutral-900 dark:text-white hover:text-[var(--color-brand-navy)] transition"
                   >
                     {COMPANY_INFO.email}
                   </a>
@@ -78,7 +78,7 @@ export default function ContactsPage() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[var(--color-brand-navy)] dark:bg-blue-950 dark:text-sky-400">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
@@ -90,7 +90,7 @@ export default function ContactsPage() {
               </div>
 
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800">
-                <div className="p-2.5 rounded-xl bg-blue-100 text-[#1a77ed] dark:bg-blue-950 dark:text-sky-400">
+                <div className="p-2.5 rounded-xl bg-blue-100 text-[var(--color-brand-navy)] dark:bg-blue-950 dark:text-sky-400">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -108,7 +108,7 @@ export default function ContactsPage() {
             <Card className="p-8 sm:p-10 shadow-xl border-blue-500/20">
               {submitted ? (
                 <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-950 text-[#1a77ed] rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-950 text-[var(--color-brand-navy)] rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -150,7 +150,7 @@ export default function ContactsPage() {
                           setFormData({ ...formData, name: e.target.value })
                         }
                         placeholder="Max Mustermann"
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
+                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
                       />
                     </div>
 
@@ -166,7 +166,7 @@ export default function ContactsPage() {
                           setFormData({ ...formData, phone: e.target.value })
                         }
                         placeholder="+49 (0) 371..."
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
+                        className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
                       />
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function ContactsPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, service: e.target.value })
                       }
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
                     >
                       {SERVICES.map((s) => (
                         <option key={s.id} value={s.title}>
@@ -201,7 +201,7 @@ export default function ContactsPage() {
                         setFormData({ ...formData, address: e.target.value })
                       }
                       placeholder="z. B. Chemnitz Kaßberg, 09112"
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
                     />
                   </div>
 
@@ -216,7 +216,7 @@ export default function ContactsPage() {
                         setFormData({ ...formData, comment: e.target.value })
                       }
                       placeholder="Zimmeranzahl, Quadratmeter, gewünschter Wochentag oder Besonderheiten..."
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#1a77ed]"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
                     />
                   </div>
 

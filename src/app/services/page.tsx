@@ -29,7 +29,7 @@ export default function ServicesPage() {
             <Card key={service.id} className="flex flex-col justify-between p-7">
               <div>
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#1a77ed] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-brand-navy)] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
                     <ServiceIcon name={service.iconName} className="w-6 h-6" />
                   </div>
                   {service.popular && <Badge variant="blue">Beliebt</Badge>}
@@ -43,7 +43,7 @@ export default function ServicesPage() {
                 </p>
 
                 <div className="flex items-center gap-2 text-xs text-neutral-500 mb-6 bg-neutral-50 dark:bg-neutral-800/50 p-2.5 rounded-lg">
-                  <Clock className="w-4 h-4 text-[#1a77ed] shrink-0" />
+                  <Clock className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0" />
                   <span>Dauer: {service.duration}</span>
                 </div>
 
@@ -57,7 +57,7 @@ export default function ServicesPage() {
                         key={idx}
                         className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-[#1a77ed] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}

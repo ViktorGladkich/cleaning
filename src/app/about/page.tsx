@@ -35,7 +35,7 @@ export default function AboutPage() {
             </p>
 
             <div className="pt-2 grid grid-cols-2 gap-6">
-              <div className="border-l-4 border-[#1a77ed] pl-4">
+              <div className="border-l-4 border-[var(--color-brand-navy)] pl-4">
                 <span className="text-3xl font-extrabold text-neutral-900 dark:text-white block">
                   7+ Jahre
                 </span>
@@ -43,7 +43,7 @@ export default function AboutPage() {
                   Erfahrung im Raum Chemnitz
                 </span>
               </div>
-              <div className="border-l-4 border-[#1a77ed] pl-4">
+              <div className="border-l-4 border-[var(--color-brand-navy)] pl-4">
                 <span className="text-3xl font-extrabold text-neutral-900 dark:text-white block">
                   2.400+
                 </span>
@@ -60,7 +60,7 @@ export default function AboutPage() {
             </h4>
             <div className="space-y-4">
               <div className="flex gap-4">
-                <ShieldCheck className="w-6 h-6 text-[#1a77ed] shrink-0 mt-1" />
+                <ShieldCheck className="w-6 h-6 text-[var(--color-brand-navy)] shrink-0 mt-1" />
                 <div>
                   <h5 className="font-semibold text-neutral-900 dark:text-white text-sm">
                     5.000.000 € Haftpflichtschutz
@@ -72,7 +72,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-4">
-                <Award className="w-6 h-6 text-[#1a77ed] shrink-0 mt-1" />
+                <Award className="w-6 h-6 text-[var(--color-brand-navy)] shrink-0 mt-1" />
                 <div>
                   <h5 className="font-semibold text-neutral-900 dark:text-white text-sm">
                     Ökologische Markenmittel & Kärcher
@@ -84,7 +84,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-4">
-                <Users className="w-6 h-6 text-[#1a77ed] shrink-0 mt-1" />
+                <Users className="w-6 h-6 text-[var(--color-brand-navy)] shrink-0 mt-1" />
                 <div>
                   <h5 className="font-semibold text-neutral-900 dark:text-white text-sm">
                     Festangestellte, geprüfte Fachkräfte
@@ -96,7 +96,7 @@ export default function AboutPage() {
               </div>
 
               <div className="flex gap-4">
-                <HeartHandshake className="w-6 h-6 text-[#1a77ed] shrink-0 mt-1" />
+                <HeartHandshake className="w-6 h-6 text-[var(--color-brand-navy)] shrink-0 mt-1" />
                 <div>
                   <h5 className="font-semibold text-neutral-900 dark:text-white text-sm">
                     Zufriedenheitsgarantie
