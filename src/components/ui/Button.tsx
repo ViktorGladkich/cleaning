@@ -32,17 +32,17 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 active:scale-98 disabled:opacity-50 disabled:pointer-events-none cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2";
+    "inline-flex items-center justify-center font-medium rounded-md transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2";
 
   const variantStyles = {
     primary:
-      "bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm hover:shadow-md shadow-emerald-600/20 focus-visible:outline-emerald-600",
+      "bg-(--color-brand-navy) text-white hover:bg-(--color-brand-navy)/90 shadow-sm hover:shadow-md shadow-brand-navy/20 focus-visible:outline-(--color-brand-navy)",
     secondary:
-      "bg-emerald-50 text-emerald-900 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-300 dark:hover:bg-emerald-900/50",
+      "bg-brand-lime text-brand-navy hover:bg-brand-lime/80 shadow-xs focus-visible:outline-(--color-brand-navy)",
     outline:
-      "border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800",
+      "border border-slate-300 dark:border-neutral-700 bg-transparent text-brand-navy dark:text-neutral-200 hover:bg-slate-100 dark:hover:bg-neutral-800",
     ghost:
-      "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800/60",
+      "text-brand-navy/80 hover:text-brand-navy hover:bg-slate-100 dark:hover:bg-neutral-800/60",
   };
 
   const sizeStyles = {

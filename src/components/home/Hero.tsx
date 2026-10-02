@@ -17,17 +17,12 @@ import { HeroVideoCard } from "./HeroVideoCard";
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroCardRef = useRef<HTMLDivElement>(null);
-  const wipeColsRef = useRef<HTMLDivElement[]>([]);
 
   useGSAP(
     () => {
       const container = containerRef.current;
       const heroCard = heroCardRef.current;
-      const cols = wipeColsRef.current.filter(Boolean);
-      if (!container || !heroCard || cols.length === 0) return;
-
-      // Columns ordered from right (col 4) to left (col 0)
-      const reversedCols = [...cols].reverse();
+      if (!container || !heroCard) return;
 
       // Awwwards-level Cinematic Entry Timeline
       const entryTl = gsap.timeline();
@@ -88,16 +83,13 @@ export function Hero() {
         1.5
       );
 
-      // Master Timeline linked to ScrollTrigger with pinning
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: "+=1100", // comfortable scroll distance for the effect
-          pin: true,
-          scrub: 1, // smooth scrub linked to scrollbar
-          anticipatePin: 1,
-          onUpdate: (self) => {
+      // Header Scroll Logic linked to ScrollTrigger (without pinning)
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top top",
+        end: "bottom top", 
+        scrub: 1,
+        onUpdate: (self) => {
             const header = document.querySelector("header");
             if (!header) return;
 
@@ -121,22 +113,7 @@ export function Hero() {
               });
             }
           },
-        },
       });
-
-      // Phase 2: Staircase curtain wipe (5 columns wipe down from right to left)
-      tl.to(
-        reversedCols,
-        {
-          scaleY: 1,
-          stagger: 0.16, // creates the distinctive diagonal staircase step
-          ease: "power1.inOut",
-          duration: 1,
-        },
-        0.08 // starts right after header begins leaving
-      );
-
-
     },
     { scope: containerRef }
   );
@@ -144,11 +121,11 @@ export function Hero() {
   return (
     <div ref={containerRef} className="relative w-full bg-brand-cream">
       {/* Container wrapper: 10-14px margin on all edges so hero starts right under top header */}
-      <div className="w-full p-[10px] sm:p-[14px]">
+      <div className="w-full p-2.5 sm:p-3.5">
         {/* Main Hero Card: full viewport height, zero shadow, header sits directly on top */}
         <div
           ref={heroCardRef}
-          className="relative w-full h-[calc(100vh-20px)] sm:h-[calc(100vh-28px)] min-h-[600px] rounded-[10px] sm:rounded-[10px] overflow-hidden bg-brand-cream"
+          className="relative w-full h-[calc(100vh-20px)] sm:h-[calc(100vh-28px)] min-h-150 rounded-[10px] overflow-hidden bg-brand-cream"
         >
           {/* Background Cleaning Image with Clip-Path Reveal */}
           <div className="absolute inset-0 z-0 hero-image-container" style={{ clipPath: "inset(100% 0% 0% 0%)" }}>
@@ -163,7 +140,7 @@ export function Hero() {
           </div>
 
           {/* Cinematic Navy Gradient for High-Contrast Typography & Brand Harmony */}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/50 to-brand-navy/20 z-10 pointer-events-none mix-blend-multiply" />
+          <div className="absolute inset-0 bg-linear-to-t from-brand-navy/90 via-brand-navy/50 to-brand-navy/20 z-10 pointer-events-none mix-blend-multiply" />
 
           {/* Hero Content (Heading, Description, CTAs) */}
           {/* Hero Content (Heading, Description, CTAs) */}
@@ -171,16 +148,16 @@ export function Hero() {
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-medium text-white tracking-tight leading-[1.1] mb-3 sm:mb-5 flex flex-col gap-1">
               <span className="overflow-hidden block">
-                <span className="block hero-heading-line translate-y-[100%] opacity-0 will-change-transform">Reinigung & Bau</span>
+                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">Reinigung & Bau</span>
               </span>
               <span className="overflow-hidden block pt-1">
-                <span className="block hero-heading-line translate-y-[100%] opacity-0 will-change-transform">Qualität bis ins <span className="hero-pill inline-block bg-brand-lime px-3 rounded-[8px] ml-1 pb-1 pt-0.5 origin-left scale-x-0 transform-gpu"><span className="hero-pill-text text-black opacity-0">Detail</span></span></span>
+                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">Qualität bis ins <span className="hero-pill inline-block bg-brand-lime px-3 rounded-lg ml-1 pb-1 pt-0.5 origin-left scale-x-0 transform-gpu"><span className="hero-pill-text text-black opacity-0">Detail</span></span></span>
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-white/85 text-sm sm:text-base lg:text-lg max-w-xl mb-6 sm:mb-8 leading-relaxed overflow-hidden">
-              <span className="block hero-subtitle translate-y-[100%] opacity-0 will-change-transform">
+              <span className="block hero-subtitle translate-y-full opacity-0 will-change-transform">
                 Professionelle Gebäudereinigung sowie Bau- und Sanierungsarbeiten – zuverlässig, termintreu und präzise umgesetzt.
               </span>
             </p>
@@ -198,7 +175,7 @@ export function Hero() {
                 <div className="hero-cta-inner translate-y-full">
                   <Link
                     href="/bau"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[6px] text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] transform-gpu border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200"
+                    className="inline-flex items-center justify-center h-[42px] px-5 rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] transform-gpu border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200 shadow-xs"
                   >
                     <span>Bau & Sanierung</span>
                   </Link>
@@ -208,20 +185,6 @@ export function Hero() {
           </div>
 
           <HeroVideoCard />
-
-          {/* 5-Column Staircase Curtain Overlay (Wipes down with #f8f9fa soft background) */}
-          <div className="absolute inset-0 z-30 pointer-events-none grid grid-cols-5 h-full w-full">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                ref={(el) => {
-                  if (el) wipeColsRef.current[i] = el;
-                }}
-                className="h-full w-full bg-[var(--color-brand-cream)] origin-top transform-gpu"
-                style={{ transform: "scaleY(0)" }}
-              />
-            ))}
-          </div>
         </div>
       </div>
     </div>

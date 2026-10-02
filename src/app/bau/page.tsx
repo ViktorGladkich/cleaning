@@ -47,7 +47,7 @@ export default function BauPage() {
         {/* Unique Value Proposition: Alles aus einer Hand */}
         <div className="mt-10 p-6 sm:p-8 rounded-2xl bg-linear-to-r from-blue-500/10 via-sky-500/5 to-transparent border border-blue-500/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[var(--color-brand-navy)] text-white flex items-center justify-center shrink-0 shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-(--color-brand-navy) text-white flex items-center justify-center shrink-0 shadow-md">
               <Sparkles className="w-6 h-6" />
             </div>
             <div>
@@ -76,7 +76,7 @@ export default function BauPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-brand-navy)] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-(--color-brand-navy) dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
                       <Icon className="w-6 h-6" />
                     </div>
                     {service.popular && <Badge variant="blue">Gefragt</Badge>}
@@ -99,7 +99,7 @@ export default function BauPage() {
                           key={idx}
                           className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-(--color-brand-navy) shrink-0 mt-0.5" />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -171,7 +171,7 @@ export default function BauPage() {
                 key={item.step}
                 className="p-6 rounded-2xl bg-white dark:bg-neutral-800/80 border border-neutral-200/80 dark:border-neutral-700/80 space-y-3 relative overflow-hidden"
               >
-                <span className="text-4xl font-extrabold text-[var(--color-brand-navy)]/20 dark:text-[var(--color-brand-navy)]/30 block">
+                <span className="text-4xl font-extrabold text-brand-navy/20 dark:text-brand-navy/30 block">
                   {item.step}
                 </span>
                 <h4 className="text-base font-bold text-neutral-900 dark:text-white">

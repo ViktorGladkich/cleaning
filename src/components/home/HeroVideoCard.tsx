@@ -22,11 +22,11 @@ export function HeroVideoCard() {
   };
 
   return (
-    <div className="hero-video-wrapper opacity-0 absolute right-6 lg:right-14 bottom-8 lg:bottom-12 z-20 hidden md:flex flex-col w-[280px] lg:w-[320px] transform-gpu">
+    <div className="hero-video-wrapper opacity-0 absolute right-6 lg:right-14 bottom-8 lg:bottom-12 z-20 hidden md:flex flex-col w-70 lg:w-[320px] transform-gpu">
       
       {/* Video Container with Glass Frame */}
-      <div className="p-2 lg:p-2.5 rounded-[10px] bg-white/10 backdrop-blur-[12px] [-webkit-backdrop-filter:blur(12px)] border border-white/20 shadow-2xl">
-        <div className="relative rounded-[10px] overflow-hidden aspect-[4/3] w-full bg-brand-navy/50 cursor-pointer group" onClick={togglePlay}>
+      <div className="p-2 lg:p-2.5 rounded-[10px] bg-white/10 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/20 shadow-2xl">
+        <div className="relative rounded-[10px] overflow-hidden aspect-4/3 w-full bg-brand-navy/50 cursor-pointer group" onClick={togglePlay}>
           <video
             ref={videoRef}
             src="/videos/hero-video.mp4"
@@ -51,7 +51,7 @@ export function HeroVideoCard() {
 
       {/* Trust Badge Below */}
       <div className="mt-4 lg:mt-5 bg-white/95 backdrop-blur-sm rounded-[10px] p-2 pr-5 flex items-center gap-3 shadow-xl transform transition-transform duration-300 hover:scale-[1.02]">
-        <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-[6px] bg-brand-lime flex items-center justify-center shrink-0">
+        <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-md bg-brand-lime flex items-center justify-center shrink-0">
           <Star className="w-5 h-5 text-brand-navy" fill="currentColor" />
         </div>
         <div className="flex flex-col">

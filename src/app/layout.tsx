@@ -79,7 +79,7 @@ export default function RootLayout({
       lang="de"
       className={`${satoshi.variable} ${generalSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans text-neutral-900 selection:bg-[var(--color-brand-navy)] selection:text-white">
+      <body className="min-h-full flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white">
         <SmoothScroll>
           <Header />
           <main className="flex-1">{children}</main>

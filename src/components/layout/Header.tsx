@@ -69,20 +69,20 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[1040px] transform-gpu will-change-transform -translate-y-[120px]"
+      className="fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260 transform-gpu will-change-transform -translate-y-30"
     >
       {/* Top Capsule: Frosted Glass Pill */}
       <nav
         aria-label="Hauptnavigation"
         className={cn(
           "w-full transition-colors duration-300",
-          "rounded-[10px] backdrop-blur-[16px] [-webkit-backdrop-filter:blur(16px)] transform-gpu",
+          "rounded-[10px] backdrop-blur-lg [-webkit-backdrop-filter:blur(16px)] transform-gpu",
           "bg-white/70 border border-white/50",
           "shadow-lg shadow-brand-navy/5",
           "p-2 sm:p-2"
         )}
       >
-        <div className="relative flex items-center justify-between w-full h-[48px] px-2 sm:px-3">
+        <div className="relative flex items-center justify-between w-full h-12 px-2 sm:px-3">
           {/* Logo on the left */}
           <Link
             href="/"
@@ -96,7 +96,7 @@ export function Header() {
               width={145}
               height={44}
               priority
-              className="h-[34px] sm:h-[42px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
+              className="h-8.5 sm:h-10.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
             />
           </Link>
 
@@ -134,7 +134,7 @@ export function Header() {
                 <RollingText duplicateClassName="text-brand-navy">Leistungen</RollingText>
                 <ChevronDown
                   className={cn(
-                    "w-3.5 h-3.5 shrink-0 transition-all duration-200 text-brand-navy group-hover:text-brand-navy translate-y-[1px]",
+                    "w-3.5 h-3.5 shrink-0 transition-all duration-200 text-brand-navy group-hover:text-brand-navy translate-y-px",
                     isOpen && "rotate-180 text-brand-navy"
                   )}
                 />

@@ -76,16 +76,18 @@ export function CtaButton({
 
   const currentSize = sizeConfig[size] || sizeConfig.md;
 
-  // Real-time hover swap animation: arrow moves left by -(textW + gap), text moves right by +(arrowW + gap)
-  // Distance between them is mathematically guaranteed to remain exactly currentSize.gap!
+  // Real-time hover swap animation:
+  // Dynamically measures actual horizontal offset to cleanly support both tightly coupled and spaced/full-width layouts
   const handleMouseEnter = () => {
     if (!textRef.current || !arrowRef.current) return;
     const textW = textRef.current.offsetWidth;
     const arrowW = arrowRef.current.offsetWidth;
-    const gap = currentSize.gap;
+    const deltaX = arrowRef.current.offsetLeft - textRef.current.offsetLeft;
+    const distanceToMoveArrow = deltaX > 0 ? deltaX : textW + currentSize.gap;
+    const distanceToMoveText = deltaX > 0 ? deltaX - textW + arrowW : arrowW + currentSize.gap;
 
     gsap.to(arrowRef.current, {
-      x: -(textW + gap),
+      x: -distanceToMoveArrow,
       rotation: -360,
       duration: 0.46,
       ease: "power2.out",
@@ -93,7 +95,7 @@ export function CtaButton({
     });
 
     gsap.to(textRef.current, {
-      x: arrowW + gap,
+      x: distanceToMoveText,
       duration: 0.46,
       ease: "power2.out",
       overwrite: "auto",
@@ -125,7 +127,7 @@ export function CtaButton({
       <span
         className={cn(
           "group relative flex items-center justify-center shrink-0 overflow-hidden",
-          "bg-brand-navy text-white border border-white/10 rounded-[6px] shadow-xs",
+          "bg-brand-navy text-white border border-white/10 rounded-md shadow-xs",
           "hover:bg-brand-lime hover:text-brand-navy hover:border-brand-lime",
           "transition-all duration-300 active:scale-[0.96]",
           currentSize.arrowBlock,
@@ -178,11 +180,18 @@ export function CtaButton({
     );
   }
 
+  const isFullWidth = className?.includes("w-full");
+  const wrapperClasses = cn(
+    "focus:outline-none",
+    isFullWidth ? "w-full block" : "shrink-0 inline-block"
+  );
+
   // Dual-block "Hyper-Speed Rail" button
   const content = (
     <span
       className={cn(
-        "group relative inline-flex items-center cursor-pointer select-none",
+        "group relative cursor-pointer select-none",
+        isFullWidth ? "flex items-center" : "inline-flex items-center",
         "active:scale-[0.98] transition-transform duration-150",
         currentSize.gapClass,
         className
@@ -193,7 +202,7 @@ export function CtaButton({
         ref={textRef}
         className={cn(
           "inline-flex items-center justify-center font-medium text-brand-navy whitespace-nowrap",
-          "bg-white border border-slate-200/80 rounded-[6px] shadow-xs",
+          "bg-white border border-slate-200/80 rounded-md shadow-xs",
           "group-hover:bg-slate-50 transition-colors duration-200",
           currentSize.textBlock
         )}
@@ -202,14 +211,15 @@ export function CtaButton({
       </span>
 
       {/* 2. Arrow Block: initially LIME with NAVY arrow; on hover leaps left and swaps to NAVY with WHITE arrow + diagonal flight */}
+      {/* Note: Uses transition-[background-color,border-color,color,box-shadow] instead of transition-all so CSS does NOT intercept GSAP transform updates */}
       <span
         ref={arrowRef}
         className={cn(
           "relative z-10 inline-flex items-center justify-center shrink-0 overflow-hidden",
-          "bg-brand-lime text-brand-navy border border-brand-lime rounded-[6px] shadow-xs",
+          "bg-brand-lime text-brand-navy border border-brand-lime rounded-md shadow-xs",
           "group-hover:bg-brand-navy group-hover:text-white group-hover:border-brand-navy",
           "group-hover:shadow-[0_12px_28px_-3px_rgba(61,86,143,0.35)]",
-          "transition-colors transition-shadow duration-200",
+          "transition-[background-color,border-color,color,box-shadow] duration-200",
           currentSize.arrowBlock,
           arrowClassName
         )}
@@ -247,7 +257,7 @@ export function CtaButton({
         target={target}
         rel={rel}
         aria-label={ariaLabel || labelText}
-        className="shrink-0 focus:outline-none inline-block"
+        className={wrapperClasses}
       >
         {content}
       </Link>
@@ -261,7 +271,7 @@ export function CtaButton({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       aria-label={ariaLabel || labelText}
-      className="shrink-0 focus:outline-none bg-transparent p-0 border-0 inline-block"
+      className={cn(wrapperClasses, "bg-transparent p-0 border-0")}
     >
       {content}
     </button>

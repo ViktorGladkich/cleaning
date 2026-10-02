@@ -73,7 +73,7 @@ export function RollingText({
       ref={containerRef}
       className={cn(
         "relative inline-block h-[1.3em] overflow-hidden align-middle select-none",
-        isActive && "text-[var(--color-brand-navy)] font-semibold",
+        isActive && "text-(--color-brand-navy) font-semibold",
         className
       )}
       {...props}
@@ -97,7 +97,7 @@ export function RollingText({
           aria-hidden="true"
           className={cn(
             "inline-flex items-center h-[1.3em] leading-none whitespace-nowrap",
-            duplicateClassName || "text-[var(--color-brand-navy)]"
+            duplicateClassName || "text-(--color-brand-navy)"
           )}
         >
           {children}

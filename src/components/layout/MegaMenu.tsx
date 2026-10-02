@@ -95,7 +95,7 @@ export function MegaMenu({
         <div
           ref={cardRef}
           className={cn(
-            "w-full rounded-[10px] backdrop-blur-[16px] [-webkit-backdrop-filter:blur(16px)] transform-gpu",
+            "w-full rounded-[10px] backdrop-blur-lg [-webkit-backdrop-filter:blur(16px)] transform-gpu",
             "bg-white/70 border border-white/50",
             "shadow-lg shadow-brand-navy/5",
             "p-8 sm:p-9"
@@ -132,7 +132,7 @@ export function MegaMenu({
               href="/contacts"
               onClick={onClose}
               aria-label="Tadiks Bau & Reinigung Chemnitz"
-              className="group relative block overflow-hidden rounded-[8px] border border-white/35 shadow-[0_4px_20px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-white/60 hover:shadow-[0_8px_30px_rgba(26,119,237,0.25)] min-h-[220px] h-full"
+              className="group relative block overflow-hidden rounded-lg border border-white/35 shadow-[0_4px_20px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-white/60 hover:shadow-[0_8px_30px_rgba(26,119,237,0.25)] min-h-55 h-full"
             >
               <Image
                 src="/images/megamenu_promo_optimized.jpg"
