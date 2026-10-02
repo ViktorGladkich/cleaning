@@ -5,20 +5,20 @@ import Image from "next/image";
 
 const partners = [
   { name: "Arnold Electronic", src: "/logos/arnold_electronic_logo.svg", width: 140 },
-  { name: "Biendo Hotel", src: "/logos/biendo_hotel_logo.png", width: 120 },
+  { name: "Biendo Hotel", src: "/logos/biendo_hotel_logo.svg", width: 120 },
   { name: "Günter Hüttner", src: "/logos/Gunter_Hüttner_logo.svg", width: 150 },
-  { name: "Pentagon", src: "/logos/Pentagon_logo.jpg", width: 120 },
+  { name: "Pentagon", src: "/logos/Pentagon_logo.svg", width: 120 },
   { name: "Zur Zeile", src: "/logos/Zur_Zeile_logo.avif", width: 130 },
   { name: "Hildebrand Partner", src: "/logos/hildebrand-partner-logo.svg", width: 140 },
   { name: "Edeka", src: "/logos/Edeka.webp", width: 110 },
-  { name: "Luxor", src: "/logos/logo_luxor.jpg", width: 110 },
+  { name: "Luxor", src: "/logos/logo_luxor.svg", width: 110 },
 ];
 
 export function PartnersMarquee() {
   return (
-    <section className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream border-b border-slate-200/60 overflow-hidden">
+    <section className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream  overflow-hidden">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-brand-navy/60">
+        <p className="text-center text-lg font-medium uppercase tracking-widest text-brand-navy">
           Unsere starken Partner & Referenzen
         </p>
       </div>
@@ -28,7 +28,7 @@ export function PartnersMarquee() {
           {partners.map((partner, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100 mix-blend-multiply"
+              className="flex items-center justify-center transition-all duration-500 mix-blend-multiply"
             >
               <Image
                 src={partner.src}
@@ -47,7 +47,7 @@ export function PartnersMarquee() {
           {partners.map((partner, idx) => (
             <div
               key={`dup-${idx}`}
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 opacity-60 hover:opacity-100 mix-blend-multiply"
+              className="flex items-center justify-center transition-all duration-500 mix-blend-multiply"
             >
               <Image
                 src={partner.src}

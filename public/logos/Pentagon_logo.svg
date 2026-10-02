@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <!-- Основной блок логотипа -->
+  <g fill="#1A1C1E" text-anchor="middle" font-family="'Montserrat', 'Arial Black', 'Inter', -apple-system, sans-serif">
+    <!-- Текст: pentagon³ -->
+    <text x="400" y="180" font-size="115" font-weight="900" letter-spacing="-3">
+      pentagon<tspan font-size="68" font-weight="900" dy="-46">3</tspan>
+    </text>
+
+    <!-- Подстрочник: TANZ | EVENT | TAGUNG -->
+    <text x="400" y="235" font-size="22" font-weight="800" letter-spacing="4.5">
+      TANZ <tspan font-weight="400" fill="#E0E0E0">|</tspan> EVENT <tspan font-weight="400" fill="#E0E0E0">|</tspan> TAGUNG
+    </text>
+  </g>
+</svg>

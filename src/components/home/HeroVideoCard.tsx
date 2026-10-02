@@ -22,7 +22,7 @@ export function HeroVideoCard() {
   };
 
   return (
-    <div className="hero-video-wrapper opacity-0 absolute right-6 lg:right-14 bottom-8 lg:bottom-12 z-20 hidden md:flex flex-col w-70 lg:w-[320px] transform-gpu">
+    <div className="hero-video-wrapper absolute right-6 lg:right-14 bottom-8 lg:bottom-12 z-20 hidden md:flex flex-col w-70 lg:w-[320px] transform-gpu">
       
       {/* Video Container with Glass Frame */}
       <div className="p-2 lg:p-2.5 rounded-[10px] bg-white/10 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/20 shadow-2xl">
@@ -50,15 +50,15 @@ export function HeroVideoCard() {
       </div>
 
       {/* Trust Badge Below */}
-      <div className="mt-4 lg:mt-5 bg-white/95 backdrop-blur-sm rounded-[10px] p-2 pr-5 flex items-center gap-3 shadow-xl transform transition-transform duration-300 hover:scale-[1.02]">
-        <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-md bg-brand-lime flex items-center justify-center shrink-0">
-          <Star className="w-5 h-5 text-brand-navy" fill="currentColor" />
+      <div className="mt-4 lg:mt-5 w-full flex items-center gap-3 p-1.5 pr-5 rounded-md bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] transform-gpu border border-white/25 hover:border-white/40 transition-colors duration-200 shadow-xs cursor-default">
+        <div className="w-9 h-9 rounded bg-brand-lime flex items-center justify-center shrink-0">
+          <Star className="w-4 h-4 text-brand-navy" fill="currentColor" />
         </div>
         <div className="flex flex-col">
-          <span className="text-[13.5px] lg:text-[14.5px] font-medium text-brand-navy leading-tight">
+          <span className="text-[13.5px] font-medium text-white/90 leading-tight">
             Top Bewertungen
           </span>
-          <span className="text-[11.5px] lg:text-[12.5px] font-medium text-brand-navy/60 leading-tight">
+          <span className="text-[11.5px] font-medium text-white/60 leading-tight">
             94% Kundenzufriedenheit
           </span>
         </div>

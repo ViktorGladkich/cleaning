@@ -1,28 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { ShieldCheck, Clock, Award, Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Hero } from "@/components/home/Hero";
 import { PartnersMarquee } from "@/components/home/PartnersMarquee";
+import { AboutSection } from "@/components/home/AboutSection";
 import { CtaButton } from "@/components/ui/CtaButton";
 
 export default function HomePage() {
-  const valueProps = [
-    {
-      icon: <Award className="w-6 h-6 text-(--color-brand-navy)" />,
-      title: "Geprüfte Qualität",
-      desc: "Geschultes, fest angestelltes Stammpersonal mit höchsten Qualitätsstandards.",
-    },
-    {
-      icon: <ShieldCheck className="w-6 h-6 text-(--color-brand-navy)" />,
-      title: "Voll versichert bis 5 Mio. €",
-      desc: "Umfassender Versicherungsschutz für Ihre maximale Sicherheit und Sorgenfreiheit.",
-    },
-    {
-      icon: <Clock className="w-6 h-6 text-(--color-brand-navy)" />,
-      title: "Pünktlich & Zuverlässig",
-      desc: "Feste Termine ohne Verzögerungen. Auf unser Team in Chemnitz können Sie sich verlassen.",
-    },
-  ];
 
   const popularServices = [
     {
@@ -71,31 +55,13 @@ export default function HomePage() {
       {/* 1.5 Infinite Partners Marquee */}
       <PartnersMarquee />
 
-      {/* 2. Value Props Section (Seamlessly revealed after Hero wipe) */}
-      <section className="relative z-10 w-full py-16 sm:py-24 bg-brand-cream">
-        <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {valueProps.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-[20px] bg-slate-50/70 border border-slate-200/60 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center mb-6 shadow-xs">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-brand-navy mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* 2. Über uns / About Section (Awwwards Grade) */}
+      <AboutSection />
 
-          {/* 3. Combined Reinigung & Bau Services Preview */}
-          <div className="mt-20 pt-16 border-t border-slate-200/60">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+      {/* 3. Combined Reinigung & Bau Services Preview */}
+      <section className="relative z-10 w-full py-16 sm:py-24 bg-brand-cream border-t border-slate-200/60">
+        <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
               <div>
                 <span className="text-xs uppercase tracking-widest font-semibold text-(--color-brand-navy)">
                   Unsere Leistungsbereiche
@@ -154,7 +120,6 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-          </div>
         </div>
       </section>
     </div>

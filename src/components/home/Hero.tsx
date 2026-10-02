@@ -70,50 +70,18 @@ export function Hero() {
         { y: "0%", duration: 1.0, stagger: 0.12, ease: "power3.out" }, 
         1.0
       )
-      // 5. Video Card dramatic scale/fade in
+      // 5. Video Card dramatic slide in (no opacity to preserve backdrop-blur)
       .fromTo(".hero-video-wrapper", 
-        { scale: 0.85, opacity: 0, y: 80, rotationZ: 4 },
-        { scale: 1, opacity: 1, y: 0, rotationZ: 0, duration: 1.6, ease: "expo.out" },
+        { scale: 0.85, y: 400, rotationZ: 4 },
+        { scale: 1, y: 0, rotationZ: 0, duration: 1.6, ease: "expo.out" },
         1.2
       )
-      // 6. Header slides down (pure translateY — no opacity/clipPath to preserve blur)
+      // 6. Header slides down once on page entry and stays visible everywhere
       .fromTo(document.querySelector("header"),
         { y: -120 },
         { y: 0, duration: 1.2, ease: "expo.out" },
         1.5
       );
-
-      // Header Scroll Logic linked to ScrollTrigger (without pinning)
-      ScrollTrigger.create({
-        trigger: container,
-        start: "top top",
-        end: "bottom top", 
-        scrub: 1,
-        onUpdate: (self) => {
-            const header = document.querySelector("header");
-            if (!header) return;
-
-            // Don't interfere while entry animation is still playing
-            if (entryTl.progress() < 1) return;
-
-            // Phase 1: Header slides up smoothly on initial scroll
-            if (self.progress > 0.04) {
-              gsap.to(header, {
-                y: -140,
-                duration: 0.38,
-                ease: "power2.out",
-                overwrite: "auto",
-              });
-            } else {
-              gsap.to(header, {
-                y: 0,
-                duration: 0.38,
-                ease: "power2.out",
-                overwrite: "auto",
-              });
-            }
-          },
-      });
     },
     { scope: containerRef }
   );
