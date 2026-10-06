@@ -135,7 +135,7 @@ export function MegaMenu({
               className="group relative block overflow-hidden rounded-lg border border-white/35 shadow-[0_4px_20px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-white/60 hover:shadow-[0_8px_30px_rgba(26,119,237,0.25)] min-h-55 h-full"
             >
               <Image
-                src="/images/megamenu_promo_optimized.jpg"
+                src="/images/megamenu_promo_optimized.png"
                 alt="Tadiks Bau & Reinigung Chemnitz"
                 fill
                 sizes="(max-width: 1024px) 300px, 340px"

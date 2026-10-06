@@ -62,15 +62,15 @@ export function AboutGallery() {
         }
       );
 
-      // Corner texts reveal (Top-Left & Bottom-Right)
+      // Corner texts & Scroll indicator reveal
       gsap.fromTo(
-        [".gallery-corner-text-top", ".gallery-corner-text-bottom"],
+        [".gallery-corner-text-top", ".gallery-corner-text-bottom", ".gallery-scroll-indicator"],
         { opacity: 0, y: 25 },
         {
           opacity: 1,
           y: 0,
           duration: 1,
-          stagger: 0.15,
+          stagger: 0.12,
           ease: "power3.out",
           scrollTrigger: {
             trigger: gallery,
@@ -97,6 +97,22 @@ export function AboutGallery() {
           invalidateOnRefresh: true,
         },
       });
+
+      // Smooth continuous oscillation of the scroll indicator line (from one end to the other and back)
+      gsap.to(".scroll-indicator-dot", {
+        y: 11,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      // Fade out scroll indicator as the cards begin to glide up
+      pinTl.to(
+        ".gallery-scroll-indicator",
+        { opacity: 0, y: 15, duration: 0.08, ease: "power2.out" },
+        0.04
+      );
 
       // Animate each floating gallery card (vertical glide + corner unmask in view + parallax drift)
       GALLERY_CARDS.forEach((card) => {
@@ -158,7 +174,7 @@ export function AboutGallery() {
   return (
     <div
       ref={galleryRef}
-      className="relative w-full h-[100svh] min-h-[580px] sm:h-screen sm:min-h-[640px] max-h-[1080px] overflow-hidden border-t border-slate-200/60 my-0"
+      className="relative w-full h-svh min-h-145 sm:h-screen sm:min-h-160 max-h-270 overflow-hidden border-t border-slate-200/60 my-0"
     >
       {/* Pinned background / text stage: centered & fixed in place */}
       <div className="absolute inset-0 z-10 flex flex-col justify-between py-8 sm:py-14 pointer-events-none select-none">
@@ -200,6 +216,16 @@ export function AboutGallery() {
         <div className="px-4 sm:px-8 lg:px-12 flex justify-end">
           <div className="gallery-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-slate-500 font-normal leading-relaxed text-left sm:text-right pointer-events-auto">
             Strukturierte Ästhetik & werterhaltende Pflege für anspruchsvolle Wohn- und Gewerbeobjekte in Chemnitz und ganz Sachsen.
+          </div>
+        </div>
+
+        {/* Informational Scroll Indicator (Centered at bottom of pinned stage) */}
+        <div className="gallery-scroll-indicator absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 pointer-events-none select-none">
+          <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.25em] uppercase text-brand-navy/70">
+            Scrollen
+          </span>
+          <div className="w-5 h-8 rounded-full border border-brand-navy/30 bg-white/70 backdrop-blur-xs flex items-start justify-center pt-1.5 shadow-xs overflow-hidden">
+            <span className="scroll-indicator-dot w-1 h-2.5 rounded-full bg-brand-navy will-change-transform" />
           </div>
         </div>
 

@@ -16,7 +16,7 @@ const partners = [
 
 export function PartnersMarquee() {
   return (
-    <section className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream  overflow-hidden">
+    <section id="partners" className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream overflow-hidden">
       <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
         <p className="text-center text-lg font-medium uppercase tracking-widest text-brand-navy">
           Unsere starken Partner & Referenzen

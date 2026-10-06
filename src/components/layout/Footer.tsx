@@ -1,125 +1,292 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, Phone, Mail, MapPin, Clock, ShieldCheck } from "lucide-react";
-import { COMPANY_INFO, NAV_ITEMS } from "@/lib/constants";
-import { SERVICES } from "@/data/services";
-import { Container } from "@/components/ui/Container";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "@/lib/gsap";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { RollingText } from "@/components/animations";
+import { COMPANY_INFO } from "@/lib/constants";
+
+const COL_INDEX = [
+  { label: "Startseite", href: "/" },
+  { label: "Über uns", href: "/about" },
+  { label: "Reinigung", href: "/services" },
+  { label: "Bau & Sanierung", href: "/bau" },
+  { label: "Kontakt & Anfahrt", href: "/contacts" },
+];
+
+const COL_REINIGUNG = [
+  { label: "Übersicht Reinigung", href: "/services" },
+  { label: "Unterhaltsreinigung", href: "/services/unterhaltsreinigung" },
+  { label: "Grundreinigung", href: "/services/grundreinigung" },
+  { label: "Bauendreinigung", href: "/services/bauendreinigung" },
+  { label: "Fenster- & Glasreinigung", href: "/services/fensterreinigung" },
+  { label: "Büro- & Praxisreinigung", href: "/services/bueroreinigung" },
+];
+
+const COL_BAU = [
+  { label: "Übersicht Bauleistungen", href: "/bau" },
+  { label: "Trockenbau & Innenausbau", href: "/bau#trockenbau" },
+  { label: "Komplettsanierung", href: "/bau#sanierung" },
+  { label: "Maler- & Spachtelarbeiten", href: "/bau#malerarbeiten" },
+  { label: "Bodenleger- & Fliesenarbeiten", href: "/bau#bodenleger" },
+  { label: "Abbruch & Entkernung", href: "/bau#abbruch" },
+];
+
+const COL_CONNECT = [
+  { label: "Anfragen & Beratung", href: "/contacts" },
+  { label: COMPANY_INFO.email, href: `mailto:${COMPANY_INFO.email}`, isExternal: true },
+  { label: COMPANY_INFO.phone, href: `tel:${COMPANY_INFO.phoneRaw}`, isExternal: true },
+  { label: COMPANY_INFO.address, href: "/contacts" },
+];
+
+/**
+ * FooterLink — Kinetic text-swap link (RollingText) with 45-degree lime arrow on hover
+ */
+function FooterLink({
+  href,
+  children,
+  isExternal,
+}: {
+  href: string;
+  children: string;
+  isExternal?: boolean;
+}) {
+  const content = (
+    <span className="inline-flex items-center gap-1.5 py-1 text-xs sm:text-[13px] font-medium tracking-wide">
+      <RollingText
+        className="text-white/60 font-light"
+        duplicateClassName="text-white font-medium"
+        duration={0.38}
+      >
+        {children}
+      </RollingText>
+      <ArrowUpRight className="w-3.5 h-3.5 text-brand-lime transition-all duration-300 transform-gpu opacity-0 -translate-x-1 translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 shrink-0" />
+    </span>
+  );
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className="group inline-block focus:outline-none"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className="group inline-block focus:outline-none"
+    >
+      {content}
+    </Link>
+  );
+}
 
 export function Footer() {
+  const footerRef = useRef<HTMLElement>(null);
+  const leftColRef = useRef<HTMLDivElement>(null);
+  const rightGridRef = useRef<HTMLDivElement>(null);
+  const bottomBarRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useGSAP(
+    () => {
+      if (!footerRef.current) return;
+
+      // 1. Left subscription column entrance
+      if (leftColRef.current) {
+        gsap.fromTo(
+          leftColRef.current.children,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: leftColRef.current,
+              start: "top 88%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // 2. Right columns entrance
+      if (rightGridRef.current) {
+        gsap.fromTo(
+          rightGridRef.current.children,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: rightGridRef.current,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // 3. Bottom bar entrance
+      if (bottomBarRef.current) {
+        gsap.fromTo(
+          bottomBarRef.current,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: bottomBarRef.current,
+              start: "top 95%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    },
+    { scope: footerRef }
+  );
+
   return (
-    <footer className="mt-auto border-t border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900/50">
-      <Container className="py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1: Brand & About */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-linear-to-tr from-[var(--color-brand-navy)] to-sky-400 text-white shadow-xs">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-neutral-900 dark:text-white leading-none">
-                  Glanz<span className="text-[var(--color-brand-navy)]">Werk</span>
+    <footer
+      ref={footerRef}
+      role="contentinfo"
+      aria-label="Website-Fußbereich"
+      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16"
+    >
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+        {/* Main 12-Column Split with generous width for navigation columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 pt-6 pb-16 sm:pb-24 border-b border-white/10">
+          {/* Left Column: Brand Logo + Direct Contact Links (4 cols) */}
+          <div ref={leftColRef} className="lg:col-span-4 flex flex-col justify-between space-y-8">
+            <div className="space-y-6 max-w-sm">
+              <Link href="/" className="inline-block group focus:outline-none">
+                <Image
+                  src="/TADIKS_LOGO.svg"
+                  alt="Tadiks"
+                  width={150}
+                  height={40}
+                  className="h-8 sm:h-9 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
+                />
+              </Link>
+
+              {/* Direct Contact Links replacing the text */}
+              <div className="space-y-3">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-white/50 block font-medium">
+                  KONTAKT &amp; STANDORT
                 </span>
-                <span className="text-[10px] uppercase tracking-wider font-semibold text-neutral-400 mt-0.5">
-                  Chemnitz
-                </span>
+                <ul className="space-y-1.5 flex flex-col">
+                  {COL_CONNECT.map((item, idx) => (
+                    <li key={idx}>
+                      <FooterLink href={item.href} isExternal={item.isExternal}>
+                        {item.label}
+                      </FooterLink>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </Link>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-              {COMPANY_INFO.tagline}. Höchste Sauberkeitsstandards, geschulte Fachkräfte und umweltschonende Reinigungsmittel.
-            </p>
-            <div className="flex items-center gap-2 text-xs text-blue-800 dark:text-blue-300 font-medium bg-blue-50/80 dark:bg-blue-950/40 p-2.5 rounded-xl border border-blue-200/80 dark:border-blue-900/60">
-              <ShieldCheck className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0" />
-              <span>Betriebshaftpflicht bis 5.000.000 € versichert</span>
             </div>
           </div>
 
-          {/* Column 2: Popular Services */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-900 dark:text-white mb-4">
-              Leistungen
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {SERVICES.slice(0, 5).map((service) => (
-                <li key={service.id}>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="text-neutral-600 hover:text-[var(--color-brand-navy)] dark:text-neutral-400 dark:hover:text-sky-400 transition-colors"
-                  >
-                    {service.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Right Columns: 3 Spacious Navigation Columns (8 cols) */}
+          <div
+            ref={rightGridRef}
+            className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 xl:gap-x-16 gap-y-10 pt-2"
+          >
+            {/* 1. ÜBERSICHT */}
+            <div className="space-y-4">
+              <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
+                ÜBERSICHT
+              </h4>
+              <ul className="space-y-1.5 flex flex-col">
+                {COL_INDEX.map((item, idx) => (
+                  <li key={idx}>
+                    <FooterLink href={item.href}>{item.label}</FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Column 3: Navigation */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-900 dark:text-white mb-4">
-              Navigation
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-neutral-600 hover:text-[var(--color-brand-navy)] dark:text-neutral-400 dark:hover:text-sky-400 transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* 2. REINIGUNG */}
+            <div className="space-y-4">
+              <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
+                REINIGUNG
+              </h4>
+              <ul className="space-y-1.5 flex flex-col">
+                {COL_REINIGUNG.map((item, idx) => (
+                  <li key={idx}>
+                    <FooterLink href={item.href}>{item.label}</FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Column 4: Contacts */}
-          <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-900 dark:text-white mb-4">
-              Kontakt & Büro
-            </h3>
-            <ul className="space-y-3 text-sm text-neutral-600 dark:text-neutral-400">
-              <li className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
-                <a
-                  href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="hover:text-[var(--color-brand-navy)] dark:hover:text-sky-400 transition"
-                >
-                  {COMPANY_INFO.phone}
-                </a>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Mail className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
-                <a
-                  href={`mailto:${COMPANY_INFO.email}`}
-                  className="hover:text-[var(--color-brand-navy)] dark:hover:text-sky-400 transition"
-                >
-                  {COMPANY_INFO.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
-                <span>{COMPANY_INFO.workingHours}</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
-                <span>{COMPANY_INFO.address}</span>
-              </li>
-            </ul>
+            {/* 3. BAU & SANIERUNG */}
+            <div className="space-y-4">
+              <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
+                BAU &amp; SANIERUNG
+              </h4>
+              <ul className="space-y-1.5 flex flex-col">
+                {COL_BAU.map((item, idx) => (
+                  <li key={idx}>
+                    <FooterLink href={item.href}>{item.label}</FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 dark:text-neutral-400">
-          <p>© {new Date().getFullYear()} {COMPANY_INFO.name} Chemnitz. Alle Rechte vorbehalten.</p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="hover:underline">
+        {/* Sub-footer Bar */}
+        <div
+          ref={bottomBarRef}
+          className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 font-light"
+        >
+          <p>&copy; {new Date().getFullYear()} {COMPANY_INFO.name}. Alle Rechte vorbehalten.</p>
+
+          <div className="flex items-center gap-6">
+            <Link href="/contacts#impressum" className="hover:text-white transition-colors">
+              Impressum
+            </Link>
+            <span>&middot;</span>
+            <Link href="/contacts#datenschutz" className="hover:text-white transition-colors">
               Datenschutz
             </Link>
-            <Link href="/terms" className="hover:underline">
-              Impressum & AGB
+            <span>&middot;</span>
+            <Link href="/contacts#agb" className="hover:text-white transition-colors">
+              AGB
             </Link>
           </div>
+
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="group inline-flex items-center gap-2 hover:text-white transition-colors cursor-pointer text-xs font-mono uppercase tracking-wider"
+          >
+            <span>Nach oben</span>
+            <ArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+          </button>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }

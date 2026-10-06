@@ -20,7 +20,7 @@ export function HeroVideoCard() {
   };
 
   return (
-    <div className="hero-video-wrapper absolute right-6 lg:right-14 bottom-8 lg:bottom-12 z-20 hidden md:flex flex-col w-70 lg:w-[320px] transform-gpu">
+    <div className="hero-video-wrapper opacity-0 translate-y-16 pointer-events-none absolute right-6 lg:right-14 bottom-8 lg:bottom-12 z-20 hidden md:flex flex-col w-70 lg:w-[320px] transform-gpu">
       
       {/* Video Container with Glass Frame */}
       <div className="p-2 lg:p-2.5 rounded-[10px] bg-white/10 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/20 shadow-2xl">

@@ -35,7 +35,7 @@ export function BauServiceCard({ service }: BauServiceCardProps) {
     >
       <div>
         <div className="flex items-center justify-between mb-5">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 text-[var(--color-brand-navy)] dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-blue-50 text-brand-navy dark:bg-blue-950/60 dark:text-sky-400 flex items-center justify-center">
             <Icon className="w-6 h-6" />
           </div>
           {service.popular && <Badge variant="blue">Gefragt</Badge>}
@@ -58,7 +58,7 @@ export function BauServiceCard({ service }: BauServiceCardProps) {
                 key={idx}
                 className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2"
               >
-                <CheckCircle2 className="w-4 h-4 text-[var(--color-brand-navy)] shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-4 h-4 text-brand-navy shrink-0 mt-0.5" />
                 <span>{feature}</span>
               </li>
             ))}

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { COMPANY_INFO } from "@/lib/constants";
 
 // Fontshare - Satoshi (Geometric, Modern, Headlines & UI Elements)
@@ -83,6 +84,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Header />
           <main className="flex-1">{children}</main>
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

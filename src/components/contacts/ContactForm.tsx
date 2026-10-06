@@ -26,7 +26,7 @@ export function ContactForm() {
     <Card className="p-8 sm:p-10 shadow-xl border-blue-500/20">
       {submitted ? (
         <div className="py-12 text-center space-y-4">
-          <div className="w-16 h-16 bg-blue-100 dark:bg-blue-950 text-[var(--color-brand-navy)] rounded-full flex items-center justify-center mx-auto">
+          <div className="w-16 h-16 bg-blue-100 dark:bg-blue-950 text-brand-navy rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-8 h-8" />
           </div>
           <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">
@@ -68,7 +68,7 @@ export function ContactForm() {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 placeholder="Max Mustermann"
-                className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
+                className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
               />
             </div>
 
@@ -84,7 +84,7 @@ export function ContactForm() {
                   setFormData({ ...formData, phone: e.target.value })
                 }
                 placeholder="+49 (0) 371..."
-                className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
+                className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
               />
             </div>
           </div>
@@ -98,7 +98,7 @@ export function ContactForm() {
               onChange={(e) =>
                 setFormData({ ...formData, service: e.target.value })
               }
-              className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
+              className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
             >
               {SERVICES.map((s) => (
                 <option key={s.id} value={s.title}>
@@ -119,7 +119,7 @@ export function ContactForm() {
                 setFormData({ ...formData, address: e.target.value })
               }
               placeholder="z. B. Chemnitz Kaßberg, 09112"
-              className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
+              className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
             />
           </div>
 
@@ -134,7 +134,7 @@ export function ContactForm() {
                 setFormData({ ...formData, comment: e.target.value })
               }
               placeholder="Zimmeranzahl, Quadratmeter, gewünschter Wochentag oder Besonderheiten..."
-              className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-brand-navy)]"
+              className="w-full px-4 py-3 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-sm text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-navy"
             />
           </div>
 
