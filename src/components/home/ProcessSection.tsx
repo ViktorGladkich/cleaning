@@ -44,24 +44,28 @@ export function ProcessSection() {
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Header entrance
+      // 1. Header entrance with de-blur
       if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current.children,
-          { opacity: 0, y: 25 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            stagger: 0.14,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+        const headerTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 82%",
+            once: true,
+          },
+        });
+
+        headerTl
+          .fromTo(
+            headerRef.current.children[0],
+            { opacity: 0, y: 45, filter: "blur(8px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out" }
+          )
+          .fromTo(
+            headerRef.current.children[1],
+            { opacity: 0, y: 25, filter: "blur(4px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
+            "-=0.6"
+          );
       }
 
       // 2. Pronounced, cinematic Parallax drift of architectural background image
@@ -83,27 +87,29 @@ export function ProcessSection() {
         );
       }
 
-      // 3. Staggered reveal of the frosted glass cards
+      // 3. Staggered reveal of the frosted glass cards with de-blur & elevation
       const cards = cardsRef.current?.querySelectorAll(".process-frosted-card");
       if (cards && cards.length > 0) {
         gsap.fromTo(
           cards,
           {
             opacity: 0,
-            y: 40,
-            scale: 0.97,
+            y: 75,
+            scale: 0.93,
+            filter: "blur(6px)",
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1.1,
-            stagger: 0.15,
+            filter: "blur(0px)",
+            duration: 1.25,
+            stagger: 0.18,
             ease: "power3.out",
             scrollTrigger: {
               trigger: cardsRef.current,
-              start: "top 82%",
-              toggleActions: "play none none reverse",
+              start: "top 78%",
+              once: true,
             },
           }
         );

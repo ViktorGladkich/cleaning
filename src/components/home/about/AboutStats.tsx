@@ -24,7 +24,7 @@ export function AboutStats() {
           scrollTrigger: {
             trigger: stat,
             start: "top 90%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
           onUpdate: () => {
             const formatted = Math.round(obj.val).toLocaleString("de-DE");

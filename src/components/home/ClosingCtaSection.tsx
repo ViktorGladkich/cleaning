@@ -34,24 +34,34 @@ export function ClosingCtaSection() {
         );
       }
 
-      // 2. Centered content staggered entrance
+      // 2. Centered content choreographed cinematic entrance
       if (contentRef.current) {
-        gsap.fromTo(
-          contentRef.current.children,
-          { opacity: 0, y: 35 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            stagger: 0.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: contentRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+        const ctaTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 78%",
+            once: true,
+          },
+        });
+
+        ctaTl
+          .fromTo(
+            contentRef.current.children[0],
+            { opacity: 0, y: 55, filter: "blur(10px)", scale: 0.96 },
+            { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.2, ease: "power3.out" }
+          )
+          .fromTo(
+            contentRef.current.children[1],
+            { opacity: 0, y: 35, filter: "blur(6px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power3.out" },
+            "-=0.6"
+          )
+          .fromTo(
+            contentRef.current.children[2],
+            { opacity: 0, y: 30, scale: 0.9 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" },
+            "-=0.5"
+          );
       }
     },
     { scope: sectionRef }

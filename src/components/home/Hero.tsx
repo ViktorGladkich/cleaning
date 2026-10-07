@@ -27,74 +27,69 @@ export function Hero() {
       // Awwwards-level Cinematic Entry Timeline
       const entryTl = gsap.timeline();
       
-      // 1. Expanding Keynote Reveal: Pure GPU Hardware Scale (Zero clip-path, zero string mismatch, zero jumps)
-      entryTl.fromTo(".hero-image-container", 
-        { scale: 0.88, borderRadius: 24 },
-        { 
-          scale: 1.0, 
-          borderRadius: 10, 
-          duration: 1.9, 
-          ease: "power3.out" 
+      // 1. Snappy, continuous expansion from center (zero opacity flicker, zero pause)
+      entryTl.fromTo(
+        ".hero-image-container",
+        { scale: 0.72, borderRadius: 24 },
+        {
+          scale: 1.0,
+          borderRadius: 10,
+          duration: 0.85,
+          ease: "power3.out",
         },
         0
       )
-      .fromTo(".hero-bg-image", 
-        { scale: 1.15 },
-        { scale: 1.0, duration: 2.2, ease: "power3.out" },
-        0
-      )
-      // 2. Staggered text lines (Heading)
-      .to(".hero-heading-line", {
-        y: "0%",
-        opacity: 1,
-        duration: 1.6,
-        stagger: 0.2,
-        ease: "power4.out"
-      }, 0.5)
-      // 2b. Pill background wipe (left → right)
-      .fromTo(".hero-pill",
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.8, ease: "power3.inOut" },
-        0.9
-      )
-      .fromTo(".hero-pill-text",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.4, ease: "power2.out" },
-        1.3
+      // 2. Exactly when the image finishes expanding (at 0.85s), other elements appear immediately!
+      .to(
+        ".hero-heading-line",
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 0.85,
+          stagger: 0.1,
+          ease: "power4.out",
+        },
+        0.85
       )
       // 3. Subtitle reveal
-      .to(".hero-subtitle", {
-        y: "0%",
-        opacity: 1,
-        duration: 1.4,
-        ease: "power4.out"
-      }, 0.8)
-      // 4. CTAs reveal (overflow-hidden + translateY to preserve backdrop-blur)
-      .fromTo(".hero-cta-inner", 
-        { y: "100%" }, 
-        { y: "0%", duration: 1.0, stagger: 0.12, ease: "power3.out" }, 
-        0.9
+      .to(
+        ".hero-subtitle",
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 0.75,
+          ease: "power3.out",
+        },
+        1.0
       )
-      // 5. Video Card smooth entrance (starts hidden with opacity 0, no flash on reload)
-      .fromTo(".hero-video-wrapper", 
-        { opacity: 0, scale: 0.9, y: 70 },
-        { 
-          opacity: 1, 
-          scale: 1, 
-          y: 0, 
-          duration: 1.3, 
+      // 4. CTAs reveal
+      .fromTo(
+        ".hero-cta-inner",
+        { y: "100%" },
+        { y: "0%", duration: 0.75, stagger: 0.08, ease: "power3.out" },
+        1.1
+      )
+      // 5. Video Card smooth entrance sliding in from bottom of screen
+      // Opacity stays 1 so browser never disables backdrop-filter glass blur
+      .fromTo(
+        ".hero-video-wrapper",
+        { y: 420 },
+        {
+          y: 0,
+          duration: 1.15,
           ease: "power3.out",
           onStart: () => {
             const el = document.querySelector(".hero-video-wrapper");
             if (el) (el as HTMLElement).style.pointerEvents = "auto";
-          }
+          },
         },
-        0.9
+        0.85
       )
       // 6. Header slides down once on page entry and stays visible everywhere
-      .fromTo(document.querySelector("header"),
+      .fromTo(
+        document.querySelector("header"),
         { y: -120 },
-        { y: 0, duration: 1.2, ease: "expo.out" },
+        { y: 0, duration: 0.85, ease: "expo.out" },
         1.1
       );
     },
@@ -110,15 +105,18 @@ export function Hero() {
           ref={heroCardRef}
           className="relative w-full h-[calc(100vh-20px)] sm:h-[calc(100vh-28px)] min-h-150 rounded-[10px] overflow-hidden bg-brand-cream"
         >
-          {/* Background Cleaning Image with Hardware GPU Scale Card Reveal (100% reliable, zero FOUC) */}
-          <div className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[24px] scale-[0.88] origin-center transform-gpu will-change-transform shadow-2xl">
+          {/* Background Cleaning Image with Hardware GPU Scale Card Reveal (Initial SSR Style prevents full-size flash) */}
+          <div
+            className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[24px] origin-center transform-gpu will-change-transform shadow-lg"
+            style={{ transform: "scale(0.72)", borderRadius: "24px" }}
+          >
             <Image
               src="/images/hero_cleaning_bg2.webp"
               alt="Tadiks Cleaning Chemnitz"
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center hero-bg-image scale-[1.15] transform-gpu will-change-transform"
+              className="object-cover object-center hero-bg-image transform-gpu"
             />
 
             {/* Neutral Cinematic Dark Gradient (enclosed inside image container so no background bleed) */}
@@ -130,10 +128,14 @@ export function Hero() {
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-medium text-white tracking-tight leading-[1.1] mb-3 sm:mb-5 flex flex-col gap-1">
               <span className="overflow-hidden block">
-                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">Reinigung & Bau</span>
+                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">
+                  Reinigung &amp; Bau
+                </span>
               </span>
               <span className="overflow-hidden block pt-1">
-                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">Qualität bis ins <span className="hero-pill inline-block bg-brand-lime px-3 rounded-lg ml-1 pb-1 pt-0.5 origin-left scale-x-0 transform-gpu"><span className="hero-pill-text text-black opacity-0">Detail</span></span></span>
+                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">
+                  Qualität bis ins Detail
+                </span>
               </span>
             </h1>
 

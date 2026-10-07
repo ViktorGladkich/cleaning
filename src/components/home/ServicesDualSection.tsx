@@ -75,50 +75,59 @@ export function ServicesDualSection() {
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Cinematic header reveal
+      // 1. Cinematic orchestrated header reveal
       if (headerRef.current) {
-        const headerElements = headerRef.current.children;
-        gsap.fromTo(
-          headerElements,
-          { opacity: 0, y: 35 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.1,
-            stagger: 0.14,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+        const headerTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 82%",
+            once: true,
+          },
+        });
+
+        headerTl
+          .fromTo(
+            ".services-eyebrow",
+            { opacity: 0, y: -20, filter: "blur(4px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "power3.out" }
+          )
+          .fromTo(
+            ".services-title",
+            { opacity: 0, y: 45, filter: "blur(8px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out" },
+            "-=0.5"
+          )
+          .fromTo(
+            ".services-desc",
+            { opacity: 0, y: 30, filter: "blur(6px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
+            "-=0.7"
+          );
       }
 
-      // 2. Cinematic Dual-Card Unveil on Scroll
+      // 2. Cinematic Dual-Card Unveil on Scroll (Smooth Scale & De-blur)
       const cards = cardsContainerRef.current?.querySelectorAll(".service-portal-card");
       if (cards && cards.length > 0) {
         gsap.fromTo(
           cards,
           {
             opacity: 0,
-            y: 60,
-            scale: 0.96,
-            clipPath: "inset(6% 0% 6% 0% round 32px)",
+            y: 85,
+            scale: 0.93,
+            filter: "blur(8px)",
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            clipPath: "inset(0% 0% 0% 0% round 32px)",
+            filter: "blur(0px)",
             duration: 1.3,
             stagger: 0.22,
             ease: "power3.out",
             scrollTrigger: {
               trigger: cardsContainerRef.current,
-              start: "top 80%",
-              toggleActions: "play none none reverse",
+              start: "top 78%",
+              once: true,
             },
           }
         );
@@ -154,23 +163,30 @@ export function ServicesDualSection() {
       aria-labelledby="services-headline"
       className="relative z-10 w-full py-20 sm:py-28 lg:py-36 bg-brand-cream overflow-hidden border-t border-slate-200/60"
     >
-      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={headerRef} className="max-w-3xl mb-12 sm:mb-16 lg:mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest text-slate-500 block mb-3">
-            Kapitel 02 &middot; Unsere Gewerke
-          </span>
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+        {/* Section Header: Editorial & High-Impact (Harmonized with Testimonials) */}
+        <div
+          ref={headerRef}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-slate-200/80 mb-12 sm:mb-16"
+        >
+          <div className="max-w-2xl">
+            <span className="services-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block mb-3 will-change-transform">
+              Leistungsspektrum &middot; Unsere Gewerke
+            </span>
+            <h2
+              id="services-headline"
+              className="services-title text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12] will-change-transform"
+            >
+              Zwei spezialisierte Säulen. <br className="hidden sm:inline" />
+              <span className="font-medium text-brand-navy">Ein nahtloser Qualitätskreislauf.</span>
+            </h2>
+          </div>
 
-          <h2
-            id="services-headline"
-            className="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-brand-navy leading-[1.12]"
-          >
-            Zwei spezialisierte Säulen. <br className="hidden sm:inline" />
-            <span className="text-slate-500">Ein nahtloser Qualitätskreislauf.</span>
-          </h2>
-
-          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl">
-            Vom ersten Trockenbau-Grundriss über schlüsselfertige Renovierungen bis hin zur bezugsfertigen Bauendreinigung und dauerhaften Unterhaltspflege – wählen Sie Ihr Gewerk.
-          </p>
+          <div className="max-w-md lg:text-right">
+            <p className="services-desc text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light will-change-transform">
+              Vom ersten Trockenbau-Grundriss über schlüsselfertige Renovierungen bis hin zur bezugsfertigen Bauendreinigung und dauerhaften Unterhaltspflege – alles meisterhaft aus einer Hand.
+            </p>
+          </div>
         </div>
 
         {/* Dual Pillar Cinematic Cards */}

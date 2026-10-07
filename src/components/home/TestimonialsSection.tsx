@@ -77,52 +77,91 @@ export function TestimonialsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);
+  const metricsBarRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Header reveal
+      // 1. Cinematic orchestrated header reveal
       if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current.children,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.1,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
-          }
-        );
+        const headerTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 82%",
+            once: true,
+          },
+        });
+
+        headerTl
+          .fromTo(
+            ".testi-eyebrow",
+            { opacity: 0, y: -20, filter: "blur(4px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "power3.out" }
+          )
+          .fromTo(
+            ".testi-title",
+            { opacity: 0, y: 45, filter: "blur(8px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out" },
+            "-=0.5"
+          )
+          .fromTo(
+            ".testi-desc",
+            { opacity: 0, y: 30, filter: "blur(6px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
+            "-=0.7"
+          );
       }
 
-      // 2. Cards staggered entrance with subtle elevation
+      // 2. Cards staggered entrance with subtle elevation & de-blur
       const cards = cardsGridRef.current?.querySelectorAll(".testimonial-card");
       if (cards && cards.length > 0) {
         gsap.fromTo(
           cards,
           {
             opacity: 0,
-            y: 45,
-            scale: 0.98,
+            y: 70,
+            scale: 0.94,
+            filter: "blur(6px)",
           },
           {
             opacity: 1,
             y: 0,
             scale: 1,
+            filter: "blur(0px)",
             duration: 1.2,
-            stagger: 0.15,
+            stagger: 0.16,
             ease: "power3.out",
             scrollTrigger: {
               trigger: cardsGridRef.current,
-              start: "top 82%",
-              toggleActions: "play none none reverse",
+              start: "top 78%",
+              once: true,
+            },
+          }
+        );
+      }
+
+      // 3. Bottom Trust Metrics entrance
+      if (metricsBarRef.current) {
+        const metricItems = metricsBarRef.current.querySelectorAll(".testi-metric-item");
+        gsap.fromTo(
+          metricItems,
+          {
+            opacity: 0,
+            y: 35,
+            scale: 0.92,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: metricsBarRef.current,
+              start: "top 88%",
+              once: true,
             },
           }
         );
@@ -145,19 +184,19 @@ export function TestimonialsSection() {
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-slate-200/80"
         >
           <div className="max-w-2xl">
-            <span className="text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block mb-3">
+            <span className="testi-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block mb-3 will-change-transform">
               Referenzen &amp; Kundenerfahrungen
             </span>
             <h2
               id="testimonials-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12]"
+              className="testi-title text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12] will-change-transform"
             >
               Vertrauen entsteht durch <span className="font-medium text-brand-navy">messbare Perfektion.</span>
             </h2>
           </div>
 
           <div className="max-w-md lg:text-right">
-            <p className="text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light">
+            <p className="testi-desc text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light will-change-transform">
               Ausgewählte Stimmen von Gewerbekunden, Praxen und anspruchsvollen Privateigentümern aus Chemnitz und ganz Sachsen.
             </p>
           </div>
@@ -227,21 +266,24 @@ export function TestimonialsSection() {
           })}
         </div>
 
-        {/* Subtle Bottom Trust Metric Bar */}
-        <div className="mt-12 sm:mt-16 pt-8 border-t border-slate-200/60 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center lg:text-left">
-          <div>
+        {/* Subtle Bottom Trust Metric Bar with entrance animation */}
+        <div
+          ref={metricsBarRef}
+          className="mt-12 sm:mt-16 pt-8 border-t border-slate-200/60 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center lg:text-left"
+        >
+          <div className="testi-metric-item will-change-transform">
             <span className="block text-2xl sm:text-3xl font-normal text-brand-navy tracking-tight">100%</span>
             <span className="block text-xs text-brand-navy/60 font-light mt-1">Termintreue bei Abnahme</span>
           </div>
-          <div>
+          <div className="testi-metric-item will-change-transform">
             <span className="block text-2xl sm:text-3xl font-normal text-brand-navy tracking-tight">24h</span>
             <span className="block text-xs text-brand-navy/60 font-light mt-1">Reaktionszeit Objektleiter</span>
           </div>
-          <div>
+          <div className="testi-metric-item will-change-transform">
             <span className="block text-2xl sm:text-3xl font-normal text-brand-navy tracking-tight">0</span>
             <span className="block text-xs text-brand-navy/60 font-light mt-1">Schnittstellenverluste</span>
           </div>
-          <div>
+          <div className="testi-metric-item will-change-transform">
             <span className="block text-2xl sm:text-3xl font-normal text-brand-navy tracking-tight">Chemnitz</span>
             <span className="block text-xs text-brand-navy/60 font-light mt-1">&amp; Region Mittelsachsen</span>
           </div>

@@ -21,7 +21,7 @@ export function AboutFeatures() {
           scrollTrigger: {
             trigger: ".about-features-heading",
             start: "top 88%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -39,7 +39,7 @@ export function AboutFeatures() {
           scrollTrigger: {
             trigger: ".about-features-grid",
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );

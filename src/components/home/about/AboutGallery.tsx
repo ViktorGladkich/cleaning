@@ -25,7 +25,7 @@ export function AboutGallery() {
           scrollTrigger: {
             trigger: gallery,
             start: "top 78%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -41,7 +41,7 @@ export function AboutGallery() {
           scrollTrigger: {
             trigger: gallery,
             start: "top 78%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -57,7 +57,7 @@ export function AboutGallery() {
           scrollTrigger: {
             trigger: gallery,
             start: "top 78%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -75,7 +75,7 @@ export function AboutGallery() {
           scrollTrigger: {
             trigger: gallery,
             start: "top 78%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );
@@ -181,7 +181,7 @@ export function AboutGallery() {
         
         {/* Corner Text: Top-Left */}
         <div className="px-4 sm:px-8 lg:px-12 flex justify-start">
-          <div className="gallery-corner-text-top max-w-xs sm:max-w-sm text-xs sm:text-sm text-slate-500 font-normal leading-relaxed text-left pointer-events-auto">
+          <div className="gallery-corner-text-top max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left pointer-events-auto">
             Präziser Innenausbau trifft auf vollendete Sauberkeit. Jedes Detail meisterhaft bedacht – von der ersten Trockenbauwand bis zur bezugsfertigen Perfektion.
           </div>
         </div>
@@ -204,7 +204,7 @@ export function AboutGallery() {
             {/* Line 3 */}
             <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
               <span className="block gallery-hero-line translate-y-full will-change-transform">
-                <span className="gallery-lime-pill inline-block bg-brand-lime px-3 sm:px-5 py-0.5 sm:py-1 rounded sm:rounded-md text-slate-900 origin-left scale-x-0 transform-gpu">
+                <span className="gallery-lime-pill inline-block bg-brand-lime  rounded sm:rounded-md text-brand-navy origin-left scale-x-0 transform-gpu">
                   <span className="gallery-lime-text opacity-0">Qualitätsstandard</span>
                 </span>
               </span>
@@ -214,7 +214,7 @@ export function AboutGallery() {
 
         {/* Corner Text: Bottom-Right */}
         <div className="px-4 sm:px-8 lg:px-12 flex justify-end">
-          <div className="gallery-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-slate-500 font-normal leading-relaxed text-left sm:text-right pointer-events-auto">
+          <div className="gallery-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left sm:text-right pointer-events-auto">
             Strukturierte Ästhetik & werterhaltende Pflege für anspruchsvolle Wohn- und Gewerbeobjekte in Chemnitz und ganz Sachsen.
           </div>
         </div>

@@ -55,7 +55,7 @@ export function AboutEditorialHeader() {
           scrollTrigger: {
             trigger: ".about-editorial-header",
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            once: true,
           },
         }
       );

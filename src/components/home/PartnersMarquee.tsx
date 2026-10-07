@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 const partners = [
   { name: "Arnold Electronic", src: "/logos/arnold_electronic_logo.svg", width: 140 },
@@ -15,15 +16,75 @@ const partners = [
 ];
 
 export function PartnersMarquee() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLParagraphElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!sectionRef.current) return;
+
+      // 1. Title smooth upward reveal
+      if (titleRef.current) {
+        gsap.fromTo(
+          titleRef.current,
+          { opacity: 0, y: 28 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+      }
+
+      // 2. Marquee track smooth fade-in
+      if (marqueeRef.current) {
+        gsap.fromTo(
+          marqueeRef.current,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1.0,
+            delay: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+      }
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="partners" className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream overflow-hidden">
-      <div className="max-w-340 mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
-        <p className="text-center text-lg font-medium uppercase tracking-widest text-brand-navy">
-          Unsere starken Partner & Referenzen
+    <section
+      ref={sectionRef}
+      id="partners"
+      className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream overflow-hidden"
+    >
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
+        <p
+          ref={titleRef}
+          className="text-center text-lg font-medium uppercase tracking-widest text-brand-navy will-change-transform"
+        >
+          Unsere starken Partner &amp; Referenzen
         </p>
       </div>
 
-      <div className="relative flex overflow-hidden w-full bg-brand-cream mask-fade-edges pb-6">
+      <div
+        ref={marqueeRef}
+        className="relative flex overflow-hidden w-full bg-brand-cream mask-fade-edges pb-6 will-change-transform"
+      >
         <div className="flex animate-marquee items-center min-w-max space-x-12 sm:space-x-24 px-6 sm:px-12">
           {partners.map((partner, idx) => (
             <div
@@ -35,7 +96,7 @@ export function PartnersMarquee() {
                 alt={partner.name}
                 width={partner.width}
                 height={60}
-                style={{ width: partner.width, height: "auto", maxHeight: "60px", objectFit: "contain" }}
+                style={{ width: "auto", height: "auto", maxHeight: "60px", maxWidth: `${partner.width}px`, objectFit: "contain" }}
                 className="pointer-events-none"
               />
             </div>
@@ -54,7 +115,7 @@ export function PartnersMarquee() {
                 alt={partner.name}
                 width={partner.width}
                 height={60}
-                style={{ width: partner.width, height: "auto", maxHeight: "60px", objectFit: "contain" }}
+                style={{ width: "auto", height: "auto", maxHeight: "60px", maxWidth: `${partner.width}px`, objectFit: "contain" }}
                 className="pointer-events-none"
               />
             </div>

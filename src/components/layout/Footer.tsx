@@ -105,21 +105,22 @@ export function Footer() {
     () => {
       if (!footerRef.current) return;
 
-      // 1. Left subscription column entrance
+      // 1. Left brand column entrance
       if (leftColRef.current) {
         gsap.fromTo(
           leftColRef.current.children,
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 40, filter: "blur(6px)" },
           {
             opacity: 1,
             y: 0,
-            duration: 1,
-            stagger: 0.12,
+            filter: "blur(0px)",
+            duration: 1.1,
+            stagger: 0.14,
             ease: "power3.out",
             scrollTrigger: {
               trigger: leftColRef.current,
-              start: "top 88%",
-              toggleActions: "play none none reverse",
+              start: "top 85%",
+              once: true,
             },
           }
         );
@@ -129,17 +130,18 @@ export function Footer() {
       if (rightGridRef.current) {
         gsap.fromTo(
           rightGridRef.current.children,
-          { opacity: 0, y: 35 },
+          { opacity: 0, y: 45, filter: "blur(6px)" },
           {
             opacity: 1,
             y: 0,
-            duration: 1,
-            stagger: 0.08,
+            filter: "blur(0px)",
+            duration: 1.1,
+            stagger: 0.12,
             ease: "power3.out",
             scrollTrigger: {
               trigger: rightGridRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
+              start: "top 82%",
+              once: true,
             },
           }
         );
@@ -149,15 +151,16 @@ export function Footer() {
       if (bottomBarRef.current) {
         gsap.fromTo(
           bottomBarRef.current,
-          { opacity: 0 },
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
+            y: 0,
             duration: 0.9,
             ease: "power2.out",
             scrollTrigger: {
               trigger: bottomBarRef.current,
               start: "top 95%",
-              toggleActions: "play none none reverse",
+              once: true,
             },
           }
         );
@@ -173,7 +176,7 @@ export function Footer() {
       aria-label="Website-Fußbereich"
       className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16"
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12">
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Main 12-Column Split with generous width for navigation columns */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 pt-6 pb-16 sm:pb-24 border-b border-white/10">
           {/* Left Column: Brand Logo + Direct Contact Links (4 cols) */}
