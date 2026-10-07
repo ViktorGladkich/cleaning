@@ -129,7 +129,7 @@ export function ProcessSection() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <div
           ref={bgImgRef}
-          className="relative w-full h-[145%] -top-[22%] will-change-transform"
+          className="relative w-full h-[145%] top-[-22%] will-change-transform"
         >
           <Image
             src="/images/process_interior_bg.jpg"
@@ -143,10 +143,10 @@ export function ProcessSection() {
 
         {/* Natural Warm Lighting Overlay matching reference image */}
         <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/50" />
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
+      <div className="relative z-10 max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
         {/* Top Header Bar: Left Display Title | Right Editorial Subtitle (Matching reference) */}
         <div
           ref={headerRef}
@@ -176,12 +176,12 @@ export function ProcessSection() {
         {/* 4 Frosted Smoked Glass Cards in Exact Reference Layout (Landscape Rectangles, Tight Gaps, High-Low Stagger) */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[2px] w-full pt-10 pb-14 sm:pb-20 lg:pb-[260px]"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0.5 w-full pt-10 pb-14 sm:pb-20 lg:pb-65"
         >
           {PROCESS_STEPS.map((step, idx) => (
             <div key={idx} className={`w-full ${step.offsetClass}`}>
               <div
-                className="process-frosted-card relative flex flex-col justify-between p-6 sm:p-7 lg:p-8 rounded-md bg-[#1e1b18]/78 backdrop-blur-md border border-white/[0.08] shadow-2xl shadow-black/40 aspect-[4/3] will-change-transform select-none"
+                className="process-frosted-card relative flex flex-col justify-between p-6 sm:p-7 lg:p-8 rounded-md bg-[#1e1b18]/78 backdrop-blur-md border border-white/8 shadow-2xl shadow-black/40 aspect-4/3 will-change-transform select-none"
               >
                 {/* Top Left: Clean White Number */}
                 <div className="flex items-start justify-start">
@@ -191,7 +191,7 @@ export function ProcessSection() {
                 </div>
 
                 {/* Bottom Right: Clean Refined Descriptive Text */}
-                <div className="text-right ml-auto max-w-[200px]">
+                <div className="text-right ml-auto max-w-50">
                   <p className="text-white/75 text-xs sm:text-[12.5px] leading-relaxed font-light">
                     {step.text}
                   </p>

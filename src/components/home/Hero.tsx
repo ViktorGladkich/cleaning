@@ -168,7 +168,7 @@ export function Hero() {
                 <div className="hero-cta-inner translate-y-full">
                   <Link
                     href="/bau"
-                    className="inline-flex items-center justify-center h-[42px] px-5 rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200 shadow-xs"
+                    className="inline-flex items-center justify-center h-10.5 px-5 rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200 shadow-xs"
                   >
                     <span>Bau & Sanierung</span>
                   </Link>

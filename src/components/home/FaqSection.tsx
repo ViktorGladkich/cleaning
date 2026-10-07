@@ -208,7 +208,7 @@ export function FaqSection() {
       aria-labelledby="faq-heading"
       className="relative z-10 w-full py-20 sm:py-28 lg:py-36 bg-brand-cream border-t border-slate-200/60 overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Section Header: Editorial split layout WITHOUT bottom border line */}
         <div
           ref={headerRef}
@@ -245,7 +245,7 @@ export function FaqSection() {
               className="faq-image-card w-full will-change-transform"
             >
               <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(15,24,43,0.08)] border border-slate-200/80 group">
-                <div className="relative w-full h-[124%] -top-[12%] will-change-transform faq-parallax-photo">
+                <div className="relative w-full h-[124%] top-[-12%] will-change-transform faq-parallax-photo">
                   <Image
                     src="/images/faq_architectural_craft.jpg"
                     alt="Tadiks meisterhafte Architektur & Sauberkeit"
@@ -272,7 +272,7 @@ export function FaqSection() {
                     {/* Masked Navy Fill Indicator Line on Hover */}
                     <span
                       className={cn(
-                        "absolute bottom-0 left-0 right-0 h-[2px] bg-brand-navy origin-left transition-transform duration-500 ease-out pointer-events-none z-10",
+                        "absolute bottom-0 left-0 right-0 h-0.5 bg-brand-navy origin-left transition-transform duration-500 ease-out pointer-events-none z-10",
                         isOpen ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       )}
                     />

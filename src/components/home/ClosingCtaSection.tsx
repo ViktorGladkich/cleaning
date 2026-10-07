@@ -72,13 +72,13 @@ export function ClosingCtaSection() {
       ref={sectionRef}
       id="contact-cta"
       aria-labelledby="closing-cta-heading"
-      className="relative z-10 w-full min-h-[580px] sm:min-h-[660px] lg:min-h-[740px] flex items-center justify-center overflow-hidden py-24 sm:py-32"
+      className="relative z-10 w-full min-h-145 sm:min-h-165 lg:min-h-185 flex items-center justify-center overflow-hidden py-24 sm:py-32"
     >
       {/* 1. Full-bleed Parallax Architectural Photo Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none -z-10">
         <div
           ref={bgImgRef}
-          className="relative w-full h-[126%] -top-[13%] will-change-transform"
+          className="relative w-full h-[126%] top-[-13%] will-change-transform"
         >
           <Image
             src="/images/hero_premium_cleaning_bau.jpg"

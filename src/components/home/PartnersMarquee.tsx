@@ -75,7 +75,7 @@ export function PartnersMarquee() {
       id="partners"
       className="relative z-10 w-full pt-12 pb-6 sm:pt-16 sm:pb-8 bg-brand-cream overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
         <p
           ref={titleRef}
           className="text-center text-lg font-medium uppercase tracking-widest text-brand-navy will-change-transform"
@@ -103,7 +103,7 @@ export function PartnersMarquee() {
                 alt={partner.name}
                 width={partner.width}
                 height={50}
-                className="h-9 sm:h-11 w-auto max-w-[150px] object-contain pointer-events-none"
+                className="h-9 sm:h-11 w-auto max-w-37.5 object-contain pointer-events-none"
               />
             </div>
           ))}
@@ -125,7 +125,7 @@ export function PartnersMarquee() {
                 alt={partner.name}
                 width={partner.width}
                 height={50}
-                className="h-9 sm:h-11 w-auto max-w-[150px] object-contain pointer-events-none"
+                className="h-9 sm:h-11 w-auto max-w-37.5 object-contain pointer-events-none"
               />
             </div>
           ))}

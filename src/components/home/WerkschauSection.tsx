@@ -182,7 +182,7 @@ export function WerkschauSection() {
       aria-label="Werkschau & Meisterdetails"
       className="relative z-10 w-full bg-brand-cream overflow-x-clip"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div
           ref={galleryRef}
           className="relative w-full h-svh min-h-145 sm:h-screen sm:min-h-160 max-h-270 overflow-hidden border-t border-slate-200/60 my-0"

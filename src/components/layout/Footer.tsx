@@ -176,7 +176,7 @@ export function Footer() {
       aria-label="Website-Fußbereich"
       className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Main 12-Column Split with generous width for navigation columns */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 pt-6 pb-16 sm:pb-24 border-b border-white/10">
           {/* Left Column: Brand Logo + Direct Contact Links (4 cols) */}

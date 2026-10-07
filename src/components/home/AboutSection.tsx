@@ -251,7 +251,7 @@ export function AboutSection() {
       className="relative z-10 w-full pt-16 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 bg-brand-cream overflow-x-clip border-t border-brand-navy/10"
     >
       {/* Top Header & Statement Container */}
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16">
           <div className="max-w-4xl">
             {/* Clean German Eyebrow with Medium Font Weight */}
@@ -300,10 +300,10 @@ export function AboutSection() {
           {MARQUEE_IMAGES.map((img, idx) => (
             <div
               key={idx}
-              className="about-marquee-card relative shrink-0 w-[240px] sm:w-[280px] md:w-[310px] aspect-[3/4] rounded-[8px] overflow-hidden group shadow-xs bg-brand-navy/5 border border-brand-navy/10 will-change-transform"
+              className="about-marquee-card relative shrink-0 w-60 sm:w-70 md:w-77.5 aspect-3/4 rounded-lg overflow-hidden group shadow-xs bg-brand-navy/5 border border-brand-navy/10 will-change-transform"
             >
               {/* Parallax Image Inner Wrapper */}
-              <div className="about-marquee-parallax-img absolute inset-x-0 -top-[13%] h-[126%] w-full will-change-transform">
+              <div className="about-marquee-parallax-img absolute inset-x-0 top-[-13%] h-[126%] w-full will-change-transform">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -325,10 +325,10 @@ export function AboutSection() {
           {MARQUEE_IMAGES.map((img, idx) => (
             <div
               key={`dup-${idx}`}
-              className="about-marquee-card relative shrink-0 w-[240px] sm:w-[280px] md:w-[310px] aspect-[3/4] rounded-[8px] overflow-hidden group shadow-xs bg-brand-navy/5 border border-brand-navy/10 will-change-transform"
+              className="about-marquee-card relative shrink-0 w-60 sm:w-70 md:w-77.5 aspect-3/4 rounded-lg overflow-hidden group shadow-xs bg-brand-navy/5 border border-brand-navy/10 will-change-transform"
             >
               {/* Parallax Image Inner Wrapper */}
-              <div className="about-marquee-parallax-img absolute inset-x-0 -top-[13%] h-[126%] w-full will-change-transform">
+              <div className="about-marquee-parallax-img absolute inset-x-0 top-[-13%] h-[126%] w-full will-change-transform">
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -343,7 +343,7 @@ export function AboutSection() {
       </div>
 
       {/* --- Bottom Row: Stats without 'In Zahlen' eyebrow (Medium Font Weight, Rolling Odometer) --- */}
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="about-stats-section">
           {/* 4 Stats Columns */}
           <div className="about-stats-grid grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 sm:gap-x-8 sm:gap-y-12 lg:gap-10">

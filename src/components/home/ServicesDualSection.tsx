@@ -194,7 +194,7 @@ export function ServicesDualSection() {
       aria-label="Leistungen & Services"
       className="relative z-10 w-full bg-brand-cream py-16 sm:py-24 overflow-x-clip"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* --- Clean German Eyebrow (consistent with AboutSection) --- */}
         <div className="services-anim-eyebrow mb-4 sm:mb-6">
@@ -231,7 +231,7 @@ export function ServicesDualSection() {
             <Link
               key={card.id}
               href={card.href}
-              className="service-editorial-card group relative border-r border-b border-brand-navy/20 p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden min-h-[460px] lg:min-h-[490px] bg-brand-cream text-brand-navy"
+              className="service-editorial-card group relative border-r border-b border-brand-navy/20 p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden min-h-115 lg:min-h-122.5 bg-brand-cream text-brand-navy"
             >
               {/* Smooth mask fill layer: smoothly descends from the TOP of the card on hover */}
               <span
@@ -265,8 +265,8 @@ export function ServicesDualSection() {
 
               {/* --- Card Center: Photographic Asset with Parallax (relative z-10) --- */}
               <div className="relative z-10 my-4 sm:my-6 flex items-center justify-center">
-                <div className="service-card-image-wrap relative w-full aspect-[4/3] max-w-[270px] sm:max-w-[285px] rounded-[8px] overflow-hidden shadow-xs border border-brand-navy/15 group-hover:border-white/20 transition-all duration-500 ease-out">
-                  <div className="service-card-parallax-img relative w-full h-[120%] -top-[10%] will-change-transform">
+                <div className="service-card-image-wrap relative w-full aspect-4/3 max-w-67.5 sm:max-w-71.25 rounded-lg overflow-hidden shadow-xs border border-brand-navy/15 group-hover:border-white/20 transition-all duration-500 ease-out">
+                  <div className="service-card-parallax-img relative w-full h-[120%] top-[-10%] will-change-transform">
                     <Image
                       src={card.imageSrc}
                       alt={card.imageAlt}

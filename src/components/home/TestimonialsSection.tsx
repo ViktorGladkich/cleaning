@@ -177,7 +177,7 @@ export function TestimonialsSection() {
       aria-labelledby="testimonials-heading"
       className="relative z-10 w-full py-20 sm:py-28 lg:py-36 bg-brand-cream border-t border-slate-200/60 overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Section Header: Editorial & High-Impact */}
         <div
           ref={headerRef}
