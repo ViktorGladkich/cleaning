@@ -8,6 +8,7 @@ import { gsap } from "@/lib/gsap";
 interface ProcessStep {
   step: string;
   text: string;
+  alignmentClass: string;
   offsetClass: string;
 }
 
@@ -15,21 +16,25 @@ const PROCESS_STEPS: ProcessStep[] = [
   {
     step: "01",
     text: "Kostenlose Vor-Ort-Besichtigung und detaillierte Bedarfsanalyse in Chemnitz.",
+    alignmentClass: "self-start mr-auto",
     offsetClass: "lg:mt-0",
   },
   {
     step: "02",
     text: "Verbindliches Festpreisangebot innerhalb von 24 Stunden ohne versteckte Kosten.",
+    alignmentClass: "self-end ml-auto",
     offsetClass: "lg:mt-[calc(75%+2px)]",
   },
   {
     step: "03",
     text: "Meisterhafte Umsetzung aller Gewerke durch feste Handwerker- und Reinigungsteams.",
+    alignmentClass: "self-start mr-auto",
     offsetClass: "lg:mt-0",
   },
   {
     step: "04",
     text: "Bezugsfertige schlüsselfertige Übergabe mit garantierter Qualitätsabnahme.",
+    alignmentClass: "self-end ml-auto",
     offsetClass: "lg:mt-[calc(75%+2px)]",
   },
 ];
@@ -123,7 +128,7 @@ export function ProcessSection() {
       ref={sectionRef}
       id="process"
       aria-labelledby="process-heading"
-      className="relative z-10 w-full py-14 sm:py-18 lg:py-24 overflow-hidden bg-brand-cream border-t border-slate-200/60"
+      className="relative z-10 w-full py-12 sm:py-18 lg:py-24 overflow-hidden bg-brand-cream border-t border-slate-200/60"
     >
       {/* Full-bleed Warm Architectural Minimalist Interior Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
@@ -147,52 +152,55 @@ export function ProcessSection() {
       </div>
 
       <div className="relative z-10 max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
-        {/* Top Header Bar: Left Display Title | Right Editorial Subtitle (Matching reference) */}
+        {/* Top Header Bar: Left Display Title | Right Editorial Subtitle (Matching reference side-by-side on mobile) */}
         <div
           ref={headerRef}
-          className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-8 sm:pb-12 lg:pb-14"
+          className="flex flex-row items-start justify-between gap-4 pb-8 sm:pb-12 lg:pb-14 select-none"
         >
           {/* Left: Display Title */}
           <div>
             <h2
               id="process-heading"
-              className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-none select-none"
+              className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-none"
             >
               Ablauf
             </h2>
           </div>
 
           {/* Right: Editorial Two-Line Subtitle */}
-          <div className="text-left sm:text-right">
-            <span className="block text-white text-sm sm:text-base font-normal tracking-tight leading-snug">
+          <div className="text-right shrink-0">
+            <span className="block text-white text-xs sm:text-base font-normal tracking-tight leading-snug">
               Strukturierte Exzellenz
             </span>
-            <span className="block text-white/60 text-xs sm:text-sm font-light mt-0.5">
+            <span className="block text-white/60 text-[10px] sm:text-sm font-light mt-0.5">
               Vom Entwurf bis zum reinsten Glanz
             </span>
           </div>
         </div>
 
-        {/* 4 Frosted Smoked Glass Cards in Exact Reference Layout (Landscape Rectangles, Tight Gaps, High-Low Stagger) */}
+        {/* Frosted Smoked Glass Cards: Alternating Left-Right Zigzag on Mobile (< lg) and 4-Column on Desktop (lg+) */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0.5 w-full pt-10 pb-14 sm:pb-20 lg:pb-65"
+          className="flex flex-col gap-2.5 sm:gap-4 lg:grid lg:grid-cols-4 lg:gap-0.5 w-full pt-6 sm:pt-10 pb-12 sm:pb-16 lg:pb-65 overflow-x-clip"
         >
           {PROCESS_STEPS.map((step, idx) => (
-            <div key={idx} className={`w-full ${step.offsetClass}`}>
+            <div
+              key={idx}
+              className={`w-[calc(50%-4px)] sm:w-[calc(50%-8px)] lg:w-full max-w-[calc(50%-4px)] sm:max-w-[calc(50%-8px)] lg:max-w-none ${step.alignmentClass} lg:self-auto lg:m-0 ${step.offsetClass}`}
+            >
               <div
-                className="process-frosted-card relative flex flex-col justify-between p-6 sm:p-7 lg:p-8 rounded-md bg-[#1e1b18]/78 backdrop-blur-md border border-white/8 shadow-2xl shadow-black/40 aspect-4/3 will-change-transform select-none"
+                className="process-frosted-card relative flex flex-col justify-center items-center text-center gap-2 sm:gap-3 md:gap-4 lg:justify-between lg:items-stretch lg:text-left lg:gap-0 w-full max-w-full p-3 sm:p-5 lg:p-8 rounded-md bg-[#1e1b18]/78 backdrop-blur-md border border-white/8 shadow-2xl shadow-black/40 aspect-[4/3.1] sm:aspect-[16/10] lg:aspect-4/3 will-change-transform select-none box-border"
               >
-                {/* Top Left: Clean White Number */}
-                <div className="flex items-start justify-start">
-                  <span className="text-5xl sm:text-6xl font-normal text-brand-lime tracking-tight leading-none">
+                {/* Number: Centered on mobile & tablet, top-left on desktop */}
+                <div className="flex items-center justify-center lg:items-start lg:justify-start w-full">
+                  <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-brand-lime tracking-tight leading-none">
                     {step.step}
                   </span>
                 </div>
 
-                {/* Bottom Right: Clean Refined Descriptive Text */}
-                <div className="text-right ml-auto max-w-50">
-                  <p className="text-white/75 text-xs sm:text-[12.5px] leading-relaxed font-light">
+                {/* Descriptive Text: Centered below number on mobile & tablet, bottom-right on desktop */}
+                <div className="text-center mx-auto lg:text-right lg:ml-auto lg:mr-0 lg:max-w-50 w-full max-w-[200px] sm:max-w-[280px] lg:max-w-50">
+                  <p className="text-white/80 text-[10.5px] xs:text-[11.5px] sm:text-xs md:text-sm lg:text-[12.5px] leading-snug sm:leading-relaxed font-light">
                     {step.text}
                   </p>
                 </div>
@@ -202,12 +210,12 @@ export function ProcessSection() {
         </div>
 
         {/* Bottom Status Line (No dot, accurate text) */}
-        <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 gap-4 select-none">
+        <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 gap-3 sm:gap-4 select-none text-center sm:text-left">
           <div>
             <span>Feste Objektleiter &amp; meisterhafter Standard in Chemnitz und Region</span>
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-6 text-white/50">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-white/50">
             <span>Festpreisgarantie</span>
             <span>&middot;</span>
             <span>Gewerblich haftpflichtversichert</span>

@@ -72,7 +72,7 @@ export function ClosingCtaSection() {
       ref={sectionRef}
       id="contact-cta"
       aria-labelledby="closing-cta-heading"
-      className="relative z-10 w-full min-h-145 sm:min-h-165 lg:min-h-185 flex items-center justify-center overflow-hidden py-24 sm:py-32"
+      className="relative z-10 w-full min-h-145 sm:min-h-165 lg:min-h-185 flex items-center justify-center overflow-hidden py-24 sm:py-32 bg-[#0f182b]"
     >
       {/* 1. Full-bleed Parallax Architectural Photo Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none -z-10">
@@ -91,7 +91,7 @@ export function ClosingCtaSection() {
         </div>
 
         {/* Ambient Top Light & Seamless Bottom Gradient into the Footer (#0f182b) */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/25 via-40% to-[#0f182b] to-95%" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/25 via-40% to-[#0f182b]" />
       </div>
 
       {/* 2. Centered Content Canvas */}

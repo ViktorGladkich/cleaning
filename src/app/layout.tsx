@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CookieBanner } from "@/components/ui/CookieBanner";
 import { COMPANY_INFO } from "@/lib/constants";
 
 // Fontshare - Satoshi (Geometric, Modern, Headlines & UI Elements)
@@ -82,10 +84,13 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white">
         <SmoothScroll>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <PageTransition>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </PageTransition>
         </SmoothScroll>
+        <CookieBanner />
       </body>
     </html>
   );

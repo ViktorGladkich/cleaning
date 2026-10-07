@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { RollingText } from "@/components/animations";
 import { COMPANY_INFO } from "@/lib/constants";
 
@@ -55,7 +55,7 @@ function FooterLink({
   isExternal?: boolean;
 }) {
   const content = (
-    <span className="inline-flex items-center gap-1.5 py-1 text-xs sm:text-[13px] font-medium tracking-wide">
+    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide break-all sm:break-normal">
       <RollingText
         className="text-white/60 font-light"
         duplicateClassName="text-white font-medium"
@@ -93,13 +93,6 @@ export function Footer() {
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightGridRef = useRef<HTMLDivElement>(null);
   const bottomBarRef = useRef<HTMLDivElement>(null);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   useGSAP(
     () => {
@@ -174,49 +167,31 @@ export function Footer() {
       ref={footerRef}
       role="contentinfo"
       aria-label="Website-Fußbereich"
-      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16"
+      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16 -mt-px border-t-0"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
-        {/* Main 12-Column Split with generous width for navigation columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-14 pt-6 pb-16 sm:pb-24 border-b border-white/10">
-          {/* Left Column: Brand Logo + Direct Contact Links (4 cols) */}
-          <div ref={leftColRef} className="lg:col-span-4 flex flex-col justify-between space-y-8">
-            <div className="space-y-6 max-w-sm">
-              <Link href="/" className="inline-block group focus:outline-none">
-                <Image
-                  src="/TADIKS_LOGO.svg"
-                  alt="Tadiks"
-                  width={150}
-                  height={40}
-                  className="h-8 sm:h-9 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
-                />
-              </Link>
-
-              {/* Direct Contact Links replacing the text */}
-              <div className="space-y-3">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-white/50 block font-medium">
-                  KONTAKT &amp; STANDORT
-                </span>
-                <ul className="space-y-1.5 flex flex-col">
-                  {COL_CONNECT.map((item, idx) => (
-                    <li key={idx}>
-                      <FooterLink href={item.href} isExternal={item.isExternal}>
-                        {item.label}
-                      </FooterLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+        {/* Main Split: Brand Header + 4 Link Blocks in 2 Rows (grid-cols-2) on Mobile, 4 Columns on Desktop */}
+        <div className="pt-6 pb-14 sm:pb-20 border-b border-white/10">
+          {/* Brand Logo Header */}
+          <div ref={leftColRef} className="mb-8 sm:mb-10 lg:mb-12">
+            <Link href="/" className="inline-block group focus:outline-none">
+              <Image
+                src="/TADIKS_LOGO.svg"
+                alt="Tadiks"
+                width={150}
+                height={40}
+                className="h-8 sm:h-9 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
+              />
+            </Link>
           </div>
 
-          {/* Right Columns: 3 Spacious Navigation Columns (8 cols) */}
+          {/* 4 Link Blocks: 2 rows of 2 columns on mobile, 4 columns on desktop */}
           <div
             ref={rightGridRef}
-            className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-x-8 sm:gap-x-10 lg:gap-x-12 xl:gap-x-16 gap-y-10 pt-2"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 sm:gap-x-10 lg:gap-x-12 xl:gap-x-16 gap-y-8 sm:gap-y-10"
           >
             {/* 1. ÜBERSICHT */}
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 ÜBERSICHT
               </h4>
@@ -230,7 +205,7 @@ export function Footer() {
             </div>
 
             {/* 2. REINIGUNG */}
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 REINIGUNG
               </h4>
@@ -244,7 +219,7 @@ export function Footer() {
             </div>
 
             {/* 3. BAU & SANIERUNG */}
-            <div className="space-y-4">
+            <div className="space-y-3.5 sm:space-y-4">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 BAU &amp; SANIERUNG
               </h4>
@@ -252,6 +227,22 @@ export function Footer() {
                 {COL_BAU.map((item, idx) => (
                   <li key={idx}>
                     <FooterLink href={item.href}>{item.label}</FooterLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* 4. KONTAKT & STANDORT */}
+            <div className="space-y-3.5 sm:space-y-4">
+              <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
+                KONTAKT &amp; STANDORT
+              </h4>
+              <ul className="space-y-1.5 flex flex-col">
+                {COL_CONNECT.map((item, idx) => (
+                  <li key={idx}>
+                    <FooterLink href={item.href} isExternal={item.isExternal}>
+                      {item.label}
+                    </FooterLink>
                   </li>
                 ))}
               </ul>
@@ -275,19 +266,18 @@ export function Footer() {
               Datenschutz
             </Link>
             <span>&middot;</span>
-            <Link href="/contacts#agb" className="hover:text-white transition-colors">
-              AGB
-            </Link>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new CustomEvent("openCookieSettings"));
+                }
+              }}
+              className="hover:text-white transition-colors cursor-pointer text-left"
+            >
+              Cookie-Einstellungen
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="group inline-flex items-center gap-2 hover:text-white transition-colors cursor-pointer text-xs font-mono uppercase tracking-wider"
-          >
-            <span>Nach oben</span>
-            <ArrowUp className="w-3.5 h-3.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
-          </button>
         </div>
       </div>
     </footer>

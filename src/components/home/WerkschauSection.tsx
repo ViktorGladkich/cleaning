@@ -89,15 +89,16 @@ export function WerkschauSection() {
 
       // ==============================================================
       // PINNED MASTER TIMELINE: Seamlessly pins without jerking or freezing
+      // Cards float sequentially one below another: Left -> Right -> Center -> Left -> Right
       // ==============================================================
       const pinTl = gsap.timeline({
         scrollTrigger: {
           trigger: gallery,
           start: "top top",
-          end: "+=2600",
+          end: "+=3000",
           pin: true,
           pinSpacing: true,
-          scrub: 0.4,
+          scrub: 0.45,
           anticipatePin: 0,
           invalidateOnRefresh: true,
         },
@@ -126,7 +127,7 @@ export function WerkschauSection() {
         const img = gallery.querySelector(`.${card.imageClass}`);
         if (!wrap || !mask) return;
 
-        const duration = card.duration ?? 0.52;
+        const duration = card.duration ?? 0.46;
 
         // 1. Float from beneath the bottom of the screen (115vh) up and off top (-135vh)
         pinTl.fromTo(
@@ -240,7 +241,7 @@ export function WerkschauSection() {
             </div>
           </div>
 
-          {/* Floating Parallax Images (z-30: glide OVER text and off-screen) */}
+          {/* Floating Parallax Images (z-30: glide OVER text and off-screen, sequentially one below another) */}
           {GALLERY_CARDS.map((card) => (
             <div key={card.id} className={card.wrapperClass}>
               <div
