@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 export interface CookiePreferences {
   essential: boolean;
@@ -25,29 +25,48 @@ export function CookieBanner() {
 
   useEffect(() => {
     // Check if consent is already recorded
+    let isAlreadySaved = false;
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        return; // User already gave consent, keep hidden
+      if (localStorage.getItem(STORAGE_KEY)) {
+        isAlreadySaved = true;
       }
     } catch {
       // localStorage unavailable (SSR / privacy mode)
     }
 
-    // PageSpeed Optimization: Delay banner display by 2.8s
-    // Ensures Google PageSpeed Insights reads Hero LCP and CLS without banner interference
-    const timer = setTimeout(() => {
-      setIsRendered(true);
-      // Wait for mount then trigger smooth slide-in
-      requestAnimationFrame(() => {
+    // PageSpeed Optimization: Delay initial auto-banner display by 2.8s
+    // ONLY if consent has not been recorded yet
+    let timer: NodeJS.Timeout | undefined;
+    if (!isAlreadySaved) {
+      timer = setTimeout(() => {
+        setIsRendered(true);
+        // Wait for mount then trigger smooth slide-in
         requestAnimationFrame(() => {
-          setIsSlidIn(true);
+          requestAnimationFrame(() => {
+            setIsSlidIn(true);
+          });
         });
-      });
-    }, 2800);
+      }, 2800);
+    }
 
-    // Allow re-opening cookie settings from footer
+    // Allow re-opening cookie settings anytime from footer
     const handleReopen = () => {
+      // Refresh current saved preferences from localStorage if available
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          setPreferences({
+            essential: true,
+            marketing: !!parsed.marketing,
+            analytics: !!parsed.analytics,
+            externalMedia: !!parsed.externalMedia,
+          });
+        }
+      } catch {
+        // fallback
+      }
+
       setIsRendered(true);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -55,10 +74,11 @@ export function CookieBanner() {
         });
       });
     };
+
     window.addEventListener("openCookieSettings", handleReopen);
 
     return () => {
-      clearTimeout(timer);
+      if (timer) clearTimeout(timer);
       window.removeEventListener("openCookieSettings", handleReopen);
     };
   }, []);
@@ -97,6 +117,13 @@ export function CookieBanner() {
     saveConsent(preferences);
   };
 
+  const handleClose = () => {
+    setIsSlidIn(false);
+    setTimeout(() => {
+      setIsRendered(false);
+    }, 900);
+  };
+
   const toggleCategory = (key: keyof Omit<CookiePreferences, "essential">) => {
     setPreferences((prev) => ({
       ...prev,
@@ -114,7 +141,17 @@ export function CookieBanner() {
         isSlidIn ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
-      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7">
+      {/* Close button in top-right */}
+      <button
+        type="button"
+        onClick={handleClose}
+        aria-label="Schließen"
+        className="absolute top-3 right-3 sm:top-5 sm:right-6 w-8 h-8 rounded-full flex items-center justify-center text-neutral-800 hover:text-black hover:bg-black/10 transition-colors cursor-pointer"
+      >
+        <X className="w-4 h-4" />
+      </button>
+
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 py-5 sm:py-7 pr-12 sm:pr-14">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-10">
           {/* Left Column: Heading, Legal explanation & Granular Categories */}
           <div className="flex-1 min-w-0 space-y-3.5">
