@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -74,16 +74,13 @@ export function FaqSection() {
 
   const toggleAccordion = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 520);
   };
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Header entrance reveal (Matching Referenzen)
+      // 1. Header entrance reveal
       if (headerRef.current) {
         const headerTl = gsap.timeline({
           scrollTrigger: {
@@ -101,97 +98,77 @@ export function FaqSection() {
           )
           .fromTo(
             ".faq-title",
-            { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, duration: 1.0, ease: "power3.out" },
+            { opacity: 0, y: 35 },
+            { opacity: 1, y: 0, duration: 0.95, ease: "power3.out" },
             "-=0.5"
           )
           .fromTo(
             ".faq-desc",
-            { opacity: 0, y: 25 },
+            { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.85, ease: "power3.out" },
             "-=0.6"
           );
       }
 
-      // 2. Left Square Image entrance + smooth downward glide towards last question + parallax
-      if (imageContainerRef.current && accordionRef.current) {
-        // Initial entrance
+      // 2. Downward glide of image tracking smoothly alongside questions on desktop
+      const mm = gsap.matchMedia();
+      mm.add("(min-width: 1024px)", () => {
+        if (!imageContainerRef.current || !accordionRef.current || !contentGridRef.current) return;
+
+        gsap.to(imageContainerRef.current, {
+          y: () => {
+            const accHeight = accordionRef.current?.offsetHeight || 0;
+            const imgHeight = imageContainerRef.current?.offsetHeight || 0;
+            return Math.max(0, accHeight - imgHeight);
+          },
+          ease: "none",
+          scrollTrigger: {
+            trigger: contentGridRef.current,
+            start: "top 28%",
+            end: "bottom 82%",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          },
+        });
+      });
+
+      // 3. Continuous gentle parallax drift inside the photo
+      const imgInner = imageContainerRef.current?.querySelector(".faq-parallax-photo");
+      if (imgInner) {
         gsap.fromTo(
-          imageContainerRef.current,
-          { opacity: 0, scale: 0.94, y: 35 },
+          imgInner,
+          { yPercent: -8 },
           {
-            opacity: 1,
-            scale: 1,
-            y: 0,
-            duration: 1.0,
-            ease: "power2.out",
+            yPercent: 8,
+            ease: "none",
             scrollTrigger: {
-              trigger: accordionRef.current,
-              start: "top 72%",
-              once: true,
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
             },
           }
         );
-
-        // Smooth downward glide tracking to the last question on desktop
-        const mm = gsap.matchMedia();
-        mm.add("(min-width: 1024px)", () => {
-          gsap.to(imageContainerRef.current, {
-            y: () => {
-              const accHeight = accordionRef.current?.offsetHeight || 0;
-              const imgHeight = imageContainerRef.current?.offsetHeight || 0;
-              return Math.max(0, accHeight - imgHeight);
-            },
-            ease: "none",
-            scrollTrigger: {
-              trigger: accordionRef.current,
-              start: "top 25%",
-              end: "bottom 75%",
-              scrub: 1.2,
-              invalidateOnRefresh: true,
-            },
-          });
-        });
-
-        // Parallax drift inside the square photo
-        const imgInner = imageContainerRef.current.querySelector(".faq-parallax-photo");
-        if (imgInner) {
-          gsap.fromTo(
-            imgInner,
-            { yPercent: -12, scale: 1.15 },
-            {
-              yPercent: 12,
-              scale: 1.15,
-              ease: "none",
-              scrollTrigger: {
-                trigger: accordionRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.2,
-              },
-            }
-          );
-        }
       }
 
-      // 3. Staggered cascade reveal of questions one after another like a smooth ladder
+      // 4. Staggered reveal of questions
       const rows = accordionRef.current?.querySelectorAll(".faq-accordion-row");
       if (rows && rows.length > 0) {
         gsap.fromTo(
           rows,
           {
             opacity: 0,
-            y: 45,
+            y: 30,
           },
           {
             opacity: 1,
             y: 0,
-            duration: 0.85,
-            stagger: 0.1,
+            duration: 0.8,
+            stagger: 0.08,
             ease: "power2.out",
             scrollTrigger: {
               trigger: accordionRef.current,
-              start: "top 72%",
+              start: "top 78%",
               once: true,
             },
           }
@@ -209,48 +186,50 @@ export function FaqSection() {
       className="relative z-10 w-full py-20 sm:py-28 lg:py-36 bg-brand-cream border-t border-slate-200/60 overflow-hidden"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
-        {/* Section Header: Editorial split layout WITHOUT bottom border line */}
-        <div
-          ref={headerRef}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 sm:pb-12 mb-10 sm:mb-14"
-        >
-          <div className="max-w-2xl">
-            <span className="faq-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block mb-3 will-change-transform">
+        {/* Section Header: Eyebrow + Split Row with headline and right text horizontally aligned */}
+        <div ref={headerRef} className="pb-8 sm:pb-12 mb-10 sm:mb-14">
+          <div className="mb-3 sm:mb-4">
+            <span className="faq-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block will-change-transform">
               Klarheit &amp; Transparenz
             </span>
-            <h2
-              id="faq-heading"
-              className="faq-title text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12] will-change-transform"
-            >
-              Häufige Fragen vor dem{" "}
-              <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
-                ersten Schritt.
-              </span>
-            </h2>
           </div>
 
-          <div className="max-w-md lg:text-right">
-            <p className="faq-desc text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light will-change-transform">
-              Alle wichtigen Details zu Festpreisen, Termintreue, Schnittstellen und Gewährleistung transparent aufgeschlüsselt.
-            </p>
+          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 lg:gap-12">
+            <div className="max-w-2xl">
+              <h2
+                id="faq-heading"
+                className="faq-title text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12] will-change-transform"
+              >
+                Häufige Fragen vor dem{" "}
+                <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
+                  ersten Schritt.
+                </span>
+              </h2>
+            </div>
+
+            <div className="max-w-md lg:text-right pt-1 lg:pt-1.5 shrink-0">
+              <p className="faq-desc text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light will-change-transform">
+                Alle wichtigen Details zu Festpreisen, Termintreue, Schnittstellen und Gewährleistung transparent aufgeschlüsselt.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Two-Column Grid: Left Clean Square Image | Right Accordion */}
-        <div ref={contentGridRef} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-start">
-          {/* Left Column: Clean Square Image aligned with first question and gliding down to the last question */}
-          <div className="lg:col-span-5 relative self-stretch">
+        {/* Two-Column Grid: Left Gliding Image | Right Accordion */}
+        <div ref={contentGridRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
+          {/* Left Column: Image placed at left edge of the container */}
+          <div className="lg:col-span-5 relative flex flex-col items-start lg:items-start">
             <div
               ref={imageContainerRef}
-              className="faq-image-card w-full will-change-transform"
+              className="w-full max-w-[430px] sm:max-w-[460px] will-change-transform"
             >
-              <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(15,24,43,0.08)] border border-slate-200/80 group">
-                <div className="relative w-full h-[124%] top-[-12%] will-change-transform faq-parallax-photo">
+              <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(15,24,43,0.08)] border border-slate-200/80 group">
+                <div className="relative w-full h-[120%] top-[-10%] will-change-transform faq-parallax-photo">
                   <Image
                     src="/images/faq_architectural_craft.jpg"
                     alt="Tadiks meisterhafte Architektur & Sauberkeit"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    sizes="(max-width: 1024px) 100vw, 460px"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                     priority={false}
                   />
@@ -284,46 +263,44 @@ export function FaqSection() {
                       className="w-full text-left flex items-start justify-between gap-4 cursor-pointer select-none"
                     >
                       <div className="pr-4">
-                        <span className="block text-[11px] font-mono tracking-wider text-brand-navy/50 uppercase mb-1">
+                        <span className="text-[11px] font-mono tracking-widest uppercase text-brand-navy/60 group-hover:text-brand-navy block mb-2 transition-colors duration-200">
                           {faq.category}
                         </span>
-                        <span className="text-base sm:text-lg lg:text-[19px] font-medium text-brand-navy leading-snug group-hover:text-brand-navy/70 transition-colors">
+                        <span
+                          className={cn(
+                            "text-lg sm:text-xl font-normal transition-colors duration-200 tracking-tight leading-snug block",
+                            isOpen ? "text-brand-navy font-medium" : "text-brand-navy/85 group-hover:text-brand-navy"
+                          )}
+                        >
                           {faq.question}
                         </span>
                       </div>
 
-                      {/* Geometric Plus/Minus Icon with rounded-[5px] and silky cubic-bezier rotation */}
-                      <div
+                      {/* Animated Plus / Minus Indicator Icon - Squarish with rounded corners (rounded-lg) */}
+                      <span
                         className={cn(
-                          "w-8 h-8 rounded-[5px] border flex items-center justify-center shrink-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                          "shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 mt-1",
                           isOpen
-                            ? "rotate-45 bg-brand-navy text-white border-brand-navy shadow-xs"
-                            : "bg-white text-brand-navy border-slate-200 group-hover:border-brand-navy group-hover:bg-brand-navy/5"
+                            ? "bg-brand-navy text-brand-lime rotate-45 shadow-sm"
+                            : "bg-slate-200/80 text-brand-navy group-hover:bg-brand-navy group-hover:text-white"
                         )}
+                        aria-hidden="true"
                       >
-                        <Plus className="w-4 h-4 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]" />
-                      </div>
+                        <Plus className="w-4 h-4 transition-transform duration-300" />
+                      </span>
                     </button>
 
-                    {/* Smooth Collapsible Content with Apple/Stripe-grade cubic-bezier easing */}
+                    {/* Smooth Collapsible Answer Body */}
                     <div
-                      data-open={isOpen ? "true" : "false"}
-                      className="faq-accordion-grid overflow-hidden"
-                      style={{
-                        gridTemplateRows: isOpen ? "1fr" : "0fr",
-                      }}
+                      className={cn(
+                        "grid transition-all duration-300 ease-out overflow-hidden",
+                        isOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0 mt-0"
+                      )}
                     >
-                      <div className="faq-accordion-inner min-h-0 overflow-hidden">
-                        <div
-                          className={cn(
-                            "transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pt-4 pb-2",
-                            isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
-                          )}
-                        >
-                          <p className="text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light pr-6 sm:pr-12">
-                            {faq.answer}
-                          </p>
-                        </div>
+                      <div className="overflow-hidden">
+                        <p className="text-sm sm:text-[15px] leading-relaxed text-brand-navy/70 max-w-2xl font-light pr-4">
+                          {faq.answer}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -332,6 +309,7 @@ export function FaqSection() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

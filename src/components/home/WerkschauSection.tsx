@@ -185,7 +185,7 @@ export function WerkschauSection() {
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div
           ref={galleryRef}
-          className="relative w-full h-svh min-h-145 sm:h-screen sm:min-h-160 max-h-270 overflow-hidden border-t border-slate-200/60 my-0"
+          className="relative w-full h-svh min-h-145 sm:h-screen sm:min-h-160 max-h-270 overflow-hidden my-0"
         >
           {/* Pinned background / text stage: centered & fixed in place */}
           <div className="absolute inset-0 z-10 flex flex-col justify-between py-8 sm:py-14 pointer-events-none select-none">

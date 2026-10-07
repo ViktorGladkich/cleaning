@@ -354,7 +354,21 @@ export function AboutSection() {
                   <StatOdometer value={stat.value} />
                   <span className="text-brand-navy ml-0.5 font-medium">{stat.suffix}</span>
                 </div>
-                <div className="w-full border-b border-dashed border-brand-navy/20 my-3.5 sm:my-4" />
+                {/* Wider, refined architectural dashed divider line */}
+                <svg
+                  aria-hidden="true"
+                  className="w-full h-1 my-3.5 sm:my-4 text-brand-navy/30 overflow-visible"
+                >
+                  <line
+                    x1="0"
+                    y1="0.5"
+                    x2="100%"
+                    y2="0.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeDasharray="10 8"
+                  />
+                </svg>
                 <h4 className="text-sm sm:text-base font-semibold text-brand-navy tracking-tight">
                   {stat.title}
                 </h4>
