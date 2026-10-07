@@ -119,7 +119,7 @@ export function MegaMenu({
                         <RollingText duplicateClassName="text-brand-navy">
                           {link.label}
                         </RollingText>
-                        <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 translate-y-0.5 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 text-brand-navy" />
+                        <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 translate-y-0.5 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 text-brand-lime drop-shadow-[0_1px_1px_rgba(61,86,143,0.35)] shrink-0" />
                       </Link>
                     </li>
                   ))}

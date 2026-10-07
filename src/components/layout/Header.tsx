@@ -69,7 +69,10 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260 transform-gpu will-change-transform -translate-y-30"
+      className={cn(
+        "fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260 transform-gpu will-change-transform",
+        pathname === "/" ? "-translate-y-30" : "translate-y-0"
+      )}
     >
       {/* Top Capsule: Frosted Glass Pill */}
       <nav

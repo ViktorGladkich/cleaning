@@ -17,81 +17,93 @@ import { HeroVideoCard } from "./HeroVideoCard";
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroCardRef = useRef<HTMLDivElement>(null);
+  const wipeColsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const wipeContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       const container = containerRef.current;
       const heroCard = heroCardRef.current;
+      const cols = wipeColsRef.current.filter(Boolean);
+      const wipeContainer = wipeContainerRef.current;
       if (!container || !heroCard) return;
 
-      // Awwwards-level Cinematic Entry Timeline
+      // Awwwards / Framer-level Cinematic Entry Timeline
       const entryTl = gsap.timeline();
       
-      // 1. Snappy, continuous expansion from center (zero opacity flicker, zero pause)
-      entryTl.fromTo(
-        ".hero-image-container",
-        { scale: 0.72, borderRadius: 24 },
-        {
-          scale: 1.0,
-          borderRadius: 10,
-          duration: 0.85,
-          ease: "power3.out",
-        },
-        0
-      )
-      // 2. Exactly when the image finishes expanding (at 0.85s), other elements appear immediately!
-      .to(
-        ".hero-heading-line",
-        {
-          y: "0%",
-          opacity: 1,
-          duration: 0.85,
-          stagger: 0.1,
-          ease: "power4.out",
-        },
-        0.85
-      )
-      // 3. Subtitle reveal
-      .to(
-        ".hero-subtitle",
-        {
-          y: "0%",
-          opacity: 1,
-          duration: 0.75,
-          ease: "power3.out",
-        },
-        1.0
-      )
-      // 4. CTAs reveal
-      .fromTo(
-        ".hero-cta-inner",
-        { y: "100%" },
-        { y: "0%", duration: 0.75, stagger: 0.08, ease: "power3.out" },
-        1.1
-      )
-      // 5. Video Card smooth entrance sliding in from bottom of screen
-      // Opacity stays 1 so browser never disables backdrop-filter glass blur
-      .fromTo(
-        ".hero-video-wrapper",
-        { y: 420 },
-        {
-          y: 0,
-          duration: 1.15,
-          ease: "power3.out",
-          onStart: () => {
-            const el = document.querySelector(".hero-video-wrapper");
-            if (el) (el as HTMLElement).style.pointerEvents = "auto";
+      // 1. 5-Column Staircase Curtain Reveal (staggered wipe to top revealing image like steps)
+      if (cols.length > 0) {
+        entryTl.to(
+          cols,
+          {
+            scaleY: 0,
+            duration: 1.05,
+            stagger: 0.12,
+            ease: "power3.inOut",
           },
-        },
-        0.85
-      )
-      // 6. Header slides down once on page entry and stays visible everywhere
-      .fromTo(
-        document.querySelector("header"),
-        { y: -120 },
-        { y: 0, duration: 0.85, ease: "expo.out" },
-        1.1
-      );
+          0
+        );
+        if (wipeContainer) {
+          entryTl.set(wipeContainer, { display: "none" }, 1.6);
+        }
+      }
+
+      // 2. Heading lines reveal smoothly as left columns open
+      entryTl
+        .fromTo(
+          ".hero-heading-line",
+          { y: "100%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 0.85,
+            stagger: 0.1,
+            ease: "power4.out",
+          },
+          0.35
+        )
+        // 3. Subtitle reveal
+        .fromTo(
+          ".hero-subtitle",
+          { y: "100%", opacity: 0 },
+          {
+            y: "0%",
+            opacity: 1,
+            duration: 0.75,
+            ease: "power3.out",
+          },
+          0.55
+        )
+        // 4. CTAs reveal
+        .fromTo(
+          ".hero-cta-inner",
+          { y: "100%" },
+          { y: "0%", duration: 0.75, stagger: 0.08, ease: "power3.out" },
+          0.7
+        )
+        // 5. Video Card smooth entrance sliding in from bottom of screen
+        // Opacity stays 1 so browser never disables backdrop-filter glass blur
+        .fromTo(
+          ".hero-video-wrapper",
+          { y: 420 },
+          {
+            y: 0,
+            duration: 1.15,
+            ease: "power3.out",
+            onStart: () => {
+              const el = document.querySelector(".hero-video-wrapper");
+              if (el) (el as HTMLElement).style.pointerEvents = "auto";
+            },
+          },
+          0.85
+        )
+        // 6. Header slides down once on page entry and stays visible everywhere
+        .fromTo(
+          document.querySelector("header"),
+          { y: -120 },
+          { y: 0, duration: 0.85, ease: "expo.out" },
+          0.85
+        );
     },
     { scope: containerRef }
   );
@@ -105,11 +117,8 @@ export function Hero() {
           ref={heroCardRef}
           className="relative w-full h-[calc(100vh-20px)] sm:h-[calc(100vh-28px)] min-h-150 rounded-[10px] overflow-hidden bg-brand-cream"
         >
-          {/* Background Cleaning Image with Hardware GPU Scale Card Reveal (Initial SSR Style prevents full-size flash) */}
-          <div
-            className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[24px] origin-center transform-gpu will-change-transform shadow-lg"
-            style={{ transform: "scale(0.72)", borderRadius: "24px" }}
-          >
+          {/* Background Cleaning Image with Full Frame Seating */}
+          <div className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[10px] origin-center">
             <Image
               src="/images/hero_cleaning_bg2.webp"
               alt="Tadiks Cleaning Chemnitz"
@@ -124,7 +133,7 @@ export function Hero() {
           </div>
 
           {/* Hero Content (Heading, Description, CTAs) */}
-          <div className="hero-content-wrapper relative z-20 flex flex-col justify-end h-full pt-32 sm:pt-36 pb-8 sm:pb-12 px-6 sm:px-10 lg:px-14 max-w-2xl transform-gpu opacity-100">
+          <div className="hero-content-wrapper relative z-20 flex flex-col justify-end h-full pt-32 sm:pt-36 pb-8 sm:pb-12 px-6 sm:px-10 lg:px-14 max-w-2xl">
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-medium text-white tracking-tight leading-[1.1] mb-3 sm:mb-5 flex flex-col gap-1">
               <span className="overflow-hidden block">
@@ -159,7 +168,7 @@ export function Hero() {
                 <div className="hero-cta-inner translate-y-full">
                   <Link
                     href="/bau"
-                    className="inline-flex items-center justify-center h-10.5 px-5 rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] transform-gpu border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200 shadow-xs"
+                    className="inline-flex items-center justify-center h-[42px] px-5 rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200 shadow-xs"
                   >
                     <span>Bau & Sanierung</span>
                   </Link>
@@ -169,6 +178,23 @@ export function Hero() {
           </div>
 
           <HeroVideoCard />
+
+          {/* 5-Column Staircase Curtain Reveal Overlay (matches Framer stepped reveal) */}
+          <div
+            ref={wipeContainerRef}
+            className="absolute inset-0 z-30 pointer-events-none grid grid-cols-5 h-full w-full overflow-hidden"
+          >
+            {[0, 1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                ref={(el) => {
+                  wipeColsRef.current[i] = el;
+                }}
+                className="h-full w-[calc(100%+1px)] bg-brand-cream origin-top transform-gpu"
+                style={{ transform: "scaleY(1)" }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

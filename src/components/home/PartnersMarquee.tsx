@@ -15,6 +15,9 @@ const partners = [
   { name: "Luxor", src: "/logos/logo_luxor.svg", width: 110 },
 ];
 
+// Doubled partner list so all 8 logos seamlessly populate any viewport width
+const marqueeList = [...partners, ...partners];
+
 export function PartnersMarquee() {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLParagraphElement>(null);
@@ -83,40 +86,46 @@ export function PartnersMarquee() {
 
       <div
         ref={marqueeRef}
-        className="relative flex overflow-hidden w-full bg-brand-cream mask-fade-edges pb-6 will-change-transform"
+        className="relative flex overflow-hidden w-full bg-brand-cream mask-fade-edges pb-6 select-none will-change-transform"
       >
-        <div className="flex animate-marquee items-center min-w-max space-x-12 sm:space-x-24 px-6 sm:px-12">
-          {partners.map((partner, idx) => (
+        {/* Track 1 */}
+        <div
+          className="flex animate-marquee items-center min-w-max gap-12 sm:gap-16 lg:gap-20 pr-12 sm:pr-16 lg:pr-20 hover:[animation-play-state:paused]"
+          style={{ animationDuration: "40s" }}
+        >
+          {marqueeList.map((partner, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-center transition-all duration-500 mix-blend-multiply"
+              className="flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100 mix-blend-multiply shrink-0"
             >
               <Image
                 src={partner.src}
                 alt={partner.name}
                 width={partner.width}
-                height={60}
-                style={{ width: "auto", height: "auto", maxHeight: "60px", maxWidth: `${partner.width}px`, objectFit: "contain" }}
-                className="pointer-events-none"
+                height={50}
+                className="h-9 sm:h-11 w-auto max-w-[150px] object-contain pointer-events-none"
               />
             </div>
           ))}
         </div>
         
-        {/* Duplicate for seamless looping */}
-        <div className="flex animate-marquee items-center min-w-max space-x-12 sm:space-x-24 px-6 sm:px-12" aria-hidden="true">
-          {partners.map((partner, idx) => (
+        {/* Track 2: Duplicate for seamless looping */}
+        <div
+          className="flex animate-marquee items-center min-w-max gap-12 sm:gap-16 lg:gap-20 pr-12 sm:pr-16 lg:pr-20 hover:[animation-play-state:paused]"
+          style={{ animationDuration: "40s" }}
+          aria-hidden="true"
+        >
+          {marqueeList.map((partner, idx) => (
             <div
               key={`dup-${idx}`}
-              className="flex items-center justify-center transition-all duration-500 mix-blend-multiply"
+              className="flex items-center justify-center transition-all duration-300 opacity-80 hover:opacity-100 mix-blend-multiply shrink-0"
             >
               <Image
                 src={partner.src}
                 alt={partner.name}
                 width={partner.width}
-                height={60}
-                style={{ width: "auto", height: "auto", maxHeight: "60px", maxWidth: `${partner.width}px`, objectFit: "contain" }}
-                className="pointer-events-none"
+                height={50}
+                className="h-9 sm:h-11 w-auto max-w-[150px] object-contain pointer-events-none"
               />
             </div>
           ))}

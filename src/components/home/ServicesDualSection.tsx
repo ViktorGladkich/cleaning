@@ -3,155 +3,186 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Hammer } from "lucide-react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { ArrowUpRight } from "lucide-react";
+import { gsap, useGSAP } from "@/lib/gsap";
+import { RollingText } from "@/components/animations/RollingText";
 import { CtaButton } from "@/components/ui/CtaButton";
 
-interface ServicePillar {
-  id: "cleaning" | "bau";
-  number: string;
-  badge: string;
-  icon: typeof Sparkles;
+interface ServiceGridItem {
+  id: string;
   title: string;
-  description: string;
-  tags: string[];
-  ctaText: string;
-  href: string;
+  tagline: string;
+  category: "REINIGUNG" | "BAU";
   imageSrc: string;
   imageAlt: string;
-  accentColor: string;
+  bullets: string[];
+  href: string;
 }
 
-const PILLARS: ServicePillar[] = [
+const SERVICES: ServiceGridItem[] = [
   {
-    id: "cleaning",
-    number: "01",
-    badge: "Gebäudereinigung & Werterhalt",
-    icon: Sparkles,
-    title: "Meisterhafte Sauberkeit für Gewerbe & anspruchsvolles Wohnen",
-    description:
-      "Hygienische Unterhaltsreinigung, streifenfreie Glasreinigung und bezugsfertige Bauendreinigungen mit zertifizierten Qualitätsstandards in Chemnitz und ganz Sachsen.",
-    tags: [
-      "Unterhaltsreinigung",
-      "Bauendreinigung",
-      "Glas- & Fensterreinigung",
-      "Praxis- & Bürohygiene",
+    id: "unterhalt",
+    title: "Unterhaltsreinigung",
+    tagline: "BÜRO-, KANZLEI- & PRAXISHYGIENE IN SACHSEN",
+    category: "REINIGUNG",
+    imageSrc: "/images/service_grid_unterhalt.jpg",
+    imageAlt: "Professionelle Unterhaltsreinigung in Chemnitz und Sachsen",
+    bullets: [
+      "Feste Objektleiter & feste Fachkräfte",
+      "Tägliche, wöchentliche oder flexible Intervalle",
+      "RKI- & DIN-konforme Dokumentation",
     ],
-    ctaText: "Bereich Reinigung entdecken",
     href: "/services",
-    imageSrc: "/images/service_cleaning_card.jpg",
-    imageAlt: "Exklusive, makellos gereinigte Geschäftsräume mit Panoramafenstern",
-    accentColor: "from-sky-400/20 to-teal-400/20",
   },
   {
-    id: "bau",
-    number: "02",
-    badge: "Bau, Sanierung & Innenausbau",
-    icon: Hammer,
-    title: "Präzises Handwerk von Trockenbau bis Komplettsanierung",
-    description:
-      "Fachgerechte Trennwände, Brand- & Akustikschutz, meisterhafte Q1–Q4 Spachtelarbeiten und schlüsselfertige Modernisierungen aus einer Hand ohne Schnittstellenverlust.",
-    tags: [
-      "Trockenbau & Akustik",
-      "Maler & Spachteln Q1–Q4",
-      "Komplettsanierung",
-      "Brandschutzsysteme",
+    id: "glas",
+    title: "Glas- & Fassadenreinigung",
+    tagline: "STREIFENFREIE SPEZIALREINIGUNG BIS 20M HÖHE",
+    category: "REINIGUNG",
+    imageSrc: "/images/service_grid_glas.jpg",
+    imageAlt: "Streifenfreie Glas- und Fensterreinigung in Sachsen",
+    bullets: [
+      "Modernste Osmose-Reinstwassertechnik",
+      "Inklusive Rahmen-, Falz- & Simsreinigung",
+      "Schaufenster, Wintergärten & Glasfassaden",
     ],
-    ctaText: "Bereich Bau & Sanierung entdecken",
+    href: "/services",
+  },
+  {
+    id: "bauende",
+    title: "Bauendreinigung",
+    tagline: "BEZUGSFERTIGE SCHLÜSSELÜBERGABE NACH BAU & SANIERUNG",
+    category: "REINIGUNG",
+    imageSrc: "/images/service_grid_bauende.jpg",
+    imageAlt: "Bezugsfertige Bauendreinigung in Sachsen",
+    bullets: [
+      "Zementschleier- & feinstaubfreie Übergabe",
+      "Für Bauherren, Architekten & Wohnungsbau",
+      "Verlässliche Abnahmegarantie nach VOB",
+    ],
+    href: "/services",
+  },
+  {
+    id: "trockenbau",
+    title: "Trockenbau & Akustik",
+    tagline: "DIN-GERECHTE WAND- & DECKENSYSTEME, SCHALLSCHUTZ",
+    category: "BAU",
+    imageSrc: "/images/service_grid_trockenbau.jpg",
+    imageAlt: "Präziser Trockenbau und Akustikbau in Sachsen",
+    bullets: [
+      "Zertifizierter Brand-, Schall- & Feuchteschutz",
+      "Akustikdecken & flexible Trennwände",
+      "Millimetergenaue Laser-Ausrichtung",
+    ],
     href: "/bau",
-    imageSrc: "/images/service_bau_card.jpg",
-    imageAlt: "Präziser Trockenbau und Innenausbau im modernen Wohnraum",
-    accentColor: "from-amber-400/20 to-orange-400/20",
+  },
+  {
+    id: "maler",
+    title: "Maler- & Spachteltechnik",
+    tagline: "HOCHWERTIGE SPACHTELSTUFEN Q1–Q4 & ANSTRICH",
+    category: "BAU",
+    imageSrc: "/images/service_grid_maler.jpg",
+    imageAlt: "Malerarbeiten und Q1-Q4 Spachteltechnik in Sachsen",
+    bullets: [
+      "Streiflichtfreie Oberflächen für höchste Ansprüche",
+      "Glattvlies, moderne Farbkonzepte & Lackierung",
+      "Schadstofffreie, diffusionsoffene Markenfarben",
+    ],
+    href: "/bau",
+  },
+  {
+    id: "sanierung",
+    title: "Komplettsanierung",
+    tagline: "ALLES AUS EINER HAND OHNE SCHNITTSTELLENVERLUST",
+    category: "BAU",
+    imageSrc: "/images/service_grid_sanierung.jpg",
+    imageAlt: "Komplettsanierung von Altbauten und Gewerbeflächen in Sachsen",
+    bullets: [
+      "Entkernung, Trockenbau, Parkett & Feinreinigung",
+      "Spezialisiert auf sächsische Altbauten & Lofts",
+      "Fester deutscher Bauleiter & Termingarantie",
+    ],
+    href: "/bau",
   },
 ];
 
 export function ServicesDualSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Cinematic orchestrated header reveal
-      if (headerRef.current) {
-        const headerTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 82%",
-            once: true,
-          },
-        });
+      // 1. Silky smooth entrance timeline for header and cards
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+          once: true,
+        },
+      });
 
-        headerTl
-          .fromTo(
-            ".services-eyebrow",
-            { opacity: 0, y: -20, filter: "blur(4px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.8, ease: "power3.out" }
-          )
-          .fromTo(
-            ".services-title",
-            { opacity: 0, y: 45, filter: "blur(8px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, ease: "power3.out" },
-            "-=0.5"
-          )
-          .fromTo(
-            ".services-desc",
-            { opacity: 0, y: 30, filter: "blur(6px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out" },
-            "-=0.7"
-          );
-      }
-
-      // 2. Cinematic Dual-Card Unveil on Scroll (Smooth Scale & De-blur)
-      const cards = cardsContainerRef.current?.querySelectorAll(".service-portal-card");
-      if (cards && cards.length > 0) {
-        gsap.fromTo(
-          cards,
+      tl.fromTo(
+        ".services-anim-eyebrow",
+        { y: 14, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65, ease: "power2.out" }
+      )
+        .fromTo(
+          ".services-anim-title",
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.75, ease: "power2.out" },
+          "-=0.45"
+        )
+        .fromTo(
+          ".services-anim-desc",
+          { y: 16, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
+          "-=0.55"
+        )
+        .fromTo(
+          ".services-anim-cta",
+          { y: 14, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.65, ease: "power2.out" },
+          "-=0.55"
+        )
+        // Staggered staircase with custom physical ladder heights from bottom
+        // Row 1: Card 1 closest to top border (28px), Card 2 starts lower (56px), Card 3 starts even lower (84px)
+        // Row 2: Card 4 starts close to Card 1 (36px), Card 5 starts lower (64px), Card 6 starts lower (92px)
+        .fromTo(
+          ".service-editorial-card",
           {
-            opacity: 0,
-            y: 85,
-            scale: 0.93,
-            filter: "blur(8px)",
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 1.3,
-            stagger: 0.22,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cardsContainerRef.current,
-              start: "top 78%",
-              once: true,
+            y: (index: number) => {
+              const ladderOffsets = [28, 56, 84, 36, 64, 92];
+              return ladderOffsets[index] ?? 40;
             },
-          }
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            stagger: 0.12,
+            ease: "power2.out",
+            clearProps: "transform,opacity",
+          },
+          "-=0.6"
         );
 
-        // 3. Parallax drift of the background images within cards
-        const images = cardsContainerRef.current?.querySelectorAll(".service-parallax-img");
-        images?.forEach((img) => {
-          gsap.fromTo(
-            img,
-            { yPercent: -10, scale: 1.12 },
-            {
-              yPercent: 10,
-              scale: 1.12,
-              ease: "none",
-              scrollTrigger: {
-                trigger: cardsContainerRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 0.6,
-              },
-            }
-          );
-        });
-      }
+      // 2. Continuous smooth parallax drift on card images while scrolling through the section
+      gsap.fromTo(
+        ".service-card-parallax-img",
+        { yPercent: -8 },
+        {
+          yPercent: 8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1.2,
+          },
+        }
+      );
     },
     { scope: sectionRef }
   );
@@ -160,129 +191,112 @@ export function ServicesDualSection() {
     <section
       ref={sectionRef}
       id="services"
-      aria-labelledby="services-headline"
-      className="relative z-10 w-full py-20 sm:py-28 lg:py-36 bg-brand-cream overflow-hidden border-t border-slate-200/60"
+      aria-label="Leistungen & Services"
+      className="relative z-10 w-full bg-brand-cream py-16 sm:py-24 overflow-x-clip"
     >
-      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8">
-        {/* Section Header: Editorial & High-Impact (Harmonized with Testimonials) */}
-        <div
-          ref={headerRef}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 sm:pb-16 border-b border-slate-200/80 mb-12 sm:mb-16"
-        >
+      <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* --- Clean German Eyebrow (consistent with AboutSection) --- */}
+        <div className="services-anim-eyebrow mb-4 sm:mb-6">
+          <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block">
+            Unsere Leistungen
+          </span>
+        </div>
+
+        {/* --- Header Row: Title on Left, Text & Right-Aligned Button on Right (Horizontally Aligned) --- */}
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 sm:gap-10 mb-10 sm:mb-14">
           <div className="max-w-2xl">
-            <span className="services-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block mb-3 will-change-transform">
-              Leistungsspektrum &middot; Unsere Gewerke
-            </span>
-            <h2
-              id="services-headline"
-              className="services-title text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12] will-change-transform"
-            >
-              Zwei spezialisierte Säulen. <br className="hidden sm:inline" />
-              <span className="font-medium text-brand-navy">Ein nahtloser Qualitätskreislauf.</span>
+            <h2 className="services-anim-title text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-brand-navy leading-[1.15]">
+              Zwei Kernbereiche. Meisterhafte Präzision.
             </h2>
           </div>
 
-          <div className="max-w-md lg:text-right">
-            <p className="services-desc text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light will-change-transform">
-              Vom ersten Trockenbau-Grundriss über schlüsselfertige Renovierungen bis hin zur bezugsfertigen Bauendreinigung und dauerhaften Unterhaltspflege – alles meisterhaft aus einer Hand.
+          {/* Right Column: Paragraph and CTA Button aligned to the right edge of the screen/grid */}
+          <div className="flex flex-col items-start lg:items-end gap-5 max-w-md shrink-0 w-full lg:w-auto">
+            <p className="services-anim-desc text-brand-navy/70 text-sm sm:text-base leading-relaxed text-left lg:text-right pt-1 lg:pt-1.5">
+              Professionelle Gebäudereinigung und erstklassiges Bauhandwerk vereint unter einem Dach.
+              Feste Ansprechpartner und verbindliche Festpreise in Chemnitz und ganz Sachsen.
             </p>
+            <div className="services-anim-cta self-start lg:self-end">
+              <CtaButton href="/services" size="md">
+                Alle Leistungen ansehen
+              </CtaButton>
+            </div>
           </div>
         </div>
 
-        {/* Dual Pillar Cinematic Cards */}
-        <div
-          ref={cardsContainerRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
-        >
-          {PILLARS.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div
-                key={pillar.id}
-                className="service-portal-card group relative overflow-hidden rounded-[28px] sm:rounded-[36px] min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex flex-col justify-between p-7 sm:p-10 lg:p-12 text-white border border-slate-900/10 shadow-2xl transition-all duration-700 hover:shadow-brand-navy/20"
-              >
-                {/* Background Image with Parallax container */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  <div className="relative w-full h-[120%] -top-[10%] service-parallax-img will-change-transform">
+        {/* --- 6-Card Editorial Grid (3 Columns, 2 Rows) --- */}
+        <div className="services-editorial-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-brand-navy/20 bg-brand-cream">
+          {SERVICES.map((card, idx) => (
+            <Link
+              key={card.id}
+              href={card.href}
+              className="service-editorial-card group relative border-r border-b border-brand-navy/20 p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden min-h-[460px] lg:min-h-[490px] bg-brand-cream text-brand-navy"
+            >
+              {/* Smooth mask fill layer: smoothly descends from the TOP of the card on hover */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 bg-brand-navy z-0 pointer-events-none origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-700 ease-out will-change-transform"
+              />
+
+              {/* --- Card Top: Title with RollingText + Direct Arrow (relative z-10 above mask) --- */}
+              <div className="relative z-10">
+                <div className="flex items-start justify-between gap-4 mb-2">
+                  <h3 className="text-xl sm:text-2xl font-normal tracking-tight leading-tight">
+                    <RollingText
+                      duplicateClassName="text-white"
+                      className="text-brand-navy group-hover:text-white transition-colors duration-500 ease-out"
+                    >
+                      {card.title}
+                    </RollingText>
+                  </h3>
+
+                  {/* Direct prominent arrow: No circle, unclipped, crisp, slides diagonally on hover */}
+                  <div className="shrink-0 pt-0.5">
+                    <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 text-brand-navy group-hover:text-brand-lime transition-all duration-500 ease-out group-hover:translate-x-1 group-hover:-translate-y-1 stroke-[1.8]" />
+                  </div>
+                </div>
+
+                {/* Subtitle / Tagline: font-normal */}
+                <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider font-normal text-brand-navy/60 group-hover:text-white/70 transition-colors duration-500 ease-out">
+                  {card.tagline}
+                </p>
+              </div>
+
+              {/* --- Card Center: Photographic Asset with Parallax (relative z-10) --- */}
+              <div className="relative z-10 my-4 sm:my-6 flex items-center justify-center">
+                <div className="service-card-image-wrap relative w-full aspect-[4/3] max-w-[270px] sm:max-w-[285px] rounded-[8px] overflow-hidden shadow-xs border border-brand-navy/15 group-hover:border-white/20 transition-all duration-500 ease-out">
+                  <div className="service-card-parallax-img relative w-full h-[120%] -top-[10%] will-change-transform">
                     <Image
-                      src={pillar.imageSrc}
-                      alt={pillar.imageAlt}
+                      src={card.imageSrc}
+                      alt={card.imageAlt}
                       fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105"
-                      priority={false}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                      priority={idx < 3}
                     />
                   </div>
                 </div>
-
-                {/* Cinematic Multi-layered Vignette & Dark Overlays for AAA Contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/95 via-brand-navy/60 to-black/35 pointer-events-none transition-opacity duration-700 group-hover:opacity-90" />
-                <div className="absolute inset-0 bg-radial from-transparent via-transparent to-black/60 pointer-events-none" />
-
-                {/* Subtle Ambient Craft Color Glow on Hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${pillar.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}
-                />
-
-                {/* Top Card Bar: Number Badge & Category Indicator */}
-                <div className="relative z-10 flex items-center justify-between gap-4">
-                  <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/12 backdrop-blur-md border border-white/20 shadow-xs">
-                    <Icon className="w-4 h-4 text-brand-lime" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-white">
-                      {pillar.badge}
-                    </span>
-                  </div>
-
-                  <span className="font-mono text-sm tracking-widest text-white/60 font-semibold">
-                    {pillar.number} / 02
-                  </span>
-                </div>
-
-                {/* Bottom Card Content: Title, Description, Tags & Button */}
-                <div className="relative z-10 flex flex-col items-start pt-24 sm:pt-28">
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.2] mb-4 group-hover:text-brand-lime transition-colors duration-300">
-                    {pillar.title}
-                  </h3>
-
-                  <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-xl mb-6 font-normal">
-                    {pillar.description}
-                  </p>
-
-                  {/* Feature Tag Chips */}
-                  <div className="flex flex-wrap gap-2 mb-8 sm:mb-10">
-                    {pillar.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 rounded-full transition-all duration-300 hover:bg-white/20 hover:border-white/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Integrated Signature CTA Button */}
-                  <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <CtaButton
-                      href={pillar.href}
-                      size="lg"
-                      className="shadow-lg"
-                    >
-                      {pillar.ctaText}
-                    </CtaButton>
-
-                    <Link
-                      href={pillar.href}
-                      className="inline-flex sm:hidden items-center justify-center gap-2 text-xs font-medium text-white/70 hover:text-white pt-1"
-                    >
-                      <span>Alle Leistungen im Detail ansehen</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
-                </div>
               </div>
-            );
-          })}
+
+              {/* --- Card Bottom: Clean Highlights List (relative z-10) --- */}
+              <div className="relative z-10 pt-4 border-t border-brand-navy/15 group-hover:border-white/15 transition-colors duration-500 ease-out">
+                <ul className="space-y-1.5">
+                  {card.bullets.map((bullet, bIdx) => (
+                    <li
+                      key={bIdx}
+                      className="flex items-center gap-2 text-[11px] sm:text-xs leading-relaxed text-brand-navy/70 group-hover:text-white/85 transition-colors duration-500 ease-out"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-brand-navy/40 group-hover:bg-brand-lime shrink-0 transition-colors duration-500 ease-out" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Link>
+          ))}
         </div>
+
       </div>
     </section>
   );
