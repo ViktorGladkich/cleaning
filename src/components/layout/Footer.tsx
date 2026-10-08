@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { ArrowUpRight } from "lucide-react";
 import { RollingText } from "@/components/animations";
 import { COMPANY_INFO } from "@/lib/constants";
@@ -89,58 +90,85 @@ function FooterLink({
 }
 
 export function Footer() {
+  const pathname = usePathname();
   const footerRef = useRef<HTMLElement>(null);
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightGridRef = useRef<HTMLDivElement>(null);
   const bottomBarRef = useRef<HTMLDivElement>(null);
 
+  // Guarantee footer is immediately and fully visible on any route change
+  useEffect(() => {
+    if (leftColRef.current && rightGridRef.current && bottomBarRef.current) {
+      gsap.set(
+        [
+          leftColRef.current.children,
+          rightGridRef.current.children,
+          bottomBarRef.current,
+        ],
+        { opacity: 1, y: 0, filter: "none", clearProps: "all" }
+      );
+    }
+    ScrollTrigger.refresh();
+  }, [pathname]);
+
   useGSAP(
     () => {
-      if (!footerRef.current) return;
+      // Only animate on the main homepage
+      if (pathname !== "/" || !footerRef.current) {
+        if (leftColRef.current && rightGridRef.current && bottomBarRef.current) {
+          gsap.set(
+            [
+              leftColRef.current.children,
+              rightGridRef.current.children,
+              bottomBarRef.current,
+            ],
+            { opacity: 1, y: 0, filter: "none", clearProps: "all" }
+          );
+        }
+        return;
+      }
 
-      // 1. Left brand column entrance
+      // 1. Left brand column entrance on homepage
       if (leftColRef.current) {
         gsap.fromTo(
           leftColRef.current.children,
-          { opacity: 0, y: 40, filter: "blur(6px)" },
+          { opacity: 0, y: 35 },
           {
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
-            duration: 1.1,
-            stagger: 0.14,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: leftColRef.current,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      }
-
-      // 2. Right columns entrance
-      if (rightGridRef.current) {
-        gsap.fromTo(
-          rightGridRef.current.children,
-          { opacity: 0, y: 45, filter: "blur(6px)" },
-          {
-            opacity: 1,
-            y: 0,
-            filter: "blur(0px)",
-            duration: 1.1,
+            duration: 0.9,
             stagger: 0.12,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: rightGridRef.current,
-              start: "top 82%",
+              trigger: leftColRef.current,
+              start: "top 90%",
               once: true,
             },
           }
         );
       }
 
-      // 3. Bottom bar entrance
+      // 2. Right columns entrance on homepage
+      if (rightGridRef.current) {
+        gsap.fromTo(
+          rightGridRef.current.children,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: rightGridRef.current,
+              start: "top 88%",
+              once: true,
+            },
+          }
+        );
+      }
+
+      // 3. Bottom bar entrance on homepage
       if (bottomBarRef.current) {
         gsap.fromTo(
           bottomBarRef.current,
@@ -148,18 +176,18 @@ export function Footer() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.8,
             ease: "power2.out",
             scrollTrigger: {
               trigger: bottomBarRef.current,
-              start: "top 95%",
+              start: "top 98%",
               once: true,
             },
           }
         );
       }
     },
-    { scope: footerRef }
+    { scope: footerRef, dependencies: [pathname] }
   );
 
   return (
