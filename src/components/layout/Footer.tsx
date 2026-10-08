@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useGSAP } from "@gsap/react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { ArrowUpRight } from "lucide-react";
 import { RollingText } from "@/components/animations";
 import { COMPANY_INFO } from "@/lib/constants";
@@ -56,7 +56,7 @@ function FooterLink({
   isExternal?: boolean;
 }) {
   const content = (
-    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide break-all sm:break-normal">
+    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide break-words">
       <RollingText
         className="text-white/60 font-light"
         duplicateClassName="text-white font-medium"
@@ -108,7 +108,6 @@ export function Footer() {
         { opacity: 1, y: 0, filter: "none", clearProps: "all" }
       );
     }
-    ScrollTrigger.refresh();
   }, [pathname]);
 
   useGSAP(
@@ -195,7 +194,7 @@ export function Footer() {
       ref={footerRef}
       role="contentinfo"
       aria-label="Website-Fußbereich"
-      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16 -mt-px border-t-0"
+      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16 border-t-0"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Main Split: Brand Header + 4 Link Blocks in 2 Rows (grid-cols-2) on Mobile, 4 Columns on Desktop */}

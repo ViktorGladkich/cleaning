@@ -10,6 +10,11 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Disable native browser scroll restoration to prevent conflicts with Lenis
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -21,7 +26,6 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     lenis.on("scroll", ScrollTrigger.update);
 
     // 2. Add Lenis's requestAnimationFrame to GSAP's ticker
-    // This is CRITICAL for preventing sticky element jitter and ScrollTrigger desync
     const update = (time: number) => {
       lenis.raf(time * 1000);
     };
@@ -38,13 +42,28 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  // When pathname changes, reset scroll to top immediately and refresh ScrollTrigger
+  // When pathname changes, manage scroll position and refresh ScrollTrigger safely
   useEffect(() => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target && lenisRef.current) {
+        lenisRef.current.scrollTo(target as HTMLElement, { offset: -80 });
+      }
+    } else {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
+      window.scrollTo(0, 0);
     }
-    window.scrollTo(0, 0);
-    ScrollTrigger.refresh();
+
+    // Refresh ScrollTrigger after next tick so DOM layout of the new page is fully calculated
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 60);
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   // Return children inside a Fragment (no DOM wrapper)
