@@ -148,22 +148,27 @@ export function Hero() {
               </span>
             </p>
 
-            {/* Actions: Primary CTA + Bau Entdecken */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 self-start">
-              <div className="hero-cta overflow-hidden">
+            {/* Actions: Primary CTA + Bau Entdecken (side-by-side in one row on mobile) */}
+            <div className="flex items-center gap-2 xs:gap-2.5 sm:gap-4 self-start max-w-full">
+              <div className="hero-cta overflow-hidden shrink-0">
                 <div className="hero-cta-inner translate-y-full">
-                  <CtaButton href="/contacts" size="md">
+                  <CtaButton
+                    href="/contacts"
+                    size="md"
+                    className="h-9 sm:h-[42px] pl-3.5 sm:pl-5 pr-1 sm:pr-1.5 text-[13px] xs:text-[13.5px] sm:text-[15px]"
+                    arrowClassName="w-7 h-7 sm:w-8 sm:h-8"
+                  >
                     Termin vereinbaren
                   </CtaButton>
                 </div>
               </div>
-              <div className="hero-cta overflow-hidden">
+              <div className="hero-cta overflow-hidden shrink-0">
                 <div className="hero-cta-inner translate-y-full">
                   <Link
                     href="/bau"
-                    className="inline-flex items-center justify-center h-10.5 px-5 rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[15.5px] font-medium transition-colors duration-200 shadow-xs"
+                    className="inline-flex items-center justify-center h-9 sm:h-10.5 px-3.5 sm:px-5 rounded-lg sm:rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[13px] xs:text-[13.5px] sm:text-[15.5px] font-medium transition-colors duration-200 shadow-xs whitespace-nowrap"
                   >
-                    <span>Bau & Sanierung</span>
+                    <span>Bau &amp; Sanierung</span>
                   </Link>
                 </div>
               </div>

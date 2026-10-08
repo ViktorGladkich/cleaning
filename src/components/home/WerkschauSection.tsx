@@ -251,8 +251,8 @@ export function WerkschauSection() {
               </div>
             </div>
 
-            {/* Informational Scroll Indicator */}
-            <div className="werkschau-scroll-indicator absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 pointer-events-none select-none">
+            {/* Informational Scroll Indicator (hidden on mobile, visible on desktop/tablet) */}
+            <div className="werkschau-scroll-indicator absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-1.5 pointer-events-none select-none">
               <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.25em] uppercase text-brand-navy/70">
                 Scrollen
               </span>
