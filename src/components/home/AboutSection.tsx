@@ -57,7 +57,7 @@ const MARQUEE_IMAGES = [
     alt: "Oberflächenqualität und millimetergenaue Fugen",
   },
   {
-    src: "/images/megamenu_promo1.jpg",
+    src: "/images/service_grid_maler.webp",
     alt: "Hochwertige Maler- und Spachtelarbeiten",
   },
   {

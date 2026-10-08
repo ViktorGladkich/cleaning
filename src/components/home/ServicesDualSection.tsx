@@ -25,7 +25,7 @@ const SERVICES: ServiceGridItem[] = [
     title: "Unterhaltsreinigung",
     tagline: "BÜRO-, KANZLEI- & PRAXISHYGIENE IN SACHSEN",
     category: "REINIGUNG",
-    imageSrc: "/images/service_grid_unterhalt.jpg",
+    imageSrc: "/images/service_grid_unterhalt.webp",
     imageAlt: "Professionelle Unterhaltsreinigung in Chemnitz und Sachsen",
     bullets: [
       "Feste Objektleiter & feste Fachkräfte",
@@ -39,7 +39,7 @@ const SERVICES: ServiceGridItem[] = [
     title: "Glas- & Fassadenreinigung",
     tagline: "STREIFENFREIE SPEZIALREINIGUNG BIS 20M HÖHE",
     category: "REINIGUNG",
-    imageSrc: "/images/service_grid_glas.jpg",
+    imageSrc: "/images/service_grid_glas.webp",
     imageAlt: "Streifenfreie Glas- und Fensterreinigung in Sachsen",
     bullets: [
       "Modernste Osmose-Reinstwassertechnik",
@@ -53,7 +53,7 @@ const SERVICES: ServiceGridItem[] = [
     title: "Bauendreinigung",
     tagline: "BEZUGSFERTIGE SCHLÜSSELÜBERGABE NACH BAU & SANIERUNG",
     category: "REINIGUNG",
-    imageSrc: "/images/service_grid_bauende.jpg",
+    imageSrc: "/images/service_grid_bauende.webp",
     imageAlt: "Bezugsfertige Bauendreinigung in Sachsen",
     bullets: [
       "Zementschleier- & feinstaubfreie Übergabe",
@@ -67,7 +67,7 @@ const SERVICES: ServiceGridItem[] = [
     title: "Trockenbau & Akustik",
     tagline: "DIN-GERECHTE WAND- & DECKENSYSTEME, SCHALLSCHUTZ",
     category: "BAU",
-    imageSrc: "/images/service_grid_trockenbau.jpg",
+    imageSrc: "/images/service_grid_trockenbau.webp",
     imageAlt: "Präziser Trockenbau und Akustikbau in Sachsen",
     bullets: [
       "Zertifizierter Brand-, Schall- & Feuchteschutz",
@@ -81,7 +81,7 @@ const SERVICES: ServiceGridItem[] = [
     title: "Maler- & Spachteltechnik",
     tagline: "HOCHWERTIGE SPACHTELSTUFEN Q1–Q4 & ANSTRICH",
     category: "BAU",
-    imageSrc: "/images/service_grid_maler.jpg",
+    imageSrc: "/images/service_grid_maler.webp",
     imageAlt: "Malerarbeiten und Q1-Q4 Spachteltechnik in Sachsen",
     bullets: [
       "Streiflichtfreie Oberflächen für höchste Ansprüche",
@@ -95,7 +95,7 @@ const SERVICES: ServiceGridItem[] = [
     title: "Komplettsanierung",
     tagline: "ALLES AUS EINER HAND OHNE SCHNITTSTELLENVERLUST",
     category: "BAU",
-    imageSrc: "/images/service_grid_sanierung.jpg",
+    imageSrc: "/images/service_grid_sanierung.webp",
     imageAlt: "Komplettsanierung von Altbauten und Gewerbeflächen in Sachsen",
     bullets: [
       "Entkernung, Trockenbau, Parkett & Feinreinigung",

@@ -181,7 +181,7 @@ export function WerkschauSection() {
       ref={sectionRef}
       id="werkschau"
       aria-label="Werkschau & Meisterdetails"
-      className="relative z-10 w-full bg-brand-cream overflow-x-clip"
+      className="relative z-10 w-full bg-brand-cream overflow-x-clip pb-10 sm:pb-14 lg:pb-18"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div
@@ -245,7 +245,7 @@ export function WerkschauSection() {
           {GALLERY_CARDS.map((card) => (
             <div key={card.id} className={card.wrapperClass}>
               <div
-                className={`${card.maskClass} ${card.widthClass} ${card.aspectClass} rounded sm:rounded-md overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-100 opacity-0`}
+                className={`relative ${card.maskClass} ${card.widthClass} ${card.aspectClass} rounded sm:rounded-md overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-100 opacity-0`}
                 style={{ clipPath: card.initialClipPath }}
               >
                 <Image

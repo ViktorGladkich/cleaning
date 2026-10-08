@@ -73,14 +73,13 @@ export function ProcessSection() {
           );
       }
 
-      // 2. Pronounced, cinematic Parallax drift of architectural background image
+      // 2. Smooth architectural Parallax drift without heavy zooming
       if (bgImgRef.current) {
         gsap.fromTo(
           bgImgRef.current,
-          { yPercent: -18, scale: 1.08 },
+          { yPercent: -8 },
           {
-            yPercent: 18,
-            scale: 1.02,
+            yPercent: 8,
             ease: "none",
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -92,7 +91,7 @@ export function ProcessSection() {
         );
       }
 
-      // 3. Staggered reveal of the frosted glass cards with de-blur & elevation
+      // 3. Staggered reveal of the frosted navy glass cards with de-blur & elevation
       const cards = cardsRef.current?.querySelectorAll(".process-frosted-card");
       if (cards && cards.length > 0) {
         gsap.fromTo(
@@ -130,14 +129,14 @@ export function ProcessSection() {
       aria-labelledby="process-heading"
       className="relative z-10 w-full py-12 sm:py-18 lg:py-24 overflow-hidden bg-brand-cream border-t border-slate-200/60"
     >
-      {/* Full-bleed Warm Architectural Minimalist Interior Background */}
+      {/* Architectural Interior Background with gentle parallax and subtle cream veil */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <div
           ref={bgImgRef}
-          className="relative w-full h-[145%] top-[-22%] will-change-transform"
+          className="relative w-full h-[118%] top-[-9%] will-change-transform"
         >
           <Image
-            src="/images/process_interior_bg.jpg"
+            src="/images/process_interior_bg.webp"
             alt="Warmes minimalistisches Architektur-Interieur"
             fill
             sizes="100vw"
@@ -146,13 +145,13 @@ export function ProcessSection() {
           />
         </div>
 
-        {/* Natural Warm Lighting Overlay matching reference image */}
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/50" />
+        {/* Delicate cream veil: preserves raw photo beauty while guaranteeing text legibility */}
+        <div className="absolute inset-0 bg-brand-cream/5 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/15 via-brand-cream/5 to-brand-cream/15 pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
-        {/* Top Header Bar: Left Display Title | Right Editorial Subtitle (Matching reference side-by-side on mobile) */}
+        {/* Top Header Bar: Left Display Title | Right Editorial Subtitle in sharp Brand Navy */}
         <div
           ref={headerRef}
           className="flex flex-row items-start justify-between gap-4 pb-8 sm:pb-12 lg:pb-14 select-none"
@@ -161,7 +160,7 @@ export function ProcessSection() {
           <div>
             <h2
               id="process-heading"
-              className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-none"
+              className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-brand-navy leading-none"
             >
               Ablauf
             </h2>
@@ -169,16 +168,16 @@ export function ProcessSection() {
 
           {/* Right: Editorial Two-Line Subtitle */}
           <div className="text-right shrink-0">
-            <span className="block text-white text-xs sm:text-base font-normal tracking-tight leading-snug">
+            <span className="block text-brand-navy text-xs sm:text-base font-normal tracking-tight leading-snug">
               Strukturierte Exzellenz
             </span>
-            <span className="block text-white/60 text-[10px] sm:text-sm font-light mt-0.5">
+            <span className="block text-brand-navy/60 text-[10px] sm:text-sm font-light mt-0.5">
               Vom Entwurf bis zum reinsten Glanz
             </span>
           </div>
         </div>
 
-        {/* Frosted Smoked Glass Cards: Alternating Left-Right Zigzag on Mobile (< lg) and 4-Column on Desktop (lg+) */}
+        {/* Frosted Navy Glass Cards: Alternating Left-Right Zigzag on Mobile (< lg) and 4-Column on Desktop (lg+) */}
         <div
           ref={cardsRef}
           className="flex flex-col gap-2.5 sm:gap-4 lg:grid lg:grid-cols-4 lg:gap-0.5 w-full pt-6 sm:pt-10 pb-12 sm:pb-16 lg:pb-65 overflow-x-clip"
@@ -189,18 +188,18 @@ export function ProcessSection() {
               className={`w-[calc(50%-4px)] sm:w-[calc(50%-8px)] lg:w-full max-w-[calc(50%-4px)] sm:max-w-[calc(50%-8px)] lg:max-w-none ${step.alignmentClass} lg:self-auto lg:m-0 ${step.offsetClass}`}
             >
               <div
-                className="process-frosted-card relative flex flex-col justify-center items-center text-center gap-2 sm:gap-3 md:gap-4 lg:justify-between lg:items-stretch lg:text-left lg:gap-0 w-full max-w-full p-3 sm:p-5 lg:p-8 rounded-md bg-[#1e1b18]/78 backdrop-blur-md border border-white/8 shadow-2xl shadow-black/40 aspect-[4/3.1] sm:aspect-[16/10] lg:aspect-4/3 will-change-transform select-none box-border"
+                className="process-frosted-card relative flex flex-col justify-center items-center text-center gap-2 sm:gap-3 md:gap-4 lg:justify-between lg:items-stretch lg:text-left lg:gap-0 w-full max-w-full p-3 sm:p-5 lg:p-8 rounded-xl bg-[#0f182b]/82 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border border-white/12 shadow-[0_16px_40px_rgba(15,24,43,0.32)] aspect-[4/3.1] sm:aspect-[16/10] lg:aspect-4/3 will-change-transform select-none box-border hover:border-white/20 transition-colors duration-300"
               >
-                {/* Number: Centered on mobile & tablet, top-left on desktop */}
+                {/* Number: Brand lime neon on navy glass */}
                 <div className="flex items-center justify-center lg:items-start lg:justify-start w-full">
                   <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-brand-lime tracking-tight leading-none">
                     {step.step}
                   </span>
                 </div>
 
-                {/* Descriptive Text: Centered below number on mobile & tablet, bottom-right on desktop */}
+                {/* Descriptive Text: High contrast white on navy glass */}
                 <div className="text-center mx-auto lg:text-right lg:ml-auto lg:mr-0 lg:max-w-50 w-full max-w-[200px] sm:max-w-[280px] lg:max-w-50">
-                  <p className="text-white/80 text-[10.5px] xs:text-[11.5px] sm:text-xs md:text-sm lg:text-[12.5px] leading-snug sm:leading-relaxed font-light">
+                  <p className="text-white/90 text-[10.5px] xs:text-[11.5px] sm:text-xs md:text-sm lg:text-[12.5px] leading-snug sm:leading-relaxed font-light">
                     {step.text}
                   </p>
                 </div>
@@ -209,13 +208,13 @@ export function ProcessSection() {
           ))}
         </div>
 
-        {/* Bottom Status Line (No dot, accurate text) */}
-        <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 gap-3 sm:gap-4 select-none text-center sm:text-left">
+        {/* Bottom Status Line in Brand Navy */}
+        <div className="pt-5 border-t border-brand-navy/15 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-navy/70 gap-3 sm:gap-4 select-none text-center sm:text-left">
           <div>
             <span>Feste Objektleiter &amp; meisterhafter Standard in Chemnitz und Region</span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-white/50">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-brand-navy/60">
             <span>Festpreisgarantie</span>
             <span>&middot;</span>
             <span>Gewerblich haftpflichtversichert</span>

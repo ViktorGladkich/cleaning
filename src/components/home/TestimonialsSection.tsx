@@ -64,7 +64,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     role: "Head of Operations & Facility Management",
     company: "Technologie Campus Chemnitz",
     location: "Chemnitz",
-    src: "/images/service_grid_glas.jpg",
+    src: "/images/service_grid_glas.webp",
   },
 ];
 
