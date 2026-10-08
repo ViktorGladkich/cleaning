@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { gsap } from "@/lib/gsap";
 import { RollingText } from "@/components/animations";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { MAIN_NAV_LINKS } from "./navData";
@@ -23,6 +24,20 @@ export function Header() {
 
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Self-managed entrance animation: on homepage slide down smoothly; on all other pages ensure it's immediately visible
+  useEffect(() => {
+    if (!headerRef.current) return;
+    if (pathname === "/") {
+      gsap.fromTo(
+        headerRef.current,
+        { y: -120 },
+        { y: 0, duration: 0.85, ease: "expo.out", delay: 0.85 }
+      );
+    } else {
+      gsap.set(headerRef.current, { y: 0, clearProps: "transform" });
+    }
+  }, [pathname]);
 
   // Close menus on outside click
   useEffect(() => {
@@ -69,10 +84,7 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className={cn(
-        "fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260 transform-gpu will-change-transform",
-        pathname === "/" ? "-translate-y-30" : "translate-y-0"
-      )}
+      className="fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260 transform-gpu will-change-transform"
     >
       {/* Top Capsule: Frosted Glass Pill */}
       <nav

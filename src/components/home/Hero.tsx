@@ -96,13 +96,6 @@ export function Hero() {
             },
           },
           0.85
-        )
-        // 6. Header slides down once on page entry and stays visible everywhere
-        .fromTo(
-          document.querySelector("header"),
-          { y: -120 },
-          { y: 0, duration: 0.85, ease: "expo.out" },
-          0.85
         );
     },
     { scope: containerRef }
