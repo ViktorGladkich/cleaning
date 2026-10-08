@@ -14,76 +14,65 @@ export function WerkschauSection() {
       const gallery = galleryRef.current;
       if (!gallery) return;
 
-      // 1. Kinetic Monumental Typography Line-Reveal
-      gsap.fromTo(
-        ".werkschau-hero-line",
-        { y: "115%" },
-        {
-          y: "0%",
-          duration: 1.2,
-          stagger: 0.15,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: gallery,
-            start: "top 78%",
-            once: true,
-          },
-        }
-      );
+      // 1. Unified Kinetic Typography Reveal (single timeline prevents race conditions and scroll jitter)
+      const revealTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: gallery,
+          start: "top 78%",
+          once: true,
+        },
+      });
 
-      gsap.fromTo(
-        ".werkschau-lime-pill",
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          duration: 0.7,
-          delay: 0.35,
-          ease: "power3.inOut",
-          scrollTrigger: {
-            trigger: gallery,
-            start: "top 78%",
-            once: true,
+      revealTl
+        .fromTo(
+          ".werkschau-hero-line",
+          { y: "115%" },
+          {
+            y: "0%",
+            duration: 1.1,
+            stagger: 0.12,
+            ease: "power4.out",
+            force3D: true,
+          }
+        )
+        .fromTo(
+          ".werkschau-lime-pill",
+          { scaleX: 0 },
+          {
+            scaleX: 1,
+            duration: 0.65,
+            ease: "power3.inOut",
+            force3D: true,
           },
-        }
-      );
-
-      gsap.fromTo(
-        ".werkschau-lime-text",
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.4,
-          delay: 0.55,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: gallery,
-            start: "top 78%",
-            once: true,
+          "-=0.5"
+        )
+        .fromTo(
+          ".werkschau-lime-text",
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.35,
+            ease: "power2.out",
           },
-        }
-      );
-
-      // Corner texts & Scroll indicator reveal
-      gsap.fromTo(
-        [
-          ".werkschau-corner-text-top",
-          ".werkschau-corner-text-bottom",
-          ".werkschau-scroll-indicator",
-        ],
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: gallery,
-            start: "top 78%",
-            once: true,
+          "-=0.25"
+        )
+        .fromTo(
+          [
+            ".werkschau-corner-text-top",
+            ".werkschau-corner-text-bottom",
+            ".werkschau-scroll-indicator",
+          ],
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            force3D: true,
           },
-        }
-      );
+          "-=0.5"
+        );
 
       const revealedCards = new Set<number>();
 
@@ -99,7 +88,8 @@ export function WerkschauSection() {
           pin: true,
           pinSpacing: true,
           scrub: 0.45,
-          anticipatePin: 0,
+          anticipatePin: 1,
+          fastScrollEnd: true,
           invalidateOnRefresh: true,
         },
       });
@@ -186,35 +176,63 @@ export function WerkschauSection() {
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div
           ref={galleryRef}
-          className="relative w-full h-svh min-h-145 sm:h-screen sm:min-h-160 max-h-270 overflow-hidden my-0"
+          className="relative w-full h-svh min-h-145 sm:h-screen sm:min-h-160 max-h-270 overflow-hidden my-0 transform-gpu will-change-transform"
         >
           {/* Pinned background / text stage: centered & fixed in place */}
-          <div className="absolute inset-0 z-10 flex flex-col justify-between py-8 sm:py-14 pointer-events-none select-none">
+          <div
+            className="absolute inset-0 z-10 flex flex-col justify-between py-8 sm:py-14 pointer-events-none select-none transform-gpu will-change-transform"
+            style={{
+              transform: "translate3d(0, 0, 0)",
+              WebkitFontSmoothing: "antialiased",
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
+            }}
+          >
             {/* Corner Text: Top-Left */}
             <div className="px-4 sm:px-8 lg:px-12 flex justify-start">
-              <div className="werkschau-corner-text-top max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left pointer-events-auto">
+              <div
+                className="werkschau-corner-text-top max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left pointer-events-auto transform-gpu"
+                style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+              >
                 Einblicke in unsere Handwerks- &amp; Reinigungsstandards. Vom denkmalgeschützten Altbau bis zum modernen Gewerbeobjekt in Chemnitz und ganz Sachsen.
               </div>
             </div>
 
             {/* Giant Monumental Headline in Center (3 Lines) */}
-            <div className="werkschau-typography-wrapper text-center my-auto px-4 relative z-10">
+            <div
+              className="werkschau-typography-wrapper text-center my-auto px-4 relative z-10 transform-gpu will-change-transform"
+              style={{
+                transform: "translate3d(0, 0, 0)",
+                WebkitFontSmoothing: "antialiased",
+                WebkitBackfaceVisibility: "hidden",
+                backfaceVisibility: "hidden",
+              }}
+            >
               <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.1rem] font-medium text-brand-navy tracking-tight leading-[1.08] select-none">
                 {/* Line 1 */}
                 <span className="block overflow-hidden whitespace-nowrap">
-                  <span className="block werkschau-hero-line translate-y-full will-change-transform">
+                  <span
+                    className="block werkschau-hero-line translate-y-full transform-gpu will-change-transform"
+                    style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+                  >
                     Präzision im Bau.
                   </span>
                 </span>
                 {/* Line 2 */}
                 <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
-                  <span className="block werkschau-hero-line translate-y-full will-change-transform">
+                  <span
+                    className="block werkschau-hero-line translate-y-full transform-gpu will-change-transform"
+                    style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+                  >
                     Perfektion im Glanz.
                   </span>
                 </span>
                 {/* Line 3 with Lime Accent Pill */}
                 <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
-                  <span className="block werkschau-hero-line translate-y-full will-change-transform">
+                  <span
+                    className="block werkschau-hero-line translate-y-full transform-gpu will-change-transform"
+                    style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+                  >
                     <span className="werkschau-lime-pill inline-block bg-brand-lime px-3 py-0.5 rounded sm:rounded-md text-brand-navy origin-left scale-x-0 transform-gpu">
                       <span className="werkschau-lime-text opacity-0">Bis ins Detail</span>
                     </span>
@@ -225,7 +243,10 @@ export function WerkschauSection() {
 
             {/* Corner Text: Bottom-Right */}
             <div className="px-4 sm:px-8 lg:px-12 flex justify-end">
-              <div className="werkschau-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left sm:text-right pointer-events-auto">
+              <div
+                className="werkschau-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left sm:text-right pointer-events-auto transform-gpu"
+                style={{ WebkitBackfaceVisibility: "hidden", backfaceVisibility: "hidden" }}
+              >
                 Keine Kompromisse bei Material, Hygiene und Ausführung. Festangestellte Fachkräfte und lückenlose Qualitätskontrolle bei jedem Schritt.
               </div>
             </div>

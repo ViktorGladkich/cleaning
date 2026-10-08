@@ -37,12 +37,13 @@ export function PageTransition({ children }: PageTransitionProps) {
       { scaleY: 1, transformOrigin: "top" },
       {
         scaleY: 0,
-        duration: 0.8,
-        stagger: 0.07,
+        duration: 0.7,
+        stagger: 0.06,
         ease: "power3.inOut",
         onComplete: () => {
           if (overlay) {
             overlay.style.pointerEvents = "none";
+            overlay.style.visibility = "hidden";
           }
         },
       }
@@ -74,13 +75,7 @@ export function PageTransition({ children }: PageTransitionProps) {
       }
 
       // Ignore pure hash links on current page
-      if (href.startsWith("#") || href === pathname) {
-        return;
-      }
-
-      // If already navigating, prevent double trigger
-      if (isNavigatingRef.current) {
-        e.preventDefault();
+      if (href.startsWith("#")) {
         return;
       }
 
@@ -88,8 +83,14 @@ export function PageTransition({ children }: PageTransitionProps) {
       const url = new URL(href, window.location.origin);
       if (url.origin !== window.location.origin) return;
 
-      // Same pathname + hash only -> let browser handle hash jump
-      if (url.pathname === pathname && url.hash) return;
+      // Same page (with or without hash) -> let browser/Lenis handle it
+      if (url.pathname === pathname) return;
+
+      // If already navigating, prevent double trigger
+      if (isNavigatingRef.current) {
+        e.preventDefault();
+        return;
+      }
 
       e.preventDefault();
       isNavigatingRef.current = true;
@@ -97,6 +98,7 @@ export function PageTransition({ children }: PageTransitionProps) {
       const cols = colsRef.current.filter(Boolean);
       const overlay = overlayRef.current;
       if (overlay) {
+        overlay.style.visibility = "visible";
         overlay.style.pointerEvents = "auto";
       }
 
@@ -106,7 +108,7 @@ export function PageTransition({ children }: PageTransitionProps) {
         { scaleY: 0, transformOrigin: "bottom" },
         {
           scaleY: 1,
-          duration: 0.5,
+          duration: 0.45,
           stagger: 0.05,
           ease: "power3.inOut",
           onComplete: () => {
@@ -118,7 +120,10 @@ export function PageTransition({ children }: PageTransitionProps) {
       // Failsafe timeout in case route change hangs
       setTimeout(() => {
         isNavigatingRef.current = false;
-        if (overlay) overlay.style.pointerEvents = "none";
+        if (overlay) {
+          overlay.style.pointerEvents = "none";
+          overlay.style.visibility = "hidden";
+        }
       }, 1500);
     };
 
@@ -130,11 +135,12 @@ export function PageTransition({ children }: PageTransitionProps) {
 
   return (
     <>
-      {/* 5-Column Staircase Curtain Overlay */}
+      {/* 5-Column Staircase Curtain Overlay (no w-screen/h-screen overflow conflict, hidden when idle) */}
       <div
         ref={overlayRef}
         aria-hidden="true"
-        className="fixed inset-0 z-[9999] pointer-events-none grid grid-cols-5 h-screen w-screen overflow-hidden select-none"
+        className="fixed inset-0 z-[9999] pointer-events-none grid grid-cols-5 w-full h-full overflow-hidden select-none"
+        style={{ visibility: "hidden" }}
       >
         {[0, 1, 2, 3, 4].map((i) => (
           <div
@@ -142,8 +148,8 @@ export function PageTransition({ children }: PageTransitionProps) {
             ref={(el) => {
               colsRef.current[i] = el;
             }}
-            className="h-full w-[calc(100%+1px)] bg-[#FAFAFA] transform-gpu origin-top"
-            style={{ transform: "scaleY(1)" }}
+            className="h-full w-[calc(100%+1px)] bg-brand-cream transform-gpu origin-top"
+            style={{ transform: "scaleY(0)" }}
           />
         ))}
       </div>
