@@ -157,22 +157,12 @@ export function Header() {
             </div>
           </div>
 
-          {/* Right Action: CTA Button + Mobile Menu Toggle */}
+          {/* Right Action: CTA Button on Desktop + Mobile Menu Toggle */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto z-10">
-            <div className="hidden sm:block">
+            <div className="hidden md:block">
               <CtaButton href="/contacts" onClick={closeMenu} size="sm">
                 Termin vereinbaren
               </CtaButton>
-            </div>
-
-            <div className="sm:hidden">
-              <CtaButton
-                href="/contacts"
-                onClick={closeMenu}
-                size="sm"
-                iconOnly
-                aria-label="Termin vereinbaren"
-              />
             </div>
 
             <button

@@ -1,17 +1,12 @@
 import { Metadata } from "next";
-import { ComingSoonPlaceholder } from "@/components/ui/ComingSoonPlaceholder";
+import { ReinigungPageContent } from "@/components/reinigung/ReinigungPageContent";
 
 export const metadata: Metadata = {
-  title: "Gebäudereinigung — Tadiks Chemnitz",
+  title: "Gebäudereinigung & Hygiene Chemnitz — Meisterbetrieb Tadiks",
   description:
-    "Professionelle Reinigungsdienste für Privat- und Gewerbeobjekte in Chemnitz.",
+    "Professionelle Unterhalts-, Glas-, Bau- und Spezialreinigung für Gewerbe und Privat in Chemnitz & Mittelsachsen. 100% Festpreisgarantie & höchste RKI-Hygienestandards.",
 };
 
 export default function ReinigungPage() {
-  return (
-    <ComingSoonPlaceholder
-      title="Gebäudereinigung & Hygiene"
-      subtitle="Alle Details zu Unterhalts-, Grund-, Fenster- und Baufeinreinigung in Chemnitz stehen in Kürze hier für Sie bereit."
-    />
-  );
+  return <ReinigungPageContent />;
 }

@@ -58,12 +58,25 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       window.scrollTo(0, 0);
     }
 
-    // Refresh ScrollTrigger after next tick so DOM layout of the new page is fully calculated
-    const timer = setTimeout(() => {
+    // Refresh Lenis and ScrollTrigger after next tick so DOM layout of the new page is fully calculated
+    const timer1 = setTimeout(() => {
+      if (lenisRef.current) {
+        lenisRef.current.resize();
+      }
       ScrollTrigger.refresh();
-    }, 60);
+    }, 100);
 
-    return () => clearTimeout(timer);
+    const timer2 = setTimeout(() => {
+      if (lenisRef.current) {
+        lenisRef.current.resize();
+      }
+      ScrollTrigger.refresh();
+    }, 400);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, [pathname]);
 
   // Return children inside a Fragment (no DOM wrapper)
