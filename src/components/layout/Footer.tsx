@@ -56,7 +56,7 @@ function FooterLink({
   isExternal?: boolean;
 }) {
   const content = (
-    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide break-words">
+    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide wrap-break-word">
       <RollingText
         className="text-white/60 font-light"
         duplicateClassName="text-white font-medium"

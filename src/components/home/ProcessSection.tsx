@@ -147,7 +147,7 @@ export function ProcessSection() {
 
         {/* Delicate cream veil: preserves raw photo beauty while guaranteeing text legibility */}
         <div className="absolute inset-0 bg-brand-cream/5 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-cream/15 via-brand-cream/5 to-brand-cream/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-brand-cream/15 via-brand-cream/5 to-brand-cream/15 pointer-events-none" />
       </div>
 
       <div className="relative z-10 max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
@@ -188,7 +188,7 @@ export function ProcessSection() {
               className={`w-[calc(50%-4px)] sm:w-[calc(50%-8px)] lg:w-full max-w-[calc(50%-4px)] sm:max-w-[calc(50%-8px)] lg:max-w-none ${step.alignmentClass} lg:self-auto lg:m-0 ${step.offsetClass}`}
             >
               <div
-                className="process-frosted-card relative flex flex-col justify-center items-center text-center gap-2 sm:gap-3 md:gap-4 lg:justify-between lg:items-stretch lg:text-left lg:gap-0 w-full max-w-full p-3 sm:p-5 lg:p-8 rounded-xl bg-[#0f182b]/82 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border border-white/12 shadow-[0_16px_40px_rgba(15,24,43,0.32)] aspect-[4/3.1] sm:aspect-[16/10] lg:aspect-4/3 will-change-transform select-none box-border hover:border-white/20 transition-colors duration-300"
+                className="process-frosted-card relative flex flex-col justify-center items-center text-center gap-2 sm:gap-3 md:gap-4 lg:justify-between lg:items-stretch lg:text-left lg:gap-0 w-full max-w-full p-3 sm:p-5 lg:p-8 rounded-xl bg-[#0f182b]/82 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border border-white/12 shadow-[0_16px_40px_rgba(15,24,43,0.32)] aspect-[4/3.1] sm:aspect-16/10 lg:aspect-4/3 will-change-transform select-none box-border hover:border-white/20 transition-colors duration-300"
               >
                 {/* Number: Brand lime neon on navy glass */}
                 <div className="flex items-center justify-center lg:items-start lg:justify-start w-full">
@@ -198,7 +198,7 @@ export function ProcessSection() {
                 </div>
 
                 {/* Descriptive Text: High contrast white on navy glass */}
-                <div className="text-center mx-auto lg:text-right lg:ml-auto lg:mr-0 lg:max-w-50 w-full max-w-[200px] sm:max-w-[280px] lg:max-w-50">
+                <div className="text-center mx-auto lg:text-right lg:ml-auto lg:mr-0 w-full max-w-50 sm:max-w-70 lg:max-w-50">
                   <p className="text-white/90 text-[10.5px] xs:text-[11.5px] sm:text-xs md:text-sm lg:text-[12.5px] leading-snug sm:leading-relaxed font-light">
                     {step.text}
                   </p>

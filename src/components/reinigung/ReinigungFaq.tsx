@@ -59,16 +59,16 @@ export function ReinigungFaq() {
   };
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#FAFAFA] text-[#0f182b] overflow-hidden">
+    <section className="relative py-24 sm:py-32 bg-brand-cream text-[#0f182b] overflow-hidden">
       <Container>
         {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#3D568F] font-semibold block mb-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand-navy font-semibold block mb-3">
             Häufige Fragen &amp; Antworten
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#0f182b] leading-[1.1]">
             Klarheit von Anfang an.{" "}
-            <span className="text-[#3D568F] block sm:inline">
+            <span className="text-brand-navy block sm:inline">
               Transparente Antworten.
             </span>
           </h2>
@@ -93,7 +93,7 @@ export function ReinigungFaq() {
                   aria-expanded={isOpen}
                 >
                   <div className="space-y-1">
-                    <span className="text-[11px] font-semibold text-[#3D568F] uppercase tracking-wider block">
+                    <span className="text-[11px] font-semibold text-brand-navy uppercase tracking-wider block">
                       {faq.category}
                     </span>
                     <span className="text-base sm:text-lg font-bold text-[#0f182b]">
@@ -103,7 +103,7 @@ export function ReinigungFaq() {
                   <div
                     className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
                       isOpen
-                        ? "bg-[#0f182b] text-[#EAF3B2] rotate-180"
+                        ? "bg-[#0f182b] text-brand-lime rotate-180"
                         : "bg-slate-100 text-slate-600"
                     }`}
                   >
@@ -132,14 +132,14 @@ export function ReinigungFaq() {
           <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
             <a
               href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[8px] bg-[#0f182b] text-white text-xs font-bold hover:bg-[#3D568F] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#0f182b] text-white text-xs font-bold hover:bg-brand-navy transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#EAF3B2]" />
+              <Phone className="w-3.5 h-3.5 text-brand-lime" />
               <span>{COMPANY_INFO.phone}</span>
             </a>
             <Link
               href="/kontakt"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-[8px] bg-white border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 transition-colors"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-700 text-xs font-bold hover:bg-slate-50 transition-colors"
             >
               <span>Nachricht schreiben</span>
               <ArrowRight className="w-3.5 h-3.5" />

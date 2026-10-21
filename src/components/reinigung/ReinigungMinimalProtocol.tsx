@@ -1,91 +1,102 @@
 "use client";
 
 import React, { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import Image from "next/image";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 
-const PROTOCOL_STEPS = [
+interface ProtocolStep {
+  num: string;
+  image: string;
+  title: string;
+  desc: string;
+}
+
+const PROTOCOL_STEPS: ProtocolStep[] = [
   {
     num: "01",
-    title: "Vor-Ort-Audit",
-    desc: "Kostenfreie Begehung Ihrer Liegenschaft. Wir erfassen Flächenmaße, Materialempfindlichkeiten (Parkett, Naturstein, Glas) und individuelle RKI-Vorgaben.",
+    image: "/images/protocol_step_1.jpg",
+    title: "Kostenloses Vor-Ort-Audit: Flächen erfassen, Bausubstanz schützen.",
+    desc: "Präzise Bestandsaufnahme aller Oberflächen und Materialien (Parkett, Naturstein, Glas). Verbindliche Festpreiskalkulation innerhalb von 24 Stunden.",
   },
   {
     num: "02",
-    title: "Festpreis-Konzept",
-    desc: "Transparente Leistungsverzeichnisse mit modular wählbaren Intervallen. Ein verbindlicher Festpreis ohne versteckte Nebenkosten oder Überraschungen.",
+    image: "/images/protocol_step_2.jpg",
+    title: "Verbindliches Festpreis-Konzept: Volle Kostensicherheit ohne Überraschungen.",
+    desc: "Transparent aufgeschlüsseltes Leistungsverzeichnis mit flexiblen Intervallen. Ein garantierter Festpreis ohne versteckte Nebenkosten.",
   },
   {
     num: "03",
-    title: "Stammpersonal",
-    desc: "Reinigung durch fest zugeteilte, geschulte Mitarbeiter mit Kärcher Professional-Technik und 4-Farben-Mikrofaserhygiene – diskret und verlässlich.",
+    image: "/images/protocol_step_3.jpg",
+    title: "Feste Stammpersonal-Teams: Höchste Diskretion und geschulte Fachkräfte.",
+    desc: "Reinigung durch fest zugeteilte Mitarbeiter mit Kärcher Professional-Technik und 4-Farben-Mikrofaserhygiene nach RKI-Vorgaben.",
   },
   {
     num: "04",
-    title: "Qualitätsnachweis",
-    desc: "Laufende Objektleiter-Audits und digitale Übergabeprotokolle. Sollte etwas nicht perfekt sein, bessern wir binnen 24 Stunden kostenfrei nach.",
+    image: "/images/protocol_step_4.jpg",
+    title: "Lückenloser Qualitätsnachweis: Objektleiter-Audit und 24h-Abnahmegarantie.",
+    desc: "Laufende Audits durch Ihren festen deutschen Objektleiter. Sollte etwas nicht perfekt sein, bessern wir binnen 24 Stunden kostenfrei nach.",
   },
 ];
 
 export function ReinigungMinimalProtocol() {
   const sectionRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const statementRef = useRef<HTMLDivElement>(null);
+  const runwayRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Kinetic statement reveal
-      gsap.fromTo(
-        ".protocol-statement-chunk",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: textRef.current,
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
+      // Clean kinetic statement entrance on left
+      if (statementRef.current) {
+        gsap.fromTo(
+          statementRef.current.querySelectorAll(".protocol-statement-chunk"),
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: statementRef.current,
+              start: "top 80%",
+              once: true,
+            },
+          }
+        );
+      }
 
-      // 2. Cinematic Curtain Transition: The dark navy section subtly glides and lifts upwards,
-      // letting the subsequent cream FAQ section smoothly roll up over it like a curtain
-      const mm = gsap.matchMedia();
-      mm.add("(min-width: 768px)", () => {
-        gsap.to(sectionRef.current, {
-          yPercent: -15,
-          opacity: 0.92,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "bottom 85%",
-            end: "bottom top",
-            scrub: true,
-          },
+      // Hide preceding cards once the next card stacks on top of them
+      // This guarantees that in the end, ONLY the last card (Card 04) is visible
+      // and previous cards can never peek out or slide out when scrolling further
+      const cardNodes = sectionRef.current.querySelectorAll<HTMLElement>(".protocol-step-card-wrapper");
+      if (cardNodes.length > 1) {
+        cardNodes.forEach((card, idx) => {
+          if (idx === 0) return;
+          const prevCard = cardNodes[idx - 1];
+
+          ScrollTrigger.create({
+            trigger: card,
+            start: () => (window.innerWidth >= 640 ? "top 144px" : "top 112px"),
+            onEnter: () => {
+              gsap.set(prevCard, { autoAlpha: 0 });
+            },
+            onLeaveBack: () => {
+              gsap.set(prevCard, { autoAlpha: 1 });
+            },
+          });
         });
-      });
 
-      // 2. Protocol steps reveal
-      gsap.fromTo(
-        ".protocol-step-item",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".protocol-steps-grid",
-            start: "top 85%",
-            once: true,
-          },
+        // Exact travel distance needed for Card 04 to reach top-28/top-36 and land flat on Card 03,
+        // and immediately continue scrolling down with zero dead pause
+        const lastCard = cardNodes[cardNodes.length - 1];
+        if (lastCard && runwayRef.current) {
+          const h = lastCard.offsetHeight || 500;
+          const gap = window.innerWidth >= 640 ? 128 : 96;
+          runwayRef.current.style.height = `${h + gap + 16}px`;
         }
-      );
+      }
     },
     { scope: sectionRef }
   );
@@ -95,57 +106,103 @@ export function ReinigungMinimalProtocol() {
       ref={sectionRef}
       id="reinigung-protocol"
       aria-label="Qualitätsstandard & Ablauf"
-      className="relative z-10 w-full bg-brand-navy text-white pt-24 sm:pt-32 pb-20 sm:pb-28 lg:pb-36 will-change-transform"
+      className="relative z-10 w-full bg-brand-navy text-white py-24 sm:py-32 lg:py-40"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         
-        {/* Large Statement with Key Accents in brand-lime (#EAF3B2) without "Der Standard" label */}
-        <div ref={textRef} className="max-w-4xl mb-16 sm:mb-24">
-          <p className="text-2xl sm:text-4xl lg:text-5xl font-light text-white/90 leading-[1.25] tracking-tight">
-            <span className="block protocol-statement-chunk mb-2">
-              Wir putzen nicht nur oberflächlich –{" "}
-              <span className="text-brand-lime font-normal">
-                wir schützen die Bausubstanz.
-              </span>
-            </span>
-            <span className="block protocol-statement-chunk font-extralight text-white/80">
-              Durch{" "}
-              <span className="text-brand-lime font-normal underline decoration-brand-lime/30 underline-offset-8">
-                materialgerechte pH-Werte
-              </span>
-              , modernste{" "}
-              <span className="text-brand-lime font-normal underline decoration-brand-lime/30 underline-offset-8">
-                Osmose-Filterung
-              </span>{" "}
-              und zertifizierte{" "}
-              <span className="text-brand-lime font-normal">
-                Hygienestandards
-              </span>
-              .
-            </span>
-          </p>
-        </div>
-
-        {/* 4 Clean Steps: 4-Column Layout on Desktop, Border Separators */}
-        <div className="protocol-steps-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t border-white/15">
-          {PROTOCOL_STEPS.map((step) => (
-            <div
-              key={step.num}
-              className="protocol-step-item pt-8 pb-10 sm:py-10 lg:pr-8 border-b lg:border-b-0 border-white/15 flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono tracking-widest text-brand-lime block mb-4">
-                  SCHRITT {step.num}
+        {/* 2-Column Split: Wider Sticky Statement on Left | Stacking Cards on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-start">
+          
+          {/* Left Column: Pure Sticky Statement with generous width */}
+          <div
+            ref={statementRef}
+            className="lg:col-span-6 xl:col-span-7 lg:sticky lg:top-36 xl:top-40 self-start pr-0 lg:pr-6 xl:pr-10"
+          >
+            <div className="w-full max-w-2xl xl:max-w-3xl">
+              <p className="text-2xl sm:text-3xl xl:text-[38px] font-light text-white/95 leading-[1.3] tracking-tight">
+                <span className="block protocol-statement-chunk mb-4">
+                  Wir putzen nicht nur oberflächlich –{" "}
+                  <span className="text-brand-lime font-normal">
+                    wir schützen die Bausubstanz.
+                  </span>
                 </span>
-                <h3 className="text-xl sm:text-2xl font-normal text-white mb-3 tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-white/70 leading-relaxed font-light">
-                  {step.desc}
-                </p>
-              </div>
+                <span className="block protocol-statement-chunk font-extralight text-white/85 mb-5">
+                  Durch{" "}
+                  <span className="text-brand-lime font-normal">
+                    materialgerechte pH-Werte
+                  </span>
+                  , modernste{" "}
+                  <span className="text-brand-lime font-normal">
+                    Osmose-Filterung
+                  </span>{" "}
+                  und zertifizierte{" "}
+                  <span className="text-brand-lime font-normal">
+                    Hygienestandards
+                  </span>
+                  .
+                </span>
+                <span className="block protocol-statement-chunk font-extralight text-white/75 text-lg sm:text-xl xl:text-[22px] leading-relaxed">
+                  Ob empfindlicher{" "}
+                  <span className="text-brand-lime font-normal">Naturstein</span>, 
+                  versiegeltes{" "}
+                  <span className="text-brand-lime font-normal">Echtholzparkett</span> oder 
+                  weitläufige{" "}
+                  <span className="text-brand-lime font-normal">Glasfassaden</span>: 
+                  Wir stimmen Chemie, Mechanik und Intervalle exakt auf die Werkstoffe Ihrer Immobilie ab – für makellose Reinheit und dauerhaften Werterhalt.
+                </span>
+              </p>
             </div>
-          ))}
+          </div>
+
+          {/* Right Column: Stacking Cards (Zero Flickering, 100% Solid Opaque, No Shadows, Full Coverage) */}
+          <div className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center lg:items-end w-full">
+            {PROTOCOL_STEPS.map((step, idx) => (
+              <div
+                key={step.num}
+                className={`protocol-step-card-wrapper sticky top-28 sm:top-36 w-full flex items-center justify-center lg:justify-end ${
+                  idx === PROTOCOL_STEPS.length - 1 ? "mb-0" : "mb-24 sm:mb-32"
+                }`}
+                style={{
+                  zIndex: idx + 1,
+                }}
+              >
+                {/* Outer Card: 100% Solid brand-cream (matches light sections, zero opacity flickering), no shadows */}
+                <div className="relative w-full max-w-120 bg-brand-cream text-brand-navy rounded-[28px] sm:rounded-[34px] p-4 sm:p-5 border border-white/20 shadow-none">
+                  
+                  {/* Top: Large Rounded Photographic Surface */}
+                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-[20px] sm:rounded-3xl overflow-hidden bg-slate-900 border border-brand-navy/10">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 480px"
+                      className="object-cover object-center"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-black/10 pointer-events-none" />
+                  </div>
+
+                  {/* Bottom: Card Eyebrow + Uniform Lightweight Title + Description (No bold weights, uniform height) */}
+                  <div className="pt-5 pb-2 px-3 sm:px-4 min-h-42.5 sm:min-h-45 flex flex-col justify-start">
+                    <span className="text-xs sm:text-[13px] font-mono tracking-widest text-brand-navy/60 font-normal uppercase block mb-2.5">
+                      SCHRITT {step.num}
+                    </span>
+
+                    <h3 className="text-lg sm:text-xl md:text-[21px] font-normal text-brand-navy leading-snug tracking-tight mb-2.5">
+                      {step.title}
+                    </h3>
+
+                    <p className="text-sm sm:text-[14.5px] text-brand-navy/70 leading-relaxed font-light">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Exact Dynamic Travel Runway: allows Card 04 to reach top-28/top-36 and land flat on Card 03, then immediately scrolls down */}
+            <div ref={runwayRef} className="h-145 sm:h-155 w-full pointer-events-none" aria-hidden="true" />
+          </div>
+
         </div>
 
       </div>

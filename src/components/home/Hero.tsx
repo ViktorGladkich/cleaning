@@ -155,7 +155,7 @@ export function Hero() {
                   <CtaButton
                     href="/contacts"
                     size="md"
-                    className="h-9 sm:h-[42px] pl-3.5 sm:pl-5 pr-1 sm:pr-1.5 text-[13px] xs:text-[13.5px] sm:text-[15px]"
+                    className="h-9 sm:h-10.5 pl-3.5 sm:pl-5 pr-1 sm:pr-1.5 text-[13px] xs:text-[13.5px] sm:text-[15px]"
                     arrowClassName="w-7 h-7 sm:w-8 sm:h-8"
                   >
                     Termin vereinbaren

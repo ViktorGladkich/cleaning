@@ -7,19 +7,31 @@ import { ArrowUpRight } from "lucide-react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { RollingText } from "@/components/animations/RollingText";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { cn } from "@/lib/utils";
 
-interface ServiceGridItem {
+export interface ServiceGridItem {
   id: string;
   title: string;
   tagline: string;
-  category: "REINIGUNG" | "BAU";
+  category?: string;
   imageSrc: string;
-  imageAlt: string;
+  imageAlt?: string;
   bullets: string[];
   href: string;
 }
 
-const SERVICES: ServiceGridItem[] = [
+export interface ServicesGridSectionProps {
+  id?: string;
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  items?: ServiceGridItem[];
+  className?: string;
+}
+
+export const SERVICES: ServiceGridItem[] = [
   {
     id: "unterhalt",
     title: "Unterhaltsreinigung",
@@ -106,7 +118,16 @@ const SERVICES: ServiceGridItem[] = [
   },
 ];
 
-export function ServicesDualSection() {
+export function ServicesGridSection({
+  id = "services",
+  eyebrow = "Unsere Leistungen",
+  title,
+  subtitle = "Professionelle Gebäudereinigung und erstklassiges Bauhandwerk vereint unter einem Dach. Feste Ansprechpartner und verbindliche Festpreise in Chemnitz und ganz Sachsen.",
+  ctaText = "Alle Leistungen ansehen",
+  ctaHref = "/services",
+  items = SERVICES,
+  className,
+}: ServicesGridSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -138,35 +159,38 @@ export function ServicesDualSection() {
           { y: 16, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.7, ease: "power2.out" },
           "-=0.55"
-        )
-        .fromTo(
-          ".services-anim-cta",
+        );
+
+      const ctaEl = sectionRef.current.querySelector(".services-anim-cta");
+      if (ctaEl) {
+        tl.fromTo(
+          ctaEl,
           { y: 14, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.65, ease: "power2.out" },
           "-=0.55"
-        )
-        // Staggered staircase with custom physical ladder heights from bottom
-        // Row 1: Card 1 closest to top border (28px), Card 2 starts lower (56px), Card 3 starts even lower (84px)
-        // Row 2: Card 4 starts close to Card 1 (36px), Card 5 starts lower (64px), Card 6 starts lower (92px)
-        .fromTo(
-          ".service-editorial-card",
-          {
-            y: (index: number) => {
-              const ladderOffsets = [28, 56, 84, 36, 64, 92];
-              return ladderOffsets[index] ?? 40;
-            },
-            opacity: 0,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.95,
-            stagger: 0.12,
-            ease: "power2.out",
-            clearProps: "transform,opacity",
-          },
-          "-=0.6"
         );
+      }
+
+      // Staggered staircase with custom physical ladder heights from bottom
+      tl.fromTo(
+        ".service-editorial-card",
+        {
+          y: (index: number) => {
+            const ladderOffsets = [28, 56, 84, 36, 64, 92];
+            return ladderOffsets[index] ?? 40;
+          },
+          opacity: 0,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.95,
+          stagger: 0.12,
+          ease: "power2.out",
+          clearProps: "transform,opacity",
+        },
+        "-=0.6"
+      );
 
       // 2. Continuous smooth parallax drift on card images while scrolling through the section
       gsap.fromTo(
@@ -190,44 +214,51 @@ export function ServicesDualSection() {
   return (
     <section
       ref={sectionRef}
-      id="services"
-      aria-label="Leistungen & Services"
-      className="relative z-10 w-full bg-brand-cream py-16 sm:py-24 overflow-x-clip"
+      id={id}
+      aria-label={typeof title === "string" ? title : "Leistungen & Services"}
+      className={cn(
+        "relative z-10 w-full bg-brand-cream py-16 sm:py-24 overflow-x-clip",
+        className
+      )}
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* --- Clean German Eyebrow (consistent with AboutSection) --- */}
-        <div className="services-anim-eyebrow mb-4 sm:mb-6">
-          <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block">
-            Unsere Leistungen
-          </span>
-        </div>
+        {/* --- Clean German Eyebrow --- */}
+        {eyebrow && (
+          <div className="services-anim-eyebrow mb-4 sm:mb-6">
+            <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block">
+              {eyebrow}
+            </span>
+          </div>
+        )}
 
-        {/* --- Header Row: Title on Left, Text & Right-Aligned Button on Right (Horizontally Aligned) --- */}
+        {/* --- Header Row: Title on Left, Text & Right-Aligned Button on Right --- */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 sm:gap-10 mb-10 sm:mb-14">
           <div className="max-w-2xl">
             <h2 className="services-anim-title text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-brand-navy leading-[1.15]">
-              Zwei Kernbereiche. Meisterhafte Präzision.
+              {title || "Zwei Kernbereiche. Meisterhafte Präzision."}
             </h2>
           </div>
 
-          {/* Right Column: Paragraph and CTA Button aligned to the right edge of the screen/grid */}
+          {/* Right Column: Paragraph and CTA Button */}
           <div className="flex flex-col items-start lg:items-end gap-5 max-w-md shrink-0 w-full lg:w-auto">
-            <p className="services-anim-desc text-brand-navy/70 text-sm sm:text-base leading-relaxed text-left lg:text-right pt-1 lg:pt-1.5">
-              Professionelle Gebäudereinigung und erstklassiges Bauhandwerk vereint unter einem Dach.
-              Feste Ansprechpartner und verbindliche Festpreise in Chemnitz und ganz Sachsen.
-            </p>
-            <div className="services-anim-cta self-start lg:self-end">
-              <CtaButton href="/services" size="md">
-                Alle Leistungen ansehen
-              </CtaButton>
-            </div>
+            {subtitle && (
+              <p className="services-anim-desc text-brand-navy/70 text-sm sm:text-base leading-relaxed text-left lg:text-right pt-1 lg:pt-1.5">
+                {subtitle}
+              </p>
+            )}
+            {ctaText && ctaHref && (
+              <div className="services-anim-cta self-start lg:self-end">
+                <CtaButton href={ctaHref} size="md">
+                  {ctaText}
+                </CtaButton>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* --- 6-Card Editorial Grid (3 Columns, 2 Rows) --- */}
+        {/* --- Card Editorial Grid --- */}
         <div className="services-editorial-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-brand-navy/20 bg-brand-cream">
-          {SERVICES.map((card, idx) => (
+          {items.map((card, idx) => (
             <Link
               key={card.id}
               href={card.href}
@@ -269,7 +300,7 @@ export function ServicesDualSection() {
                   <div className="service-card-parallax-img relative w-full h-[120%] top-[-10%] will-change-transform">
                     <Image
                       src={card.imageSrc}
-                      alt={card.imageAlt}
+                      alt={card.imageAlt || card.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -296,8 +327,9 @@ export function ServicesDualSection() {
             </Link>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
+
+export const ServicesDualSection = ServicesGridSection;

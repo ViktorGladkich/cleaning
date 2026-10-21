@@ -137,7 +137,7 @@ export function CookieBanner() {
     <aside
       role="region"
       aria-label="Cookie-Einstellungen"
-      className={`fixed bottom-0 left-0 right-0 z-[9990] w-full bg-[#e6f47f] text-neutral-950 border-t border-black/10 shadow-[0_-10px_35px_rgba(0,0,0,0.18)] transition-all duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
+      className={`fixed bottom-0 left-0 right-0 z-9990 w-full bg-[#e6f47f] text-neutral-950 border-t border-black/10 shadow-[0_-10px_35px_rgba(0,0,0,0.18)] transition-all duration-900 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu ${
         isSlidIn ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
       }`}
     >
@@ -178,7 +178,7 @@ export function CookieBanner() {
               {/* 1. Essentiell (Immer aktiv) */}
               <label className="flex items-center gap-2.5 text-xs sm:text-[13px] text-neutral-900 cursor-not-allowed opacity-90 font-medium">
                 <span className="w-4.5 h-4.5 rounded-full bg-neutral-950 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 text-white stroke-[3]" />
+                  <Check className="w-3 h-3 text-white stroke-3" />
                 </span>
                 <span>Essenziell</span>
               </label>
@@ -252,7 +252,7 @@ export function CookieBanner() {
             <button
               type="button"
               onClick={handleAcceptAll}
-              className="w-full text-center px-6 py-2.5 sm:py-3 bg-neutral-950 text-white rounded-[8px] text-xs sm:text-[13px] font-medium hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer"
+              className="w-full text-center px-6 py-2.5 sm:py-3 bg-neutral-950 text-white rounded-lg text-xs sm:text-[13px] font-medium hover:bg-neutral-800 transition-colors shadow-sm cursor-pointer"
             >
               Alle akzeptieren
             </button>
@@ -260,7 +260,7 @@ export function CookieBanner() {
             <button
               type="button"
               onClick={handleSaveSelection}
-              className="w-full text-center px-6 py-2.5 sm:py-3 bg-white text-neutral-950 border border-neutral-300 rounded-[8px] text-xs sm:text-[13px] font-medium hover:bg-neutral-100 transition-colors shadow-xs cursor-pointer"
+              className="w-full text-center px-6 py-2.5 sm:py-3 bg-white text-neutral-950 border border-neutral-300 rounded-lg text-xs sm:text-[13px] font-medium hover:bg-neutral-100 transition-colors shadow-xs cursor-pointer"
             >
               Auswahl speichern
             </button>

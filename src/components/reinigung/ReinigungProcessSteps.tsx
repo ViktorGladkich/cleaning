@@ -80,17 +80,17 @@ export function ReinigungProcessSteps() {
   return (
     <section
       ref={containerRef}
-      className="relative py-24 sm:py-32 bg-[#FAFAFA] text-[#0f182b] overflow-hidden"
+      className="relative py-24 sm:py-32 bg-brand-cream text-[#0f182b] overflow-hidden"
     >
       <Container className="relative z-10">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#3D568F] font-semibold block mb-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand-navy font-semibold block mb-3">
             Strukturierter Ablauf
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#0f182b] leading-[1.1]">
             Der strukturierte Weg zu Ihrem{" "}
-            <span className="text-[#3D568F]">Wunsch-Ergebnis</span>.
+            <span className="text-brand-navy">Wunsch-Ergebnis</span>.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             Keine chaotischen Übergaben, keine wechselnden Gesichter. Mit unserem standardisierten
@@ -107,19 +107,19 @@ export function ReinigungProcessSteps() {
             >
               {/* Step Number Top */}
               <div className="flex items-center justify-between mb-6">
-                <span className="text-3xl font-black text-[#3D568F]/20 group-hover:text-[#3D568F] transition-colors">
+                <span className="text-3xl font-black text-brand-navy/20 group-hover:text-brand-navy transition-colors">
                   {step.number}
                 </span>
-                <span className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-[#EAF3B2] text-[#0f182b] flex items-center justify-center text-xs font-bold transition-colors">
+                <span className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-brand-lime text-[#0f182b] flex items-center justify-center text-xs font-bold transition-colors">
                   0{index + 1}
                 </span>
               </div>
 
               {/* Title & Subtitle */}
-              <h3 className="text-lg font-bold text-[#0f182b] tracking-tight group-hover:text-[#3D568F] transition-colors">
+              <h3 className="text-lg font-bold text-[#0f182b] tracking-tight group-hover:text-brand-navy transition-colors">
                 {step.title}
               </h3>
-              <p className="text-xs font-medium text-[#3D568F] mt-1 mb-4">
+              <p className="text-xs font-medium text-brand-navy mt-1 mb-4">
                 {step.subtitle}
               </p>
 
@@ -132,7 +132,7 @@ export function ReinigungProcessSteps() {
               <div className="pt-4 border-t border-slate-100 space-y-2">
                 {step.highlights.map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-[11px] text-slate-700 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#3D568F] shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-brand-navy shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -145,7 +145,7 @@ export function ReinigungProcessSteps() {
         <div className="mt-16 text-center">
           <Link
             href="/kontakt"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[8px] bg-[#0f182b] hover:bg-[#3D568F] text-white font-bold text-sm tracking-wide transition-all shadow-md hover:shadow-lg hover:shadow-[#0f182b]/20"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0f182b] hover:bg-brand-navy text-white font-bold text-sm tracking-wide transition-all shadow-md hover:shadow-lg hover:shadow-[#0f182b]/20"
           >
             <span>Jetzt Schritt 1 starten – Vor-Ort-Termin vereinbaren</span>
             <ArrowRight className="w-4 h-4" />

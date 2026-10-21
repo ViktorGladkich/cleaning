@@ -74,19 +74,19 @@ export function ReinigungEquipmentShowcase() {
       className="relative py-24 sm:py-32 bg-[#0b1220] text-white overflow-hidden"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#3D568F]/20 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#EAF3B2]/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-125 h-125 bg-brand-navy/20 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-112.5 h-112.5 bg-brand-lime/10 blur-[120px] rounded-full pointer-events-none" />
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Editorial context */}
           <div className="lg:col-span-5">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#EAF3B2] font-semibold block mb-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-brand-lime font-semibold block mb-3">
               Technologie &amp; Materialschutz
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.1]">
               Moderne Werkzeuge.{" "}
-              <span className="text-[#9FBAF1] block sm:inline">
+              <span className="text-brand-light-blue block sm:inline">
                 Schonende Chemie. Perfektes Ergebnis.
               </span>
             </h2>
@@ -101,7 +101,7 @@ export function ReinigungEquipmentShowcase() {
 
             <div className="mt-8 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
               <div className="flex items-center gap-3">
-                <Sparkles className="w-5 h-5 text-[#EAF3B2]" />
+                <Sparkles className="w-5 h-5 text-brand-lime" />
                 <span className="text-sm font-bold text-white">Geprüfte Industriequalität</span>
               </div>
               <p className="text-xs text-slate-300 mt-1.5">
@@ -117,14 +117,14 @@ export function ReinigungEquipmentShowcase() {
               return (
                 <div
                   key={idx}
-                  className="tech-card bg-slate-900/80 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-7 flex flex-col justify-between hover:border-[#EAF3B2]/50 transition-all duration-300 hover:-translate-y-1"
+                  className="tech-card bg-slate-900/80 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-7 flex flex-col justify-between hover:border-brand-lime/50 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-[#3D568F]/30 text-[#9FBAF1] flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-xl bg-brand-navy/30 text-brand-light-blue flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-[11px] font-semibold text-[#EAF3B2] uppercase tracking-wider bg-[#EAF3B2]/10 px-2.5 py-0.5 rounded-full border border-[#EAF3B2]/20">
+                      <span className="text-[11px] font-semibold text-brand-lime uppercase tracking-wider bg-brand-lime/10 px-2.5 py-0.5 rounded-full border border-brand-lime/20">
                         {item.badge}
                       </span>
                     </div>
@@ -134,7 +134,7 @@ export function ReinigungEquipmentShowcase() {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-white/10 flex items-baseline justify-between">
-                    <span className="text-2xl font-black text-[#EAF3B2]">{item.stat}</span>
+                    <span className="text-2xl font-black text-brand-lime">{item.stat}</span>
                     <span className="text-[11px] text-slate-400 font-medium">{item.statLabel}</span>
                   </div>
                 </div>

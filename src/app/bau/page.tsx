@@ -1,17 +1,12 @@
 import { Metadata } from "next";
-import { ComingSoonPlaceholder } from "@/components/ui/ComingSoonPlaceholder";
+import { BauPageContent } from "@/components/bau/BauPageContent";
 
 export const metadata: Metadata = {
-  title: "Bau & Sanierung — Tadiks Chemnitz",
+  title: "Bau & Sanierung Chemnitz — Meisterbetrieb Tadiks",
   description:
-    "Präzises Bauhandwerk, Trockenbau, Renovierung und schlüsselfertiger Innenausbau in Chemnitz.",
+    "Präziser Trockenbau, Q1–Q4 Spachtelung, Akustikbau und schlüsselfertige Komplettsanierung in Chemnitz & Mittelsachsen. 100% Festpreisgarantie & VOB-Gewährleistung.",
 };
 
 export default function BauPage() {
-  return (
-    <ComingSoonPlaceholder
-      title="Bau, Trockenbau & Sanierung"
-      subtitle="Unser detaillierter Leistungskatalog für Bauhandwerk, Akustikdecken, Trockenbau und Komplettsanierungen in Chemnitz und Mittelsachsen wird in Kürze freigeschaltet."
-    />
-  );
+  return <BauPageContent />;
 }

@@ -78,16 +78,16 @@ export function ReinigungCalculator() {
   const taxSavings = Math.round(estimatedEstimate * 0.2);
 
   return (
-    <section className="relative py-24 sm:py-32 bg-[#FAFAFA] text-[#0f182b] border-y border-slate-200">
+    <section className="relative py-24 sm:py-32 bg-brand-cream text-[#0f182b] border-y border-slate-200">
       <Container>
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-14">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#3D568F] font-semibold block mb-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand-navy font-semibold block mb-3">
             Interaktiver Budget-Kalkulator
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#0f182b] leading-[1.1]">
             Schnell & transparent:{" "}
-            <span className="text-[#3D568F]">Ermitteln Sie Ihren Richtwert</span>.
+            <span className="text-brand-navy">Ermitteln Sie Ihren Richtwert</span>.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             Berechnen Sie in 30 Sekunden unverbindlich, mit welchem Budget Sie je nach
@@ -117,13 +117,13 @@ export function ReinigungCalculator() {
                         setObjectType(key);
                         setArea(CONFIGS[key].defaultArea);
                       }}
-                      className={`p-3.5 rounded-[8px] text-left border transition-all flex items-center gap-3 ${
+                      className={`p-3.5 rounded-lg text-left border transition-all flex items-center gap-3 ${
                         isActive
                           ? "bg-[#0f182b] text-white border-[#0f182b] shadow-md shadow-[#0f182b]/10"
                           : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                       }`}
                     >
-                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-[#EAF3B2]" : "text-slate-400"}`} />
+                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-brand-lime" : "text-slate-400"}`} />
                       <span className="text-xs font-bold truncate">{cfg.label}</span>
                     </button>
                   );
@@ -137,7 +137,7 @@ export function ReinigungCalculator() {
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500">
                   2. Zu reinigende Fläche
                 </label>
-                <span className="text-lg font-black text-[#0f182b] bg-slate-100 px-3 py-1 rounded-[6px]">
+                <span className="text-lg font-black text-[#0f182b] bg-slate-100 px-3 py-1 rounded-md">
                   {area} m²
                 </span>
               </div>
@@ -148,7 +148,7 @@ export function ReinigungCalculator() {
                 step={10}
                 value={area}
                 onChange={(e) => setArea(Number(e.target.value))}
-                className="w-full accent-[#3D568F] cursor-pointer h-2 bg-slate-200 rounded-lg appearance-none"
+                className="w-full accent-brand-navy cursor-pointer h-2 bg-slate-200 rounded-lg appearance-none"
               />
               <div className="flex justify-between text-[11px] text-slate-400 mt-1">
                 <span>{currentConfig.minArea} m²</span>
@@ -167,9 +167,9 @@ export function ReinigungCalculator() {
                     key={f.id}
                     type="button"
                     onClick={() => setFrequency(f.id)}
-                    className={`px-3 py-2.5 rounded-[8px] text-xs font-semibold text-center border transition-all ${
+                    className={`px-3 py-2.5 rounded-lg text-xs font-semibold text-center border transition-all ${
                       frequency === f.id
-                        ? "bg-[#3D568F] text-white border-[#3D568F]"
+                        ? "bg-brand-navy text-white border-brand-navy"
                         : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"
                     }`}
                   >
@@ -185,24 +185,24 @@ export function ReinigungCalculator() {
                 4. Optionale Zusatzmodule
               </label>
               <div className="space-y-2">
-                <label className="flex items-center gap-3 p-3 rounded-[8px] border border-slate-200 bg-slate-50/50 cursor-pointer hover:bg-slate-50">
+                <label className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50 cursor-pointer hover:bg-slate-50">
                   <input
                     type="checkbox"
                     checked={includeSanitary}
                     onChange={(e) => setIncludeSanitary(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#3D568F] accent-[#3D568F]"
+                    className="w-4 h-4 rounded text-brand-navy accent-brand-navy"
                   />
                   <span className="text-xs text-slate-700 font-medium">
                     Sanitärhygiene inkl. Nachfüllservice für Seifen & Papierspender
                   </span>
                 </label>
 
-                <label className="flex items-center gap-3 p-3 rounded-[8px] border border-slate-200 bg-slate-50/50 cursor-pointer hover:bg-slate-50">
+                <label className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 bg-slate-50/50 cursor-pointer hover:bg-slate-50">
                   <input
                     type="checkbox"
                     checked={includeWindows}
                     onChange={(e) => setIncludeWindows(e.target.checked)}
-                    className="w-4 h-4 rounded text-[#3D568F] accent-[#3D568F]"
+                    className="w-4 h-4 rounded text-brand-navy accent-brand-navy"
                   />
                   <span className="text-xs text-slate-700 font-medium">
                     Inklusive regelmäßiger Glas- & Rahmenreinigung (Kombirabatt)
@@ -215,12 +215,12 @@ export function ReinigungCalculator() {
           {/* Results Summary Column */}
           <div className="lg:col-span-5 bg-[#0f182b] text-white p-6 sm:p-10 flex flex-col justify-between">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-[#9FBAF1] mb-2">
+              <div className="text-xs font-semibold uppercase tracking-wider text-brand-light-blue mb-2">
                 Indikativer Richtwert
               </div>
               <div className="flex items-baseline gap-2">
                 <span className="text-xs text-slate-400">ca. ab</span>
-                <span className="text-4xl sm:text-5xl font-black text-[#EAF3B2] tracking-tight">
+                <span className="text-4xl sm:text-5xl font-black text-brand-lime tracking-tight">
                   {estimatedEstimate} €
                 </span>
                 <span className="text-xs text-slate-400">
@@ -247,7 +247,7 @@ export function ReinigungCalculator() {
                 </div>
 
                 {objectType === "home" && (
-                  <div className="mt-4 p-3 rounded-lg bg-[#EAF3B2]/10 border border-[#EAF3B2]/20 text-xs text-[#EAF3B2]">
+                  <div className="mt-4 p-3 rounded-lg bg-brand-lime/10 border border-brand-lime/20 text-xs text-brand-lime">
                     <strong>Steuer-Vorteil privat:</strong> Bis zu {taxSavings} € Ersparnis über § 35a EStG möglich!
                   </div>
                 )}
@@ -258,13 +258,13 @@ export function ReinigungCalculator() {
             <div className="mt-8 pt-6 border-t border-white/10">
               <Link
                 href={`/kontakt?flaeche=${area}&typ=${objectType}&turnus=${frequency}`}
-                className="w-full py-3.5 px-5 rounded-[8px] bg-[#EAF3B2] hover:bg-white text-[#0f182b] font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-lg shadow-black/20"
+                className="w-full py-3.5 px-5 rounded-lg bg-brand-lime hover:bg-white text-[#0f182b] font-bold text-xs sm:text-sm tracking-wide transition-all flex items-center justify-center gap-2 shadow-lg shadow-black/20"
               >
                 <span>Diesen Richtwert als Angebot anfordern</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <div className="text-center text-[10px] text-slate-400 mt-3 flex items-center justify-center gap-2">
-                <Check className="w-3 h-3 text-[#EAF3B2]" />
+                <Check className="w-3 h-3 text-brand-lime" />
                 <span>100% kostenfrei & unverbindlich</span>
               </div>
             </div>

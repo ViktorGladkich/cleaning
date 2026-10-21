@@ -139,7 +139,7 @@ export function PageTransition({ children }: PageTransitionProps) {
       <div
         ref={overlayRef}
         aria-hidden="true"
-        className="fixed inset-0 z-[9999] pointer-events-none grid grid-cols-5 w-full h-full overflow-hidden select-none"
+        className="fixed inset-0 z-9999 pointer-events-none grid grid-cols-5 w-full h-full overflow-hidden select-none"
         style={{ visibility: "hidden" }}
       >
         {[0, 1, 2, 3, 4].map((i) => (

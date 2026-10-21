@@ -286,7 +286,7 @@ export function TestimonialsSection() {
                   </div>
 
                   {/* Image Side: absolute inset-0 wrapper guarantees image fill doesn't collapse in Safari */}
-                  <div className="relative w-full md:w-[46%] lg:w-[48%] h-[200px] sm:h-[240px] md:h-auto md:min-h-[340px] lg:min-h-[360px] rounded-[16px] overflow-hidden bg-neutral-100 shadow-[rgba(0,0,0,0.05)_0px_10px_20px_-5px] shrink-0">
+                  <div className="relative w-full md:w-[46%] lg:w-[48%] h-50 sm:h-60 md:h-auto md:min-h-85 lg:min-h-90 rounded-2xl overflow-hidden bg-neutral-100 shadow-[rgba(0,0,0,0.05)_0px_10px_20px_-5px] shrink-0">
                     <div
                       ref={(el) => {
                         cardImagesRef.current[i] = el;
@@ -300,7 +300,7 @@ export function TestimonialsSection() {
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
                     </div>
                   </div>
                 </div>

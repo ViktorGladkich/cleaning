@@ -33,7 +33,7 @@ export function ComingSoonPlaceholder({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <Link
               href="/"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[8px] bg-brand-navy text-white text-sm font-semibold hover:bg-brand-navy/90 transition-all shadow-md active:scale-98"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand-navy text-white text-sm font-semibold hover:bg-brand-navy/90 transition-all shadow-md active:scale-98"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Zurück zur Startseite</span>
@@ -41,7 +41,7 @@ export function ComingSoonPlaceholder({
 
             <a
               href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-[8px] bg-brand-lime text-brand-navy text-sm font-semibold hover:bg-brand-lime/90 transition-all shadow-sm active:scale-98"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand-lime text-brand-navy text-sm font-semibold hover:bg-brand-lime/90 transition-all shadow-sm active:scale-98"
             >
               <Phone className="w-4 h-4 text-brand-navy" />
               <span>{COMPANY_INFO.phone}</span>

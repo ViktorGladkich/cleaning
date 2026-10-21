@@ -7,10 +7,21 @@ import { gsap } from "@/lib/gsap";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface FaqItem {
+export interface FaqItem {
   question: string;
   answer: string;
   category: string;
+}
+
+export interface FaqSectionProps {
+  id?: string;
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  items?: FaqItem[];
+  className?: string;
 }
 
 const FAQS: FaqItem[] = [
@@ -72,7 +83,16 @@ const FAQS: FaqItem[] = [
   },
 ];
 
-export function FaqSection() {
+export function FaqSection({
+  id = "faq",
+  eyebrow = "Klarheit & Transparenz",
+  title,
+  subtitle = "Alle wichtigen Details zu Festpreisen, Termintreue, Schnittstellen und Gewährleistung transparent aufgeschlüsselt.",
+  imageSrc = "/images/faq_architectural_craft.webp",
+  imageAlt = "Tadiks meisterhafte Architektur & Sauberkeit",
+  items = FAQS,
+  className,
+}: FaqSectionProps = {}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0); // First item open by default
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
@@ -196,36 +216,42 @@ export function FaqSection() {
   return (
     <section
       ref={sectionRef}
-      id="faq"
-      aria-labelledby="faq-heading"
-      className="relative z-10 w-full pb-20 sm:pb-28 lg:pb-36 bg-brand-cream overflow-hidden"
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className={cn(
+        "relative z-10 w-full pb-20 sm:pb-28 lg:pb-36 bg-brand-cream overflow-hidden",
+        className,
+      )}
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Section Header: Eyebrow + Split Row with headline and right text horizontally aligned */}
         <div ref={headerRef} className="pb-8 sm:pb-12 mb-10 sm:mb-14">
           <div className="mb-3 sm:mb-4">
             <span className="faq-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block will-change-transform">
-              Klarheit &amp; Transparenz
+              {eyebrow}
             </span>
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 lg:gap-12">
             <div className="max-w-2xl">
               <h2
-                id="faq-heading"
+                id={`${id}-heading`}
                 className="faq-title text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-brand-navy leading-[1.12] will-change-transform"
               >
-                Häufige Fragen vor dem{" "}
-                <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
-                  ersten Schritt.
-                </span>
+                {title || (
+                  <>
+                    Häufige Fragen vor dem{" "}
+                    <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
+                      ersten Schritt.
+                    </span>
+                  </>
+                )}
               </h2>
             </div>
 
             <div className="max-w-md lg:text-right pt-1 lg:pt-1.5 shrink-0">
               <p className="faq-desc text-sm sm:text-[15px] text-brand-navy/75 leading-relaxed font-light will-change-transform">
-                Alle wichtigen Details zu Festpreisen, Termintreue,
-                Schnittstellen und Gewährleistung transparent aufgeschlüsselt.
+                {subtitle}
               </p>
             </div>
           </div>
@@ -240,13 +266,13 @@ export function FaqSection() {
           <div className="lg:col-span-5 relative flex flex-col items-start lg:items-start">
             <div
               ref={imageContainerRef}
-              className="w-full max-w-[430px] sm:max-w-[460px] will-change-transform"
+              className="w-full max-w-107.5 sm:max-w-115 will-change-transform"
             >
               <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden shadow-[0_16px_50px_rgba(15,24,43,0.08)] border border-slate-200/80 group">
                 <div className="relative w-full h-[120%] top-[-10%] will-change-transform faq-parallax-photo">
                   <Image
-                    src="/images/faq_architectural_craft.webp"
-                    alt="Tadiks meisterhafte Architektur & Sauberkeit"
+                    src={imageSrc}
+                    alt={imageAlt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 460px"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -260,7 +286,7 @@ export function FaqSection() {
           {/* Right Column: High-End Minimalist Accordion */}
           <div ref={accordionRef} className="lg:col-span-7">
             <div className="border-t border-slate-200/80">
-              {FAQS.map((faq, idx) => {
+              {items.map((faq, idx) => {
                 const isOpen = openIndex === idx;
                 return (
                   <div

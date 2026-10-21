@@ -190,7 +190,7 @@ export function ReinigungInteractiveCatalog() {
     <section
       id="katalog"
       ref={sectionRef}
-      className="relative py-20 sm:py-28 bg-[#FAFAFA] text-[#0f182b]"
+      className="relative py-20 sm:py-28 bg-brand-cream text-[#0f182b]"
     >
       {/* Decorative architectural background lines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03]">
@@ -208,12 +208,12 @@ export function ReinigungInteractiveCatalog() {
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#3D568F] font-semibold block mb-3">
+          <span className="text-xs font-mono uppercase tracking-widest text-brand-navy font-semibold block mb-3">
             Leistungen &amp; Einsatzbereiche
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#0f182b] leading-[1.1]">
             Hygienestandards nach Maß.{" "}
-            <span className="text-[#3D568F] block sm:inline">
+            <span className="text-brand-navy block sm:inline">
               Vom Einzelbüro bis zum Industriekomplex.
             </span>
           </h2>
@@ -227,9 +227,9 @@ export function ReinigungInteractiveCatalog() {
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-12 border-b border-slate-200 pb-4">
           <button
             onClick={() => setActiveCategory("all")}
-            className={`px-5 py-2.5 rounded-[8px] text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
               activeCategory === "all"
-                ? "bg-[#0f182b] text-[#EAF3B2] shadow-md shadow-[#0f182b]/15"
+                ? "bg-[#0f182b] text-brand-lime shadow-md shadow-[#0f182b]/15"
                 : "bg-white text-slate-600 hover:text-[#0f182b] hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -237,7 +237,7 @@ export function ReinigungInteractiveCatalog() {
             <span
               className={`text-xs px-2 py-0.5 rounded-full ${
                 activeCategory === "all"
-                  ? "bg-[#EAF3B2] text-[#0f182b]"
+                  ? "bg-brand-lime text-[#0f182b]"
                   : "bg-slate-100 text-slate-500"
               }`}
             >
@@ -247,9 +247,9 @@ export function ReinigungInteractiveCatalog() {
 
           <button
             onClick={() => setActiveCategory("gewerbe")}
-            className={`px-5 py-2.5 rounded-[8px] text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
               activeCategory === "gewerbe"
-                ? "bg-[#0f182b] text-[#EAF3B2] shadow-md shadow-[#0f182b]/15"
+                ? "bg-[#0f182b] text-brand-lime shadow-md shadow-[#0f182b]/15"
                 : "bg-white text-slate-600 hover:text-[#0f182b] hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -258,7 +258,7 @@ export function ReinigungInteractiveCatalog() {
             <span
               className={`text-xs px-2 py-0.5 rounded-full ${
                 activeCategory === "gewerbe"
-                  ? "bg-[#EAF3B2] text-[#0f182b]"
+                  ? "bg-brand-lime text-[#0f182b]"
                   : "bg-slate-100 text-slate-500"
               }`}
             >
@@ -268,9 +268,9 @@ export function ReinigungInteractiveCatalog() {
 
           <button
             onClick={() => setActiveCategory("privat")}
-            className={`px-5 py-2.5 rounded-[8px] text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
               activeCategory === "privat"
-                ? "bg-[#0f182b] text-[#EAF3B2] shadow-md shadow-[#0f182b]/15"
+                ? "bg-[#0f182b] text-brand-lime shadow-md shadow-[#0f182b]/15"
                 : "bg-white text-slate-600 hover:text-[#0f182b] hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -279,7 +279,7 @@ export function ReinigungInteractiveCatalog() {
             <span
               className={`text-xs px-2 py-0.5 rounded-full ${
                 activeCategory === "privat"
-                  ? "bg-[#EAF3B2] text-[#0f182b]"
+                  ? "bg-brand-lime text-[#0f182b]"
                   : "bg-slate-100 text-slate-500"
               }`}
             >
@@ -289,9 +289,9 @@ export function ReinigungInteractiveCatalog() {
 
           <button
             onClick={() => setActiveCategory("spezial")}
-            className={`px-5 py-2.5 rounded-[8px] text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+            className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
               activeCategory === "spezial"
-                ? "bg-[#0f182b] text-[#EAF3B2] shadow-md shadow-[#0f182b]/15"
+                ? "bg-[#0f182b] text-brand-lime shadow-md shadow-[#0f182b]/15"
                 : "bg-white text-slate-600 hover:text-[#0f182b] hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -300,7 +300,7 @@ export function ReinigungInteractiveCatalog() {
             <span
               className={`text-xs px-2 py-0.5 rounded-full ${
                 activeCategory === "spezial"
-                  ? "bg-[#EAF3B2] text-[#0f182b]"
+                  ? "bg-brand-lime text-[#0f182b]"
                   : "bg-slate-100 text-slate-500"
               }`}
             >
@@ -328,18 +328,18 @@ export function ReinigungInteractiveCatalog() {
                   className="object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f182b]/85 via-[#0f182b]/20 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-[#0f182b]/85 via-[#0f182b]/20 to-transparent" />
 
                 {/* Floating Tag */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="inline-flex items-center px-3 py-1 rounded-[6px] text-xs font-semibold bg-[#EAF3B2] text-[#0f182b] shadow-sm">
+                  <span className="inline-flex items-center px-3 py-1 rounded-md text-xs font-semibold bg-brand-lime text-[#0f182b] shadow-sm">
                     {service.badge}
                   </span>
                 </div>
 
                 {/* Bottom title on image */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <span className="text-xs uppercase tracking-wider text-[#9FBAF1] font-medium block">
+                  <span className="text-xs uppercase tracking-wider text-brand-light-blue font-medium block">
                     {service.subtitle}
                   </span>
                   <h3 className="text-2xl font-bold text-white tracking-tight mt-0.5">
@@ -358,8 +358,8 @@ export function ReinigungInteractiveCatalog() {
                 <div className="space-y-2.5 mb-6 flex-1">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
-                      <div className="w-4 h-4 rounded-full bg-[#3D568F]/10 text-[#3D568F] flex items-center justify-center shrink-0 mt-0.5">
-                        <Check className="w-2.5 h-2.5 stroke-[3]" />
+                      <div className="w-4 h-4 rounded-full bg-brand-navy/10 text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 stroke-3" />
                       </div>
                       <span>{feature}</span>
                     </div>
@@ -369,7 +369,7 @@ export function ReinigungInteractiveCatalog() {
                 {/* Technical Specs Pill Matrix */}
                 <div className="pt-4 border-t border-slate-100 grid grid-cols-3 gap-2 text-center mb-6">
                   {service.specs.map((spec, i) => (
-                    <div key={i} className="bg-slate-50 p-2 rounded-[8px] border border-slate-100">
+                    <div key={i} className="bg-slate-50 p-2 rounded-lg border border-slate-100">
                       <div className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">
                         {spec.label}
                       </div>
@@ -389,7 +389,7 @@ export function ReinigungInteractiveCatalog() {
 
                   <Link
                     href={`/kontakt?leistung=${service.id}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-[8px] bg-[#0f182b] hover:bg-[#3D568F] text-white text-xs font-semibold tracking-wide transition-colors group-hover:bg-[#3D568F]"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#0f182b] hover:bg-brand-navy text-white text-xs font-semibold tracking-wide transition-colors group-hover:bg-brand-navy"
                   >
                     <span>Anfragen</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -401,9 +401,9 @@ export function ReinigungInteractiveCatalog() {
         </div>
 
         {/* Bottom Banner note */}
-        <div className="mt-16 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#0f182b] to-[#1c2e56] text-white flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-6 sm:p-8 rounded-2xl bg-linear-to-r from-[#0f182b] to-[#1c2e56] text-white flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#EAF3B2] text-[#0f182b] flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-brand-lime text-[#0f182b] flex items-center justify-center shrink-0">
               <Shield className="w-6 h-6" />
             </div>
             <div>
@@ -415,7 +415,7 @@ export function ReinigungInteractiveCatalog() {
           </div>
           <Link
             href="/kontakt"
-            className="w-full md:w-auto px-6 py-3 rounded-[8px] bg-[#EAF3B2] hover:bg-white text-[#0f182b] font-bold text-sm tracking-wide transition-colors text-center shrink-0"
+            className="w-full md:w-auto px-6 py-3 rounded-lg bg-brand-lime hover:bg-white text-[#0f182b] font-bold text-sm tracking-wide transition-colors text-center shrink-0"
           >
             Kostenloses Vor-Ort-Audit anfordern
           </Link>

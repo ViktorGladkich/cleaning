@@ -5,8 +5,35 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { CtaButton } from "@/components/ui/CtaButton";
+import { cn } from "@/lib/utils";
 
-export function ClosingCtaSection() {
+export interface ClosingCtaSectionProps {
+  id?: string;
+  eyebrow?: string;
+  title?: React.ReactNode;
+  subtitle?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  className?: string;
+}
+
+export function ClosingCtaSection({
+  id = "contact-cta",
+  eyebrow,
+  title,
+  subtitle = "Trockenbau, Sanierung und Gebäudereinigung in Sachsen. Verbindliche Festpreise und meisterhafte Qualität aus einer Hand.",
+  ctaText = "Kostenloses Angebot anfordern",
+  ctaHref = "/contacts",
+  secondaryCtaText,
+  secondaryCtaHref,
+  imageSrc = "/images/hero_premium_cleaning_bau.jpg",
+  imageAlt = "Tadiks Meisterbetrieb für Bau, Sanierung & Reinigung",
+  className,
+}: ClosingCtaSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const bgImgRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -44,22 +71,32 @@ export function ClosingCtaSection() {
           },
         });
 
+        const eyebrowEl = contentRef.current.querySelector(".cta-anim-eyebrow");
+        if (eyebrowEl) {
+          ctaTl.fromTo(
+            eyebrowEl,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" }
+          );
+        }
+
         ctaTl
           .fromTo(
-            contentRef.current.children[0],
-            { opacity: 0, y: 55, filter: "blur(10px)", scale: 0.96 },
-            { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.2, ease: "power3.out" }
+            ".cta-anim-title",
+            { opacity: 0, y: 45, filter: "blur(10px)", scale: 0.96 },
+            { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.1, ease: "power3.out" },
+            eyebrowEl ? "-=0.4" : "0"
           )
           .fromTo(
-            contentRef.current.children[1],
-            { opacity: 0, y: 35, filter: "blur(6px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.0, ease: "power3.out" },
+            ".cta-anim-desc",
+            { opacity: 0, y: 30, filter: "blur(6px)" },
+            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.95, ease: "power3.out" },
             "-=0.6"
           )
           .fromTo(
-            contentRef.current.children[2],
-            { opacity: 0, y: 30, scale: 0.9 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.9, ease: "back.out(1.5)" },
+            ".cta-anim-actions",
+            { opacity: 0, y: 25, scale: 0.92 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: "back.out(1.5)" },
             "-=0.5"
           );
       }
@@ -70,9 +107,12 @@ export function ClosingCtaSection() {
   return (
     <section
       ref={sectionRef}
-      id="contact-cta"
-      aria-labelledby="closing-cta-heading"
-      className="relative z-10 w-full min-h-145 sm:min-h-165 lg:min-h-185 flex items-center justify-center overflow-hidden py-24 sm:py-32 bg-[#0f182b]"
+      id={id}
+      aria-labelledby={`${id}-heading`}
+      className={cn(
+        "relative z-10 w-full min-h-145 sm:min-h-165 lg:min-h-185 flex items-center justify-center overflow-hidden py-24 sm:py-32 bg-[#0f182b]",
+        className
+      )}
     >
       {/* 1. Full-bleed Parallax Architectural Photo Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none -z-10">
@@ -81,8 +121,8 @@ export function ClosingCtaSection() {
           className="relative w-full h-[126%] top-[-13%] will-change-transform"
         >
           <Image
-            src="/images/hero_premium_cleaning_bau.jpg"
-            alt="Tadiks Meisterbetrieb für Bau, Sanierung & Reinigung"
+            src={imageSrc}
+            alt={imageAlt}
             fill
             sizes="100vw"
             className="object-cover object-center"
@@ -99,25 +139,44 @@ export function ClosingCtaSection() {
         ref={contentRef}
         className="w-full max-w-4xl mx-auto px-4 sm:px-8 text-center flex flex-col items-center justify-center z-10"
       >
+        {eyebrow && (
+          <span className="cta-anim-eyebrow text-xs sm:text-sm font-mono tracking-widest uppercase text-brand-lime block mb-4">
+            {eyebrow}
+          </span>
+        )}
+
         {/* Centered Headline - Concise & Punchy */}
         <h2
-          id="closing-cta-heading"
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.12] text-center"
+          id={`${id}-heading`}
+          className="cta-anim-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.12] text-center"
         >
-          Bau &amp; Reinigung <br className="hidden sm:inline" />
-          <span className="text-white/70">in Perfektion.</span>
+          {title || (
+            <>
+              Bau &amp; Reinigung <br className="hidden sm:inline" />
+              <span className="text-white/70">in Perfektion.</span>
+            </>
+          )}
         </h2>
 
         {/* Centered Subtitle - Concise & Punchy */}
-        <p className="mt-5 sm:mt-7 text-sm sm:text-base lg:text-lg text-white/75 leading-relaxed font-light max-w-xl mx-auto text-center">
-          Trockenbau, Sanierung und Gebäudereinigung in Sachsen. Verbindliche Festpreise und meisterhafte Qualität aus einer Hand.
+        <p className="cta-anim-desc mt-5 sm:mt-7 text-sm sm:text-base lg:text-lg text-white/75 leading-relaxed font-light max-w-xl mx-auto text-center">
+          {subtitle}
         </p>
 
-        {/* Centered Signature CtaButton */}
-        <div className="mt-8 sm:mt-12 flex justify-center">
-          <CtaButton href="/contacts" size="lg">
-            Kostenloses Angebot anfordern
+        {/* Centered Action Buttons */}
+        <div className="cta-anim-actions mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+          <CtaButton href={ctaHref} size="lg">
+            {ctaText}
           </CtaButton>
+
+          {secondaryCtaText && secondaryCtaHref && (
+            <a
+              href={secondaryCtaHref}
+              className="inline-flex items-center justify-center gap-2 h-12 sm:h-13 px-6 rounded-lg border border-white/25 hover:border-white/50 text-white hover:bg-white/10 text-sm sm:text-base font-medium transition-all"
+            >
+              <span>{secondaryCtaText}</span>
+            </a>
+          )}
         </div>
       </div>
     </section>
