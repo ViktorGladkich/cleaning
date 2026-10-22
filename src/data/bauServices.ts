@@ -142,7 +142,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
       "Akustikdecken, Deckensegel & flexible Trennwände",
       "Millimetergenaue Ausrichtung mit Rotationslasern",
     ],
-    href: "/contacts",
+    href: "/services/trockenbau-innenausbau",
   },
   {
     id: "malerarbeiten",
@@ -156,7 +156,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
       "Glattvlies, moderne Farbkonzepte & Lackierarbeiten",
       "Emissionsarme, zertifizierte Profi-Farben ohne Geruch",
     ],
-    href: "/contacts",
+    href: "/services/maler-spachtelarbeiten",
   },
   {
     id: "sanierung",
@@ -170,7 +170,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
       "Verbindlicher Bauzeitenplan mit garantierter Termintreue",
       "Keine Schnittstellenverluste zwischen Rohbau & Finish",
     ],
-    href: "/contacts",
+    href: "/services/renovierung-sanierung",
   },
   {
     id: "bodenleger",
@@ -184,7 +184,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
       "Echtholzparkett, Design-Vinyl & großformatige Fliesen",
       "Fugenlose Übergänge und passgenaue Sockelleisten",
     ],
-    href: "/contacts",
+    href: "/services/bodenleger-fliesenarbeiten",
   },
   {
     id: "daemmung",
@@ -198,7 +198,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
       "Zertifizierte Brandschutzverkleidungen (F30 bis F90)",
       "Feuchtigkeitsschutz und dauerhafte Schimmelprävention",
     ],
-    href: "/contacts",
+    href: "/services/trockenbau-innenausbau",
   },
   {
     id: "abbruch",
@@ -212,6 +212,6 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
       "Einsatz von HEPA-Staubschutzwänden & Luftreinigern",
       "Sortenreine Entsorgung inklusive Bauschutt-Nachweis",
     ],
-    href: "/contacts",
+    href: "/services/abbruch-entkernung",
   },
 ];

@@ -131,7 +131,19 @@ function StatOdometer({ value }: { value: string }) {
   );
 }
 
-export function AboutSection() {
+export interface AboutSectionProps {
+  id?: string;
+  eyebrow?: string;
+  ctaText?: string;
+  ctaHref?: string;
+}
+
+export function AboutSection({
+  id = "about",
+  eyebrow = "Wer wir sind",
+  ctaText = "Über das Unternehmen",
+  ctaHref = "/about",
+}: AboutSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const subheadingRef = useRef<HTMLHeadingElement>(null);
   const marqueeWrapperRef = useRef<HTMLDivElement>(null);
@@ -246,7 +258,7 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      id="about"
+      id={id}
       aria-labelledby="about-heading"
       className="relative z-10 w-full pt-16 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 bg-brand-cream overflow-x-clip border-t border-brand-navy/10"
     >
@@ -257,7 +269,7 @@ export function AboutSection() {
             {/* Clean German Eyebrow with Medium Font Weight */}
             <div className="mb-4 sm:mb-5">
               <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80">
-                Wer wir sind
+                {eyebrow}
               </span>
             </div>
 
@@ -280,8 +292,8 @@ export function AboutSection() {
 
           {/* Integrated CtaButton Component */}
           <div className="shrink-0 self-start lg:self-end mb-1">
-            <CtaButton href="/about" size="md">
-              Über das Unternehmen
+            <CtaButton href={ctaHref} size="md">
+              {ctaText}
             </CtaButton>
           </div>
         </div>

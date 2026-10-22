@@ -1,18 +1,12 @@
 import { Metadata } from "next";
-import { ComingSoonPlaceholder } from "@/components/ui/ComingSoonPlaceholder";
+import { ContactPageContent } from "@/components/contacts/ContactPageContent";
 
 export const metadata: Metadata = {
-  title: "Kontakt & Anfahrt — Tadiks Cleaning & Bau Chemnitz",
+  title: "Kontakt & Beratung — Tadiks Cleaning & Bau Chemnitz",
   description:
-    "Kontaktieren Sie uns für Ihr individuelles Angebot rund um Gebäudereinigung und Bauhandwerk in Chemnitz.",
+    "Kontaktieren Sie unseren Chemnitzer Meisterbetrieb für ein kostenloses Vor-Ort-Aufmaß und verbindliches Festpreisangebot für Reinigung & Bauhandwerk.",
 };
 
 export default function ContactsPage() {
-  return (
-    <ComingSoonPlaceholder
-      title="Wir sind für Sie da in Chemnitz"
-      subtitle="Das interaktive Kontaktformular und die Online-Terminbuchung werden zurzeit eingerichtet. Bitte kontaktieren Sie uns direkt telefonisch oder per E-Mail für eine unverbindliche Beratung oder Besichtigung vor Ort."
-      showLegalAnchors={true}
-    />
-  );
+  return <ContactPageContent />;
 }

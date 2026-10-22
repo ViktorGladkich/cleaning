@@ -95,7 +95,7 @@ export function ReinigungCta() {
               <div className="flex items-center gap-3">
                 <ShieldCheck className="w-5 h-5 text-brand-lime shrink-0" />
                 <span className="text-xs text-slate-300 font-medium">
-                  5 Mio. € Betriebshaftpflicht
+                  Gewerblich haftpflichtversichert
                 </span>
               </div>
               <div className="flex items-center gap-3">

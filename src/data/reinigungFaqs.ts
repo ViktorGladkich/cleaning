@@ -11,7 +11,7 @@ export const REINIGUNG_FAQS: FaqItem[] = [
     category: "VERSICHERUNG & SCHUTZ",
     question: "Wie sind unsere Räumlichkeiten und Schlüssel abgesichert?",
     answer:
-      "Tadiks verfügt über eine gewerbliche Betriebshaftpflichtversicherung mit einer Deckungssumme von bis zu 5.000.000 € für Personen-, Sach- und Vermögensschäden, einschließlich lückenlosem Schlüssel- und Schließanlagenverlustschutz.",
+      "Tadiks verfügt über eine umfassende gewerbliche Betriebshaftpflichtversicherung für Personen-, Sach- und Vermögensschäden, einschließlich lückenlosem Schlüssel- und Schließanlagenverlustschutz.",
   },
   {
     category: "STEUERN & VORTEILE",

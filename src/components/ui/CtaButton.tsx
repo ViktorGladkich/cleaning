@@ -50,7 +50,7 @@ export function CtaButton({
   const sizeConfig = {
     sm: {
       container: "h-[38px] pl-4 pr-1.5 text-[14.5px]",
-      arrowBlock: "w-7 h-7 rounded-[6px]",
+      arrowBlock: "w-7 h-7 rounded-md",
       icon: "w-3.5 h-3.5",
       gap: 10,
     },
@@ -62,7 +62,7 @@ export function CtaButton({
     },
     lg: {
       container: "h-[48px] pl-6 pr-2 text-[16px]",
-      arrowBlock: "w-9 h-9 rounded-[8px]",
+      arrowBlock: "w-9 h-9 rounded-lg",
       icon: "w-4.5 h-4.5",
       gap: 14,
     },

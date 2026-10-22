@@ -31,11 +31,11 @@ export const MEGA_MENU_SECTIONS: MegaMenuSection[] = [
     title: "Bau & Sanierung",
     links: [
       { label: "Übersicht Bauleistungen", href: "/bau" },
-      { label: "Trockenbau & Innenausbau", href: "/bau#trockenbau" },
-      { label: "Komplettsanierung", href: "/bau#sanierung" },
-      { label: "Maler- & Spachtelarbeiten", href: "/bau#malerarbeiten" },
-      { label: "Bodenleger- & Fliesenarbeiten", href: "/bau#bodenleger" },
-      { label: "Abbruch & Entkernung", href: "/bau#abbruch" },
+      { label: "Trockenbau & Innenausbau", href: "/services/trockenbau-innenausbau" },
+      { label: "Komplettsanierung", href: "/services/renovierung-sanierung" },
+      { label: "Maler- & Spachtelarbeiten", href: "/services/maler-spachtelarbeiten" },
+      { label: "Bodenleger- & Fliesenarbeiten", href: "/services/bodenleger-fliesenarbeiten" },
+      { label: "Abbruch & Entkernung", href: "/services/abbruch-entkernung" },
     ],
   },
 ];

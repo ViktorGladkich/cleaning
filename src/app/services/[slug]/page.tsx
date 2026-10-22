@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { SERVICES } from "@/data/services";
-import { ComingSoonPlaceholder } from "@/components/ui/ComingSoonPlaceholder";
+import {
+  getServiceDetailBySlug,
+  getAllServiceSlugs,
+} from "@/data/serviceDetails";
+import { ServiceDetailPageContent } from "@/components/services/ServiceDetailPageContent";
 
 interface ServicePageProps {
   params: Promise<{
@@ -10,16 +13,14 @@ interface ServicePageProps {
 }
 
 export async function generateStaticParams() {
-  return SERVICES.map((service) => ({
-    slug: service.slug,
-  }));
+  return getAllServiceSlugs();
 }
 
 export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
+  const service = getServiceDetailBySlug(slug);
 
   if (!service) {
     return {
@@ -28,23 +29,23 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${service.title} Chemnitz — Tadiks`,
-    description: service.shortDescription,
+    title: `${service.title} Chemnitz — Meisterbetrieb Tadiks`,
+    description: service.subtitle,
+    openGraph: {
+      title: `${service.title} Chemnitz — Tadiks`,
+      description: service.heroDescription,
+      images: [service.imageSrc],
+    },
   };
 }
 
 export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
+  const service = getServiceDetailBySlug(slug);
 
   if (!service) {
     notFound();
   }
 
-  return (
-    <ComingSoonPlaceholder
-      title={service.title}
-      subtitle={`Die detaillierte Beschreibung, Leistungsmatrix und Preisbeispiele für «${service.title}» in Chemnitz & Mittelsachsen werden in Kürze freigeschaltet.`}
-    />
-  );
+  return <ServiceDetailPageContent service={service} />;
 }

@@ -23,7 +23,7 @@ const FAQS: FaqItem[] = [
     category: "Recht & Versicherung",
     question: "Wie ist Tadiks versichert, falls beim Reinigen etwas beschädigt wird?",
     answer:
-      "Ihre Sicherheit steht an erster Stelle. Wir verfügen über eine umfassende Betriebshaftpflichtversicherung mit einer Deckungssumme von bis zu 5.000.000 € für Personen-, Sach- und echte Vermögensschäden sowie Schlüsselverlustrisiken.",
+      "Ihre Sicherheit steht an erster Stelle. Wir verfügen über eine umfassende gewerbliche Betriebshaftpflichtversicherung für Personen-, Sach- und echte Vermögensschäden sowie Schlüsselverlustrisiken.",
   },
   {
     category: "Steuern & Finanzen",

@@ -106,7 +106,7 @@ const SERVICES_DATA: ServiceItem[] = [
     ],
     specs: [
       { label: "Steuerbonus", value: "Bis zu 4.000 € Rückerstattung" },
-      { label: "Schutz", value: "5 Mio. € Betriebshaftpflicht" },
+      { label: "Schutz", value: "Voll haftpflichtversichert" },
       { label: "Vertrag", value: "Flexibel ohne Knebelverträge" },
     ],
     priceInfo: "Transparente Stundensätze oder Monatspauschale",

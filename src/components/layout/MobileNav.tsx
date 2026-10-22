@@ -68,7 +68,7 @@ export function MobileNav() {
 
             <div className="flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Haftpflichtversichert bis 5.000.000 €</span>
+              <span>Gewerblich haftpflichtversichert</span>
             </div>
 
             <a

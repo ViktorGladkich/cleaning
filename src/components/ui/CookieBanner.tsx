@@ -165,7 +165,7 @@ export function CookieBanner() {
               um unser Angebot und Google-Dienste stetig zu optimieren. Sie können selbst entscheiden, welche Cookie-Kategorien 
               Sie zulassen möchten. Weitere Details finden Sie in unserer{" "}
               <Link
-                href="/contacts#datenschutz"
+                href="/datenschutz"
                 className="underline underline-offset-2 hover:text-black font-normal transition-colors"
               >
                 Datenschutzerklärung
@@ -237,11 +237,11 @@ export function CookieBanner() {
 
             {/* Bottom-left Legal Links */}
             <div className="pt-1 flex items-center gap-4 text-[11px] text-neutral-700 font-light">
-              <Link href="/contacts#datenschutz" className="hover:underline hover:text-black">
+              <Link href="/datenschutz" className="hover:underline hover:text-black">
                 Datenschutzerklärung
               </Link>
               <span>&middot;</span>
-              <Link href="/contacts#impressum" className="hover:underline hover:text-black">
+              <Link href="/impressum" className="hover:underline hover:text-black">
                 Impressum
               </Link>
             </div>

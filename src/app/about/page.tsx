@@ -1,17 +1,12 @@
 import { Metadata } from "next";
-import { ComingSoonPlaceholder } from "@/components/ui/ComingSoonPlaceholder";
+import { AboutPageContent } from "@/components/about/AboutPageContent";
 
 export const metadata: Metadata = {
-  title: "Über uns — Tadiks Cleaning & Bau Chemnitz",
+  title: "Über uns & Meisterphilosophie — Tadiks Cleaning & Bau Chemnitz",
   description:
-    "Erfahren Sie mehr über unseren Meisterbetrieb in Chemnitz, unsere Philosophie und unser Team.",
+    "Erfahren Sie mehr über unseren Chemnitzer Meisterbetrieb: Meisterhaftes Bauhandwerk und zertifizierte Gebäudereinigung aus einer Hand mit 100% Festpreisgarantie.",
 };
 
 export default function AboutPage() {
-  return (
-    <ComingSoonPlaceholder
-      title="Über uns & Meisterphilosophie"
-      subtitle="Wir bereiten ausführliche Einblicke in unsere Handwerksphilosophie, unser Chemnitzer Team und unsere Qualitätsstandards für Sie vor. Bis dahin stehen wir Ihnen telefonisch und per E-Mail gerne zur Verfügung."
-    />
-  );
+  return <AboutPageContent />;
 }

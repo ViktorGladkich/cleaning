@@ -11,7 +11,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     question: "Sind meine Räumlichkeiten und Gegenstände versichert?",
-    answer: "Selbstverständlich. Wir verfügen über eine umfassende Betriebshaftpflichtversicherung bis zu 5.000.000 € Deckungssumme für Personen-, Sach- und Vermögensschäden.",
+    answer: "Selbstverständlich. Wir verfügen über eine umfassende gewerbliche Betriebshaftpflichtversicherung für Personen-, Sach- und Vermögensschäden.",
   },
   {
     question: "Sind die verwendeten Reinigungsmittel sicher für Kinder und Haustiere?",
