@@ -16,7 +16,7 @@ export function ComingSoonPlaceholder({
   showLegalAnchors = false,
 }: ComingSoonPlaceholderProps) {
   return (
-    <div className="min-h-[75vh] flex flex-col justify-center pt-32 sm:pt-40 pb-16 sm:pb-24 bg-brand-cream/40">
+    <div className="min-h-[75svh] flex flex-col justify-center pt-32 sm:pt-40 pb-16 sm:pb-24 bg-brand-cream/40">
       <Container>
         <div className="max-w-2xl mx-auto text-center space-y-8">
           {/* Heading */}

@@ -119,7 +119,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
       <section
         ref={heroRef}
         aria-label={service.title}
-        className="relative w-full min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
+        className="relative w-full min-h-[85svh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
       >
         {/* Full-bleed Background Architectural Image with cinematic grading */}
         <div className="absolute inset-0 w-full h-full">
@@ -129,7 +129,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center scale-[1.03]"
+            className="object-cover object-center sm:scale-[1.03]"
           />
           {/* Multi-stage luxury cinematic gradient for unmatched contrast & warmth */}
           <div className="absolute inset-0 bg-linear-to-b from-brand-navy/90 via-black/65 to-brand-navy/95 pointer-events-none" />

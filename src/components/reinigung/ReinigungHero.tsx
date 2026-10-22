@@ -32,7 +32,7 @@ export function ReinigungHero() {
     <section
       ref={containerRef}
       aria-label="Gebäudereinigung"
-      className="relative z-10 w-full min-h-[75vh] sm:min-h-[82vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-brand-navy"
+      className="relative z-10 w-full min-h-[75svh] sm:min-h-[82vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-brand-navy"
     >
       {/* 1. Full-bleed Background Image with crisp architectural depth */}
       <div className="absolute inset-0 w-full h-full">
@@ -42,7 +42,7 @@ export function ReinigungHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center scale-[1.02]"
+          className="object-cover object-center sm:scale-[1.02]"
         />
         {/* Cinematic dark tint overlay for crystal-clear readability while preserving warm architectural light */}
         <div className="absolute inset-0 bg-linear-to-b from-brand-navy/70 via-black/45 to-brand-navy/85 pointer-events-none" />
