@@ -71,7 +71,7 @@ export function RollingText({
       ref={containerRef}
       className={cn(
         "relative inline-block h-[1.3em] overflow-hidden align-middle select-none",
-        isActive && "text-(--color-brand-navy) font-semibold",
+        isActive && "text-(--color-brand-navy)",
         className
       )}
       {...props}

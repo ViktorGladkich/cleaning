@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
   CheckCircle2,
+  XCircle,
   Phone,
   ShieldCheck,
   Clock,
@@ -12,7 +13,11 @@ import {
   ArrowRight,
   ChevronRight,
   BadgePercent,
-  FileCheck2,
+  Sliders,
+  Award,
+  Layers,
+  Wrench,
+  Check,
 } from "lucide-react";
 import { ServiceDetailData, ALL_SERVICE_DETAILS } from "@/data/serviceDetails";
 import { FaqSection } from "@/components/home/FaqSection";
@@ -26,35 +31,46 @@ interface ServiceDetailPageContentProps {
 
 export function ServiceDetailPageContent({ service }: ServiceDetailPageContentProps) {
   const heroRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+
+  // Interactive instant cost estimator state
+  const isPerSqm = service.priceNote.includes("m²");
+  const [calcArea, setCalcArea] = useState<number>(isPerSqm ? 120 : 80);
+  const [calcInterval, setCalcInterval] = useState<"einmalig" | "woechentlich" | "monatlich">("woechentlich");
 
   useGSAP(
     () => {
-      if (!heroRef.current || !contentRef.current) return;
+      if (!heroRef.current || !heroContentRef.current) return;
 
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
-        contentRef.current.querySelector(".service-badge"),
-        { opacity: 0, y: 15 },
+        heroContentRef.current.querySelector(".hero-badge-wrap"),
+        { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.6 }
       )
         .fromTo(
-          contentRef.current.querySelector(".service-title"),
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8 },
+          heroContentRef.current.querySelector(".hero-title"),
+          { opacity: 0, y: 35 },
+          { opacity: 1, y: 0, duration: 1.0, ease: "power4.out" },
           "-=0.4"
         )
         .fromTo(
-          contentRef.current.querySelector(".service-description"),
+          heroContentRef.current.querySelector(".hero-desc"),
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.8 },
+          "-=0.6"
+        )
+        .fromTo(
+          heroContentRef.current.querySelectorAll(".hero-stat-card"),
           { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 },
           "-=0.5"
         )
         .fromTo(
-          contentRef.current.querySelectorAll(".trust-pill"),
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+          heroContentRef.current.querySelector(".hero-action-bar"),
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6 },
           "-=0.4"
         );
     },
@@ -67,24 +83,65 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
 
   const categoryBackLink = service.category === "reinigung" ? "/reinigung" : "/bau";
 
+  // Dynamic calculated estimate
+  const estimatedCost = Math.round(
+    service.category === "reinigung"
+      ? isPerSqm
+        ? calcArea * (calcInterval === "einmalig" ? 3.2 : calcInterval === "woechentlich" ? 2.4 : 2.8)
+        : Math.max(120, calcArea * 1.8)
+      : Math.max(450, calcArea * 28)
+  );
+
+  const taxSavings = Math.round(estimatedCost * 0.2);
+
+  // Equipment & materials depending on category
+  const technicalBrands =
+    service.category === "reinigung"
+      ? [
+          { name: "Kärcher Professional", role: "Industrie-Heißdampf & Scheuersaugmaschinen" },
+          { name: "Unger HydroPower", role: "Reinstwasser-Osmose bis 20 m Höhe" },
+          { name: "Kiehl Eco-Line", role: "Zertifizierte, biologisch abbaubare Reinigungschemie" },
+          { name: "Nilfisk HEPA-14", role: "Sicherheits-Entstaubung & Feinstaubfilterung" },
+        ]
+      : [
+          { name: "Knauf & Rigips", role: "Zertifizierte Schall- & Brandschutz-Systeme" },
+          { name: "Festool Dust-Free", role: "HEPA-gekoppelte Schleif- & Sägetechnik" },
+          { name: "Stabila Laser", role: "Rotationslaser für millimetergenaue Fluchten" },
+          { name: "Caparol / Brillux", role: "Emissionsarme Q4-Spachtelmassen & Silikatfarben" },
+        ];
+
   return (
-    <main className="min-h-screen bg-brand-cream text-brand-navy selection:bg-brand-lime selection:text-brand-navy">
-      {/* ========================================================
-          1. HERO SECTION: Monumental Header & Quick Navigation
-         ======================================================== */}
+    <main className="min-h-screen bg-brand-cream text-brand-navy selection:bg-brand-navy selection:text-white">
+      {/* =========================================================================
+          1. MONUMENTAL ARCHITECTURAL HERO
+          Oversized typographic scale, full-bleed imagery with cinematic dark grading
+         ========================================================================= */}
       <section
         ref={heroRef}
         aria-label={service.title}
-        className="relative pt-32 pb-16 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-28 overflow-hidden bg-brand-navy text-white"
+        className="relative w-full min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
       >
-        {/* Subtle architectural background texture with gentle gradient */}
-        <div className="absolute inset-0 bg-linear-to-b from-brand-navy via-brand-navy/95 to-brand-navy pointer-events-none" />
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-brand-lime/10 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-32 w-[32rem] h-[32rem] rounded-full bg-brand-light-blue/10 blur-3xl pointer-events-none" />
+        {/* Full-bleed Background Architectural Image with cinematic grading */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src={service.imageSrc}
+            alt={service.imageAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center scale-[1.03]"
+          />
+          {/* Multi-stage luxury cinematic gradient for unmatched contrast & warmth */}
+          <div className="absolute inset-0 bg-linear-to-b from-brand-navy/90 via-black/65 to-brand-navy/95 pointer-events-none" />
+          <div className="absolute inset-0 bg-radial-[circle_at_top_right] from-brand-lime/10 via-transparent to-transparent pointer-events-none" />
+        </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          ref={heroContentRef}
+          className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between"
+        >
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center space-x-2 text-xs sm:text-sm text-white/60">
+          <div className="mb-6 flex items-center space-x-2 text-xs sm:text-sm text-white/60">
             <Link href="/" className="hover:text-brand-lime transition-colors">
               Startseite
             </Link>
@@ -94,56 +151,85 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-white/40" />
             <span className="text-brand-lime truncate">{service.title}</span>
-          </nav>
+          </div>
 
-          <div ref={contentRef} className="max-w-4xl">
-            {/* Category Badge */}
-            <div className="service-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6">
+          <div className="max-w-5xl">
+            {/* Top Specification Pill */}
+            <div className="hero-badge-wrap inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
-              <span>{service.categoryLabel} Chemnitz &amp; Region</span>
+              <span>TADIKS MEISTER-SPEZIFIKATION // {service.categoryLabel.toUpperCase()}</span>
             </div>
 
-            {/* Monumental Headline */}
-            <h1 className="service-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-white leading-[1.08]">
+            {/* Monumental Title */}
+            <h1 className="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.02]">
               {service.title} <br />
               <span className="font-serif italic font-normal text-brand-lime">
                 nach Meister-Standard.
               </span>
             </h1>
 
-            {/* Description */}
-            <p className="service-description mt-6 text-base sm:text-xl text-white/85 font-light leading-relaxed max-w-3xl">
+            {/* Subtitle & Description */}
+            <p className="hero-desc mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed max-w-3xl">
               {service.heroDescription}
             </p>
 
-            {/* Trust Pills Grid */}
-            <div className="mt-8 flex flex-wrap gap-2.5 sm:gap-3">
-              <div className="trust-pill inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm text-white/95">
-                <CheckCircle2 className="w-4 h-4 text-brand-lime shrink-0" />
-                <span>100% Festpreisgarantie</span>
+            {/* Live Technical Metrics Cards (Frosted Glass) */}
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl">
+              <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-brand-lime" />
+                  Kosten
+                </div>
+                <div className="mt-1 text-sm sm:text-base font-bold text-brand-lime">
+                  100% Festpreis
+                </div>
+                <div className="text-[11px] text-white/70">ohne Nachforderungen</div>
               </div>
-              <div className="trust-pill inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm text-white/95">
-                <ShieldCheck className="w-4 h-4 text-brand-lime shrink-0" />
-                <span>Gewerblich haftpflichtversichert</span>
+
+              <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
+                  <Award className="w-3.5 h-3.5 text-brand-lime" />
+                  Qualität
+                </div>
+                <div className="mt-1 text-sm sm:text-base font-bold text-white">
+                  Meister-Norm
+                </div>
+                <div className="text-[11px] text-white/70">
+                  {service.category === "reinigung" ? "RKI-konform" : "DIN 18180 / 18202"}
+                </div>
               </div>
-              <div className="trust-pill inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm text-white/95">
-                <Clock className="w-4 h-4 text-brand-lime shrink-0" />
-                <span>{service.durationNote}</span>
+
+              <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-brand-lime" />
+                  Reaktion
+                </div>
+                <div className="mt-1 text-sm sm:text-base font-bold text-white">
+                  Binnen 24 Std.
+                </div>
+                <div className="text-[11px] text-white/70">Angebot &amp; Begehung</div>
               </div>
-              <div className="trust-pill inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm text-white/95">
-                <Sparkles className="w-4 h-4 text-brand-lime shrink-0" />
-                <span>Kostenfreie Vor-Ort-Besichtigung</span>
+
+              <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
+                <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
+                  <BadgePercent className="w-3.5 h-3.5 text-brand-lime" />
+                  Steuern
+                </div>
+                <div className="mt-1 text-sm sm:text-base font-bold text-brand-lime">
+                  20% Abzug
+                </div>
+                <div className="text-[11px] text-white/70">nach § 35a EStG</div>
               </div>
             </div>
 
-            {/* Call to Actions & Direct Phone */}
-            <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            {/* Action Bar */}
+            <div className="hero-action-bar mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
                 href={`/contacts?service=${encodeURIComponent(service.slug)}`}
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-lime text-brand-navy font-semibold text-base shadow-lg hover:bg-white hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-lime text-brand-navy font-semibold text-base shadow-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
               >
-                <span>Jetzt Festpreis anfragen</span>
-                <ArrowRight className="w-5 h-5" />
+                <span>Verbindliches Festpreisangebot anfordern</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <a
@@ -151,132 +237,437 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-base transition-colors"
               >
                 <Phone className="w-4 h-4 text-brand-lime" />
-                <span>0176 43818855</span>
+                <span>Direkt anrufen: 0176 43818855</span>
               </a>
-
-              <div className="sm:ml-2 flex items-center gap-2 text-xs text-white/70">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span>Preise: {service.priceNote}</span>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================================
-          2. DETAILED FEATURES & VISUAL SHOWCASE
-         ======================================================== */}
-      <section className="py-16 sm:py-24 lg:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Image with floating badges & Tax Hint */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="relative rounded-3xl overflow-hidden aspect-4/3 sm:aspect-16/10 lg:aspect-4/3 border border-brand-navy/10 shadow-2xl bg-brand-navy/5">
-              <Image
-                src={service.imageSrc}
-                alt={service.imageAlt}
-                fill
-                sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+      {/* =========================================================================
+          2. BENTO SPECIFICATION MATRIX
+          Editorial Bento cards: Technique, Material, Guarantees & Pricing
+         ========================================================================= */}
+      <section className="py-20 sm:py-28 lg:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-14">
+          <span className="text-xs uppercase font-mono tracking-widest text-brand-navy/60 block mb-2">
+            LEISTUNGSMATRIX &amp; AUSSTATTUNG
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-brand-navy tracking-tight leading-tight">
+            Was unsere Ausführung von herkömmlichen Anbietern unterscheidet.
+          </h2>
+        </div>
 
-              {/* Floating Price Pill */}
-              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/60 shadow-lg text-brand-navy">
-                <div className="text-xs uppercase tracking-wider font-mono text-brand-navy/60">
-                  Preise &amp; Richtwert
-                </div>
-                <div className="text-base sm:text-lg font-bold text-brand-navy mt-0.5">
-                  {service.priceNote}
-                </div>
-                <div className="text-xs text-brand-navy/70 mt-1 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>Verbindliches Festpreisangebot nach Besichtigung</span>
-                </div>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+          {/* Card 1 (Large 7-col): Visual Craftsmanship & Scope */}
+          <div className="md:col-span-7 p-8 sm:p-10 rounded-3xl bg-brand-navy text-white relative overflow-hidden flex flex-col justify-between shadow-xl min-h-[440px]">
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-brand-lime/10 blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-full h-full opacity-10 bg-[radial-gradient(#EAF3B2_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-brand-lime mb-6">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>MEISTER-QUALITÄT</span>
               </div>
-            </div>
-
-            {/* German Tax Benefit Box (§ 35a EStG) */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-brand-lime/30 border border-brand-lime/60 text-brand-navy">
-              <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-white text-brand-navy shrink-0 shadow-sm">
-                  <BadgePercent className="w-6 h-6 text-brand-navy" />
-                </div>
-                <div>
-                  <h2 className="font-semibold text-sm sm:text-base text-brand-navy">
-                    20% Steuervorteil nach § 35a EStG
-                  </h2>
-                  <p className="mt-1 text-xs sm:text-sm text-brand-navy/80 leading-relaxed">
-                    Privathaushalte können 20% der Arbeitskosten (bis zu 4.000 € jährlich)
-                    direkt von der tariflichen Einkommensteuer absetzen. Gewerbliche Kunden
-                    erhalten eine ordentliche Rechnung mit ausgewiesener Mehrwertsteuer.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Comprehensive Checklist & Inclusions */}
-          <div className="lg:col-span-7 space-y-8">
-            <div>
-              <span className="text-xs uppercase font-mono tracking-widest text-brand-navy/60">
-                Leistungsumfang im Detail
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-brand-navy tracking-tight mt-2">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-normal text-white leading-tight">
                 {service.featuresTitle}
-              </h2>
+              </h3>
+              <p className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed max-w-xl">
+                Wir arbeiten nicht mit Pauschalisierungen, sondern nach einem standardisierten,
+                dokumentierten Protokoll. Jeder Handgriff ist exakt auf Ihre Bausubstanz und
+                hygienischen Anforderungen abgestimmt.
+              </p>
             </div>
 
-            {/* Checklist Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-              {service.features.map((feature, idx) => (
+            <div className="relative z-10 mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {service.features.slice(0, 4).map((f, i) => (
                 <div
-                  key={idx}
-                  className="p-4 rounded-xl bg-white border border-brand-navy/10 shadow-sm flex items-start gap-3 hover:border-brand-navy/20 transition-colors"
+                  key={i}
+                  className="p-3.5 rounded-xl bg-white/10 border border-white/10 text-xs sm:text-sm text-white/90 flex items-start gap-2.5 backdrop-blur-sm"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-brand-navy/90 font-medium leading-snug">
-                    {feature}
-                  </span>
+                  <CheckCircle2 className="w-4 h-4 text-brand-lime shrink-0 mt-0.5" />
+                  <span>{f}</span>
                 </div>
               ))}
             </div>
+          </div>
 
-            {/* Included Guarantees Box */}
-            <div className="p-6 rounded-2xl bg-white border-2 border-brand-navy/10 shadow-md">
-              <div className="flex items-center gap-2.5 mb-4">
-                <FileCheck2 className="w-5 h-5 text-brand-navy" />
-                <h3 className="font-bold text-base sm:text-lg text-brand-navy">
-                  {service.includedTitle}
-                </h3>
+          {/* Card 2 (5-col): Pricing & Tax Advantage */}
+          <div className="md:col-span-5 p-8 sm:p-10 rounded-3xl bg-white border border-brand-navy/15 shadow-xl flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-mono uppercase tracking-wider text-brand-navy/60">
+                  Preise &amp; Richtwert
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brand-lime/50 text-[11px] font-bold text-brand-navy">
+                  Festpreisgarantie
+                </span>
               </div>
-              <ul className="space-y-2.5">
-                {service.included.map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm text-brand-navy/80">
-                    <span className="w-2 h-2 rounded-full bg-brand-lime border border-brand-navy/30 shrink-0" />
-                    <span>{item}</span>
-                  </li>
+
+              <div className="text-3xl sm:text-4xl font-bold text-brand-navy mt-1 tracking-tight">
+                {service.priceNote}
+              </div>
+              <p className="mt-3 text-xs sm:text-sm text-brand-navy/70 leading-relaxed">
+                Keine versteckten Anfahrtskosten im Raum Chemnitz und Mittelsachsen. Wir kalkulieren
+                fair, transparent und garantieren Ihnen den vereinbarten Festpreis ohne nachträgliche Aufschläge.
+              </p>
+
+              {/* Tax credit highlight */}
+              <div className="mt-6 p-4 rounded-2xl bg-brand-cream border border-brand-navy/10">
+                <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
+                  <BadgePercent className="w-4 h-4 text-emerald-600" />
+                  <span>20% Steuern sparen nach § 35a EStG</span>
+                </div>
+                <p className="mt-1 text-[12px] text-brand-navy/70 leading-relaxed">
+                  Private Auftraggeber können bis zu 4.000 € Arbeitskosten jährlich direkt von der
+                  Einkommensteuer abziehen. Gewerbliche Kunden erhalten eine ordentliche Vorsteuer-Rechnung.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-brand-navy/10 flex items-center justify-between">
+              <span className="text-xs text-brand-navy/60">Besichtigung:</span>
+              <span className="text-xs font-bold text-emerald-600">100% kostenlos vor Ort</span>
+            </div>
+          </div>
+
+          {/* Card 3 (6-col): Complete Inclusions Checklist */}
+          <div className="md:col-span-6 p-8 sm:p-10 rounded-3xl bg-white border border-brand-navy/15 shadow-xl">
+            <div className="flex items-center gap-2.5 mb-6">
+              <div className="p-2 rounded-xl bg-brand-navy text-white">
+                <Layers className="w-5 h-5 text-brand-lime" />
+              </div>
+              <div>
+                <span className="text-xs uppercase font-mono tracking-wider text-brand-navy/60">
+                  Transparenz
+                </span>
+                <h4 className="text-xl font-bold text-brand-navy">
+                  {service.includedTitle}
+                </h4>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {service.included.map((inc, i) => (
+                <div
+                  key={i}
+                  className="p-3.5 rounded-xl bg-brand-cream/80 border border-brand-navy/10 flex items-center gap-3 text-sm text-brand-navy font-medium"
+                >
+                  <div className="w-5 h-5 rounded-full bg-brand-navy text-brand-lime flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  </div>
+                  <span>{inc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Card 4 (6-col): Professional Equipment & Tech Brands */}
+          <div className="md:col-span-6 p-8 sm:p-10 rounded-3xl bg-brand-lime/20 border border-brand-lime/60 shadow-xl flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-2.5 mb-6">
+                <div className="p-2 rounded-xl bg-brand-navy text-brand-lime">
+                  <Wrench className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-xs uppercase font-mono tracking-wider text-brand-navy/60">
+                    Maschinen &amp; Werkstoffe
+                  </span>
+                  <h4 className="text-xl font-bold text-brand-navy">
+                    Eingesetzte Profi-Technik
+                  </h4>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                {technicalBrands.map((brand, i) => (
+                  <div
+                    key={i}
+                    className="p-3.5 rounded-xl bg-white/90 border border-brand-navy/10 flex items-start justify-between gap-3 shadow-xs"
+                  >
+                    <div>
+                      <div className="text-sm font-bold text-brand-navy">{brand.name}</div>
+                      <div className="text-xs text-brand-navy/70 mt-0.5">{brand.role}</div>
+                    </div>
+                    <span className="text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded-md bg-brand-navy text-brand-lime shrink-0">
+                      Standard
+                    </span>
+                  </div>
                 ))}
-              </ul>
+              </div>
+            </div>
+
+            <div className="mt-6 text-xs text-brand-navy/75 italic">
+              Kein Billig-Werkzeug, keine aggressiven Discounter-Chemikalien.
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========================================================
-          3. EXECUTION WORKFLOW: 4-Step Process
-         ======================================================== */}
-      <section className="py-16 sm:py-20 bg-white border-y border-brand-navy/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs uppercase font-mono tracking-widest text-brand-navy/60">
-              Verbindlich &amp; Transparent
+      {/* =========================================================================
+          3. EDITORIAL QUALITY COMPARISON TABLE
+          "Marktüblicher Standard vs. Tadiks Meisterbetrieb"
+          Demonstrates absolute German trade superiority & eliminates price doubts
+         ========================================================================= */}
+      <section className="py-20 sm:py-28 bg-brand-navy text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs uppercase font-mono tracking-widest text-brand-lime block mb-2">
+              QUALITÄTSVERGLEICH
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-brand-navy tracking-tight mt-2">
-              Ihr Ablauf von der Anfrage bis zur Übergabe.
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white tracking-tight">
+              Warum Tadiks die sicherere Wahl ist.
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-white/75">
+              Sparen am falschen Ende führt zu Mehrkosten und Ärger. Vergleichen Sie unsere Standards direkt.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Left: Standard Competitors (Negative) */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-white/5 border border-white/10 text-white/70 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
+                  <div>
+                    <h3 className="text-xl font-bold text-white/80">Marktübliche Billiganbieter</h3>
+                    <p className="text-xs text-white/50 mt-1">Preiskampf ohne Qualitätskontrolle</p>
+                  </div>
+                  <span className="text-xs font-mono uppercase px-3 py-1 rounded-full bg-red-500/15 text-red-300 border border-red-500/30">
+                    Risikobehaftet
+                  </span>
+                </div>
+
+                <ul className="space-y-4 text-sm">
+                  <li className="flex items-start gap-3">
+                    <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                    <span>Häufig wechselnde Aushilfen ohne feste Schulung und ohne Deutschkenntnisse</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                    <span>Nachträgliche Aufpreise für Material, Anfahrt, Schmutzgrad oder Wochenenden</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                    <span>Aggressive, stinkende Chemikalien oder staubige Werkzeuge ohne Feinstaubabsaugung</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                    <span>Schwierige Erreichbarkeit bei Reklamationen und fehlende Übergabeprotokolle</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/10 text-xs text-white/40">
+                Oft resultieren Nacharbeiten und Zeitverzögerungen in höheren Gesamtkosten.
+              </div>
+            </div>
+
+            {/* Right: Tadiks Meisterbetrieb (Highlight) */}
+            <div className="p-8 sm:p-10 rounded-3xl bg-linear-to-b from-white/15 to-white/10 border-2 border-brand-lime text-white relative shadow-2xl flex flex-col justify-between">
+              <div className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-lime text-brand-navy font-bold text-xs shadow-md">
+                <Check className="w-3.5 h-3.5 stroke-[3]" />
+                <span>TADIKS STANDARD</span>
+              </div>
+
+              <div>
+                <div className="pb-6 border-b border-white/15 mb-6 pr-32">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">Tadiks Meisterbetrieb</h3>
+                  <p className="text-xs text-brand-lime mt-1 font-mono">Verbindlichkeit aus Sachsen</p>
+                </div>
+
+                <ul className="space-y-4 text-sm text-white/95">
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                    <span>
+                      <strong>Festes Stammpersonal &amp; deutscher Objektleiter</strong> für lückenlose Diskretion und Vertrautheit
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                    <span>
+                      <strong>100% garantierter Festpreis</strong> ohne versteckte Nebenkosten nach kostenloser Vor-Ort-Begehung
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                    <span>
+                      <strong>Kärcher &amp; Knauf Markenequipment</strong> sowie RKI-konforme Mikrofaserhygiene / HEPA-14 Staubabsaugung
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    </div>
+                    <span>
+                      <strong>Gemeinsame Endabnahme mit Protokoll</strong> und kostenfreie Nachbesserung binnen 24 Stunden bei Beanstandung
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/15">
+                <Link
+                  href={`/contacts?service=${encodeURIComponent(service.slug)}`}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-brand-lime text-brand-navy font-bold text-sm hover:bg-white transition-colors"
+                >
+                  <span>Jetzt Festpreisangebot sichern</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          4. INTERACTIVE PRICE ESTIMATOR TEASER
+          Gives dynamic feel, allows user to calculate scope & request custom offer
+         ========================================================================= */}
+      <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 sm:p-12 lg:p-16 rounded-3xl bg-white border border-brand-navy/15 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left: Interactive Controls */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-navy/5 text-xs font-mono text-brand-navy">
+                <Sliders className="w-3.5 h-3.5" />
+                <span>INTERAKTIVER RICHTWERT-RECHNER</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-brand-navy tracking-tight">
+                Kalkulieren Sie Ihr Projekt vorab unverbindlich.
+              </h2>
+              <p className="text-sm sm:text-base text-brand-navy/70 leading-relaxed">
+                Wählen Sie die ungefähre Fläche Ihres Objekts. Sie erhalten sofort eine
+                erste Richtwertspanne inklusive möglichem Steuervorteil.
+              </p>
+
+              {/* Area Slider */}
+              <div className="p-5 rounded-2xl bg-brand-cream border border-brand-navy/10 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-bold text-brand-navy">Objektgröße:</span>
+                  <span className="text-lg font-mono font-bold text-brand-navy px-3 py-1 rounded-lg bg-white border border-brand-navy/10 shadow-xs">
+                    {calcArea} m²
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min="30"
+                  max="500"
+                  step="10"
+                  value={calcArea}
+                  onChange={(e) => setCalcArea(Number(e.target.value))}
+                  className="w-full h-2.5 bg-brand-navy/20 rounded-lg appearance-none cursor-pointer accent-brand-navy"
+                />
+                <div className="flex justify-between text-[11px] text-brand-navy/50 font-mono">
+                  <span>30 m²</span>
+                  <span>150 m²</span>
+                  <span>300 m²</span>
+                  <span>500 m²</span>
+                </div>
+              </div>
+
+              {/* Interval / Type Selector (Reinigung) */}
+              {service.category === "reinigung" && (
+                <div className="space-y-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-brand-navy/60">
+                    Reinigungsintervall:
+                  </span>
+                  <div className="grid grid-cols-3 gap-2.5">
+                    {[
+                      { id: "woechentlich", label: "Wöchentlich" },
+                      { id: "monatlich", label: "14-tägig" },
+                      { id: "einmalig", label: "Einmalig" },
+                    ].map((item) => (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => setCalcInterval(item.id as typeof calcInterval)}
+                        className={`py-2.5 px-3 rounded-xl text-xs font-semibold border transition-all ${
+                          calcInterval === item.id
+                            ? "bg-brand-navy text-white border-brand-navy shadow-sm"
+                            : "bg-white text-brand-navy/80 border-brand-navy/15 hover:bg-brand-cream"
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Right: Dynamic Output Card */}
+            <div className="lg:col-span-5 p-8 rounded-3xl bg-brand-navy text-white flex flex-col justify-between shadow-xl">
+              <div>
+                <span className="text-xs font-mono uppercase tracking-widest text-brand-lime">
+                  GESCHÄTZTER RICHTWERT
+                </span>
+
+                <div className="mt-3 flex items-baseline gap-2">
+                  <span className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+                    ca. {estimatedCost} €
+                  </span>
+                  <span className="text-xs text-white/60">
+                    {calcInterval === "einmalig" ? "netto einmalig" : "netto / Monat"}
+                  </span>
+                </div>
+
+                <div className="mt-6 space-y-2.5 pt-6 border-t border-white/10 text-xs">
+                  <div className="flex justify-between text-white/80">
+                    <span>Ersparnis nach § 35a EStG (20%):</span>
+                    <span className="font-bold text-brand-lime">- ca. {taxSavings} €</span>
+                  </div>
+                  <div className="flex justify-between text-white/80">
+                    <span>Effektive Kosten nach Steuer:</span>
+                    <span className="font-bold text-white">ca. {estimatedCost - taxSavings} €</span>
+                  </div>
+                  <div className="flex justify-between text-white/80">
+                    <span>Erstbegehung vor Ort:</span>
+                    <span className="font-bold text-emerald-400">0,00 € (Kostenlos)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <Link
+                  href={`/contacts?service=${encodeURIComponent(service.slug)}&area=${calcArea}`}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-brand-lime text-brand-navy font-bold text-sm hover:bg-white transition-all shadow-md"
+                >
+                  <span>Angebot mit {calcArea} m² anfragen</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <div className="text-center mt-2.5 text-[11px] text-white/50">
+                  Verbindlicher Festpreis nach kurzer Sichtung
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          5. THE 4-STEP MASTER PROTOCOL TIMELINE
+          Numbered architectural sequence
+         ========================================================================= */}
+      <section className="py-20 sm:py-28 bg-white border-y border-brand-navy/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs uppercase font-mono tracking-widest text-brand-navy/60 block mb-2">
+              VERBINDLICHER PROZESS
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-brand-navy tracking-tight">
+              Ihr Projekt in 4 transparenten Stufen.
             </h2>
             <p className="mt-4 text-base text-brand-navy/70">
-              Keine versteckten Klauseln, keine unvorhergesehenen Kosten. Wir begleiten Sie
-              strukturiert in vier transparenten Schritten.
+              Vom ersten Anruf bis zur finalen Abnahme: Bei Tadiks wissen Sie zu jedem
+              Zeitpunkt genau, wer was tut und wann die Fertigstellung erfolgt.
             </p>
           </div>
 
@@ -284,18 +675,22 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
             {service.processSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="relative p-6 sm:p-7 rounded-2xl bg-brand-cream border border-brand-navy/10 flex flex-col justify-between hover:shadow-md transition-shadow"
+                className="relative p-7 sm:p-8 rounded-3xl bg-brand-cream border border-brand-navy/10 flex flex-col justify-between hover:shadow-lg hover:border-brand-navy/20 transition-all duration-300"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-brand-navy text-white font-mono font-bold flex items-center justify-center text-sm mb-5 shadow-sm">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-navy text-brand-lime font-mono font-bold flex items-center justify-center text-lg mb-6 shadow-sm">
                     {step.number}
                   </div>
-                  <h3 className="font-bold text-lg text-brand-navy mb-2">
+                  <h3 className="font-bold text-xl text-brand-navy mb-3 leading-snug">
                     {step.title}
                   </h3>
                   <p className="text-sm text-brand-navy/75 leading-relaxed">
                     {step.description}
                   </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t border-brand-navy/10 flex items-center text-xs font-mono text-brand-navy/50">
+                  <span>Stufe {step.number} von 04</span>
                 </div>
               </div>
             ))}
@@ -303,9 +698,9 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
         </div>
       </section>
 
-      {/* ========================================================
-          4. SERVICE-SPECIFIC FAQs
-         ======================================================== */}
+      {/* =========================================================================
+          6. SERVICE-SPECIFIC FAQS
+         ========================================================================= */}
       {service.faqs && service.faqs.length > 0 && (
         <FaqSection
           eyebrow="HÄUFIG GESTELLTE FRAGEN"
@@ -317,7 +712,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
               </span>
             </>
           }
-          subtitle="Hier finden Sie transparente Antworten auf die wichtigsten Fragen unserer Kunden in Chemnitz und Umgebung."
+          subtitle="Hier finden Sie transparente Antworten auf die wichtigsten Fragen unserer Kunden in Chemnitz und Mittelsachsen."
           items={service.faqs.map((f) => ({
             category: service.title.toUpperCase(),
             question: f.question,
@@ -326,18 +721,18 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
         />
       )}
 
-      {/* ========================================================
-          5. RELATED SERVICES NAVIGATION
-         ======================================================== */}
+      {/* =========================================================================
+          7. RELATED SERVICES CAROUSEL / GRID
+         ========================================================================= */}
       {relatedServices.length > 0 && (
-        <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <section className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="text-xs uppercase font-mono tracking-widest text-brand-navy/60">
-                Ergänzende Gewerke
+              <span className="text-xs uppercase font-mono tracking-widest text-brand-navy/60 block mb-2">
+                SYNERGIEN &amp; ERGÄNZUNGEN
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-brand-navy tracking-tight mt-1">
-                Weitere Leistungen für Ihr Projekt
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-brand-navy tracking-tight">
+                Weitere Gewerke unseres Meisterbetriebs
               </h2>
             </div>
             <Link
@@ -354,22 +749,22 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
               <Link
                 key={rel.slug}
                 href={`/services/${rel.slug}`}
-                className="group p-6 rounded-2xl bg-white border border-brand-navy/10 shadow-sm hover:shadow-lg hover:border-brand-navy/20 transition-all flex flex-col justify-between"
+                className="group p-6 sm:p-7 rounded-3xl bg-white border border-brand-navy/10 shadow-sm hover:shadow-xl hover:border-brand-navy/20 transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative aspect-16/10 rounded-xl overflow-hidden mb-4 bg-brand-navy/5">
+                  <div className="relative aspect-16/10 rounded-2xl overflow-hidden mb-5 bg-brand-navy/5 shadow-inner">
                     <Image
                       src={rel.imageSrc}
                       alt={rel.imageAlt}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
                   <span className="text-xs uppercase font-mono text-brand-navy/50">
                     {rel.categoryLabel}
                   </span>
-                  <h3 className="font-bold text-lg text-brand-navy mt-1 group-hover:text-brand-light-blue transition-colors">
+                  <h3 className="font-bold text-xl text-brand-navy mt-1 group-hover:text-brand-light-blue transition-colors">
                     {rel.title}
                   </h3>
                   <p className="mt-2 text-xs sm:text-sm text-brand-navy/70 line-clamp-2 leading-relaxed">
@@ -378,7 +773,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-brand-navy/10 flex items-center justify-between text-xs font-semibold text-brand-navy">
-                  <span>Details ansehen</span>
+                  <span>Leistungsspezifikation ansehen</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-brand-navy" />
                 </div>
               </Link>
@@ -387,9 +782,9 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
         </section>
       )}
 
-      {/* ========================================================
-          6. CLOSING CALL TO ACTION
-         ======================================================== */}
+      {/* =========================================================================
+          8. MONUMENTAL CLOSING CALL TO ACTION
+         ========================================================================= */}
       <ClosingCtaSection
         id="service-cta"
         eyebrow="TADIKS MEISTERBETRIEB CHEMNITZ"
@@ -399,11 +794,11 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
             <span className="font-serif italic font-normal text-brand-lime">
               {service.title}
             </span>{" "}
-            in Chemnitz?
+            in Sachsen?
           </>
         }
-        subtitle="Fordern Sie jetzt Ihr transparentes, kostenloses Festpreisangebot an. Schnelle Rückmeldung innerhalb von 24 Stunden."
-        ctaText={`Angebot für ${service.title} anfordern`}
+        subtitle="Sichern Sie sich Ihren Wunschtermin und ein garantiertes Festpreisangebot ohne Überraschungen. Kostenfreie Besichtigung vor Ort innerhalb von 24 Stunden."
+        ctaText={`Festpreisangebot für ${service.title} anfordern`}
         ctaHref={`/contacts?service=${encodeURIComponent(service.slug)}`}
       />
     </main>

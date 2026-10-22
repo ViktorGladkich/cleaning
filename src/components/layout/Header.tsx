@@ -14,6 +14,36 @@ import { MegaMenu } from "./MegaMenu";
 import { MobileMenu } from "./MobileMenu";
 
 /**
+ * ActiveUnderlineSvg — Elegant, organic architectural SVG underline stroke
+ */
+export function ActiveUnderlineSvg({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 8"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+      className={cn(
+        "absolute -bottom-1.5 left-0 w-full h-[6.5px] text-brand-navy pointer-events-none overflow-visible",
+        className
+      )}
+      aria-hidden="true"
+    >
+      <path
+        d="M1 5.5 C 28 1.8, 72 8.2, 99 3.5"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        vectorEffect="nonScalingStroke"
+        pathLength={100}
+        className="animate-draw-underline"
+      />
+    </svg>
+  );
+}
+
+/**
  * Header — Primary navigation bar with frosted-glass pill styling,
  * center navigation, desktop mega menu card, and CTA button.
  */
@@ -118,18 +148,22 @@ export function Header() {
           {/* Desktop Nav Links (absolute-centered with generous breathing room) */}
           <div className="hidden md:flex items-center gap-3.5 lg:gap-5 absolute left-1/2 -translate-x-1/2 z-10">
             {MAIN_NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive =
+                link.href === "/services"
+                  ? pathname === "/services" || pathname === "/reinigung" || pathname.startsWith("/services/")
+                  : link.href === "/bau"
+                  ? pathname === "/bau" || pathname.startsWith("/bau/")
+                  : pathname === link.href;
+
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={closeMenu}
-                  className={cn(
-                    "group inline-flex items-center text-[16.5px] transition-colors duration-150 py-1",
-                    isActive ? "text-brand-navy font-bold" : "text-brand-navy font-medium hover:text-brand-navy"
-                  )}
+                  className="group relative inline-flex items-center text-[16px] font-medium text-brand-navy hover:text-brand-navy transition-colors duration-150 py-1"
                 >
-                  <RollingText isActive={isActive} duplicateClassName="text-brand-navy">{link.label}</RollingText>
+                  <RollingText duplicateClassName="text-brand-navy">{link.label}</RollingText>
+                  {isActive && <ActiveUnderlineSvg />}
                 </Link>
               );
             })}
