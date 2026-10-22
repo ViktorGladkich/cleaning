@@ -108,7 +108,7 @@ export function Hero() {
         {/* Main Hero Card: full viewport height, zero shadow, header sits directly on top */}
         <div
           ref={heroCardRef}
-          className="relative w-full h-[calc(100svh-20px)] sm:h-[calc(100vh-28px)] min-h-150 rounded-[10px] overflow-hidden bg-brand-cream"
+          className="relative w-full h-[580px] xs:h-[620px] sm:h-[calc(100vh-28px)] min-h-150 rounded-[10px] overflow-hidden bg-brand-cream"
         >
           {/* Background Cleaning Image with Full Frame Seating */}
           <div className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[10px] origin-center">

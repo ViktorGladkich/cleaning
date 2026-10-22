@@ -32,7 +32,7 @@ export function ContactHero() {
     <section
       ref={containerRef}
       aria-label="Kontakt & Beratung"
-      className="relative z-10 w-full min-h-[75svh] sm:min-h-[82vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-brand-navy"
+      className="relative z-10 w-full min-h-[480px] xs:min-h-[520px] sm:min-h-[78vh] lg:min-h-[84vh] flex items-center justify-center overflow-hidden bg-brand-navy"
     >
       {/* 1. Full-bleed Background Image with crisp architectural depth */}
       <div className="absolute inset-0 w-full h-full">

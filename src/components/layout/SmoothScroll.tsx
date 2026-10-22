@@ -10,12 +10,30 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Disable native browser scroll restoration to prevent conflicts with Lenis
+    // Touch screens (iOS Safari, Android Chrome, Google App) already have 120Hz native hardware inertia.
+    // Running virtual smooth-scroll on mobile conflicts with in-app browser gesture recognizers (e.g. Google App).
+    const isTouchDevice =
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(pointer: coarse)").matches);
+
+    if (isTouchDevice) {
+      const onNativeScroll = () => {
+        ScrollTrigger.update();
+      };
+      window.addEventListener("scroll", onNativeScroll, { passive: true });
+      return () => {
+        window.removeEventListener("scroll", onNativeScroll);
+      };
+    }
+
+    // Disable native browser scroll restoration on desktop to prevent conflicts with Lenis
     if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    // Initialize Lenis
+    // Initialize Lenis for desktop mouse/trackpad only
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard smooth easing

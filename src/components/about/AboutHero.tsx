@@ -32,7 +32,7 @@ export function AboutHero() {
     <section
       ref={containerRef}
       aria-label="Über uns & Meisterphilosophie"
-      className="relative z-10 w-full min-h-[75svh] sm:min-h-[82vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-brand-navy"
+      className="relative z-10 w-full min-h-[520px] xs:min-h-[560px] sm:min-h-[82vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-brand-navy"
     >
       {/* 1. Full-bleed Background Image with crisp architectural depth */}
       <div className="absolute inset-0 w-full h-full">
