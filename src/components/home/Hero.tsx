@@ -52,9 +52,10 @@ export function Hero() {
       entryTl
         .fromTo(
           ".hero-heading-line",
-          { y: "100%", opacity: 0 },
+          { yPercent: 100, y: 0, opacity: 0 },
           {
-            y: "0%",
+            yPercent: 0,
+            y: 0,
             opacity: 1,
             duration: 0.85,
             stagger: 0.1,
@@ -65,9 +66,10 @@ export function Hero() {
         // 3. Subtitle reveal
         .fromTo(
           ".hero-subtitle",
-          { y: "100%", opacity: 0 },
+          { yPercent: 100, y: 0, opacity: 0 },
           {
-            y: "0%",
+            yPercent: 0,
+            y: 0,
             opacity: 1,
             duration: 0.75,
             ease: "power3.out",
@@ -77,8 +79,8 @@ export function Hero() {
         // 4. CTAs reveal
         .fromTo(
           ".hero-cta-inner",
-          { y: "100%" },
-          { y: "0%", duration: 0.75, stagger: 0.08, ease: "power3.out" },
+          { yPercent: 100, y: 0 },
+          { yPercent: 0, y: 0, duration: 0.75, stagger: 0.08, ease: "power3.out" },
           0.7
         )
         // 5. Video Card smooth entrance sliding in from bottom of screen
@@ -130,18 +132,12 @@ export function Hero() {
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-medium text-white tracking-tight leading-[1.1] mb-3 sm:mb-5 flex flex-col gap-1">
               <span className="overflow-hidden block">
-                <span
-                  className="block hero-heading-line opacity-0 will-change-transform"
-                  style={{ transform: "translateY(100%)" }}
-                >
+                <span className="block hero-heading-line will-change-transform">
                   Reinigung &amp; Bau
                 </span>
               </span>
               <span className="overflow-hidden block pt-1">
-                <span
-                  className="block hero-heading-line opacity-0 will-change-transform"
-                  style={{ transform: "translateY(100%)" }}
-                >
+                <span className="block hero-heading-line will-change-transform">
                   Qualität bis ins Detail
                 </span>
               </span>
@@ -149,10 +145,7 @@ export function Hero() {
 
             {/* Subtitle */}
             <p className="text-white/85 text-sm sm:text-base lg:text-lg max-w-xl mb-6 sm:mb-8 leading-relaxed overflow-hidden">
-              <span
-                className="block hero-subtitle opacity-0 will-change-transform"
-                style={{ transform: "translateY(100%)" }}
-              >
+              <span className="block hero-subtitle will-change-transform">
                 Professionelle Gebäudereinigung sowie Bau- und Sanierungsarbeiten – zuverlässig, termintreu und präzise umgesetzt.
               </span>
             </p>
@@ -160,10 +153,7 @@ export function Hero() {
             {/* Actions: Primary CTA + Bau Entdecken (side-by-side in one row on mobile) */}
             <div className="flex items-center gap-2 xs:gap-2.5 sm:gap-4 self-start max-w-full">
               <div className="hero-cta overflow-hidden shrink-0">
-                <div
-                  className="hero-cta-inner will-change-transform"
-                  style={{ transform: "translateY(100%)" }}
-                >
+                <div className="hero-cta-inner will-change-transform">
                   <CtaButton
                     href="/contacts"
                     size="md"
@@ -175,10 +165,7 @@ export function Hero() {
                 </div>
               </div>
               <div className="hero-cta overflow-hidden shrink-0">
-                <div
-                  className="hero-cta-inner will-change-transform"
-                  style={{ transform: "translateY(100%)" }}
-                >
+                <div className="hero-cta-inner will-change-transform">
                   <Link
                     href="/bau"
                     className="inline-flex items-center justify-center h-9 sm:h-10.5 px-3.5 sm:px-5 rounded-lg sm:rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[13px] xs:text-[13.5px] sm:text-[15.5px] font-medium transition-colors duration-200 shadow-xs whitespace-nowrap"

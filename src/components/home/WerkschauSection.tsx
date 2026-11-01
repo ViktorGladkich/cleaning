@@ -18,19 +18,6 @@ export function WerkschauSection() {
 
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-      // Set guaranteed initial states for text entrance so elements never flash or jump
-      gsap.set(".werkschau-hero-line", { yPercent: 115, force3D: true });
-      gsap.set(".werkschau-lime-pill", { scaleX: 0, transformOrigin: "left center", force3D: true });
-      gsap.set(".werkschau-lime-text", { opacity: 0 });
-      gsap.set(
-        [
-          ".werkschau-corner-text-top",
-          ".werkschau-corner-text-bottom",
-          ".werkschau-scroll-indicator",
-        ],
-        { opacity: 0, y: 20, force3D: true }
-      );
-
       // Set initial off-screen position for all floating cards immediately on mount
       GALLERY_CARDS.forEach((card) => {
         const wrap = gallery.querySelector(`.${card.wrapperClass.split(" ")[0]}`);
@@ -68,31 +55,36 @@ export function WerkschauSection() {
       const revealTl = gsap.timeline({
         scrollTrigger: {
           trigger: scrollTrack,
-          start: "top 80%",
+          start: "top 82%",
           once: true,
         },
       });
 
       revealTl
-        .to(".werkschau-hero-line", {
-          yPercent: 0,
-          duration: 1.0,
-          stagger: 0.12,
-          ease: "power4.out",
-          force3D: true,
-        })
-        .to(
+        .fromTo(
+          ".werkschau-hero-line",
+          { yPercent: 115, y: 0 },
+          {
+            yPercent: 0,
+            y: 0,
+            duration: 1.0,
+            stagger: 0.12,
+            ease: "power4.out",
+          }
+        )
+        .fromTo(
           ".werkschau-lime-pill",
+          { scaleX: 0, transformOrigin: "left center" },
           {
             scaleX: 1,
             duration: 0.6,
             ease: "power3.inOut",
-            force3D: true,
           },
           "-=0.55"
         )
-        .to(
+        .fromTo(
           ".werkschau-lime-text",
+          { opacity: 0 },
           {
             opacity: 1,
             duration: 0.35,
@@ -100,19 +92,19 @@ export function WerkschauSection() {
           },
           "-=0.25"
         )
-        .to(
+        .fromTo(
           [
             ".werkschau-corner-text-top",
             ".werkschau-corner-text-bottom",
             ".werkschau-scroll-indicator",
           ],
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
             duration: 0.75,
             stagger: 0.08,
             ease: "power3.out",
-            force3D: true,
           },
           "-=0.55"
         );
@@ -250,10 +242,7 @@ export function WerkschauSection() {
             >
               {/* Corner Text: Top-Left */}
               <div className="px-4 sm:px-8 lg:px-12 flex justify-start">
-                <div
-                  className="werkschau-corner-text-top opacity-0 max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left pointer-events-auto will-change-transform"
-                  style={{ transform: "translate3d(0, 20px, 0)" }}
-                >
+                <div className="werkschau-corner-text-top max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left pointer-events-auto">
                   Einblicke in unsere Handwerks- &amp; Reinigungsstandards. Vom denkmalgeschützten Altbau bis zum modernen Gewerbeobjekt in Chemnitz und ganz Sachsen.
                 </div>
               </div>
@@ -263,33 +252,21 @@ export function WerkschauSection() {
                 <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.1rem] font-medium text-brand-navy tracking-tight leading-[1.08] select-none">
                   {/* Line 1 */}
                   <span className="block overflow-hidden whitespace-nowrap">
-                    <span
-                      className="block werkschau-hero-line will-change-transform"
-                      style={{ transform: "translate3d(0, 115%, 0)" }}
-                    >
+                    <span className="block werkschau-hero-line">
                       Präzision im Bau.
                     </span>
                   </span>
                   {/* Line 2 */}
                   <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
-                    <span
-                      className="block werkschau-hero-line will-change-transform"
-                      style={{ transform: "translate3d(0, 115%, 0)" }}
-                    >
+                    <span className="block werkschau-hero-line">
                       Perfektion im Glanz.
                     </span>
                   </span>
                   {/* Line 3 with Lime Accent Pill */}
                   <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
-                    <span
-                      className="block werkschau-hero-line will-change-transform"
-                      style={{ transform: "translate3d(0, 115%, 0)" }}
-                    >
-                      <span
-                        className="werkschau-lime-pill inline-block bg-brand-lime px-3 py-0.5 rounded sm:rounded-md text-brand-navy origin-left will-change-transform"
-                        style={{ transform: "scaleX(0)" }}
-                      >
-                        <span className="werkschau-lime-text opacity-0">Bis ins Detail</span>
+                    <span className="block werkschau-hero-line">
+                      <span className="werkschau-lime-pill inline-block bg-brand-lime px-3 py-0.5 rounded sm:rounded-md text-brand-navy origin-left">
+                        <span className="werkschau-lime-text">Bis ins Detail</span>
                       </span>
                     </span>
                   </span>
@@ -298,20 +275,14 @@ export function WerkschauSection() {
 
               {/* Corner Text: Bottom-Right */}
               <div className="px-4 sm:px-8 lg:px-12 flex justify-end">
-                <div
-                  className="werkschau-corner-text-bottom opacity-0 max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left sm:text-right pointer-events-auto will-change-transform"
-                  style={{ transform: "translate3d(0, 20px, 0)" }}
-                >
+                <div className="werkschau-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left sm:text-right pointer-events-auto">
                   Keine Kompromisse bei Material, Hygiene und Ausführung. Festangestellte Fachkräfte und lückenlose Qualitätskontrolle bei jedem Schritt.
                 </div>
               </div>
             </div>
 
             {/* Informational Scroll Indicator (hidden on mobile, visible on desktop/tablet, isolated from text stage) */}
-            <div
-              className="werkschau-scroll-indicator opacity-0 absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-1.5 pointer-events-none select-none will-change-transform"
-              style={{ transform: "translate3d(0, 20px, 0)" }}
-            >
+            <div className="werkschau-scroll-indicator absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 hidden sm:flex flex-col items-center gap-1.5 pointer-events-none select-none">
               <span className="text-[10px] sm:text-[11px] font-medium tracking-[0.25em] uppercase text-brand-navy/70">
                 Scrollen
               </span>
@@ -330,11 +301,7 @@ export function WerkschauSection() {
               }}
             >
               {GALLERY_CARDS.map((card) => (
-                <div
-                  key={card.id}
-                  className={card.wrapperClass}
-                  style={{ transform: "translate3d(0, 120vh, 0)" }}
-                >
+                <div key={card.id} className={card.wrapperClass}>
                   <div
                     className={`relative ${card.maskClass} ${card.widthClass} ${card.aspectClass} rounded sm:rounded-md overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-100 md:opacity-0`}
                   >

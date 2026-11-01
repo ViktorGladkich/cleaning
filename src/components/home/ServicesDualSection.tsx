@@ -171,26 +171,55 @@ export function ServicesGridSection({
         );
       }
 
-      // Staggered staircase with custom physical ladder heights from bottom
-      tl.fromTo(
-        ".service-editorial-card",
-        {
-          y: (index: number) => {
-            const ladderOffsets = [28, 56, 84, 36, 64, 92];
-            return ladderOffsets[index] ?? 40;
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      const cards = gsap.utils.toArray<HTMLElement>(".service-editorial-card");
+
+      if (isMobile) {
+        // On mobile (1-column vertical stack), animate each card individually as the user scrolls to it
+        cards.forEach((card) => {
+          gsap.fromTo(
+            card,
+            { y: 36, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: "power3.out",
+              clearProps: "transform,opacity",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 88%",
+                once: true,
+              },
+            }
+          );
+        });
+      } else {
+        // On tablet/desktop (2- or 3-column grid), staggered staircase reveal when the grid enters view
+        gsap.fromTo(
+          cards,
+          {
+            y: (index: number) => {
+              const ladderOffsets = [28, 56, 84, 36, 64, 92];
+              return ladderOffsets[index] ?? 40;
+            },
+            opacity: 0,
           },
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.95,
-          stagger: 0.12,
-          ease: "power2.out",
-          clearProps: "transform,opacity",
-        },
-        "-=0.6"
-      );
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.95,
+            stagger: 0.12,
+            ease: "power2.out",
+            clearProps: "transform,opacity",
+            scrollTrigger: {
+              trigger: ".services-editorial-grid",
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+      }
 
       // 2. Continuous smooth parallax drift on card images while scrolling through the section
       gsap.fromTo(

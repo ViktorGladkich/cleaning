@@ -29,17 +29,34 @@ const COL_REINIGUNG = [
 
 const COL_BAU = [
   { label: "Übersicht Bauleistungen", href: "/bau" },
-  { label: "Trockenbau & Innenausbau", href: "/services/trockenbau-innenausbau" },
+  {
+    label: "Trockenbau & Innenausbau",
+    href: "/services/trockenbau-innenausbau",
+  },
   { label: "Komplettsanierung", href: "/services/renovierung-sanierung" },
-  { label: "Maler- & Spachtelarbeiten", href: "/services/maler-spachtelarbeiten" },
-  { label: "Bodenleger- & Fliesenarbeiten", href: "/services/bodenleger-fliesenarbeiten" },
+  {
+    label: "Maler- & Spachtelarbeiten",
+    href: "/services/maler-spachtelarbeiten",
+  },
+  {
+    label: "Bodenleger- & Fliesenarbeiten",
+    href: "/services/bodenleger-fliesenarbeiten",
+  },
   { label: "Abbruch & Entkernung", href: "/services/abbruch-entkernung" },
 ];
 
 const COL_CONNECT = [
   { label: "Anfragen & Beratung", href: "/contacts" },
-  { label: COMPANY_INFO.email, href: `mailto:${COMPANY_INFO.email}`, isExternal: true },
-  { label: COMPANY_INFO.phone, href: `tel:${COMPANY_INFO.phoneRaw}`, isExternal: true },
+  {
+    label: COMPANY_INFO.email,
+    href: `mailto:${COMPANY_INFO.email}`,
+    isExternal: true,
+  },
+  {
+    label: COMPANY_INFO.phone,
+    href: `tel:${COMPANY_INFO.phoneRaw}`,
+    isExternal: true,
+  },
   { label: COMPANY_INFO.address, href: "/contacts" },
 ];
 
@@ -70,20 +87,14 @@ function FooterLink({
 
   if (isExternal) {
     return (
-      <a
-        href={href}
-        className="group inline-block focus:outline-none"
-      >
+      <a href={href} className="group inline-block focus:outline-none">
         {content}
       </a>
     );
   }
 
   return (
-    <Link
-      href={href}
-      className="group inline-block focus:outline-none"
-    >
+    <Link href={href} className="group inline-block focus:outline-none">
       {content}
     </Link>
   );
@@ -105,7 +116,7 @@ export function Footer() {
           rightGridRef.current.children,
           bottomBarRef.current,
         ],
-        { opacity: 1, y: 0, filter: "none", clearProps: "all" }
+        { opacity: 1, y: 0, filter: "none", clearProps: "all" },
       );
     }
   }, [pathname]);
@@ -114,14 +125,18 @@ export function Footer() {
     () => {
       // Only animate on the main homepage
       if (pathname !== "/" || !footerRef.current) {
-        if (leftColRef.current && rightGridRef.current && bottomBarRef.current) {
+        if (
+          leftColRef.current &&
+          rightGridRef.current &&
+          bottomBarRef.current
+        ) {
           gsap.set(
             [
               leftColRef.current.children,
               rightGridRef.current.children,
               bottomBarRef.current,
             ],
-            { opacity: 1, y: 0, filter: "none", clearProps: "all" }
+            { opacity: 1, y: 0, filter: "none", clearProps: "all" },
           );
         }
         return;
@@ -143,7 +158,7 @@ export function Footer() {
               start: "top 90%",
               once: true,
             },
-          }
+          },
         );
       }
 
@@ -163,7 +178,7 @@ export function Footer() {
               start: "top 88%",
               once: true,
             },
-          }
+          },
         );
       }
 
@@ -182,11 +197,11 @@ export function Footer() {
               start: "top 98%",
               once: true,
             },
-          }
+          },
         );
       }
     },
-    { scope: footerRef, dependencies: [pathname] }
+    { scope: footerRef, dependencies: [pathname] },
   );
 
   return (
@@ -282,17 +297,26 @@ export function Footer() {
           ref={bottomBarRef}
           className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 font-light"
         >
-          <p>&copy; {new Date().getFullYear()} {COMPANY_INFO.name}. Alle Rechte vorbehalten.</p>
+          <p>
+            &copy; {new Date().getFullYear()} {COMPANY_INFO.name}. Alle Rechte
+            vorbehalten.
+          </p>
 
           <div className="flex items-center gap-6">
-            <Link href="/impressum" className="hover:text-white transition-colors">
+            <Link
+              href="/impressum"
+              className="hover:text-white transition-colors"
+            >
               Impressum
             </Link>
-            <span>&middot;</span>
-            <Link href="/datenschutz" className="hover:text-white transition-colors">
+
+            <Link
+              href="/datenschutz"
+              className="hover:text-white transition-colors"
+            >
               Datenschutz
             </Link>
-            <span>&middot;</span>
+
             <button
               type="button"
               onClick={() => {

@@ -10,46 +10,62 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Touch screens (iOS Safari, Android Chrome, Google App) already have 120Hz native hardware inertia.
-    // Running virtual smooth-scroll on mobile conflicts with in-app browser gesture recognizers (e.g. Google App).
-    const isTouchDevice =
-      typeof window !== "undefined" &&
-      ("ontouchstart" in window ||
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia("(pointer: coarse)").matches);
+    if (typeof window === "undefined") return;
 
-    if (isTouchDevice) {
-      return;
-    }
+    const mediaQuery = window.matchMedia("(max-width: 1023px), (pointer: coarse)");
 
-    // Disable native browser scroll restoration on desktop to prevent conflicts with Lenis
-    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
-    // Initialize Lenis for desktop mouse/trackpad only
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard smooth easing
-    });
-    lenisRef.current = lenis;
-
-    // 1. Hook Lenis scroll event to GSAP's ScrollTrigger
-    lenis.on("scroll", ScrollTrigger.update);
-
-    // 2. Add Lenis's requestAnimationFrame to GSAP's ticker
-    const update = (time: number) => {
-      lenis.raf(time * 1000);
+    const destroyLenis = () => {
+      if (lenisRef.current) {
+        lenisRef.current.destroy();
+        lenisRef.current = null;
+      }
     };
-    gsap.ticker.add(update);
 
-    // 3. Disable GSAP's lag smoothing to avoid conflicts with Lenis's own smoothing
-    gsap.ticker.lagSmoothing(0);
+    const update = (time: number) => {
+      if (lenisRef.current) {
+        lenisRef.current.raf(time * 1000);
+      }
+    };
+
+    const initOrCleanup = () => {
+      const isMobileOrTouch =
+        mediaQuery.matches ||
+        window.innerWidth < 1024 ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0;
+
+      // Completely disable Lenis on mobile/tablet screens and touch devices
+      if (isMobileOrTouch) {
+        destroyLenis();
+        gsap.ticker.remove(update);
+        return;
+      }
+
+      if (lenisRef.current) return;
+
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
+      lenisRef.current = lenis;
+
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(update);
+      gsap.ticker.lagSmoothing(0);
+    };
+
+    initOrCleanup();
+    mediaQuery.addEventListener("change", initOrCleanup);
+    window.addEventListener("resize", initOrCleanup);
 
     return () => {
-      // Cleanup to prevent memory leaks
-      lenis.destroy();
-      lenisRef.current = null;
+      mediaQuery.removeEventListener("change", initOrCleanup);
+      window.removeEventListener("resize", initOrCleanup);
+      destroyLenis();
       gsap.ticker.remove(update);
     };
   }, []);
