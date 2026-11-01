@@ -53,8 +53,13 @@ const COL_CONNECT = [
     isExternal: true,
   },
   {
-    label: COMPANY_INFO.phone,
+    label: `Tel.: ${COMPANY_INFO.phone}`,
     href: `tel:${COMPANY_INFO.phoneRaw}`,
+    isExternal: true,
+  },
+  {
+    label: `Mobil: ${COMPANY_INFO.mobile}`,
+    href: `tel:${COMPANY_INFO.mobileRaw}`,
     isExternal: true,
   },
   { label: COMPANY_INFO.address, href: "/contacts" },

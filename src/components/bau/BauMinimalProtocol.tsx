@@ -175,9 +175,9 @@ export function BauMinimalProtocol() {
                   zIndex: idx + 1,
                 }}
               >
-                <div className="protocol-light-card relative w-full max-w-120 bg-white text-brand-navy rounded-[24px] sm:rounded-[28px] p-4 sm:p-5 border border-brand-navy/12 shadow-[0_12px_36px_-6px_rgba(61,86,143,0.10),0_2px_6px_-1px_rgba(61,86,143,0.05)] origin-top will-change-transform">
+                <div className="protocol-light-card relative w-full max-w-120 bg-white text-brand-navy rounded-3xl sm:rounded-[28px] p-4 sm:p-5 border border-brand-navy/12 shadow-[0_12px_36px_-6px_rgba(61,86,143,0.10),0_2px_6px_-1px_rgba(61,86,143,0.05)] origin-top will-change-transform">
                   {/* Top: Rounded Photographic Surface */}
-                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-[16px] sm:rounded-[20px] overflow-hidden bg-slate-100 border border-brand-navy/8">
+                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-2xl sm:rounded-[20px] overflow-hidden bg-slate-100 border border-brand-navy/8">
                     <Image
                       src={step.image}
                       alt={step.title}

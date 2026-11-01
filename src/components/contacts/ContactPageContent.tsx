@@ -7,6 +7,7 @@ import { ContactCoverageSection } from "./ContactCoverageSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { CONTACT_FAQS } from "@/data/contactFaqs";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
+import { COMPANY_INFO } from "@/lib/constants";
 
 export function ContactPageContent() {
   return (
@@ -50,10 +51,10 @@ export function ContactPageContent() {
           </>
         }
         subtitle="Rufen Sie uns direkt an. Unser Chemnitzer Büro berät Sie gerne sofort persönlich zu Ihrem Projekt."
-        ctaText="Jetzt 0176 84337228 anrufen"
-        ctaHref="tel:+4917684337228"
+        ctaText={`Jetzt ${COMPANY_INFO.phone} anrufen`}
+        ctaHref={`tel:${COMPANY_INFO.phoneRaw}`}
         secondaryCtaText="E-Mail senden"
-        secondaryCtaHref="mailto:info@tadiks.de"
+        secondaryCtaHref={`mailto:${COMPANY_INFO.email}`}
         imageSrc="/images/hero_contact_monumental.jpg"
         imageAlt="Tadiks direkte Kundenberatung Chemnitz"
       />

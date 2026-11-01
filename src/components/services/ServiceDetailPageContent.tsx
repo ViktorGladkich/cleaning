@@ -22,6 +22,7 @@ import {
 import { ServiceDetailData, ALL_SERVICE_DETAILS } from "@/data/serviceDetails";
 import { FaqSection } from "@/components/home/FaqSection";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
+import { COMPANY_INFO } from "@/lib/constants";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 
@@ -119,7 +120,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
       <section
         ref={heroRef}
         aria-label={service.title}
-        className="relative w-full min-h-[580px] xs:min-h-[640px] sm:min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
+        className="relative w-full min-h-145 xs:min-h-160 sm:min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
       >
         {/* Full-bleed Background Architectural Image with cinematic grading */}
         <div className="absolute inset-0 w-full h-full">
@@ -233,11 +234,11 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
               </Link>
 
               <a
-                href="tel:017643818855"
+                href={`tel:${COMPANY_INFO.phoneRaw}`}
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-base transition-colors"
               >
                 <Phone className="w-4 h-4 text-brand-lime" />
-                <span>Direkt anrufen: 0176 43818855</span>
+                <span>Direkt anrufen: {COMPANY_INFO.phone}</span>
               </a>
             </div>
           </div>
@@ -261,9 +262,9 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Card 1 (Large 7-col): Visual Craftsmanship & Scope */}
-          <div className="md:col-span-7 p-8 sm:p-10 rounded-3xl bg-brand-navy text-white relative overflow-hidden flex flex-col justify-between shadow-xl min-h-[440px]">
+          <div className="md:col-span-7 p-8 sm:p-10 rounded-3xl bg-brand-navy text-white relative overflow-hidden flex flex-col justify-between shadow-xl min-h-110">
             <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-brand-lime/10 blur-3xl pointer-events-none" />
-            <div className="absolute top-0 right-0 w-full h-full opacity-10 bg-[radial-gradient(#EAF3B2_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-full h-full opacity-10 bg-[radial-gradient(#EAF3B2_1px,transparent_1px)] bg-size-[16px_16px] pointer-events-none" />
 
             <div className="relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-brand-lime mb-6">
@@ -355,7 +356,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                   className="p-3.5 rounded-xl bg-brand-cream/80 border border-brand-navy/10 flex items-center gap-3 text-sm text-brand-navy font-medium"
                 >
                   <div className="w-5 h-5 rounded-full bg-brand-navy text-brand-lime flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    <Check className="w-3.5 h-3.5 stroke-3" />
                   </div>
                   <span>{inc}</span>
                 </div>
@@ -466,7 +467,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
             {/* Right: Tadiks Meisterbetrieb (Highlight) */}
             <div className="p-8 sm:p-10 rounded-3xl bg-linear-to-b from-white/15 to-white/10 border-2 border-brand-lime text-white relative shadow-2xl flex flex-col justify-between">
               <div className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-lime text-brand-navy font-bold text-xs shadow-md">
-                <Check className="w-3.5 h-3.5 stroke-[3]" />
+                <Check className="w-3.5 h-3.5 stroke-3" />
                 <span>TADIKS STANDARD</span>
               </div>
 
@@ -479,7 +480,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                 <ul className="space-y-4 text-sm text-white/95">
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      <Check className="w-3.5 h-3.5 stroke-3" />
                     </div>
                     <span>
                       <strong>Festes Stammpersonal &amp; deutscher Objektleiter</strong> für lückenlose Diskretion und Vertrautheit
@@ -487,7 +488,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      <Check className="w-3.5 h-3.5 stroke-3" />
                     </div>
                     <span>
                       <strong>100% garantierter Festpreis</strong> ohne versteckte Nebenkosten nach kostenloser Vor-Ort-Begehung
@@ -495,7 +496,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      <Check className="w-3.5 h-3.5 stroke-3" />
                     </div>
                     <span>
                       <strong>Kärcher &amp; Knauf Markenequipment</strong> sowie RKI-konforme Mikrofaserhygiene / HEPA-14 Staubabsaugung
@@ -503,7 +504,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full bg-brand-lime text-brand-navy flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      <Check className="w-3.5 h-3.5 stroke-3" />
                     </div>
                     <span>
                       <strong>Gemeinsame Endabnahme mit Protokoll</strong> und kostenfreie Nachbesserung binnen 24 Stunden bei Beanstandung

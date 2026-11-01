@@ -341,17 +341,17 @@ export function Header() {
                 {/* Top bar */}
                 <span
                   ref={topBarRef}
-                  className="absolute left-px h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
+                  className="absolute left-px h-[1.8px] w-5.5 bg-current rounded-full origin-center will-change-transform"
                 />
                 {/* Middle asymmetric bar aligned to right edge via CSS right-px */}
                 <span
                   ref={midBarRef}
-                  className="absolute right-px h-[1.8px] w-[15px] bg-current rounded-full origin-right will-change-transform"
+                  className="absolute right-px h-[1.8px] w-3.75 bg-current rounded-full origin-right will-change-transform"
                 />
                 {/* Bottom bar */}
                 <span
                   ref={botBarRef}
-                  className="absolute left-px h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
+                  className="absolute left-px h-[1.8px] w-5.5 bg-current rounded-full origin-center will-change-transform"
                 />
               </span>
             </button>
