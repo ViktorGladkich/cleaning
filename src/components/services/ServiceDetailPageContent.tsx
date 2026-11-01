@@ -10,7 +10,6 @@ import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
 import { ServiceDetailHero } from "./ServiceDetailHero";
 import { ServiceDetailBentoMatrix } from "./ServiceDetailBentoMatrix";
 import { ServiceDetailComparison } from "./ServiceDetailComparison";
-import { ServiceDetailPriceEstimator } from "./ServiceDetailPriceEstimator";
 
 interface ServiceDetailPageContentProps {
   service: ServiceDetailData;
@@ -37,10 +36,7 @@ export function ServiceDetailPageContent({
       {/* 3. Editorial Quality Comparison Table */}
       <ServiceDetailComparison slug={service.slug} />
 
-      {/* 4. Interactive Price Estimator Teaser */}
-      <ServiceDetailPriceEstimator service={service} />
-
-      {/* 5. The 4-Step Master Protocol Timeline */}
+      {/* 4. The 4-Step Master Protocol Timeline */}
       <section className="py-20 sm:py-28 bg-white border-y border-brand-navy/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">

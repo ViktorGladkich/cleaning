@@ -235,11 +235,10 @@ export function CookieBanner() {
             </div>
 
             {/* Bottom-left Legal Links */}
-            <div className="pt-1 flex items-center gap-4 text-[11px] text-neutral-700 font-light">
+            <div className="pt-1 flex items-center gap-5 text-[11px] text-neutral-700 font-light">
               <Link href="/datenschutz" className="hover:underline hover:text-black">
                 Datenschutzerklärung
               </Link>
-              <span>&middot;</span>
               <Link href="/impressum" className="hover:underline hover:text-black">
                 Impressum
               </Link>

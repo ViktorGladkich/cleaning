@@ -23,35 +23,26 @@ export function ContactDirectSidebar() {
 
         {/* Direct Cards */}
         <div className="space-y-3 pt-1">
-          {/* Phone & Mobile */}
-          <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-md hover:border-brand-navy/30 transition-[box-shadow,border-color] duration-300">
+          {/* Phone */}
+          <a
+            href={`tel:${COMPANY_INFO.phoneRaw}`}
+            className="group flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-md hover:border-brand-navy/30 transition-[box-shadow,border-color] duration-300"
+          >
             <div className="text-brand-navy flex items-center justify-center shrink-0">
               <Phone className="w-5 h-5" />
             </div>
             <div className="min-w-0 flex-1">
               <span className="text-xs font-mono uppercase text-brand-navy/50 block mb-0.5">
-                Telefon &amp; Mobil / WhatsApp
+                Telefonische Beratung
               </span>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                <a
-                  href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="text-base sm:text-lg font-semibold text-brand-navy hover:text-brand-navy/80 transition-colors"
-                >
-                  {COMPANY_INFO.phone}
-                </a>
-                <span className="text-brand-navy/30">&bull;</span>
-                <a
-                  href={`tel:${COMPANY_INFO.mobileRaw}`}
-                  className="text-base sm:text-lg font-semibold text-brand-navy hover:text-brand-navy/80 transition-colors"
-                >
-                  {COMPANY_INFO.mobile}
-                </a>
-              </div>
+              <span className="text-base sm:text-lg font-semibold text-brand-navy group-hover:text-brand-navy/80 transition-colors block">
+                {COMPANY_INFO.phone}
+              </span>
               <span className="text-[11px] text-brand-navy/60 mt-0.5 block">
                 Mo – Sa: 07:00 – 19:00 Uhr erreichbar
               </span>
             </div>
-          </div>
+          </a>
 
           {/* Email */}
           <a
@@ -87,7 +78,7 @@ export function ContactDirectSidebar() {
                 {COMPANY_INFO.address}
               </span>
               <span className="text-[11px] text-brand-navy/60 mt-0.5 block">
-                Hauptsitz Chemnitz &bull; Einsatz in Sachsen &amp; überregional
+                Hauptsitz Chemnitz, Einsatz in Sachsen &amp; überregional
               </span>
             </div>
           </div>

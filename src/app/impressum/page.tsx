@@ -28,7 +28,7 @@ export default function ImpressumPage() {
         {/* Heading */}
         <div className="mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-navy/60 block mb-2">
-            Gesetzliche Anbieterkennzeichnung &bull; Stand: 01.11.2026
+            Gesetzliche Anbieterkennzeichnung
           </span>
           <h1 className="text-3xl sm:text-5xl font-normal tracking-tight text-brand-navy">
             Impressum

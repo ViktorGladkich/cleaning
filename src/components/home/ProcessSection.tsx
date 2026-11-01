@@ -214,11 +214,9 @@ export function ProcessSection() {
             <span>Feste Objektleiter &amp; meisterhafter Standard in Chemnitz und Region</span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-brand-navy/60">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-7 text-brand-navy/60">
             <span>Festpreisgarantie</span>
-            <span>&middot;</span>
             <span>Gewerblich haftpflichtversichert</span>
-            <span>&middot;</span>
             <span>100% Termintreue</span>
           </div>
         </div>

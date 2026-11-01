@@ -12,14 +12,16 @@ import {
   Scale,
   Lock,
   UserCheck,
+  AlertTriangle,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { CookieSettingsTrigger } from "@/components/ui/CookieSettingsTrigger";
 import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung — Tadik's Cleaning Chemnitz",
   description:
-    "Datenschutzerklärung gemäß DSGVO und TDDDG (Stand: 01. November 2026) von Tadik's Cleaning, Inh. Michel Kislovskij, Lessingstraße 14, 09130 Chemnitz.",
+    "Datenschutzerklärung gemäß DSGVO, BDSG und TDDDG (Stand: 01. November 2026) von Tadik's Cleaning, Inh. Michel Kislovskij, Lessingstraße 14, 09130 Chemnitz.",
 };
 
 export default function DatenschutzPage() {
@@ -40,13 +42,13 @@ export default function DatenschutzPage() {
         {/* Heading */}
         <div className="mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-brand-navy/60 block mb-2">
-            Datenschutz &amp; Privatsphäre &bull; Stand: 01. November 2026
+            Datenschutz &amp; Privatsphäre
           </span>
           <h1 className="text-3xl sm:text-5xl font-normal tracking-tight text-brand-navy">
             Datenschutzerklärung
           </h1>
           <p className="mt-3 text-sm sm:text-base text-brand-navy/70 leading-relaxed font-light">
-            Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß der Datenschutz-Grundverordnung (DSGVO), dem Bundesdatenschutzgesetz (BDSG) und dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG).
+            Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß Art. 13, 14 und 21 der Datenschutz-Grundverordnung (DSGVO), dem Bundesdatenschutzgesetz (BDSG) sowie dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG).
           </p>
         </div>
 
@@ -70,6 +72,7 @@ export default function DatenschutzPage() {
               </p>
               <p>Lessingstraße 14</p>
               <p>09130 Chemnitz</p>
+              <p>Deutschland</p>
               <div className="pt-2 space-y-0.5">
                 <p>
                   Telefon:{" "}
@@ -101,24 +104,33 @@ export default function DatenschutzPage() {
               </div>
             </div>
             <p className="text-xs text-brand-navy/65">
-              Verantwortliche Stelle im Sinne des Art. 4 Nr. 7 DSGVO ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.
+              Verantwortliche Stelle im Sinne des Art. 4 Nr. 7 DSGVO ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet. Da in unserem Betrieb weniger als 20 Personen ständig mit der automatisierten Verarbeitung personenbezogener Daten beschäftigt sind, ist die Benennung eines externen Datenschutzbeauftragten gemäß Art. 37 DSGVO i. V. m. § 38 Abs. 1 BDSG gesetzlich nicht erforderlich. Bei allen Fragen zum Datenschutz wenden Sie sich bitte direkt an den oben genannten Inhaber.
             </p>
           </div>
 
-          {/* 2. Allgemeine Hinweise zur Datenverarbeitung */}
+          {/* 2. Allgemeine Hinweise & Pflichtinformationen nach Art. 13 DSGVO */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <ShieldCheck className="w-4 h-4 text-brand-navy shrink-0" />
               <span>2. Allgemeine Hinweise zur Datenverarbeitung</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Grundsätze des Datenschutzes
+              Grundsätze, Rechtsgrundlagen &amp; Speicherdauer
             </h2>
             <p>
               Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften (insbesondere DSGVO, BDSG und TDDDG) sowie dieser Datenschutzerklärung.
             </p>
             <p>
-              Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift, Telefonnummer oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an unbefugte Dritte weitergegeben.
+              Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift, Telefonnummer oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung oder eine gesetzliche Grundlage nicht an unbefugte Dritte weitergegeben.
+            </p>
+            <p>
+              <strong>Übersicht der Rechtsgrundlagen (Art. 13 Abs. 1 lit. c DSGVO):</strong> Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO. Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines Festpreisangebots auf Ihre Anfrage hin) erforderlich, erfolgt die Verarbeitung auf Grundlage des Art. 6 Abs. 1 lit. b DSGVO. Weiterhin verarbeiten wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO, sofern dies zur Erfüllung einer rechtlichen Verpflichtung (z. B. handels- und steuerrechtliche Aufbewahrungspflichten) erforderlich ist, sowie auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO (z. B. sicherer Betrieb der Website, Abwehr von Spam-Angriffen, zügige Beantwortung von Geschäftsanfragen).
+            </p>
+            <p>
+              <strong>Speicherdauer (Art. 13 Abs. 2 lit. a DSGVO):</strong> Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen von 6 Jahren gemäß § 257 HGB bzw. 8 bis 10 Jahren gemäß § 147 AO); im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe.
+            </p>
+            <p>
+              <strong>Hinweis zur Bereitstellungspflicht und Profiling (Art. 13 Abs. 2 lit. e &amp; f DSGVO):</strong> Die Bereitstellung personenbezogener Daten beim bloßen Besuch unserer Website ist weder gesetzlich noch vertraglich vorgeschrieben. Im Rahmen einer Angebotsanfrage ist die Angabe der als Pflichtfelder gekennzeichneten Kontaktdaten erforderlich, um Ihre Anfrage bearbeiten und ein vorvertragliches Angebot erstellen zu können. Eine automatisierte Entscheidungsfindung einschließlich Profiling gemäß Art. 22 Abs. 1 und 4 DSGVO findet auf unserer Website nicht statt.
             </p>
           </div>
 
@@ -126,22 +138,22 @@ export default function DatenschutzPage() {
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Server className="w-4 h-4 text-brand-navy shrink-0" />
-              <span>3. Hosting</span>
+              <span>3. Hosting &amp; Content Delivery</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
               Bereitstellung über Vercel Inc.
             </h2>
             <p>
-              Diese Website wird bei <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf der Website verarbeitet Vercel technisch notwendige Daten, insbesondere IP-Adressen, Server-Logdaten, Meta- und Kommunikationsdaten sowie Daten zum Websitezugriff, um die Website sicher, stabil und zuverlässig bereitzustellen.
+              Diese Website wird bei <strong>Vercel Inc.</strong>, 440 N Barranca Ave #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf der Website verarbeitet Vercel technisch notwendige Verbindungsdaten, insbesondere IP-Adressen, Server-Logdaten, HTTP-Header, Meta- und Kommunikationsdaten sowie Zeitstempel zum Websitezugriff, um die Website sicher, stabil und zuverlässig auszuliefern.
             </p>
             <p>
-              Der Einsatz des Hosters erfolgt im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+              Der Einsatz des Hosters erfolgt im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter sowie zum Schutz vor DDoS- und Cyberangriffen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
             </p>
             <p>
-              Vercel kann Daten auch in den USA und weiteren Drittländern verarbeiten. Vercel Inc. ist nach dem <strong>EU-US Data Privacy Framework (DPF)</strong> zertifiziert, sodass für Datenübermittlungen in die USA ein Angemessenheitsbeschluss der Europäischen Kommission gemäß Art. 45 DSGVO vorliegt. Ergänzend erfolgt die Verarbeitung auf Grundlage geeigneter Garantien nach Art. 46 Abs. 2 lit. c DSGVO (EU-Standardvertragsklauseln) sowie eines Auftragsverarbeitungsvertrags (DPA) gemäß Art. 28 DSGVO.
+              Vercel kann Daten auch in den USA und weiteren Drittländern verarbeiten. Vercel Inc. ist aktiv unter dem <strong>EU-US Data Privacy Framework (DPF)</strong> zertifiziert, sodass für Datenübermittlungen in die USA ein gültiger Angemessenheitsbeschluss der Europäischen Kommission gemäß Art. 45 DSGVO vorliegt. Ergänzend erfolgt die Verarbeitung auf Grundlage geeigneter Garantien nach Art. 46 Abs. 2 lit. c DSGVO (EU-Standardvertragsklauseln / SCC) sowie eines Auftragsverarbeitungsvertrags (Data Processing Addendum, DPA) gemäß Art. 28 DSGVO.
             </p>
             <div className="p-3.5 rounded-xl bg-brand-cream/40 border border-brand-navy/10 text-xs space-y-1">
-              <p className="font-medium text-brand-navy">Weitere Informationen von Vercel:</p>
+              <p className="font-medium text-brand-navy">Weitere Informationen zum Datenschutz bei Vercel:</p>
               <p>
                 Datenschutzerklärung:{" "}
                 <a
@@ -188,14 +200,14 @@ export default function DatenschutzPage() {
               <li>IP-Adresse</li>
             </ul>
             <p>
-              Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technisch fehlerfreien Darstellung, Angriffsabwehr und Optimierung der Website).
+              Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technisch fehlerfreien Darstellung, Betriebssicherheit, Fehleranalyse und Angriffsabwehr unserer Website).
             </p>
             <p>
-              Die Server-Log-Files werden für die Dauer von <strong>7 Tagen</strong> gespeichert und anschließend automatisch gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten oder sicherheitsrelevanten Vorfälle entgegenstehen.
+              Die Server-Log-Files werden für die Dauer von <strong>7 Tagen</strong> gespeichert und anschließend automatisch gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten oder dokumentierten Sicherheitsvorfälle entgegenstehen.
             </p>
           </div>
 
-          {/* 5. Kontaktformular & E-Mail-Kontakt */}
+          {/* 5. Kontaktformular, E-Mail- & Telefonkontakt */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Mail className="w-4 h-4 text-brand-navy shrink-0" />
@@ -205,23 +217,23 @@ export default function DatenschutzPage() {
               Bearbeitung von Kunden- und Angebotsanfragen
             </h2>
             <p>
-              Wenn Sie uns über unser Online-Kontaktformular, per E-Mail (an{" "}
+              Wenn Sie unser Online-Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (gewählter Fachbereich, konkrete Leistung, Name, Telefonnummer, E-Mail-Adresse sowie optional Ort/Postleitzahl, Objektfläche und Ihre Projektnachricht) verschlüsselt über unsere eigene Server-Schnittstelle an uns übermittelt. Alternativ können Sie uns jederzeit direkt per E-Mail (an{" "}
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="underline hover:text-brand-navy"
               >
                 {COMPANY_INFO.email}
               </a>
-              ) oder telefonisch kontaktieren, werden Ihre Angaben aus der Anfrage inklusive der von Ihnen dort angegebenen Kontaktdaten (z. B. Name, Telefonnummer, E-Mail-Adresse, Ort/PLZ, Objektgröße, gewähltes Gewerk und Projektbeschreibung) zwecks Bearbeitung der Anfrage, Erstellung eines Festpreisangebots und für den Fall von Anschlussfragen bei uns verarbeitet.
+              , wobei sich Ihr lokales E-Mail-Programm öffnet) oder telefonisch kontaktieren.
             </p>
             <p>
-              Zum Schutz unseres Online-Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots und Brute-Force-Anfragen) setzen wir lokale, datenschutzfreundliche Sicherheitsprüfungen auf unserem Server ein (Honeypot-Felder, Zeitprüfung sowie kurzzeitige IP-basierte Ratenbegrenzung im Arbeitsspeicher ohne Weitergabe an externe Captcha-Dienste).
+              Zum Schutz unseres Online-Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots und Brute-Force-Angriffen) setzen wir ausschließlich eigene, datenschutzfreundliche Sicherheitsprüfungen ohne Einbindung externer Drittanbieter-Captchas ein: unsichtbare Honeypot-Felder, eine Zeitstempel-Prüfung sowie eine kurzzeitige, flüchtige Ratenbegrenzung (Rate-Limiting) im Arbeitsspeicher unseres Servers (max. 15 Minuten Vorhaltezeit zur Missbrauchsabwehr gemäß Art. 6 Abs. 1 lit. f DSGVO).
             </p>
             <p>
-              Die Verarbeitung dieser Daten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Angebotserstellung, Terminvereinbarung zur Besichtigung) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer ausdrücklichen Einwilligung (<strong>Art. 6 Abs. 1 lit. a DSGVO</strong>) und/oder auf unserem berechtigten Interesse an der effektiven und sicheren Bearbeitung der an uns gerichteten Anfragen (<strong>Art. 6 Abs. 1 lit. f DSGVO</strong>).
+              Die Verarbeitung Ihrer Kontaktdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Anbahnung oder Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines verbindlichen Festpreisangebots, Terminvereinbarung zur Besichtigung) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer im Formular erteilten Einwilligung (<strong>Art. 6 Abs. 1 lit. a DSGVO</strong>) sowie auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (<strong>Art. 6 Abs. 1 lit. f DSGVO</strong>).
             </p>
             <p>
-              Die von Ihnen übermittelten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere handels- und steuerrechtliche Aufbewahrungsfristen nach HGB und AO – bleiben unberührt.
+              Die von Ihnen übermittelten Anfragedaten und E-Mails inklusive der darin enthaltenen Kontaktdaten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere handels- und steuerrechtliche Aufbewahrungsfristen – bleiben unberührt.
             </p>
           </div>
 
@@ -235,50 +247,53 @@ export default function DatenschutzPage() {
               Kommunikation via WhatsApp Messenger
             </h2>
             <p>
-              Für die schnelle Kontaktaufnahme bieten wir auch den Messenger WhatsApp an. Anbieter in der Europäischen Union ist die <strong>WhatsApp Ireland Limited</strong>, Merrion Road, Dublin 4, D04 X2K5, Irland (vormals 4 Grand Canal Square, Dublin 2, Irland). Wenn Sie uns aktiv über WhatsApp kontaktieren, werden Ihre Mobilfunknummer, Ihr Profilname sowie die übermittelten Nachrichteninhalte verarbeitet, um Ihre Anfrage zu bearbeiten.
+              Für die schnelle und unkomplizierte Kontaktaufnahme bieten wir auch den Messenger-Dienst WhatsApp an. Anbieter für Nutzer im Europäischen Wirtschaftsraum ist die <strong>WhatsApp Ireland Limited</strong>, Merrion Road, Dublin 4, D04 X2K5, Irland (vormals 4 Grand Canal Square, Dublin 2, Irland). Wenn Sie uns aktiv per Klick auf einen WhatsApp-Link oder über unsere Mobilfunknummer ({COMPANY_INFO.mobile}) kontaktieren, werden Ihre Telefonnummer, Ihr öffentlicher Profilname sowie die von Ihnen übermittelten Nachrichteninhalte (Texte, ggf. Fotos zur Schadens- oder Objektbegutachtung) verarbeitet, um Ihr Anliegen zu bearbeiten.
             </p>
             <p>
-              Dabei kann eine Übermittlung von Metadaten an die Muttergesellschaft Meta Platforms Inc. in die USA erfolgen. Diese Übermittlung stützt sich auf die Zertifizierung nach dem <strong>EU-US Data Privacy Framework (Art. 45 DSGVO)</strong> sowie auf die <strong>EU-Standardvertragsklauseln (Art. 46 DSGVO)</strong>. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) beziehungsweise Art. 6 Abs. 1 lit. f DSGVO (schnelle Kundenkommunikation). Weitere Informationen finden Sie in der{" "}
+              Dabei kann eine Übermittlung von Verbindungs- und Metadaten an WhatsApp bzw. den Mutterkonzern Meta Platforms Inc. in die USA erfolgen. Meta Platforms Inc. ist unter dem <strong>EU-US Data Privacy Framework (Art. 45 DSGVO)</strong> zertifiziert; zudem stützt sich die Datenübermittlung auf die <strong>EU-Standardvertragsklauseln (Art. 46 DSGVO)</strong>. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung und Kundenbetreuung) beziehungsweise Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer schnellen, zeitgemäßen Kommunikationsmöglichkeit). Weitere Informationen finden Sie in der{" "}
               <a
                 href="https://www.whatsapp.com/legal/privacy-policy-eea"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-brand-navy font-medium"
               >
-                Datenschutzrichtlinie von WhatsApp
+                Datenschutzrichtlinie von WhatsApp für den EWR
               </a>
               .
             </p>
           </div>
 
-          {/* 7. Cookies */}
+          {/* 7. Cookies & Endgerätespeicherung */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Cookie className="w-4 h-4 text-brand-navy shrink-0" />
-              <span>7. Cookies &amp; Endgerätespeicherung</span>
+              <span>7. Cookies &amp; Endgerätespeicherung (§ 25 TDDDG)</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Technisch notwendige Cookies (§ 25 Abs. 2 TDDDG)
+              Technisch notwendige Speicherung &amp; Cookie-Einstellungen
             </h2>
             <p>
-              Diese Website verwendet <strong>keine Tracking-Cookies, keine Werbe-Cookies und keine externen Analyse-Tools</strong>. Es werden lediglich technisch notwendige Cookies bzw. lokale Speicherwerte eingesetzt, die für den sicheren Betrieb der Website und die Speicherung Ihrer Datenschutzauswahl unbedingt erforderlich sind.
+              Diese Website setzt standardmäßig <strong>keine Tracking-Cookies, keine Werbe-Profile und keine externen Analyse-Skripte</strong> ohne Ihre Zustimmung ein. Um Ihre Auswahl im Hinweisbanner für zukünftige Seitenaufrufe zu speichern, wird in Ihrem Browser ein technisch notwendiger lokaler Speichereintrag (<code>localStorage</code>-Schlüssel: <code>tadiks_cookie_consent_v1</code>) abgelegt. Dieser Eintrag enthält ausschließlich Ihren anonymen Auswahlstatus (Essenziell, Marketing, Analytics, Externe Medien) sowie den Zeitstempel Ihrer Entscheidung und wird nicht an Dritte übertragen.
             </p>
             <p>
-              Rechtsgrundlage für den Einsatz technisch notwendiger Cookies und Speicherzugriffe ist <strong>§ 25 Abs. 2 Nr. 2 TDDDG</strong> (Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz) in Verbindung mit unserem berechtigten Interesse am technisch fehlerfreien und sicheren Betrieb der Website gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>.
+              Rechtsgrundlage für den Einsatz technisch notwendiger Cookies und lokaler Speicherfunktionen ist <strong>§ 25 Abs. 2 Nr. 2 TDDDG</strong> (Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz) in Verbindung mit <strong>Art. 6 Abs. 1 lit. c DSGVO</strong> (Nachweispflicht Ihrer Einwilligungsentscheidung) sowie unserem berechtigten Interesse am technisch fehlerfreien Betrieb der Website gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>. Soweit Sie im Banner optional weiteren Kategorien zustimmen, erfolgt dies ausschließlich auf Grundlage Ihrer freiwilligen Einwilligung gemäß <strong>§ 25 Abs. 1 TDDDG i. V. m. Art. 6 Abs. 1 lit. a DSGVO</strong>.
             </p>
+            <div className="pt-2">
+              <CookieSettingsTrigger />
+            </div>
           </div>
 
-          {/* 8. Externe Inhalte / Google Fonts */}
+          {/* 8. Externe Inhalte / Lokale Webfonts */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Type className="w-4 h-4 text-brand-navy shrink-0" />
               <span>8. Externe Inhalte &amp; Webfonts</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Google Fonts (Lokales Hosting)
+              Webfonts &amp; Google Fonts (100 % lokales Hosting)
             </h2>
             <p>
-              Diese Website nutzt zur einheitlichen und ansprechenden Darstellung von Schriftarten sogenannte Webfonts (Google Fonts). Die Schriftarten sind vollständig <strong>lokal auf unserem Webserver eingebunden</strong>. Eine Verbindung zu Servern von Google (Google Ireland Limited / Google LLC) findet beim Aufruf unserer Seiten <strong>nicht</strong> statt; es werden hierbei keinerlei IP-Adressen an Google übertragen.
+              Diese Website nutzt zur einheitlichen und lesefreundlichen Darstellung von Schriftarten moderne Webfonts (u. a. <em>Satoshi</em>, <em>General Sans</em> sowie lokal bereitgestellte System-/Google-Fonts). Sämtliche Schriftdateien (<code>.woff2</code>) sind <strong>vollständig lokal auf unserem eigenen Webserver eingebunden</strong>. Eine Verbindung zu Servern von Google (Google Ireland Limited / Google LLC) oder anderen externen Schriftanbietern findet beim Aufruf unserer Website <strong>nicht</strong> statt; es werden hierbei keinerlei IP-Adressen oder Browserdaten an Drittanbieter übertragen.
             </p>
           </div>
 
@@ -286,44 +301,42 @@ export default function DatenschutzPage() {
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Scale className="w-4 h-4 text-brand-navy shrink-0" />
-              <span>9. Ihre Rechte</span>
+              <span>9. Ihre Rechte als betroffene Person</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Betroffenenrechte nach der DSGVO &amp; Aufsichtsbehörde
+              Betroffenenrechte nach Art. 15 bis 20 DSGVO &amp; Aufsichtsbehörde
             </h2>
             <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht:</p>
             <ul className="list-disc pl-5 space-y-1 text-brand-navy/80">
               <li>
-                <strong>Auskunft</strong> über Ihre bei uns gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)
+                <strong>Auskunft</strong> über Ihre bei uns gespeicherten personenbezogenen Daten, deren Herkunft, Empfänger und den Zweck der Datenverarbeitung zu erhalten (Art. 15 DSGVO)
               </li>
               <li>
-                <strong>Berichtigung</strong> unrichtiger oder Vervollständigung unvollständiger Daten zu verlangen (Art. 16 DSGVO)
+                <strong>Berichtigung</strong> unrichtiger oder Vervollständigung unvollständiger personenbezogener Daten zu verlangen (Art. 16 DSGVO)
               </li>
               <li>
-                <strong>Löschung</strong> Ihrer bei uns gespeicherten Daten zu verlangen (Art. 17 DSGVO)
+                <strong>Löschung</strong> Ihrer bei uns gespeicherten Daten („Recht auf Vergessenwerden“) zu verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen (Art. 17 DSGVO)
               </li>
               <li>
-                <strong>Einschränkung der Verarbeitung</strong> Ihrer Daten zu verlangen (Art. 18 DSGVO)
+                <strong>Einschränkung der Verarbeitung</strong> Ihrer personenbezogenen Daten zu verlangen (Art. 18 DSGVO)
               </li>
               <li>
-                <strong>Datenübertragbarkeit</strong> in einem strukturierten, gängigen und maschinenlesbaren Format zu verlangen (Art. 20 DSGVO)
+                <strong>Datenübertragbarkeit</strong> der von Ihnen bereitgestellten Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu verlangen (Art. 20 DSGVO)
               </li>
               <li>
-                <strong>Widerspruch</strong> gegen die Verarbeitung Ihrer Daten einzulegen (Art. 21 DSGVO)
-              </li>
-              <li>
-                Eine erteilte <strong>Einwilligung jederzeit mit Wirkung für die Zukunft zu widerrufen</strong> (Art. 7 Abs. 3 DSGVO)
+                Eine einmal erteilte <strong>Einwilligung jederzeit mit Wirkung für die Zukunft zu widerrufen</strong>, ohne dass die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung berührt wird (Art. 7 Abs. 3 DSGVO)
               </li>
             </ul>
             <p>
-              Darüber hinaus steht Ihnen gemäß <strong>Art. 77 DSGVO</strong> ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde zu.
+              Darüber hinaus steht Ihnen gemäß <strong>Art. 77 DSGVO</strong> unbeschadet eines anderweitigen verwaltungsrechtlichen oder gerichtlichen Rechtsbehelfs das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde zu, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.
             </p>
             <div className="p-4 rounded-2xl bg-brand-cream/50 border border-brand-navy/10 space-y-1 text-xs sm:text-sm">
               <p className="font-semibold text-brand-navy">
-                Zuständige Aufsichtsbehörde im Freistaat Sachsen:
+                Die für unseren Unternehmenssitz zuständige Aufsichtsbehörde ist:
               </p>
               <p>Sächsische Datenschutz- und Transparenzbeauftragte</p>
               <p>Devrientstraße 5, 01067 Dresden</p>
+              <p>Postanschrift: Postfach 11 01 32, 01330 Dresden</p>
               <p>
                 Website:{" "}
                 <a
@@ -338,17 +351,51 @@ export default function DatenschutzPage() {
             </div>
           </div>
 
-          {/* 10. SSL- bzw. TLS-Verschlüsselung */}
+          {/* 10. Hervorgehobener Hinweis auf das Widerspruchsrecht nach Art. 21 DSGVO (Pflichthervorhebung gem. Art. 21 Abs. 4 DSGVO) */}
+          <div className="pt-6 border-t border-brand-navy/10 space-y-3">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
+              <AlertTriangle className="w-4 h-4 text-brand-navy shrink-0" />
+              <span>10. Widerspruchsrecht gemäß Art. 21 DSGVO</span>
+            </div>
+            <div className="p-5 sm:p-6 rounded-2xl bg-brand-cream/70 border-2 border-brand-navy/20 space-y-3 text-xs sm:text-sm text-brand-navy">
+              <h2 className="text-base sm:text-lg font-semibold text-brand-navy">
+                Besonderer Hinweis auf Ihr Widerspruchsrecht nach Art. 21 Abs. 1 und Abs. 2 DSGVO
+              </h2>
+              <p className="font-normal leading-relaxed">
+                <strong>
+                  Wenn die Datenverarbeitung auf Grundlage von Art. 6 Abs. 1 lit. e oder lit. f DSGVO erfolgt (Wahrnehmung berechtigter Interessen), haben Sie jederzeit das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, gegen die Verarbeitung Ihrer personenbezogenen Daten Widerspruch einzulegen; dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling.
+                </strong>
+              </p>
+              <p className="font-normal leading-relaxed">
+                Legen Sie Widerspruch ein, werden wir Ihre betroffenen personenbezogenen Daten nicht mehr verarbeiten, es sei denn, wir können zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die Ihre Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen (Widerspruch nach Art. 21 Abs. 1 DSGVO).
+              </p>
+              <p className="font-normal leading-relaxed">
+                Werden Ihre personenbezogenen Daten verarbeitet, um Direktwerbung zu betreiben, so haben Sie das Recht, jederzeit Widerspruch gegen die Verarbeitung Sie betreffender personenbezogener Daten zum Zwecke derartiger Werbung einzulegen (Widerspruch nach Art. 21 Abs. 2 DSGVO). Für die Ausübung Ihres Widerspruchsrechts genügt eine formlose Mitteilung per E-Mail an{" "}
+                <a
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  className="underline font-semibold"
+                >
+                  {COMPANY_INFO.email}
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+
+          {/* 11. SSL- bzw. TLS-Verschlüsselung & Widerspruch gegen Werbe-E-Mails */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Lock className="w-4 h-4 text-brand-navy shrink-0" />
-              <span>10. SSL- bzw. TLS-Verschlüsselung</span>
+              <span>11. SSL-/TLS-Verschlüsselung &amp; Schutz vor Werbe-Spam</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Verschlüsselte Datenübertragung
+              Verschlüsselte Datenübertragung &amp; Widerspruch gegen Werbe-Mails
             </h2>
             <p>
               Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel der Anfragen, die Sie an uns als Seitenbetreiber senden, eine moderne SSL- bzw. TLS-Verschlüsselung (HTTPS). Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
+            </p>
+            <p>
+              <strong>Widerspruch gegen unverlangte Werbe-E-Mails:</strong> Der Nutzung von im Rahmen der Impressumspflicht und dieser Datenschutzerklärung veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Der Betreiber der Seiten behält sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.
             </p>
           </div>
         </div>

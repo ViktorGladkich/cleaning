@@ -44,7 +44,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Unterhaltsreinigung nach Meister-Standard.",
     heroDescription:
       "Kontinuierliche Werterhaltung und makellose Hygiene für Kanzleien, Praxen, Büros und Privathaushalte. Mit festem Stammpersonal, RKI-konformem 4-Farben-System und ökologischen Reinigern.",
-    priceNote: "ab 49 € pro Einsatz / ab 2,20 € pro m²",
+    priceNote: "Individuelles Angebot nach Objektgröße & Turnus",
     durationNote: "Flexibel nach Turnus (täglich, wöchentlich, 14-tägig)",
     imageSrc: "/images/service_grid_unterhalt.webp",
     imageAlt: "Professionelle Unterhaltsreinigung in Chemnitz",
@@ -110,7 +110,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       {
         question: "Können Privathaushalte die Kosten steuerlich absetzen?",
         answer:
-          "Ja! Nach § 35a EStG können bis zu 20% der Arbeitskosten (maximal 4.000 € pro Jahr) als haushaltsnahe Dienstleistungen direkt von der Steuerschuld abgezogen werden.",
+          "Ja! Nach § 35a EStG können bis zu 20% der ausgewiesenen Arbeitskosten als haushaltsnahe Dienstleistungen direkt von der Steuerschuld abgezogen werden.",
       },
     ],
     relatedSlugs: ["grundreinigung", "bueroreinigung", "fensterreinigung"],
@@ -130,7 +130,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Grundreinigung mit meisterhafter Tiefenwirkung.",
     heroDescription:
       "Die intensive Komplettreinigung für Wohnungen, Häuser und Gewerberäume. Wir entfernen hartnäckige Kalkablagerungen, Fettfilme, Wachsschichten und Verschmutzungen, die bei der normalen Reinigung unberührt bleiben.",
-    priceNote: "ab 149 € pro Objekt (individuell nach Quadratmetern)",
+    priceNote: "Individuelles Angebot nach Fläche & Bedarf",
     durationNote: "ca. 4–7 Stunden durch unser Profi-Team",
     imageSrc: "/images/leistungen_reinigung_1.jpg",
     imageAlt: "Intensive Grundreinigung in Sachsen",
@@ -211,7 +211,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Bauendreinigung für bezugsfertige Perfektion.",
     heroDescription:
       "Spezialisierte Baufeinreinigung in Chemnitz und Mittelsachsen. Wir entfernen aggressiven Baustaub, Zementschleier, Farb- und Lackspritzer sowie Etiketten schonend von allen neuen Oberflächen.",
-    priceNote: "ab 189 € pro Objekt (kostenfreie Besichtigung)",
+    priceNote: "Individuelles Angebot nach Bauabschnitt & Fläche",
     durationNote: "5–8 Stunden / termintreue Fertigstellung",
     imageSrc: "/images/service_grid_bauende.webp",
     imageAlt: "Bauendreinigung und Baufeinreinigung in Chemnitz",
@@ -292,7 +292,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Glasreinigung bis 20 m Höhe ohne Hebebühne.",
     heroDescription:
       "Kristallklarer Glanz für Privathaushalte, Schaufenster, Bürogebäude und Kanzleien. Wir reinigen Scheiben, Rahmen, Dichtungen, Innenfalzen und Fensterbänke streifenfrei und materialgerecht.",
-    priceNote: "ab 39 € (Pakete ab 5 Fenster / m²-Preise für Gewerbe)",
+    priceNote: "Individuelles Angebot für Privat & Gewerbe",
     durationNote: "ca. 1–3 Stunden vor Ort",
     imageSrc: "/images/service_grid_glas.webp",
     imageAlt: "Streifenfreie Fenster- und Glasreinigung in Chemnitz",
@@ -368,7 +368,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Hygienisches Arbeitsumfeld nach RKI-Standards.",
     heroDescription:
       "Zuverlässige und diskrete Unterhaltsreinigung für Gewerbeobjekte in Chemnitz und Mittelsachsen. Wir sichern ein repräsentatives Erscheinungsbild und schützen die Gesundheit Ihrer Mitarbeiter und Besucher.",
-    priceNote: "ab 2,20 € pro m² / individuelle Monatspauschale",
+    priceNote: "Maßgeschneiderte Kalkulation nach Leistungsverzeichnis",
     durationNote: "Nach Vereinbarung (frühmorgens, abends, Wochenende)",
     imageSrc: "/images/service_cleaning_card.jpg",
     imageAlt: "Büro- und Praxisreinigung in Chemnitz",
@@ -444,7 +444,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Frische und Hygiene für Sofas, Sessel und Teppiche.",
     heroDescription:
       "Tiefenwirksame Reinigung direkt bei Ihnen vor Ort in Chemnitz. Wir beseitigen eingetrocknete Flecken von Kaffee, Rotwein oder Haustieren, vernichten Milben und neutralisieren störende Gerüche nachhaltig.",
-    priceNote: "ab 45 € pro Sitzplatz / ab 8 € pro m² Teppich",
+    priceNote: "Individuelles Angebot nach Polster- & Teppichfläche",
     durationNote: "ca. 1,5–3 Stunden vor Ort (Trocknung ca. 4–8 Std.)",
     imageSrc: "/images/leistungen_reinigung_2.jpg",
     imageAlt: "Polster- und Teppichreinigung in Chemnitz",
@@ -520,7 +520,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Präziser Trockenbau nach Meister-Standard.",
     heroDescription:
       "Flexible Raumaufteilung, Akustikdecken, Trennwände und Dachgeschossausbau für Wohn- und Gewerbeobjekte in Chemnitz und Umgebung. Mit Rotationslaser-Präzision, geprüftem Schallschutz und makelloser Spachtelung bis Q4.",
-    priceNote: "Verbindliches Festpreisangebot nach kostenloser Besichtigung",
+    priceNote: "Verbindliches Angebot nach Vor-Ort-Aufmaß",
     durationNote: "Termingerecht nach Bauzeitenplan",
     imageSrc: "/images/service_grid_trockenbau.webp",
     imageAlt: "Trockenbau und Akustikdecken in Chemnitz",
@@ -596,7 +596,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Schlüsselfertige Sanierung aus einer Meisterhand.",
     heroDescription:
       "Vom Altbau bis zur Gewerbeimmobilie: Wir übernehmen die komplette Sanierung aus einer Hand. Wir koordinieren alle Gewerke, halten vereinbarte Fristen strikt ein und verwandeln sanierungsbedürftige Räume in moderne, werthaltige Wohlfühloasen.",
-    priceNote: "Verbindliches Festpreisangebot mit Bauzeitenplan",
+    priceNote: "Individuelle Projektkalkulation mit Bauzeitenplan",
     durationNote: "Schlüsselfertig zum Fixtermin",
     imageSrc: "/images/service_grid_sanierung.webp",
     imageAlt: "Komplettsanierung und Altbaumodernisierung in Sachsen",
@@ -672,7 +672,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Maler- & Spachteltechnik für anspruchsvolle Räume.",
     heroDescription:
       "Präzise Maler- und Tapezierarbeiten für Innenräume in Chemnitz. Ob emissionsarme Dispersions- oder Silikatfarben, Glattvlies oder streiflichtfreie Q4-Spachtelung – wir schaffen samtweiche, makellose Wandflächen.",
-    priceNote: "Transparente m²-Preise / kostenfreie Vor-Ort-Kalkulation",
+    priceNote: "Individuelle Kalkulation nach Fläche & Spachtelstufe",
     durationNote: "Termingerecht und sauber",
     imageSrc: "/images/service_grid_maler.webp",
     imageAlt: "Maler- und Spachtelarbeiten in Chemnitz",
@@ -748,7 +748,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Bodenbeläge & Fliesen mit millimetergenauer Fuge.",
     heroDescription:
       "Ein solider Boden ist das Fundament jedes Raumes. Wir bereiten den Estrich fachgerecht vor (Nivellieren, Schleifen, Grundieren) und verlegen Design-Vinyl, Echtholzparkett sowie moderne Wand- und Bodenfliesen mit höchster Präzision.",
-    priceNote: "Transparente m²-Staffelung nach Belagsart",
+    priceNote: "Individuelles Angebot nach Raumfläche & Belagsart",
     durationNote: "Zügige und fachgerechte Ausführung",
     imageSrc: "/images/service_bau_card.jpg",
     imageAlt: "Bodenleger und Fliesenarbeiten in Sachsen",
@@ -824,7 +824,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     heroHeadline: "Staubarme Entkernung bereit für den Neubeginn.",
     heroDescription:
       "Vor dem Ausbau steht der fachgerechte Rückbau. Wir entkernen Räume und Gebäude schonend, entfernen nichttragende Wände, alte Fliesen, Sanitärobjekte und Decken und entsorgen Bauschutt sortenrein nach gesetzlichen Vorschriften.",
-    priceNote: "Pauschalangebot nach Vor-Ort-Besichtigung",
+    priceNote: "Individuelles Angebot nach Objektbesichtigung",
     durationNote: "Zügiger Rückbau ohne Stillstand",
     imageSrc: "/images/service_grid_bauende.webp",
     imageAlt: "Staubarme Entkernung und Abbruch in Chemnitz",

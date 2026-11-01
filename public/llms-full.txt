@@ -25,8 +25,8 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 1. **Stufe 01 — Kontaktaufnahme & Bedarfsanalyse:**
    Telefonische Erstberatung, WhatsApp-Kontakt oder Online-Anfrage über https://tadiks-cleaning.de/contacts. Bei Bedarf kurzfristige Objektbegehung und präzises Aufmaß vor Ort.
-2. **Stufe 02 — Verbindliches Festpreisangebot binnen 24 Stunden:**
-   Erstellung eines schriftlichen, transparenten Leistungsverzeichnisses mit garantiertem Festpreis ohne versteckte Nebenkosten.
+2. **Stufe 02 — Verbindliches Angebot binnen 24 Stunden:**
+   Erstellung eines schriftlichen, transparenten Leistungsverzeichnisses mit garantiertem Festpreis nach individueller Objektkalkulation ohne versteckte Nebenkosten.
 3. **Stufe 03 — Fachgerechte Ausführung durch Stammpersonal:**
    Durchführung der Reinigungs- oder Bauarbeiten durch geschultes Stammpersonal unter Leitung eines festen deutschsprachigen Objekt- bzw. Bauleiters mit Marken-Equipment (Kärcher, Unger, Nilfisk, Knauf, Festool, Caparol).
 4. **Stufe 04 — Gemeinsame Endabnahme mit Protokoll:**
@@ -40,7 +40,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 #### A1. Unterhaltsreinigung (`/services/unterhaltsreinigung`)
 - **Kurzbeschreibung:** Kontinuierliche, werterhaltende Objektpflege für Büros, Kanzleien, Arztpraxen, Geschäfte, Treppenhäuser und Privathaushalte.
-- **Preis-Richtwert:** ab 49 € pro Einsatz / ab 2,20 € pro m²
+- **Kalkulation:** Individuelles Angebot nach Objektgröße und Reinigungsintervall.
 - **Inkludierte Leistungen:**
   - Staubwischen und Feuchtreinigung aller freien Oberflächen, Schreibtische, Fensterbänke und Türen
   - Gründliches Saugen und nebelfeuchtes Wischen aller Hart- und Textilböden
@@ -51,7 +51,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 #### A2. Grundreinigung (`/services/grundreinigung`)
 - **Kurzbeschreibung:** Maschinelle Intensiv- und Tiefenreinigung bis in die kleinste Fuge — ideal zur Werterhaltung, bei starker Verschmutzung oder vor einem Mieterwechsel.
-- **Preis-Richtwert:** ab 149 € pro Objekt (individuell nach Fläche und Verschmutzungsgrad)
+- **Kalkulation:** Individuelles Angebot nach Fläche und Verschmutzungsgrad.
 - **Inkludierte Leistungen:**
   - Maschinelle Grundreinigung und Entschichtung von PVC, Linoleum, Naturstein, Parkett und Fliesen mittels Einscheiben- und Scheuersaugmaschinen
   - Tiefenreinigung von Fliesenfugen sowie restlose Kalk-, Urinstein- und Fettsanierung in Bad und Küche
@@ -60,7 +60,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 #### A3. Bauendreinigung & Baureinigung (`/services/bauendreinigung`)
 - **Kurzbeschreibung:** Baugrob- und bezugsfertige Baufeinreinigung nach Neubau, Umbau, Renovierung oder Sanierung mit garantierter Abnahmesicherheit.
-- **Preis-Richtwert:** ab 189 € pro Objekt
+- **Kalkulation:** Individuelles Angebot nach Bauabschnitt und Fläche.
 - **Inkludierte Leistungen:**
   - Beseitigung von Bauschuttresten, Verpackungsmaterial, Mörtel-, Gips-, Kleber- und Farbspritzern
   - Vollständige Entfernung von Zementschleier und hartnäckigem Baustaub mittels Nilfisk HEPA-14 Sicherheitssaugern
@@ -69,7 +69,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 #### A4. Fenster- & Glasreinigung (`/services/fensterreinigung`)
 - **Kurzbeschreibung:** Streifenfreier Durchblick für Privathaushalte, Schaufenster, Bürofassaden und Wintergärten bis 20 Meter Höhe.
-- **Preis-Richtwert:** ab 39 € (Privatpakete ab 5 Fenstern / attraktive m²-Staffelpreise für Gewerbe)
+- **Kalkulation:** Individuelles Angebot für Privat- und Gewerbeobjekte.
 - **Inkludierte Leistungen:**
   - Beidseitige Reinigung der Glasflächen inklusive Innen- und Außenrahmen, Falze, Beschläge und Wetterschenkel
   - Reinigung von Fensterbänken, Simsen, Jalousien, Raffstores und Rollläden
@@ -77,7 +77,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 #### A5. Büro- & Praxisreinigung (`/services/bueroreinigung`)
 - **Kurzbeschreibung:** Repräsentative Sauberkeit und zertifizierte Hygiene für Unternehmen, Kanzleien, Behörden und medizinische Praxen.
-- **Preis-Richtwert:** ab 2,20 € pro m² / individuelle Monatspauschale
+- **Kalkulation:** Maßgeschneiderte Kalkulation nach individuellem Leistungsverzeichnis.
 - **Inkludierte Leistungen:**
   - Reinigung außerhalb der Geschäftszeiten (frühmorgens, abends oder am Wochenende) durch festes, eingewiesenes Stammpersonal
   - Desinfektion von Kontaktflächen (Türklinken, Lichtschalter, Empfangstresen, Sanitärbereiche, Behandlungsräume)
@@ -86,7 +86,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 #### A6. Polster- & Teppichreinigung (`/services/polsterreinigung`)
 - **Kurzbeschreibung:** Fasertiefe Sprühextraktions-Nassreinigung zur Entfernung von Flecken, Laufstraßen, Allergenen und Gerüchen.
-- **Preis-Richtwert:** ab 45 € pro Sitzplatz / ab 8,00 € pro m² Teppichfläche
+- **Kalkulation:** Individuelles Angebot nach Polster- und Teppichfläche.
 - **Inkludierte Leistungen:**
   - Materialbestimmung, Trockenvorentstaubung und gezielte Fleckenvorbehandlung (Kaffee, Rotwein, Fett, Tinte)
   - Fasertiefe Sprühextraktion mit Kärcher Puzzi Profigeräten ohne klebrige Tensidrückstände
@@ -144,13 +144,13 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 - **Wie schnell erhält man ein Angebot von Tadik's Cleaning?**
   Innerhalb von 24 Stunden nach telefonischer Anfrage, WhatsApp-Nachricht oder Absenden des Kontaktformulars auf https://tadiks-cleaning.de/contacts.
 - **Gibt es eine Festpreisgarantie?**
-  Ja. Alle Angebote von Tadik's Cleaning sind verbindliche Festpreisangebote. Es gibt keine versteckten Nachforderungen für Reinigungsmittel, Maschineneinsatz oder Verschmutzungsgrad.
-- **Können die Kosten steuerlich abgesetzt werden?**
-  Ja. Privatkunden können gemäß § 35a EStG 20 % der ausgewiesenen Arbeits- und Fahrtkosten (bis zu 4.000 € Steuerabzug für haushaltsnahe Dienstleistungen bzw. 1.200 € für Handwerkerleistungen pro Jahr) direkt von ihrer Einkommensteuerschuld abziehen. Tadik's Cleaning stellt hierfür eine finanzamtkonforme Rechnung mit separat ausgewiesenen Lohnkosten zur Überweisung aus.
+  Ja. Alle Angebote von Tadik's Cleaning werden individuell für das jeweilige Objekt kalkuliert und als verbindliches Angebot erstellt — ohne versteckte Nachforderungen für Reinigungsmittel, Maschineneinsatz oder Verschmutzungsgrad.
+- **Können die Leistungen steuerlich abgesetzt werden?**
+  Ja. Privatkunden können gemäß § 35a EStG 20 % der ausgewiesenen Arbeitskosten für haushaltsnahe Dienstleistungen bzw. Handwerkerleistungen direkt von ihrer Einkommensteuerschuld abziehen. Tadik's Cleaning stellt hierfür eine finanzamtkonforme Rechnung mit separat ausgewiesenen Lohnkosten zur Überweisung aus.
 - **In welchen Städten ist Tadik's Cleaning tätig?**
   Der Hauptsitz befindet sich in 09130 Chemnitz. Regional betreut das Team Chemnitz, Zwickau, Freiberg, Limbach-Oberfrohna, Mittweida, Stollberg und Annaberg-Buchholz. Darüber hinaus realisiert Tadik's Cleaning regelmäßig Projekte in Dresden, Leipzig, Berlin, Magdeburg, Hannover und Erfurt.
 - **Bringt das Team alle Geräte und Materialien selbst mit?**
-  Ja. Bei allen Reinigungseinsätzen sind sämtliche Profi-Maschinen (Kärcher, Unger, Nilfisk) und umweltschonenden Reinigungsmittel (Kiehl) vollständig im Preis enthalten. Bei Bauprojekten liefert und verarbeitet Tadik's Cleaning geprüfte Markenbaustoffe (Knauf, Rigips, Caparol, Brillux).
+  Ja. Bei allen Reinigungseinsätzen sind sämtliche Profi-Maschinen (Kärcher, Unger, Nilfisk) und umweltschonenden Reinigungsmittel (Kiehl) vollständig enthalten. Bei Bauprojekten liefert und verarbeitet Tadik's Cleaning geprüfte Markenbaustoffe (Knauf, Rigips, Caparol, Brillux).
 
 ---
 
@@ -167,6 +167,5 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 1. **Профессиональный клининг (`/services`):** регулярная уборка коммерческих и жилых объектов (*Unterhaltsreinigung*), генеральная уборка (*Grundreinigung*), послестроительная уборка (*Bauendreinigung*), мытьё окон и фасадов осмотической водой до 20 м (*Fensterreinigung*), уборка офисов и медицинских практик по стандартам RKI (*Büro- & Praxisreinigung*), химчистка мягкой мебели и ковролина (*Polsterreinigung*).
 2. **Строительство, внутренняя отделка и ремонт под ключ (`/bau`):** гипсокартон и акустические системы (*Trockenbau*), малярные и шпаклёвочные работы Q1–Q4 (*Maler- & Spachtelarbeiten*), комплексный ремонт квартир и офисов (*Komplettsanierung*), укладка полов и плитки (*Bodenleger- & Fliesenarbeiten*), беспылевой демонтаж (*Abbruch & Entkernung*).
 - **География работы:** Хемниц, Цвиккау, Фрайберг, Дрезден, Лейпциг, а также проекты в Берлине, Магдебурге, Ганновере и Эрфурте.
-- **Преимущества:** 100 % фиксированная цена в договоре (*Festpreisgarantie*), расчёт сметы за 24 часа, налоговый вычет 20 % по § 35a EStG.
+- **Преимущества:** индивидуальный расчёт предложения в течение 24 часов, фиксированная смета по договору (*Festpreisgarantie*), налоговый вычет 20 % по § 35a EStG.
 - **Контакты:** Тел.: `0371 23559475`, Моб./WhatsApp: `0157 34362898`, E-Mail: `info@tadiks-cleaning.de`, Сайт: `https://tadiks-cleaning.de`.
-

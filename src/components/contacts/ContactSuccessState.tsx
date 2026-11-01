@@ -58,7 +58,7 @@ export function ContactToast({
         <div className="min-w-0 flex-1">
           <div className="flex items-center justify-between gap-2">
             <span className="text-[11px] font-mono uppercase tracking-wider text-brand-lime">
-              Anfrage übermittelt &bull; #{referenceId}
+              Anfrage übermittelt #{referenceId}
             </span>
             <button
               type="button"
@@ -126,7 +126,7 @@ export function ContactSuccessCard({
           </div>
           <div>
             <span className="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest text-brand-navy/60 block">
-              Eingangsbestätigung &bull; #{referenceId}
+              Eingangsbestätigung #{referenceId}
             </span>
             <h3 className="text-xl xs:text-2xl sm:text-3xl font-normal tracking-tight text-brand-navy leading-tight mt-0.5">
               Anfrage{" "}

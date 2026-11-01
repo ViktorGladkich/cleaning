@@ -109,11 +109,9 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
 
         <div className="max-w-5xl">
           {/* Top Specification Pill */}
-          <div className="hero-badge-wrap inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
+          <div className="hero-badge-wrap inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm">
             <span>
-              TADIKS MEISTER-SPEZIFIKATION //{" "}
-              {service.categoryLabel.toUpperCase()}
+              TADIKS MEISTERBETRIEB — {service.categoryLabel.toUpperCase()}
             </span>
           </div>
 

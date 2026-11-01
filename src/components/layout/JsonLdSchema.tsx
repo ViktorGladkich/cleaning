@@ -22,8 +22,6 @@ export function JsonLdSchema() {
         },
         telephone: COMPANY_INFO.phoneRaw,
         email: COMPANY_INFO.email,
-        priceRange: "€€",
-        currenciesAccepted: "EUR",
         paymentAccepted: "Überweisung, Rechnung",
         address: {
           "@type": "PostalAddress",

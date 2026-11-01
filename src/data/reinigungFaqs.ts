@@ -17,7 +17,7 @@ export const REINIGUNG_FAQS: FaqItem[] = [
     category: "STEUERN & VORTEILE",
     question: "Können die Reinigungskosten steuerlich geltend gemacht werden?",
     answer:
-      "Ja. Als gewerblicher Auftraggeber setzen Sie alle Reinigungsausgaben zu 100% als Betriebsausgaben an. Als Privatkunde profitieren Sie von § 35a EStG für haushaltsnahe Dienstleistungen: 20% der Lohnkosten (bis zu 4.000 € jährlich) werden direkt von Ihrer Steuerschuld abgezogen.",
+      "Ja. Als gewerblicher Auftraggeber setzen Sie alle Reinigungsausgaben zu 100% als Betriebsausgaben an. Als Privatkunde profitieren Sie von § 35a EStG für haushaltsnahe Dienstleistungen: 20% der ausgewiesenen Lohnkosten werden direkt von Ihrer Steuerschuld abgezogen.",
   },
   {
     category: "TECHNIK & MATERIAL",

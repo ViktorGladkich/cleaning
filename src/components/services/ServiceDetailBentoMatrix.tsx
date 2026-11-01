@@ -103,34 +103,34 @@ export function ServiceDetailBentoMatrix({
           </div>
         </div>
 
-        {/* Card 2 (5-col): Pricing & Tax Advantage */}
+        {/* Card 2 (5-col): Individual Offer & Tax Advantage */}
         <div className="md:col-span-5 p-8 sm:p-10 rounded-3xl bg-white border border-brand-navy/15 shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="text-xs font-mono uppercase tracking-wider text-brand-navy/60">
-                Preise &amp; Richtwert
+                Kalkulation &amp; Angebot
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-brand-lime/50 text-[11px] font-bold text-brand-navy">
                 Festpreisgarantie
               </span>
             </div>
 
-            <div className="text-3xl sm:text-4xl font-bold text-brand-navy mt-1 tracking-tight">
+            <div className="text-2xl sm:text-3xl font-bold text-brand-navy mt-1 tracking-tight">
               {service.priceNote}
             </div>
             <p className="mt-3 text-xs sm:text-sm text-brand-navy/70 leading-relaxed">
               Klare Kalkulation nach Objektgröße und Leistungsverzeichnis. Wir kalkulieren
-              fair, transparent und garantieren Ihnen den vereinbarten Festpreis ohne nachträgliche Aufschläge.
+              fair, transparent und garantieren Ihnen das vereinbarte Angebot ohne nachträgliche Aufschläge.
             </p>
 
             {/* Tax credit highlight */}
             <div className="mt-6 p-4 rounded-2xl bg-brand-cream border border-brand-navy/10">
               <div className="flex items-center gap-2 text-xs font-bold text-brand-navy">
                 <BadgePercent className="w-4 h-4 text-emerald-600" />
-                <span>20% Steuern sparen nach § 35a EStG</span>
+                <span>20% Steuervorteil nach § 35a EStG</span>
               </div>
               <p className="mt-1 text-[12px] text-brand-navy/70 leading-relaxed">
-                Private Auftraggeber können bis zu 4.000 € Arbeitskosten jährlich direkt von der
+                Private Auftraggeber können 20% der ausgewiesenen Arbeitskosten direkt von der
                 Einkommensteuer abziehen. Gewerbliche Kunden erhalten eine ordentliche Vorsteuer-Rechnung.
               </p>
             </div>

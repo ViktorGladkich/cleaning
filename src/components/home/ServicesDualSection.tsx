@@ -346,7 +346,6 @@ export function ServicesGridSection({
                       key={bIdx}
                       className="flex items-center gap-2 text-[11px] sm:text-xs leading-relaxed text-brand-navy/70 group-hover:text-white/85 transition-colors duration-500 ease-out"
                     >
-                      <span className="w-1 h-1 rounded-full bg-brand-navy/40 group-hover:bg-brand-lime shrink-0 transition-colors duration-500 ease-out" />
                       <span>{bullet}</span>
                     </li>
                   ))}

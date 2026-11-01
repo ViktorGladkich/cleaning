@@ -269,7 +269,7 @@ export function TestimonialsSection() {
                           {item.author}
                         </h3>
                         <p className="text-xs sm:text-sm text-brand-navy/60 font-light mt-1">
-                          {item.role} · <span className="font-normal text-brand-navy/80">{item.company}</span>
+                          {item.role}, <span className="font-normal text-brand-navy/80">{item.company}</span>
                         </p>
                         <span className="inline-block text-[11px] text-brand-navy/45 font-mono mt-0.5">
                           Standort: {item.location}
