@@ -287,7 +287,7 @@ export function ServicesGridSection({
 
         {/* --- Card Editorial Grid --- */}
         <div className="services-editorial-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-brand-navy/20 bg-brand-cream">
-          {items.map((card, idx) => (
+          {items.map((card) => (
             <Link
               key={card.id}
               href={card.href}
@@ -333,7 +333,6 @@ export function ServicesGridSection({
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                      priority={idx < 3}
                     />
                   </div>
                 </div>

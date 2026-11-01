@@ -140,7 +140,7 @@ export function ReinigungDualAdvantage() {
                 Ergebnis: Repräsentativer Glanz & Werterhalt über Jahrzehnte.
               </div>
               <Link
-                href="/kontakt"
+                href="/contacts"
                 className="shrink-0 inline-flex items-center gap-1 text-xs font-bold text-white hover:text-brand-lime transition-colors"
               >
                 <span>Audit buchen</span>

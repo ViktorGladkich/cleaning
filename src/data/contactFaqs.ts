@@ -14,10 +14,10 @@ export const CONTACT_FAQS: FaqItem[] = [
       "Spätestens 24 Stunden nach der Vor-Ort-Besichtigung erhalten Sie Ihr transparent aufgeschlüsseltes Festpreisangebot per E-Mail. Bei uns gibt es keine nachträglichen Überraschungen oder versteckten Nebenkosten: Der vereinbarte Preis ist verbindlich.",
   },
   {
-    category: "ANFAHRT & REGION",
-    question: "Fallen für Beratung oder Anfahrt im Raum Chemnitz Gebühren an?",
+    category: "STANDORTE & REGION",
+    question: "In welchen Städten und Regionen sind Sie im Einsatz?",
     answer:
-      "Nein. Für Erstbesichtigungen, Beratungen und Aufmaße im gesamten Raum Chemnitz sowie im Umkreis von bis zu 50 km (z. B. Zwickau, Freiberg, Mittweida, Erzgebirge) berechnen wir keinerlei Anfahrtskosten.",
+      "Von unserem Hauptsitz in Chemnitz (Lessingstraße 14, 09130 Chemnitz) betreuen wir Projekte in ganz Mittelsachsen und dem Erzgebirgskreis sowie überregional in Dresden, Leipzig, Berlin, Hannover, Erfurt und Magdeburg.",
   },
   {
     category: "TERMINPLANUNG",

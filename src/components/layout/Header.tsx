@@ -278,7 +278,7 @@ export function Header() {
               alt="Tadiks Cleaning Logo"
               width={145}
               height={44}
-              priority
+              loading="eager"
               className="h-8.5 lg:h-10.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
             />
           </Link>

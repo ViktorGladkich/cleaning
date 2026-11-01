@@ -1,41 +1,14 @@
-import React from "react";
-import { Hammer, Sparkles, CheckCircle2 } from "lucide-react";
-import { FeatureItem, StatItem, GalleryCardConfig } from "./types";
-
-export const STATEMENT_WORDS = [
-  "Tadiks",
-  "Cleaning",
-  "&",
-  "Bau",
-  "vereint",
-  "meisterhaften",
-  "Innenausbau",
-  "und",
-  "zertifizierte",
-  "Gebäudereinigung",
-  "in",
-  "Chemnitz",
-  "–",
-  "für",
-  "bezugsfertige",
-  "Perfektion",
-  "und",
-  "dauerhaften",
-  "Werterhalt",
-  "nahtlos",
-  "aus",
-  "einer",
-  "Hand.",
-];
+import { GalleryCardConfig } from "./types";
 
 export const GALLERY_CARDS: GalleryCardConfig[] = [
   {
     id: 1,
-    wrapperClass: "card-wrapper-1 absolute left-1 sm:left-4 lg:left-8 xl:left-12 top-0 z-30 pointer-events-none will-change-transform",
+    wrapperClass:
+      "card-wrapper-1 absolute left-1 sm:left-4 lg:left-8 xl:left-12 top-0 z-30 pointer-events-none will-change-transform",
     maskClass: "card-mask-1",
     imageClass: "card-img-1",
-    aspectClass: "aspect-[3/4]",
-    widthClass: "w-[170px] sm:w-[220px] lg:w-[270px]",
+    aspectClass: "aspect-3/4",
+    widthClass: "w-42.5 sm:w-55 lg:w-67.5",
     initialClipPath: "inset(100% 100% 0% 0% round 4px)",
     finalClipPath: "inset(0% 0% 0% 0% round 4px)",
     src: "/images/about_gallery_1.webp",
@@ -48,28 +21,30 @@ export const GALLERY_CARDS: GalleryCardConfig[] = [
   },
   {
     id: 2,
-    wrapperClass: "card-wrapper-2 absolute right-1 sm:right-4 lg:right-8 xl:right-12 top-0 z-30 pointer-events-none will-change-transform",
+    wrapperClass:
+      "card-wrapper-2 absolute right-1 sm:right-4 lg:right-8 xl:right-12 top-0 z-30 pointer-events-none will-change-transform",
     maskClass: "card-mask-2",
     imageClass: "card-img-2",
     aspectClass: "aspect-square",
-    widthClass: "w-[155px] sm:w-[200px] lg:w-[245px]",
+    widthClass: "w-38.75 sm:w-50 lg:w-61.25",
     initialClipPath: "inset(100% 0% 0% 100% round 4px)",
     finalClipPath: "inset(0% 0% 0% 0% round 4px)",
     src: "/images/about_gallery_2.webp",
     alt: "Architektonische Details und natürliche Ruhe",
     sizes: "(max-width: 768px) 160px, 250px",
-    startTime: 0.20,
+    startTime: 0.2,
     duration: 0.46,
     parallaxY: 20,
-    parallaxScale: 1.30,
+    parallaxScale: 1.3,
   },
   {
     id: 3,
-    wrapperClass: "card-wrapper-3 absolute left-1/2 top-0 z-30 pointer-events-none will-change-transform",
+    wrapperClass:
+      "card-wrapper-3 absolute left-1/2 top-0 z-30 pointer-events-none will-change-transform",
     maskClass: "card-mask-3",
     imageClass: "card-img-3",
-    aspectClass: "aspect-[16/9]",
-    widthClass: "w-[260px] sm:w-[400px] lg:w-[560px] xl:w-[620px]",
+    aspectClass: "aspect-16/9",
+    widthClass: "w-65 sm:w-100 lg:w-140 xl:w-155",
     initialClipPath: "inset(100% 100% 0% 0% round 4px)",
     finalClipPath: "inset(0% 0% 0% 0% round 4px)",
     src: "/images/about_gallery_3.webp",
@@ -83,11 +58,12 @@ export const GALLERY_CARDS: GalleryCardConfig[] = [
   },
   {
     id: 4,
-    wrapperClass: "card-wrapper-4 absolute left-1 sm:left-4 lg:left-8 xl:left-12 top-0 z-30 pointer-events-none will-change-transform",
+    wrapperClass:
+      "card-wrapper-4 absolute left-1 sm:left-4 lg:left-8 xl:left-12 top-0 z-30 pointer-events-none will-change-transform",
     maskClass: "card-mask-4",
     imageClass: "card-img-4",
     aspectClass: "aspect-square",
-    widthClass: "w-[155px] sm:w-[200px] lg:w-[245px]",
+    widthClass: "w-38.75 sm:w-50 lg:w-61.25",
     initialClipPath: "inset(100% 100% 0% 0% round 4px)",
     finalClipPath: "inset(0% 0% 0% 0% round 4px)",
     src: "/images/about_gallery_4.webp",
@@ -100,11 +76,12 @@ export const GALLERY_CARDS: GalleryCardConfig[] = [
   },
   {
     id: 5,
-    wrapperClass: "card-wrapper-5 absolute right-1 sm:right-4 lg:right-8 xl:right-12 top-0 z-30 pointer-events-none will-change-transform",
+    wrapperClass:
+      "card-wrapper-5 absolute right-1 sm:right-4 lg:right-8 xl:right-12 top-0 z-30 pointer-events-none will-change-transform",
     maskClass: "card-mask-5",
     imageClass: "card-img-5",
-    aspectClass: "aspect-[3/4]",
-    widthClass: "w-[170px] sm:w-[220px] lg:w-[270px]",
+    aspectClass: "aspect-3/4",
+    widthClass: "w-42.5 sm:w-55 lg:w-67.5",
     initialClipPath: "inset(100% 0% 0% 100% round 4px)",
     finalClipPath: "inset(0% 0% 0% 0% round 4px)",
     src: "/images/about_gallery_5.webp",
@@ -114,53 +91,5 @@ export const GALLERY_CARDS: GalleryCardConfig[] = [
     duration: 0.46,
     parallaxY: 28,
     parallaxScale: 1.38,
-  },
-];
-
-export const FEATURES_DATA: FeatureItem[] = [
-  {
-    num: "01",
-    icon: <Hammer className="w-5 h-5 text-brand-navy" />,
-    title: "Bau, Sanierung & Innenausbau",
-    desc: "Fachgerechter Trockenbau, Akustik- & Brandschutz, meisterhafte Q1–Q4 Spachtel- und Malerarbeiten sowie schlüsselfertige Komplettsanierungen für Wohnungen und Gewerbeobjekte in Chemnitz.",
-  },
-  {
-    num: "02",
-    icon: <Sparkles className="w-5 h-5 text-brand-navy" />,
-    title: "Zertifizierte Gebäudereinigung",
-    desc: "Hygienische Unterhaltsreinigung für Praxen und Büros, streifenfreie Glas- und Fensterreinigung sowie bezugsfertige Bauendreinigungen mit modernen Kärcher-Systemen und Umweltzertifikat.",
-  },
-  {
-    num: "03",
-    icon: <CheckCircle2 className="w-5 h-5 text-brand-navy" />,
-    title: "Schlüsselfertig aus einer Hand",
-    desc: "Keine Schnittstellenverluste zwischen Handwerkern und Reinigungsteams. Feste deutsche Objektleiter, verbindliche Festpreise und garantierte Termintreue in ganz Sachsen.",
-  },
-];
-
-export const STATS_DATA: StatItem[] = [
-  {
-    target: 5,
-    suffix: "+",
-    label: "Jahre Meistererfahrung",
-    sublabel: "Fachbetrieb in Chemnitz & Region",
-  },
-  {
-    target: 103,
-    suffix: "+",
-    label: "Realisierte Projekte",
-    sublabel: "Wohn-, Gewerbe- & Praxisobjekte",
-  },
-  {
-    target: 100,
-    suffix: "%",
-    label: "Garantierte Termintreue",
-    sublabel: "Feste Zeitpläne für Bau & Reinigung",
-  },
-  {
-    target: 94,
-    suffix: "%",
-    label: "Kundenzufriedenheit",
-    sublabel: "Verifizierte Kundenbewertungen",
   },
 ];

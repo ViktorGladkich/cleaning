@@ -29,6 +29,7 @@ const satoshi = localFont({
   ],
   variable: "--font-satoshi",
   display: "swap",
+  preload: false,
 });
 
 // Fontshare - General Sans (Rationalist, Pristine Clarity for German Content)
@@ -52,9 +53,11 @@ const generalSans = localFont({
   ],
   variable: "--font-general-sans",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://tadiks-cleaning.de"),
   title: {
     template: `%s | ${COMPANY_INFO.name} Chemnitz`,
     default: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,

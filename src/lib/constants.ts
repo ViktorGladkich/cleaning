@@ -22,10 +22,3 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Über uns", href: "/about" },
   { label: "Kontakt", href: "/contacts" },
 ];
-
-export const SERVICE_CATEGORIES = [
-  { id: "all", label: "Alle Leistungen" },
-  { id: "residential", label: "Privathaushalte & Wohnungen" },
-  { id: "commercial", label: "Büro- & Gewerbereinigung" },
-  { id: "special", label: "Sonderreinigung" },
-] as const;

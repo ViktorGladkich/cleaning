@@ -1,20 +1,3 @@
-import React from "react";
-
-export interface FeatureItem {
-  num: string;
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-}
-
-export interface StatItem {
-  target: number;
-  suffix: string;
-  prefix?: string;
-  label: string;
-  sublabel: string;
-}
-
 export interface GalleryCardConfig {
   id: number;
   wrapperClass: string;

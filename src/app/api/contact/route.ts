@@ -7,6 +7,7 @@ interface RateRecord {
 }
 
 const rateLimitStore = new Map<string, RateRecord>();
+const MAX_STORE_ENTRIES = 2000; // Hard memory cap against spoofed-IP DDoS
 const WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 const MAX_REQUESTS_PER_WINDOW = 3; // Max 3 submissions per 10 minutes per IP
 const MIN_COOLDOWN_MS = 15 * 1000; // Min 15s between consecutive submissions
@@ -61,7 +62,7 @@ function getClientIp(req: NextRequest): string {
 }
 
 function cleanupRateLimitStore(now: number) {
-  if (rateLimitStore.size < 500) return;
+  if (rateLimitStore.size < 400) return;
   for (const [ip, record] of rateLimitStore.entries()) {
     const valid = record.timestamps.filter((t) => now - t < WINDOW_MS);
     if (valid.length === 0) {
@@ -69,6 +70,12 @@ function cleanupRateLimitStore(now: number) {
     } else {
       record.timestamps = valid;
     }
+  }
+  // Enforce hard upper bound on Map size to prevent memory exhaustion
+  while (rateLimitStore.size >= MAX_STORE_ENTRIES) {
+    const oldestKey = rateLimitStore.keys().next().value;
+    if (!oldestKey) break;
+    rateLimitStore.delete(oldestKey);
   }
 }
 
@@ -184,7 +191,7 @@ export async function POST(req: NextRequest) {
     const comment = sanitizeInput(body.comment, 1200);
     const privacyAccepted = body.privacyAccepted === true;
 
-    if (!ALLOWED_CATEGORIES.has(category)) {
+    if (!ALLOWED_CATEGORIES.has(category) || service.length < 2) {
       return NextResponse.json(
         { error: "Bitte wählen Sie einen gültigen Leistungsbereich." },
         { status: 400 }
@@ -255,13 +262,6 @@ export async function POST(req: NextRequest) {
         ok: true,
         referenceId,
         submittedAt: new Date(now).toISOString(),
-        summary: {
-          name,
-          phone,
-          email,
-          service,
-          category,
-        },
       },
       {
         status: 200,

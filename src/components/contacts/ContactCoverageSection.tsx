@@ -53,7 +53,7 @@ export function ContactCoverageSection() {
     <section
       ref={containerRef}
       id="einsatzgebiet"
-      aria-label="Einsatzgebiet in Chemnitz und Sachsen"
+      aria-label="Einsatzgebiet und betreute Städte"
       className="relative z-10 w-full py-16 sm:py-24 bg-brand-cream border-t border-brand-navy/10 overflow-hidden"
     >
       <Container className="relative z-10">
@@ -61,16 +61,16 @@ export function ContactCoverageSection() {
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16">
             <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block mb-3">
-              Regionale Verwurzelung
+              Einsatzgebiet &amp; Standorte
             </span>
             <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-brand-navy leading-tight">
-              Unser Einsatzgebiet in{" "}
+              Von Chemnitz aus im Einsatz –{" "}
               <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
-                Chemnitz &amp; Mittelsachsen.
+                regional &amp; überregional.
               </span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-brand-navy/70 leading-relaxed font-light max-w-2xl mx-auto">
-              Für alle Vor-Ort-Besichtigungen, Schadensbegutachtungen und Aufmaße im Umkreis von bis zu 50 km berechnen wir Ihnen keinerlei Anfahrtskosten.
+              Mit unserem Hauptsitz in Chemnitz betreuen wir Privat- und Gewerbeobjekte in ganz Sachsen sowie ausgewählten Metropolregionen zuverlässig, termingerecht und mit eigenem Fachpersonal.
             </p>
           </div>
 
@@ -95,10 +95,10 @@ export function ContactCoverageSection() {
               <Navigation className="w-5 h-5 text-brand-navy shrink-0" />
               <div>
                 <span className="text-sm font-semibold text-brand-navy block">
-                  Ihr Standort liegt außerhalb dieses Radius?
+                  Ihr Wunschort ist hier nicht aufgelistet?
                 </span>
                 <span className="text-xs text-brand-navy/60 font-light block">
-                  Für größere Gewerbeobjekte, Bausanierungen und Industrieanlagen betreuen wir Projekte auch überregional.
+                  Sprechen Sie uns an — wir prüfen gerne die Verfügbarkeit unserer Teams für Ihr Objekt und erstellen ein individuelles Angebot.
                 </span>
               </div>
             </div>
