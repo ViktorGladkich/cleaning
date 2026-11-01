@@ -132,7 +132,7 @@ export function AboutValuesSection() {
             return (
               <div
                 key={item.num}
-                className="value-card-item group relative flex flex-col justify-between p-7 sm:p-9 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-lg hover:border-brand-navy/30 transition-all duration-300"
+                className="value-card-item group relative flex flex-col justify-between p-7 sm:p-9 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-lg hover:border-brand-navy/30 transition-[box-shadow,border-color] duration-300"
               >
                 <div>
                   {/* Top Bar: Icon, Badge & Number */}

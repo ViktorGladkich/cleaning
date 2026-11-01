@@ -22,6 +22,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -39,131 +40,127 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       isInitialMount.current = false;
       if (!isOpen) {
         gsap.set(wrapper, { height: 0, visibility: "hidden" });
-        gsap.set(card, {
-          y: -12,
-          opacity: 0,
-          clipPath: "inset(0% 0% 100% 0% round 10px)",
-        });
+        gsap.set(card, { y: -10, opacity: 0 });
         gsap.set(labels, { yPercent: 115, rotate: 3 });
         gsap.set(indices, { x: -10, opacity: 0 });
         gsap.set(arrows, { x: -8, y: 8, scale: 0.6, opacity: 0 });
         gsap.set(dividers, { scaleX: 0, transformOrigin: "left center" });
-        if (cta) gsap.set(cta, { y: 16, scale: 0.95, opacity: 0 });
+        if (cta) gsap.set(cta, { y: 14, scale: 0.96, opacity: 0 });
         return;
       }
     }
 
+    if (tlRef.current) {
+      tlRef.current.kill();
+    }
     gsap.killTweensOf([wrapper, card, labels, indices, arrows, dividers, cta]);
 
     if (isOpen) {
       gsap.set(wrapper, { visibility: "visible" });
+      gsap.set(dividers, { transformOrigin: "left center" });
 
       const tl = gsap.timeline();
+      tlRef.current = tl;
 
-      // 1. Wrapper height & card curtain clip-path unfold
+      // 1. Wrapper height & card smooth reveal (wrapper overflow-hidden acts as clean curtain)
       tl.to(
         wrapper,
         {
           height: "auto",
-          duration: 0.5,
+          duration: 0.48,
           ease: "expo.out",
         },
         0
       )
-        .fromTo(
+        .to(
           card,
-          {
-            y: -12,
-            opacity: 0,
-            clipPath: "inset(0% 0% 100% 0% round 10px)",
-          },
           {
             y: 0,
             opacity: 1,
-            clipPath: "inset(0% 0% 0% 0% round 10px)",
-            duration: 0.48,
-            ease: "expo.out",
-            onComplete: () => {
-              gsap.set(card, { clearProps: "clipPath" });
-            },
+            duration: 0.42,
+            ease: "power3.out",
           },
           0
         )
         // 2. Architectural horizontal dividers draw from left to right
-        .fromTo(
+        .to(
           dividers,
-          { scaleX: 0, transformOrigin: "left center" },
           {
             scaleX: 1,
-            duration: 0.52,
-            stagger: 0.045,
+            duration: 0.48,
+            stagger: 0.04,
             ease: "expo.out",
           },
-          0.08
+          0.06
         )
         // 3. Editorial numbers slide in
-        .fromTo(
+        .to(
           indices,
-          { x: -10, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            duration: 0.38,
-            stagger: 0.045,
+            duration: 0.36,
+            stagger: 0.04,
             ease: "power3.out",
-          },
-          0.1
-        )
-        // 4. Masked kinetic typography line reveal
-        .fromTo(
-          labels,
-          { yPercent: 115, rotate: 3 },
-          {
-            yPercent: 0,
-            rotate: 0,
-            duration: 0.52,
-            stagger: 0.048,
-            ease: "power4.out",
           },
           0.08
         )
+        // 4. Masked kinetic typography line reveal
+        .to(
+          labels,
+          {
+            yPercent: 0,
+            rotate: 0,
+            duration: 0.48,
+            stagger: 0.045,
+            ease: "power4.out",
+          },
+          0.06
+        )
         // 5. Diagonal arrow pop-in
-        .fromTo(
+        .to(
           arrows,
-          { x: -8, y: 8, scale: 0.6, opacity: 0 },
           {
             x: 0,
+            y: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            stagger: 0.04,
+            ease: "back.out(2)",
+          },
+          0.14
+        );
+
+      if (cta) {
+        tl.to(
+          cta,
+          {
             y: 0,
             scale: 1,
             opacity: 1,
             duration: 0.42,
-            stagger: 0.045,
-            ease: "back.out(2)",
-          },
-          0.16
-        );
-
-      if (cta) {
-        tl.fromTo(
-          cta,
-          { y: 16, scale: 0.95, opacity: 0 },
-          {
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            duration: 0.46,
             ease: "back.out(1.5)",
           },
-          0.26
+          0.22
         );
       }
     } else {
+      gsap.set(dividers, { transformOrigin: "right center" });
+
       const tl = gsap.timeline({
         onComplete: () => {
           gsap.set(wrapper, { visibility: "hidden" });
+          // Reset inner elements while hidden so next open always starts from clean baseline
+          gsap.set(labels, { yPercent: 115, rotate: 3 });
+          gsap.set(indices, { x: -10, opacity: 0 });
+          gsap.set(arrows, { x: -8, y: 8, scale: 0.6, opacity: 0 });
+          gsap.set(dividers, { scaleX: 0, transformOrigin: "left center" });
+          if (cta) gsap.set(cta, { y: 14, scale: 0.96, opacity: 0 });
           setServicesOpen(false);
         },
       });
+      tlRef.current = tl;
 
       if (cta) {
         tl.to(
@@ -172,7 +169,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             y: 8,
             scale: 0.96,
             opacity: 0,
-            duration: 0.18,
+            duration: 0.16,
             ease: "power2.in",
           },
           0
@@ -183,8 +180,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         labels,
         {
           yPercent: -110,
-          duration: 0.22,
-          stagger: 0.02,
+          rotate: 0,
+          duration: 0.2,
+          stagger: 0.018,
           ease: "power3.in",
         },
         0
@@ -203,9 +201,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           dividers,
           {
             scaleX: 0,
-            transformOrigin: "right center",
-            duration: 0.22,
-            stagger: 0.02,
+            duration: 0.2,
+            stagger: 0.018,
             ease: "power3.in",
           },
           0.02
@@ -213,24 +210,29 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         .to(
           card,
           {
-            y: -8,
+            y: -10,
             opacity: 0,
-            clipPath: "inset(0% 0% 100% 0% round 10px)",
-            duration: 0.28,
-            ease: "expo.inOut",
+            duration: 0.24,
+            ease: "power2.inOut",
           },
-          0.06
+          0.05
         )
         .to(
           wrapper,
           {
             height: 0,
-            duration: 0.32,
+            duration: 0.28,
             ease: "expo.inOut",
           },
-          0.06
+          0.05
         );
     }
+
+    return () => {
+      if (tlRef.current) {
+        tlRef.current.kill();
+      }
+    };
   }, [isOpen]);
 
   return (

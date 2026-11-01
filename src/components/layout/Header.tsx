@@ -24,6 +24,7 @@ export function Header() {
 
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const burgerTlRef = useRef<gsap.core.Timeline | null>(null);
   const burgerStageRef = useRef<HTMLSpanElement>(null);
   const topBarRef = useRef<HTMLSpanElement>(null);
   const midBarRef = useRef<HTMLSpanElement>(null);
@@ -31,6 +32,7 @@ export function Header() {
   const isBurgerInitRef = useRef(true);
 
   // Multi-stage choreographed GSAP animation for Burger <-> Cross (X)
+  // Avoids inline JSX transform styles so React re-renders never conflict with GSAP transform cache
   useEffect(() => {
     const stage = burgerStageRef.current;
     const top = topBarRef.current;
@@ -41,22 +43,27 @@ export function Header() {
     if (isBurgerInitRef.current) {
       isBurgerInitRef.current = false;
       gsap.set(stage, { rotate: 0, scale: 1 });
-      gsap.set(top, { y: -6, rotate: 0, width: 22, x: 0 });
-      gsap.set(mid, { y: 0, scaleX: 1, opacity: 1, width: 15, x: 3.5 });
-      gsap.set(bot, { y: 6, rotate: 0, width: 22, x: 0 });
+      gsap.set(top, { y: -6, rotate: 0, scaleX: 1 });
+      gsap.set(mid, { y: 0, x: 0, scaleX: 1, opacity: 1 });
+      gsap.set(bot, { y: 6, rotate: 0, scaleX: 1 });
       return;
     }
 
+    if (burgerTlRef.current) {
+      burgerTlRef.current.kill();
+    }
     gsap.killTweensOf([stage, top, mid, bot]);
+
     const tl = gsap.timeline();
+    burgerTlRef.current = tl;
 
     if (mobileMenuOpen) {
-      // Stage 1: Middle bar shoots right & vanishes while top and bottom bars snap to center line
+      // Stage 1: Middle bar shoots right & vanishes while top and bottom bars collapse to center
       tl.to(
         mid,
         {
           scaleX: 0,
-          x: 10,
+          x: 8,
           opacity: 0,
           duration: 0.18,
           ease: "power3.in",
@@ -67,8 +74,7 @@ export function Header() {
           [top, bot],
           {
             y: 0,
-            width: 22,
-            x: 0,
+            rotate: 0,
             duration: 0.2,
             ease: "power3.inOut",
           },
@@ -127,8 +133,6 @@ export function Header() {
           top,
           {
             y: -6,
-            width: 22,
-            x: 0,
             duration: 0.34,
             ease: "back.out(2.1)",
           },
@@ -138,27 +142,27 @@ export function Header() {
           bot,
           {
             y: 6,
-            width: 22,
-            x: 0,
             duration: 0.34,
             ease: "back.out(2.1)",
           },
           0.18
         )
-        .fromTo(
+        .to(
           mid,
-          { scaleX: 0, x: -8, opacity: 0, width: 15 },
           {
             scaleX: 1,
-            x: 3.5,
+            x: 0,
             opacity: 1,
-            width: 15,
             duration: 0.32,
             ease: "back.out(1.8)",
           },
-          0.22
+          0.2
         );
     }
+
+    return () => {
+      tl.kill();
+    };
   }, [mobileMenuOpen]);
 
   // Self-managed entrance animation: on homepage slide down smoothly; on all other pages ensure it's immediately visible
@@ -168,10 +172,20 @@ export function Header() {
       gsap.fromTo(
         headerRef.current,
         { y: -120 },
-        { y: 0, duration: 0.85, ease: "expo.out", delay: 0.85 }
+        {
+          y: 0,
+          duration: 0.85,
+          ease: "expo.out",
+          delay: 0.85,
+          onComplete: () => {
+            if (headerRef.current) {
+              gsap.set(headerRef.current, { clearProps: "transform" });
+            }
+          },
+        }
       );
     } else {
-      gsap.set(headerRef.current, { y: 0, clearProps: "transform" });
+      gsap.set(headerRef.current, { clearProps: "transform" });
     }
   }, [pathname]);
 
@@ -187,7 +201,7 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
-  // Close menus on outside click
+  // Close menus on outside click or browser back/forward navigation
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
@@ -195,9 +209,15 @@ export function Header() {
         setMobileMenuOpen(false);
       }
     }
+    function handlePopState() {
+      setIsOpen(false);
+      setMobileMenuOpen(false);
+    }
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("popstate", handlePopState);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("popstate", handlePopState);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
@@ -232,14 +252,14 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260 transform-gpu will-change-transform"
+      className="fixed top-6 sm:top-10 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-260"
     >
       {/* Top Capsule: Frosted Glass Pill */}
       <nav
         aria-label="Hauptnavigation"
         className={cn(
           "w-full transition-colors duration-300",
-          "rounded-[10px] backdrop-blur-lg [-webkit-backdrop-filter:blur(16px)] transform-gpu",
+          "rounded-[10px] backdrop-blur-lg [-webkit-backdrop-filter:blur(16px)]",
           "bg-white/70 border border-white/50",
           "shadow-lg shadow-brand-navy/5",
           "p-2 sm:p-2"
@@ -321,20 +341,17 @@ export function Header() {
                 {/* Top bar */}
                 <span
                   ref={topBarRef}
-                  className="absolute h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
-                  style={{ transform: "translateY(-6px)" }}
+                  className="absolute left-px h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
                 />
-                {/* Middle asymmetric bar */}
+                {/* Middle asymmetric bar aligned to right edge via CSS right-px */}
                 <span
                   ref={midBarRef}
-                  className="absolute h-[1.8px] w-[15px] bg-current rounded-full origin-right will-change-transform"
-                  style={{ transform: "translateX(3.5px)" }}
+                  className="absolute right-px h-[1.8px] w-[15px] bg-current rounded-full origin-right will-change-transform"
                 />
                 {/* Bottom bar */}
                 <span
                   ref={botBarRef}
-                  className="absolute h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
-                  style={{ transform: "translateY(6px)" }}
+                  className="absolute left-px h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
                 />
               </span>
             </button>

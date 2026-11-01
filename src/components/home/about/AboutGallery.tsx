@@ -191,20 +191,20 @@ export function AboutGallery() {
           <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.6rem] xl:text-[4.1rem] font-medium text-brand-navy tracking-tight leading-[1.08] select-none">
             {/* Line 1 */}
             <span className="block overflow-hidden whitespace-nowrap">
-              <span className="block gallery-hero-line translate-y-full will-change-transform">
+              <span className="block gallery-hero-line will-change-transform">
                 Zwei Gewerke.
               </span>
             </span>
             {/* Line 2 */}
             <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
-              <span className="block gallery-hero-line translate-y-full will-change-transform">
+              <span className="block gallery-hero-line will-change-transform">
                 Ein meisterhafter
               </span>
             </span>
             {/* Line 3 */}
             <span className="block overflow-hidden whitespace-nowrap pt-1.5 sm:pt-2.5">
-              <span className="block gallery-hero-line translate-y-full will-change-transform">
-                <span className="gallery-lime-pill inline-block bg-brand-lime  rounded sm:rounded-md text-brand-navy origin-left scale-x-0 transform-gpu">
+              <span className="block gallery-hero-line will-change-transform">
+                <span className="gallery-lime-pill inline-block bg-brand-lime rounded sm:rounded-md text-brand-navy origin-left">
                   <span className="gallery-lime-text opacity-0">Qualitätsstandard</span>
                 </span>
               </span>

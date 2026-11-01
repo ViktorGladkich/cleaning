@@ -5,9 +5,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  ShieldCheck,
-  Award,
-  Sparkles,
   CheckCircle2,
   Send,
   Building2,
@@ -104,7 +101,7 @@ export function ContactHubSection() {
     >
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Direct Contact Info & Trust Badges (5 cols) */}
+          {/* Left Column: Direct Contact Info (5 cols) */}
           <div className="hub-col lg:col-span-5 space-y-6">
             <div>
               <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block mb-3">
@@ -112,7 +109,9 @@ export function ContactHubSection() {
               </span>
               <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-brand-navy leading-tight">
                 Sprechen Sie direkt mit{" "}
-                <span className="font-semibold text-brand-navy">unserem Meister</span>.
+                <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
+                  unserem Meister.
+                </span>
               </h2>
               <p className="mt-4 text-sm sm:text-base text-brand-navy/70 leading-relaxed font-light">
                 Keine langen Warteschleifen. Rufen Sie uns an oder schreiben Sie uns — wir melden uns innerhalb von 24 Stunden verlässlich zurück.
@@ -124,9 +123,9 @@ export function ContactHubSection() {
               {/* Phone */}
               <a
                 href={`tel:${COMPANY_INFO.phoneRaw}`}
-                className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-md hover:border-brand-navy/30 transition-all duration-300"
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-md hover:border-brand-navy/30 transition-[box-shadow,border-color] duration-300"
               >
-                <div className="w-11 h-11 rounded-xl bg-brand-navy/5 text-brand-navy flex items-center justify-center shrink-0 group-hover:bg-brand-navy group-hover:text-brand-lime transition-colors duration-300">
+                <div className="text-brand-navy flex items-center justify-center shrink-0 pt-0.5">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -145,9 +144,9 @@ export function ContactHubSection() {
               {/* Email */}
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
-                className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-md hover:border-brand-navy/30 transition-all duration-300"
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-white border border-brand-navy/10 shadow-xs hover:shadow-md hover:border-brand-navy/30 transition-[box-shadow,border-color] duration-300"
               >
-                <div className="w-11 h-11 rounded-xl bg-brand-navy/5 text-brand-navy flex items-center justify-center shrink-0 group-hover:bg-brand-navy group-hover:text-brand-lime transition-colors duration-300">
+                <div className="text-brand-navy flex items-center justify-center shrink-0 pt-0.5">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -165,7 +164,7 @@ export function ContactHubSection() {
 
               {/* Address / Headquarters */}
               <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-brand-navy/10 shadow-xs">
-                <div className="w-11 h-11 rounded-xl bg-brand-navy/5 text-brand-navy flex items-center justify-center shrink-0">
+                <div className="text-brand-navy flex items-center justify-center shrink-0 pt-0.5">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -179,33 +178,6 @@ export function ContactHubSection() {
                     Einsatzgebiet: Chemnitz, Zwickau, Freiberg &amp; Mittelsachsen
                   </span>
                 </div>
-              </div>
-            </div>
-
-            {/* 3 Trust Signals */}
-            <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center sm:text-left">
-              <div className="p-3.5 rounded-xl bg-white/70 border border-brand-navy/10">
-                <ShieldCheck className="w-4 h-4 text-brand-navy mb-1 sm:mx-0 mx-auto" />
-                <span className="text-xs font-semibold text-brand-navy block">
-                  Betriebshaftpflicht
-                </span>
-                <span className="text-[10px] text-brand-navy/60">Voll versichert</span>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-white/70 border border-brand-navy/10">
-                <Award className="w-4 h-4 text-brand-navy mb-1 sm:mx-0 mx-auto" />
-                <span className="text-xs font-semibold text-brand-navy block">
-                  100% Festpreis
-                </span>
-                <span className="text-[10px] text-brand-navy/60">Keine Nachkosten</span>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-white/70 border border-brand-navy/10">
-                <Sparkles className="w-4 h-4 text-brand-navy mb-1 sm:mx-0 mx-auto" />
-                <span className="text-xs font-semibold text-brand-navy block">
-                  24h Angebot
-                </span>
-                <span className="text-[10px] text-brand-navy/60">Schnelle Taktung</span>
               </div>
             </div>
           </div>

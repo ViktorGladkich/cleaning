@@ -130,12 +130,18 @@ export function Hero() {
             {/* Main Headline */}
             <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-medium text-white tracking-tight leading-[1.1] mb-3 sm:mb-5 flex flex-col gap-1">
               <span className="overflow-hidden block">
-                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">
+                <span
+                  className="block hero-heading-line opacity-0 will-change-transform"
+                  style={{ transform: "translateY(100%)" }}
+                >
                   Reinigung &amp; Bau
                 </span>
               </span>
               <span className="overflow-hidden block pt-1">
-                <span className="block hero-heading-line translate-y-full opacity-0 will-change-transform">
+                <span
+                  className="block hero-heading-line opacity-0 will-change-transform"
+                  style={{ transform: "translateY(100%)" }}
+                >
                   Qualität bis ins Detail
                 </span>
               </span>
@@ -143,7 +149,10 @@ export function Hero() {
 
             {/* Subtitle */}
             <p className="text-white/85 text-sm sm:text-base lg:text-lg max-w-xl mb-6 sm:mb-8 leading-relaxed overflow-hidden">
-              <span className="block hero-subtitle translate-y-full opacity-0 will-change-transform">
+              <span
+                className="block hero-subtitle opacity-0 will-change-transform"
+                style={{ transform: "translateY(100%)" }}
+              >
                 Professionelle Gebäudereinigung sowie Bau- und Sanierungsarbeiten – zuverlässig, termintreu und präzise umgesetzt.
               </span>
             </p>
@@ -151,7 +160,10 @@ export function Hero() {
             {/* Actions: Primary CTA + Bau Entdecken (side-by-side in one row on mobile) */}
             <div className="flex items-center gap-2 xs:gap-2.5 sm:gap-4 self-start max-w-full">
               <div className="hero-cta overflow-hidden shrink-0">
-                <div className="hero-cta-inner translate-y-full">
+                <div
+                  className="hero-cta-inner will-change-transform"
+                  style={{ transform: "translateY(100%)" }}
+                >
                   <CtaButton
                     href="/contacts"
                     size="md"
@@ -163,7 +175,10 @@ export function Hero() {
                 </div>
               </div>
               <div className="hero-cta overflow-hidden shrink-0">
-                <div className="hero-cta-inner translate-y-full">
+                <div
+                  className="hero-cta-inner will-change-transform"
+                  style={{ transform: "translateY(100%)" }}
+                >
                   <Link
                     href="/bau"
                     className="inline-flex items-center justify-center h-9 sm:h-10.5 px-3.5 sm:px-5 rounded-lg sm:rounded-md text-white/90 hover:text-white bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 text-[13px] xs:text-[13.5px] sm:text-[15.5px] font-medium transition-colors duration-200 shadow-xs whitespace-nowrap"

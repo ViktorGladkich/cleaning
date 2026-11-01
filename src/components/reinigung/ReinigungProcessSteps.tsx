@@ -103,7 +103,7 @@ export function ReinigungProcessSteps() {
           {STEPS.map((step, index) => (
             <div
               key={step.number}
-              className="reini-step-card flex flex-col bg-white rounded-2xl border border-slate-200/90 p-7 shadow-sm hover:shadow-xl transition-all duration-300 relative group hover:-translate-y-1"
+              className="reini-step-card flex flex-col bg-white rounded-2xl border border-slate-200/90 p-7 shadow-sm hover:shadow-xl transition-[box-shadow,border-color,translate] duration-300 relative group hover:-translate-y-1"
             >
               {/* Step Number Top */}
               <div className="flex items-center justify-between mb-6">

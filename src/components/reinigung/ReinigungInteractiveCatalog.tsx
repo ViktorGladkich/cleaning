@@ -317,7 +317,7 @@ export function ReinigungInteractiveCatalog() {
           {filteredServices.map((service) => (
             <article
               key={service.id}
-              className="catalog-service-card group flex flex-col bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden hover:-translate-y-1.5"
+              className="catalog-service-card group flex flex-col bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl transition-[box-shadow,border-color,translate] duration-500 overflow-hidden hover:-translate-y-1.5"
             >
               {/* Card Image Header with Badge */}
               <div className="relative h-60 w-full overflow-hidden bg-slate-900">

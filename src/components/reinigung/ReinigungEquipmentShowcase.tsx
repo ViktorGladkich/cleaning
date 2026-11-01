@@ -117,7 +117,7 @@ export function ReinigungEquipmentShowcase() {
               return (
                 <div
                   key={idx}
-                  className="tech-card bg-slate-900/80 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-7 flex flex-col justify-between hover:border-brand-lime/50 transition-all duration-300 hover:-translate-y-1"
+                  className="tech-card bg-slate-900/80 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-7 flex flex-col justify-between hover:border-brand-lime/50 transition-[border-color,translate] duration-300 hover:-translate-y-1"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">

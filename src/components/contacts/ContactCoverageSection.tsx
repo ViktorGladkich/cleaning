@@ -73,7 +73,7 @@ export function ContactCoverageSection() {
             {REGIONS.map((item, idx) => (
               <div
                 key={idx}
-                className="coverage-card p-4 rounded-xl bg-white border border-brand-navy/10 shadow-xs flex items-center justify-between gap-3 hover:border-brand-navy/30 transition-all duration-300"
+                className="coverage-card p-4 rounded-xl bg-white border border-brand-navy/10 shadow-xs flex items-center justify-between gap-3 hover:border-brand-navy/30 transition-colors duration-300"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <div className="w-8 h-8 rounded-lg bg-brand-navy/5 text-brand-navy flex items-center justify-center shrink-0">

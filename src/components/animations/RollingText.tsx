@@ -78,8 +78,7 @@ export function RollingText({
     >
       <span
         ref={trackRef}
-        className="flex flex-col transform-gpu will-change-transform"
-        style={{ transform: "translateY(0%)" }}
+        className="flex flex-col will-change-transform"
       >
         {/* Layer 1: Normal state */}
         <span
