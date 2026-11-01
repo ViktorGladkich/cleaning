@@ -131,21 +131,21 @@ export function BauMinimalProtocol() {
               <p className="text-2xl sm:text-3xl xl:text-[38px] font-normal text-brand-navy leading-[1.28] tracking-tight">
                 <span className="block protocol-statement-chunk mb-4">
                   Wir bauen nicht nur Wände –{" "}
-                  <span className="inline-block bg-brand-lime rounded-lg px-2 py-0.5 text-brand-navy font-normal">
+                  <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
                     wir schaffen bleibende Werte.
                   </span>
                 </span>
                 <span className="block protocol-statement-chunk font-light text-brand-navy/85 mb-5">
                   Durch{" "}
-                  <span className="text-brand-navy font-normal underline decoration-brand-navy/25 underline-offset-6">
+                  <span className="text-brand-navy font-normal">
                     millimetergenaue Laser-Ausrichtung
                   </span>
                   , zertifizierten{" "}
-                  <span className="text-brand-navy font-normal underline decoration-brand-navy/25 underline-offset-6">
+                  <span className="text-brand-navy font-normal">
                     Schallschutz
                   </span>{" "}
                   und streiflichtfreie{" "}
-                  <span className="text-brand-navy font-normal underline decoration-brand-navy/25 underline-offset-6">
+                  <span className="text-brand-navy font-normal">
                     Q4-Spachtelung
                   </span>
                   .

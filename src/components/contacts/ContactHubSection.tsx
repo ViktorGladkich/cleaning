@@ -444,9 +444,6 @@ export function ContactHubSection() {
                       </span>
                       <Send className="w-4 h-4 text-brand-lime group-hover:translate-x-1 transition-transform" />
                     </button>
-                    <div className="text-center text-[11px] text-brand-navy/50 mt-2.5">
-                      100% kostenfrei &bull; Keine automatische Vertragsbindung &bull; Rückmeldung in 24h
-                    </div>
                   </div>
                 </form>
               )}
