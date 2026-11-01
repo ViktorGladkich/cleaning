@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLdSchema } from "@/components/layout/JsonLdSchema";
 import { CookieBanner } from "@/components/ui/CookieBanner";
 import { COMPANY_INFO } from "@/lib/constants";
 
@@ -72,7 +73,21 @@ export const metadata: Metadata = {
     "Fensterreinigung Chemnitz",
     "Büroreinigung Chemnitz",
     "Grundreinigung Sachsen",
+    "Bauendreinigung Chemnitz",
+    "Trockenbau Chemnitz",
+    "Komplettsanierung Chemnitz",
+    "Malerarbeiten Chemnitz",
+    "Tadik's Cleaning",
   ],
+  alternates: {
+    canonical: "https://tadiks-cleaning.de",
+    types: {
+      "text/plain": [
+        { url: "/llms.txt", title: "LLM Context (Standard)" },
+        { url: "/llms-full.txt", title: "LLM Full Knowledge Base" },
+      ],
+    },
+  },
 };
 
 export default function RootLayout({
@@ -86,6 +101,7 @@ export default function RootLayout({
       className={`${satoshi.variable} ${generalSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white">
+        <JsonLdSchema />
         <SmoothScroll>
           <PageTransition>
             <Header />

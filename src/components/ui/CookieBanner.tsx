@@ -160,10 +160,9 @@ export function CookieBanner() {
             </h2>
 
             <p className="text-xs sm:text-[13px] text-neutral-800 leading-relaxed max-w-3xl font-light">
-              Wir verwenden Cookies, um die bestmögliche Erfahrung auf unserer Website zu gewährleisten. 
-              Dies beinhaltet notwendige Cookies für die Seitenfunktionalität sowie Cookies für Webanalyse und Marketing, 
-              um unser Angebot und Google-Dienste stetig zu optimieren. Sie können selbst entscheiden, welche Cookie-Kategorien 
-              Sie zulassen möchten. Weitere Details finden Sie in unserer{" "}
+              Wir verwenden Cookies und lokale Speicherfunktionen (§ 25 TDDDG), um die bestmögliche und sichere Funktion unserer Website zu gewährleisten. 
+              Dies beinhaltet technisch notwendige Funktionen für den Seitenbetrieb sowie optionale Kategorien für Webanalyse, Marketing und externe Medien. 
+              Sie können jederzeit selbst entscheiden, welche Kategorien Sie zulassen möchten. Weitere Details finden Sie in unserer{" "}
               <Link
                 href="/datenschutz"
                 className="underline underline-offset-2 hover:text-black font-normal transition-colors"

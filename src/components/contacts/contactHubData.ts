@@ -145,3 +145,4 @@ export function validateContactForm(formData: ContactFormState): {
 
   return { errors, generalError };
 }
+
