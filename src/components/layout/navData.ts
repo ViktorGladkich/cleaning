@@ -42,9 +42,7 @@ export const MEGA_MENU_SECTIONS: MegaMenuSection[] = [
 
 export const MOBILE_NAV_LINKS: NavLink[] = [
   { label: "Reinigung", href: "/services" },
-  { label: "Bau & Sanierung", href: "/bau" },
+  { label: "Bau", href: "/bau" },
   { label: "Über uns", href: "/about" },
-  { label: "Preise & Rechner", href: "/pricing" },
-  { label: "Bewertungen", href: "/reviews" },
   { label: "Kontakt", href: "/contacts" },
 ];

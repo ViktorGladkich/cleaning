@@ -113,10 +113,9 @@ export function AboutValuesSection() {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] font-normal tracking-tight text-brand-navy leading-[1.12]"
           >
             Vier Grundsätze für{" "}
-            <span className="text-brand-navy font-semibold">
-              kompromisslose Qualität
+            <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
+              kompromisslose Qualität.
             </span>
-            .
           </h2>
           <p className="mt-4 sm:mt-5 text-base sm:text-lg text-brand-navy/70 leading-relaxed font-light max-w-2xl mx-auto">
             Wir haben Tadiks gegründet, um Bauhandwerk und Gebäudereinigung aus Silos zu befreien. Das Ergebnis: Höhere Effizienz, absolute Termintreue und Räume, die begeistern.

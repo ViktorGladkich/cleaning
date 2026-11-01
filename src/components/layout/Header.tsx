@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { gsap } from "@/lib/gsap";
 import { RollingText } from "@/components/animations";
@@ -12,36 +12,6 @@ import { CtaButton } from "@/components/ui/CtaButton";
 import { MAIN_NAV_LINKS } from "./navData";
 import { MegaMenu } from "./MegaMenu";
 import { MobileMenu } from "./MobileMenu";
-
-/**
- * ActiveUnderlineSvg — Elegant, organic architectural SVG underline stroke
- */
-export function ActiveUnderlineSvg({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 100 8"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      className={cn(
-        "absolute -bottom-1.5 left-0 w-full h-[6.5px] text-brand-navy pointer-events-none overflow-visible",
-        className
-      )}
-      aria-hidden="true"
-    >
-      <path
-        d="M1 5.5 C 28 1.8, 72 8.2, 99 3.5"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        vectorEffect="nonScalingStroke"
-        pathLength={100}
-        className="animate-draw-underline"
-      />
-    </svg>
-  );
-}
 
 /**
  * Header — Primary navigation bar with frosted-glass pill styling,
@@ -68,6 +38,18 @@ export function Header() {
       gsap.set(headerRef.current, { y: 0, clearProps: "transform" });
     }
   }, [pathname]);
+
+  // Lock page scroll when mobile menu is open (standard UX best practice)
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   // Close menus on outside click
   useEffect(() => {
@@ -141,32 +123,22 @@ export function Header() {
               width={145}
               height={44}
               priority
-              className="h-8.5 sm:h-10.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
+              className="h-8.5 lg:h-10.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
             />
           </Link>
 
-          {/* Desktop Nav Links (absolute-centered with generous breathing room) */}
-          <div className="hidden md:flex items-center gap-3.5 lg:gap-5 absolute left-1/2 -translate-x-1/2 z-10">
-            {MAIN_NAV_LINKS.map((link) => {
-              const isActive =
-                link.href === "/services"
-                  ? pathname === "/services" || pathname === "/reinigung" || pathname.startsWith("/services/")
-                  : link.href === "/bau"
-                  ? pathname === "/bau" || pathname.startsWith("/bau/")
-                  : pathname === link.href;
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="group relative inline-flex items-center text-[16px] font-medium text-brand-navy hover:text-brand-navy transition-colors duration-150 py-1"
-                >
-                  <RollingText duplicateClassName="text-brand-navy">{link.label}</RollingText>
-                  {isActive && <ActiveUnderlineSvg />}
-                </Link>
-              );
-            })}
+          {/* Desktop Nav Links (flex-centered between logo & CTA on tablet md, absolute-centered on lg+) */}
+          <div className="hidden md:flex items-center md:gap-3 lg:gap-5 mx-auto lg:mx-0 lg:absolute lg:left-1/2 lg:-translate-x-1/2 z-10 whitespace-nowrap">
+            {MAIN_NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className="group relative inline-flex items-center text-[14.5px] lg:text-[16px] font-medium text-brand-navy hover:text-brand-navy transition-colors duration-150 py-1"
+              >
+                <RollingText duplicateClassName="text-brand-navy">{link.label}</RollingText>
+              </Link>
+            ))}
 
             {/* "Leistungen" Dropdown Trigger */}
             <div
@@ -178,7 +150,7 @@ export function Header() {
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
                 aria-expanded={isOpen}
-                className="group inline-flex items-center gap-1.5 text-[15.5px] font-medium cursor-pointer transition-colors duration-150 py-1 text-brand-navy hover:text-brand-navy focus:outline-none"
+                className="group inline-flex items-center gap-1 lg:gap-1.5 text-[14.5px] lg:text-[15.5px] font-medium cursor-pointer transition-colors duration-150 py-1 text-brand-navy hover:text-brand-navy focus:outline-none"
               >
                 <RollingText duplicateClassName="text-brand-navy">Leistungen</RollingText>
                 <ChevronDown
@@ -192,7 +164,7 @@ export function Header() {
           </div>
 
           {/* Right Action: CTA Button on Desktop + Mobile Menu Toggle */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto z-10">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto lg:ml-0 z-10">
             <div className="hidden md:block">
               <CtaButton href="/contacts" onClick={closeMenu} size="sm">
                 Termin vereinbaren
@@ -200,11 +172,41 @@ export function Header() {
             </div>
 
             <button
+              type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              aria-label="Menü"
-              className="md:hidden p-2 rounded-xl text-brand-navy hover:bg-black/5 transition"
+              aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
+              aria-expanded={mobileMenuOpen}
+              className="md:hidden relative w-10 h-10 flex items-center justify-center text-brand-navy bg-transparent cursor-pointer focus:outline-none"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span className="relative w-5 h-5 flex items-center justify-center">
+                {/* Top bar */}
+                <span
+                  className={cn(
+                    "absolute h-[1.8px] w-5 bg-current rounded-full transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center",
+                    mobileMenuOpen
+                      ? "translate-y-0 rotate-45"
+                      : "-translate-y-[5.5px] rotate-0"
+                  )}
+                />
+                {/* Middle bar */}
+                <span
+                  className={cn(
+                    "absolute h-[1.8px] w-5 bg-current rounded-full transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center",
+                    mobileMenuOpen
+                      ? "scale-x-0 opacity-0"
+                      : "scale-x-100 opacity-100"
+                  )}
+                />
+                {/* Bottom bar */}
+                <span
+                  className={cn(
+                    "absolute h-[1.8px] w-5 bg-current rounded-full transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center",
+                    mobileMenuOpen
+                      ? "translate-y-0 -rotate-45"
+                      : "translate-y-[5.5px] rotate-0"
+                  )}
+                />
+              </span>
             </button>
           </div>
         </div>

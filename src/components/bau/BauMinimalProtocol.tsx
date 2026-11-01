@@ -41,13 +41,33 @@ const BAU_PROTOCOL_STEPS: ProtocolStep[] = [
 export function BauMinimalProtocol() {
   const sectionRef = useRef<HTMLElement>(null);
   const statementRef = useRef<HTMLDivElement>(null);
+  const bgImgRef = useRef<HTMLDivElement>(null);
   const runwayRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
 
-      // Clean kinetic statement entrance on left
+      // 1. Subtle architectural background parallax
+      if (bgImgRef.current) {
+        gsap.fromTo(
+          bgImgRef.current,
+          { yPercent: -8, scale: 1.06 },
+          {
+            yPercent: 8,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          }
+        );
+      }
+
+      // 2. Clean kinetic statement entrance on left
       if (statementRef.current) {
         gsap.fromTo(
           statementRef.current.querySelectorAll(".protocol-statement-chunk"),
@@ -67,25 +87,33 @@ export function BauMinimalProtocol() {
         );
       }
 
-      // Hide preceding cards once the next card stacks on top of them
-      // This guarantees that in the end, ONLY the last card (Card 04) is visible
-      // and previous cards can never peek out or slide out when scrolling further
+      // 3. Smooth stacking transition: as the next glass card glides over the previous card,
+      // the card underneath refracts through the frosted glass and smoothly scales down & fades out
+      // right as the new card lands on top.
       const cardNodes = sectionRef.current.querySelectorAll<HTMLElement>(".protocol-step-card-wrapper");
       if (cardNodes.length > 1) {
         cardNodes.forEach((card, idx) => {
           if (idx === 0) return;
           const prevCard = cardNodes[idx - 1];
+          const prevInner = prevCard.querySelector<HTMLElement>(".protocol-glass-card");
 
-          ScrollTrigger.create({
-            trigger: card,
-            start: () => (window.innerWidth >= 640 ? "top 144px" : "top 112px"),
-            onEnter: () => {
-              gsap.set(prevCard, { autoAlpha: 0 });
-            },
-            onLeaveBack: () => {
-              gsap.set(prevCard, { autoAlpha: 1 });
-            },
-          });
+          if (prevInner) {
+            gsap.fromTo(
+              prevInner,
+              { scale: 1, opacity: 1 },
+              {
+                scale: 0.94,
+                opacity: 0,
+                ease: "power2.inOut",
+                scrollTrigger: {
+                  trigger: card,
+                  start: () => (window.innerWidth >= 640 ? "top 520px" : "top 440px"),
+                  end: () => (window.innerWidth >= 640 ? "top 150px" : "top 118px"),
+                  scrub: true,
+                },
+              }
+            );
+          }
         });
 
         // Exact travel distance needed for Card 04 to reach top-28/top-36 and land flat on Card 03,
@@ -106,13 +134,35 @@ export function BauMinimalProtocol() {
       ref={sectionRef}
       id="bau-protocol"
       aria-label="Bau-Qualitätsstandard & Ablauf"
-      className="relative z-10 w-full bg-brand-navy text-white py-24 sm:py-32 lg:py-40"
+      className="relative z-10 w-full bg-[#0c1527] text-white"
     >
-      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
-        
-        {/* 2-Column Split: Wider Sticky Statement on Left | Stacking Cards on Right */}
+      {/* Sticky Full-Viewport Architectural Background so frosted glass cards refract rich light & texture */}
+      <div className="sticky top-0 h-svh w-full overflow-hidden -mb-[100svh] pointer-events-none select-none z-0">
+        <div
+          ref={bgImgRef}
+          className="relative w-full h-[120%] top-[-10%] will-change-transform"
+        >
+          <Image
+            src="/images/hero_bau_monumental.jpg"
+            alt="Tadiks meisterhafter Bau und Innenausbau"
+            fill
+            sizes="100vw"
+            className="object-cover object-center opacity-45"
+          />
+        </div>
+
+        {/* Rich architectural navy gradient veil */}
+        <div className="absolute inset-0 bg-linear-to-br from-[#0b1324]/90 via-[#18294c]/72 to-[#0a1120]/92" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#0c1527] via-transparent to-[#0c1527]" />
+
+        {/* Ambient luminous orbs directly behind the right-hand glass cards for vivid glass refraction */}
+        <div className="absolute top-1/4 right-[6%] w-80 sm:w-110 h-80 sm:h-110 rounded-full bg-brand-light-blue/25 blur-[110px]" />
+        <div className="absolute bottom-1/5 right-[14%] w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-brand-lime/18 blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+        {/* 2-Column Split: Wider Sticky Statement on Left | Frosted Glass Stacking Cards on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-start">
-          
           {/* Left Column: Pure Sticky Statement with generous width */}
           <div
             ref={statementRef}
@@ -143,18 +193,18 @@ export function BauMinimalProtocol() {
                 </span>
                 <span className="block protocol-statement-chunk font-extralight text-white/75 text-lg sm:text-xl xl:text-[22px] leading-relaxed">
                   Ob anspruchsvoller{" "}
-                  <span className="text-brand-lime font-normal">Trockenbau</span>, 
+                  <span className="text-brand-lime font-normal">Trockenbau</span>,{" "}
                   schallschluckende{" "}
-                  <span className="text-brand-lime font-normal">Akustikdecken</span> oder 
+                  <span className="text-brand-lime font-normal">Akustikdecken</span> oder{" "}
                   die schlüsselfertige{" "}
-                  <span className="text-brand-lime font-normal">Komplettsanierung</span>: 
+                  <span className="text-brand-lime font-normal">Komplettsanierung</span>:{" "}
                   Wir vereinen alle Gewerke unter einer meisterhaften Bauleitung – termintreu, sauber und ohne Schnittstellenverlust.
                 </span>
               </p>
             </div>
           </div>
 
-          {/* Right Column: Stacking Cards (Zero Flickering, 100% Solid Opaque, No Shadows, Full Coverage) */}
+          {/* Right Column: Frosted Glass Stacking Cards */}
           <div className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center lg:items-end w-full">
             {BAU_PROTOCOL_STEPS.map((step, idx) => (
               <div
@@ -166,11 +216,10 @@ export function BauMinimalProtocol() {
                   zIndex: idx + 1,
                 }}
               >
-                {/* Outer Card: 100% Solid brand-cream (matches light sections, zero opacity flickering), no shadows */}
-                <div className="relative w-full max-w-120 bg-brand-cream text-brand-navy rounded-[28px] sm:rounded-[34px] p-4 sm:p-5 border border-white/20 shadow-none">
-                  
+                {/* Frosted Glass Card: true backdrop-blur refracting the background & underlying cards */}
+                <div className="protocol-glass-card relative w-full max-w-120 rounded-[28px] sm:rounded-[34px] p-4 sm:p-5 bg-white/10 bg-linear-to-br from-white/16 via-white/8 to-brand-navy/30 backdrop-blur-2xl [-webkit-backdrop-filter:blur(28px)] border border-white/22 shadow-[0_24px_60px_rgba(5,10,24,0.45),inset_0_1px_1px_rgba(255,255,255,0.28)] text-white origin-top will-change-transform">
                   {/* Top: Large Rounded Photographic Surface */}
-                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-[20px] sm:rounded-3xl overflow-hidden bg-slate-900 border border-brand-navy/10">
+                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-[20px] sm:rounded-3xl overflow-hidden bg-slate-900/60 border border-white/15 shadow-md">
                     <Image
                       src={step.image}
                       alt={step.title}
@@ -178,20 +227,20 @@ export function BauMinimalProtocol() {
                       sizes="(max-width: 768px) 100vw, 480px"
                       className="object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-black/10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
                   </div>
 
-                  {/* Bottom: Card Eyebrow + Uniform Lightweight Title + Description (No bold weights, uniform height) */}
+                  {/* Bottom: Glass Card Eyebrow + Title + Description */}
                   <div className="pt-5 pb-2 px-3 sm:px-4 min-h-42.5 sm:min-h-45 flex flex-col justify-start">
-                    <span className="text-xs sm:text-[13px] font-mono tracking-widest text-brand-navy/60 font-normal uppercase block mb-2.5">
+                    <span className="text-xs sm:text-[13px] font-mono tracking-widest text-brand-lime font-normal uppercase block mb-2.5">
                       SCHRITT {step.num}
                     </span>
 
-                    <h3 className="text-lg sm:text-xl md:text-[21px] font-normal text-brand-navy leading-snug tracking-tight mb-2.5">
+                    <h3 className="text-lg sm:text-xl md:text-[21px] font-normal text-white leading-snug tracking-tight mb-2.5">
                       {step.title}
                     </h3>
 
-                    <p className="text-sm sm:text-[14.5px] text-brand-navy/70 leading-relaxed font-light">
+                    <p className="text-sm sm:text-[14.5px] text-white/75 leading-relaxed font-light">
                       {step.desc}
                     </p>
                   </div>
@@ -199,12 +248,10 @@ export function BauMinimalProtocol() {
               </div>
             ))}
 
-            {/* Exact Dynamic Travel Runway: allows Card 04 to reach top-28/top-36 and land flat on Card 03, then immediately scrolls down */}
+            {/* Exact Dynamic Travel Runway */}
             <div ref={runwayRef} className="h-145 sm:h-155 w-full pointer-events-none" aria-hidden="true" />
           </div>
-
         </div>
-
       </div>
     </section>
   );

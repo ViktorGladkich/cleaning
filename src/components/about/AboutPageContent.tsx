@@ -67,8 +67,6 @@ export function AboutPageContent() {
         subtitle="Wir beraten Sie gern unverbindlich vor Ort in Chemnitz und Mittelsachsen. Lassen Sie uns über Ihr Bau- oder Reinigungsvorhaben sprechen."
         ctaText="Kostenlose Beratung anfordern"
         ctaHref="/contacts"
-        secondaryCtaText="0176 84337228"
-        secondaryCtaHref="tel:+4917684337228"
         imageSrc="/images/hero_about_monumental.jpg"
         imageAlt="Tadiks Meisterbetrieb für Bau und Werterhalt Chemnitz"
       />

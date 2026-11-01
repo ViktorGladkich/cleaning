@@ -68,8 +68,6 @@ export function BauPageContent() {
         subtitle="Wir prüfen Ihre Bausubstanz vor Ort in Chemnitz und Mittelsachsen und erstellen innerhalb von 24 Stunden Ihr verbindliches Festpreisangebot."
         ctaText="Kostenlose Besichtigung"
         ctaHref="/contacts"
-        secondaryCtaText="0176 84337228"
-        secondaryCtaHref="tel:+4917684337228"
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
         imageAlt="Tadiks meisterhafter Bau und Trockenbau in Sachsen"
       />

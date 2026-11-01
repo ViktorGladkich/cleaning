@@ -15,11 +15,9 @@ export const COMPANY_INFO: CompanyInfo = {
 };
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: "Startseite", href: "/" },
-  { label: "Leistungen", href: "/services" },
-  { label: "Preise", href: "/pricing" },
+  { label: "Reinigung", href: "/services" },
+  { label: "Bau", href: "/bau" },
   { label: "Über uns", href: "/about" },
-  { label: "Bewertungen", href: "/reviews" },
   { label: "Kontakt", href: "/contacts" },
 ];
 

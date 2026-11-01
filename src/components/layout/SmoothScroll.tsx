@@ -19,13 +19,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
         window.matchMedia("(pointer: coarse)").matches);
 
     if (isTouchDevice) {
-      const onNativeScroll = () => {
-        ScrollTrigger.update();
-      };
-      window.addEventListener("scroll", onNativeScroll, { passive: true });
-      return () => {
-        window.removeEventListener("scroll", onNativeScroll);
-      };
+      return;
     }
 
     // Disable native browser scroll restoration on desktop to prevent conflicts with Lenis

@@ -68,8 +68,6 @@ export function ReinigungPageContent() {
         subtitle="Wir analysieren Ihre Flächen vor Ort in Chemnitz und Region und erstellen innerhalb von 24 Stunden Ihr verbindliches Festpreis-Leistungsverzeichnis."
         ctaText="Kostenlose Besichtigung"
         ctaHref="/contacts"
-        secondaryCtaText="0176 84337228"
-        secondaryCtaHref="tel:+4917684337228"
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
         imageAlt="Tadiks meisterhafte Gebäudereinigung in Sachsen"
       />
