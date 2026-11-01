@@ -163,7 +163,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
             {/* Monumental Title */}
             <h1 className="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.02]">
               {service.title} <br />
-              <span className="font-serif italic font-normal text-brand-lime">
+              <span className="text-brand-lime font-light">
                 nach Meister-Standard.
               </span>
             </h1>
@@ -707,8 +707,8 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
           title={
             <>
               Fragen &amp; Antworten zur{" "}
-              <span className="font-serif italic font-normal text-brand-navy">
-                {service.title}
+              <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
+                {service.title}.
               </span>
             </>
           }
@@ -791,7 +791,7 @@ export function ServiceDetailPageContent({ service }: ServiceDetailPageContentPr
         title={
           <>
             Bereit für meisterhafte{" "}
-            <span className="font-serif italic font-normal text-brand-lime">
+            <span className="text-brand-lime font-light">
               {service.title}
             </span>{" "}
             in Sachsen?
