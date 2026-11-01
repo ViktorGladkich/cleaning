@@ -24,6 +24,142 @@ export function Header() {
 
   const headerRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const burgerStageRef = useRef<HTMLSpanElement>(null);
+  const topBarRef = useRef<HTMLSpanElement>(null);
+  const midBarRef = useRef<HTMLSpanElement>(null);
+  const botBarRef = useRef<HTMLSpanElement>(null);
+  const isBurgerInitRef = useRef(true);
+
+  // Multi-stage choreographed GSAP animation for Burger <-> Cross (X)
+  useEffect(() => {
+    const stage = burgerStageRef.current;
+    const top = topBarRef.current;
+    const mid = midBarRef.current;
+    const bot = botBarRef.current;
+    if (!stage || !top || !mid || !bot) return;
+
+    if (isBurgerInitRef.current) {
+      isBurgerInitRef.current = false;
+      gsap.set(stage, { rotate: 0, scale: 1 });
+      gsap.set(top, { y: -6, rotate: 0, width: 22, x: 0 });
+      gsap.set(mid, { y: 0, scaleX: 1, opacity: 1, width: 15, x: 3.5 });
+      gsap.set(bot, { y: 6, rotate: 0, width: 22, x: 0 });
+      return;
+    }
+
+    gsap.killTweensOf([stage, top, mid, bot]);
+    const tl = gsap.timeline();
+
+    if (mobileMenuOpen) {
+      // Stage 1: Middle bar shoots right & vanishes while top and bottom bars snap to center line
+      tl.to(
+        mid,
+        {
+          scaleX: 0,
+          x: 10,
+          opacity: 0,
+          duration: 0.18,
+          ease: "power3.in",
+        },
+        0
+      )
+        .to(
+          [top, bot],
+          {
+            y: 0,
+            width: 22,
+            x: 0,
+            duration: 0.2,
+            ease: "power3.inOut",
+          },
+          0
+        )
+        // Stage 2: Elastic 180deg spin while splitting into crisp 45deg / -45deg X
+        .to(
+          stage,
+          {
+            rotate: 180,
+            duration: 0.46,
+            ease: "back.out(1.7)",
+          },
+          0.16
+        )
+        .to(
+          top,
+          {
+            rotate: 45,
+            duration: 0.38,
+            ease: "back.out(2)",
+          },
+          0.18
+        )
+        .to(
+          bot,
+          {
+            rotate: -45,
+            duration: 0.38,
+            ease: "back.out(2)",
+          },
+          0.18
+        );
+    } else {
+      // Stage 1: Unfold X back to flat horizontal line (0deg) while counter-rotating stage
+      tl.to(
+        [top, bot],
+        {
+          rotate: 0,
+          duration: 0.2,
+          ease: "power3.inOut",
+        },
+        0
+      )
+        .to(
+          stage,
+          {
+            rotate: 0,
+            duration: 0.42,
+            ease: "expo.out",
+          },
+          0.02
+        )
+        // Stage 2: Split top & bottom bars outward with spring overshoot and slide asymmetric middle bar in
+        .to(
+          top,
+          {
+            y: -6,
+            width: 22,
+            x: 0,
+            duration: 0.34,
+            ease: "back.out(2.1)",
+          },
+          0.18
+        )
+        .to(
+          bot,
+          {
+            y: 6,
+            width: 22,
+            x: 0,
+            duration: 0.34,
+            ease: "back.out(2.1)",
+          },
+          0.18
+        )
+        .fromTo(
+          mid,
+          { scaleX: 0, x: -8, opacity: 0, width: 15 },
+          {
+            scaleX: 1,
+            x: 3.5,
+            opacity: 1,
+            width: 15,
+            duration: 0.32,
+            ease: "back.out(1.8)",
+          },
+          0.22
+        );
+    }
+  }, [mobileMenuOpen]);
 
   // Self-managed entrance animation: on homepage slide down smoothly; on all other pages ensure it's immediately visible
   useEffect(() => {
@@ -176,35 +312,29 @@ export function Header() {
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
               aria-expanded={mobileMenuOpen}
-              className="md:hidden relative w-10 h-10 flex items-center justify-center text-brand-navy bg-transparent cursor-pointer focus:outline-none"
+              className="md:hidden relative w-10 h-10 flex items-center justify-center text-brand-navy bg-transparent cursor-pointer focus:outline-none select-none"
             >
-              <span className="relative w-5 h-5 flex items-center justify-center">
+              <span
+                ref={burgerStageRef}
+                className="relative w-6 h-6 flex items-center justify-center will-change-transform"
+              >
                 {/* Top bar */}
                 <span
-                  className={cn(
-                    "absolute h-[1.8px] w-5 bg-current rounded-full transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center",
-                    mobileMenuOpen
-                      ? "translate-y-0 rotate-45"
-                      : "-translate-y-[5.5px] rotate-0"
-                  )}
+                  ref={topBarRef}
+                  className="absolute h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
+                  style={{ transform: "translateY(-6px)" }}
                 />
-                {/* Middle bar */}
+                {/* Middle asymmetric bar */}
                 <span
-                  className={cn(
-                    "absolute h-[1.8px] w-5 bg-current rounded-full transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center",
-                    mobileMenuOpen
-                      ? "scale-x-0 opacity-0"
-                      : "scale-x-100 opacity-100"
-                  )}
+                  ref={midBarRef}
+                  className="absolute h-[1.8px] w-[15px] bg-current rounded-full origin-right will-change-transform"
+                  style={{ transform: "translateX(3.5px)" }}
                 />
                 {/* Bottom bar */}
                 <span
-                  className={cn(
-                    "absolute h-[1.8px] w-5 bg-current rounded-full transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] origin-center",
-                    mobileMenuOpen
-                      ? "translate-y-0 -rotate-45"
-                      : "translate-y-[5.5px] rotate-0"
-                  )}
+                  ref={botBarRef}
+                  className="absolute h-[1.8px] w-[22px] bg-current rounded-full origin-center will-change-transform"
+                  style={{ transform: "translateY(6px)" }}
                 />
               </span>
             </button>

@@ -41,33 +41,13 @@ const BAU_PROTOCOL_STEPS: ProtocolStep[] = [
 export function BauMinimalProtocol() {
   const sectionRef = useRef<HTMLElement>(null);
   const statementRef = useRef<HTMLDivElement>(null);
-  const bgImgRef = useRef<HTMLDivElement>(null);
   const runwayRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
       if (!sectionRef.current) return;
 
-      // 1. Subtle architectural background parallax
-      if (bgImgRef.current) {
-        gsap.fromTo(
-          bgImgRef.current,
-          { yPercent: -8, scale: 1.06 },
-          {
-            yPercent: 8,
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
-            },
-          }
-        );
-      }
-
-      // 2. Clean kinetic statement entrance on left
+      // 1. Clean kinetic statement entrance on left
       if (statementRef.current) {
         gsap.fromTo(
           statementRef.current.querySelectorAll(".protocol-statement-chunk"),
@@ -87,37 +67,47 @@ export function BauMinimalProtocol() {
         );
       }
 
-      // 3. Smooth stacking transition: as the next glass card glides over the previous card,
-      // the card underneath refracts through the frosted glass and smoothly scales down & fades out
-      // right as the new card lands on top.
+      // 2. Glass Card Stack Effect:
+      // As each next card glides up over the previous card, the previous card remains underneath
+      // (scaled down slightly so the glass stack & photo glow through from below),
+      // while its text smoothly fades out so the active card's glass text is 100% crisp.
       const cardNodes = sectionRef.current.querySelectorAll<HTMLElement>(".protocol-step-card-wrapper");
       if (cardNodes.length > 1) {
         cardNodes.forEach((card, idx) => {
           if (idx === 0) return;
           const prevCard = cardNodes[idx - 1];
-          const prevInner = prevCard.querySelector<HTMLElement>(".protocol-glass-card");
+          const prevGlass = prevCard.querySelector<HTMLElement>(".protocol-glass-card");
+          const prevText = prevCard.querySelector<HTMLElement>(".protocol-card-text");
 
-          if (prevInner) {
-            gsap.fromTo(
-              prevInner,
-              { scale: 1, opacity: 1 },
-              {
-                scale: 0.94,
-                opacity: 0,
-                ease: "power2.inOut",
-                scrollTrigger: {
-                  trigger: card,
-                  start: () => (window.innerWidth >= 640 ? "top 520px" : "top 440px"),
-                  end: () => (window.innerWidth >= 640 ? "top 150px" : "top 118px"),
-                  scrub: true,
-                },
-              }
-            );
+          if (prevGlass) {
+            gsap.to(prevGlass, {
+              scale: 0.94,
+              y: -14,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: () => (window.innerWidth >= 640 ? "top 520px" : "top 440px"),
+                end: () => (window.innerWidth >= 640 ? "top 144px" : "top 112px"),
+                scrub: true,
+              },
+            });
+          }
+
+          if (prevText) {
+            gsap.to(prevText, {
+              opacity: 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: () => (window.innerWidth >= 640 ? "top 340px" : "top 280px"),
+                end: () => (window.innerWidth >= 640 ? "top 160px" : "top 128px"),
+                scrub: true,
+              },
+            });
           }
         });
 
-        // Exact travel distance needed for Card 04 to reach top-28/top-36 and land flat on Card 03,
-        // and immediately continue scrolling down with zero dead pause
+        // Exact travel distance needed for Card 04 to reach top-28/top-36 and land flat on Card 03
         const lastCard = cardNodes[cardNodes.length - 1];
         if (lastCard && runwayRef.current) {
           const h = lastCard.offsetHeight || 500;
@@ -134,34 +124,10 @@ export function BauMinimalProtocol() {
       ref={sectionRef}
       id="bau-protocol"
       aria-label="Bau-Qualitätsstandard & Ablauf"
-      className="relative z-10 w-full bg-[#0c1527] text-white"
+      className="relative z-10 w-full bg-brand-navy text-white py-24 sm:py-32 lg:py-40"
     >
-      {/* Sticky Full-Viewport Architectural Background so frosted glass cards refract rich light & texture */}
-      <div className="sticky top-0 h-svh w-full overflow-hidden -mb-[100svh] pointer-events-none select-none z-0">
-        <div
-          ref={bgImgRef}
-          className="relative w-full h-[120%] top-[-10%] will-change-transform"
-        >
-          <Image
-            src="/images/hero_bau_monumental.jpg"
-            alt="Tadiks meisterhafter Bau und Innenausbau"
-            fill
-            sizes="100vw"
-            className="object-cover object-center opacity-45"
-          />
-        </div>
-
-        {/* Rich architectural navy gradient veil */}
-        <div className="absolute inset-0 bg-linear-to-br from-[#0b1324]/90 via-[#18294c]/72 to-[#0a1120]/92" />
-        <div className="absolute inset-0 bg-linear-to-b from-[#0c1527] via-transparent to-[#0c1527]" />
-
-        {/* Ambient luminous orbs directly behind the right-hand glass cards for vivid glass refraction */}
-        <div className="absolute top-1/4 right-[6%] w-80 sm:w-110 h-80 sm:h-110 rounded-full bg-brand-light-blue/25 blur-[110px]" />
-        <div className="absolute bottom-1/5 right-[14%] w-72 sm:w-96 h-72 sm:h-96 rounded-full bg-brand-lime/18 blur-[100px]" />
-      </div>
-
-      <div className="relative z-10 max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
-        {/* 2-Column Split: Wider Sticky Statement on Left | Frosted Glass Stacking Cards on Right */}
+      <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
+        {/* 2-Column Split: Wider Sticky Statement on Left | Glass Stacking Cards on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-16 items-start">
           {/* Left Column: Pure Sticky Statement with generous width */}
           <div
@@ -204,8 +170,19 @@ export function BauMinimalProtocol() {
             </div>
           </div>
 
-          {/* Right Column: Frosted Glass Stacking Cards */}
+          {/* Right Column: Stacking Cards with Ambient Under-Card Glow & Frosted Glass Text Panel */}
           <div className="lg:col-span-6 xl:col-span-5 relative flex flex-col items-center lg:items-end w-full">
+            {/* Soft Ambient Glow strictly underneath the cards so glassmorphism refracts warm lime & light-blue */}
+            <div
+              aria-hidden="true"
+              className="sticky top-28 sm:top-36 w-full max-w-120 h-0 pointer-events-none select-none z-0 flex items-center justify-center"
+            >
+              <div className="relative w-full h-115 translate-y-56">
+                <div className="absolute -top-6 left-6 w-64 h-64 rounded-full bg-brand-light-blue/35 blur-[80px]" />
+                <div className="absolute bottom-4 right-6 w-64 h-64 rounded-full bg-brand-lime/25 blur-[85px]" />
+              </div>
+            </div>
+
             {BAU_PROTOCOL_STEPS.map((step, idx) => (
               <div
                 key={step.num}
@@ -216,10 +193,10 @@ export function BauMinimalProtocol() {
                   zIndex: idx + 1,
                 }}
               >
-                {/* Frosted Glass Card: true backdrop-blur refracting the background & underlying cards */}
-                <div className="protocol-glass-card relative w-full max-w-120 rounded-[28px] sm:rounded-[34px] p-4 sm:p-5 bg-white/10 bg-linear-to-br from-white/16 via-white/8 to-brand-navy/30 backdrop-blur-2xl [-webkit-backdrop-filter:blur(28px)] border border-white/22 shadow-[0_24px_60px_rgba(5,10,24,0.45),inset_0_1px_1px_rgba(255,255,255,0.28)] text-white origin-top will-change-transform">
+                {/* Outer Glass Card Shell */}
+                <div className="protocol-glass-card relative w-full max-w-120 rounded-[28px] sm:rounded-[34px] p-3.5 sm:p-4 bg-white/12 backdrop-blur-xl [-webkit-backdrop-filter:blur(24px)] border border-white/25 shadow-[0_20px_50px_rgba(24,36,68,0.28),inset_0_1px_1px_rgba(255,255,255,0.35)] origin-top will-change-transform">
                   {/* Top: Large Rounded Photographic Surface */}
-                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-[20px] sm:rounded-3xl overflow-hidden bg-slate-900/60 border border-white/15 shadow-md">
+                  <div className="relative w-full aspect-16/10 sm:aspect-16/9.5 rounded-[20px] sm:rounded-[24px] overflow-hidden bg-brand-navy/40 border border-white/20">
                     <Image
                       src={step.image}
                       alt={step.title}
@@ -227,22 +204,24 @@ export function BauMinimalProtocol() {
                       sizes="(max-width: 768px) 100vw, 480px"
                       className="object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
+                    <div className="absolute inset-0 bg-linear-to-t from-brand-navy/35 via-transparent to-transparent pointer-events-none" />
                   </div>
 
-                  {/* Bottom: Glass Card Eyebrow + Title + Description */}
-                  <div className="pt-5 pb-2 px-3 sm:px-4 min-h-42.5 sm:min-h-45 flex flex-col justify-start">
-                    <span className="text-xs sm:text-[13px] font-mono tracking-widest text-brand-lime font-normal uppercase block mb-2.5">
-                      SCHRITT {step.num}
-                    </span>
+                  {/* Bottom: Frosted Glass Text Panel inside the card */}
+                  <div className="mt-3 rounded-[18px] sm:rounded-[22px] bg-white/12 backdrop-blur-md [-webkit-backdrop-filter:blur(16px)] border border-white/20 p-4 sm:p-5 min-h-42.5 sm:min-h-45 flex flex-col justify-start">
+                    <div className="protocol-card-text">
+                      <span className="text-xs sm:text-[13px] font-mono tracking-widest text-brand-lime font-normal uppercase block mb-2">
+                        SCHRITT {step.num}
+                      </span>
 
-                    <h3 className="text-lg sm:text-xl md:text-[21px] font-normal text-white leading-snug tracking-tight mb-2.5">
-                      {step.title}
-                    </h3>
+                      <h3 className="text-lg sm:text-xl md:text-[21px] font-normal text-white leading-snug tracking-tight mb-2">
+                        {step.title}
+                      </h3>
 
-                    <p className="text-sm sm:text-[14.5px] text-white/75 leading-relaxed font-light">
-                      {step.desc}
-                    </p>
+                      <p className="text-sm sm:text-[14.5px] text-white/80 leading-relaxed font-light">
+                        {step.desc}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
