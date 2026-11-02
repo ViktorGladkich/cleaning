@@ -341,7 +341,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="text-white/60 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white font-medium"
             >
-              Inverta
+              Inverta Digital
             </a>
           </p>
         </div>
