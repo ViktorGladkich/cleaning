@@ -108,6 +108,8 @@ export function FaqSection({
     () => {
       if (!sectionRef.current) return;
 
+      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+
       // 1. Header entrance reveal
       if (headerRef.current) {
         const headerTl = gsap.timeline({
@@ -180,7 +182,7 @@ export function FaqSection({
               trigger: sectionRef.current,
               start: "top bottom",
               end: "bottom top",
-              scrub: 1.2,
+              scrub: isMobile ? true : 1.2,
             },
           },
         );

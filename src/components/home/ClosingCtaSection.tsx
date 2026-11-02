@@ -38,6 +38,8 @@ export function ClosingCtaSection({
     () => {
       if (!sectionRef.current) return;
 
+      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+
       // 1. Smooth parallax on the architectural background image
       if (bgImgRef.current) {
         gsap.fromTo(
@@ -51,7 +53,7 @@ export function ClosingCtaSection({
               trigger: sectionRef.current,
               start: "top bottom",
               end: "bottom top",
-              scrub: 0.8,
+              scrub: isMobile ? true : 0.8,
             },
           }
         );

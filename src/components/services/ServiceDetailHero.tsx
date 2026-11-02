@@ -16,6 +16,7 @@ import { ServiceDetailData } from "@/data/serviceDetails";
 import { COMPANY_INFO } from "@/lib/constants";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
+import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
 
 interface ServiceDetailHeroProps {
   service: ServiceDetailData;
@@ -24,6 +25,7 @@ interface ServiceDetailHeroProps {
 export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
   const heroRef = useRef<HTMLElement>(null);
   const heroContentRef = useRef<HTMLDivElement>(null);
+  const lockedHeight = useLockedHeroHeight(0);
 
   const categoryBackLink =
     service.category === "reinigung" ? "/services" : "/bau";
@@ -71,6 +73,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
     <section
       ref={heroRef}
       aria-label={service.title}
+      style={{ minHeight: lockedHeight ? `${lockedHeight}px` : undefined }}
       className="relative w-full min-h-svh flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
     >
       {/* Full-bleed Background Architectural Image with cinematic grading */}

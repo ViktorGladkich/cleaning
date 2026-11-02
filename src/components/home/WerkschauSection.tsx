@@ -4,11 +4,16 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GALLERY_CARDS } from "./about/aboutData";
+import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
 
 export function WerkschauSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollTrackRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+
+  // Lock mobile gallery height in exact pixels so Google App WebView
+  // toolbar collapse/expansion doesn't resize the sticky container or trigger layout shifts.
+  const lockedGalleryHeight = useLockedHeroHeight(0);
 
   useGSAP(
     () => {
@@ -228,10 +233,12 @@ export function WerkschauSection() {
         {/* Tall Scroll Track: native CSS sticky inside keeps the stage 100% vibration-free during scroll */}
         <div
           ref={scrollTrackRef}
+          style={{ height: lockedGalleryHeight ? `${lockedGalleryHeight * 3.6}px` : undefined }}
           className="relative w-full h-[360svh] min-h-650"
         >
           <div
             ref={galleryRef}
+            style={{ height: lockedGalleryHeight ? `${lockedGalleryHeight}px` : undefined }}
             className="sticky top-0 w-full h-svh sm:h-screen sm:min-h-160 max-h-270 overflow-hidden"
           >
             {/* Static background / text stage: promoted to its own hardware layer, completely decoupled from moving cards */}

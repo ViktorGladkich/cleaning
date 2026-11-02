@@ -232,7 +232,7 @@ export function ServicesGridSection({
             trigger: sectionRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1.2,
+            scrub: isMobile ? true : 1.2,
           },
         }
       );

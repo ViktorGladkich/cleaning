@@ -133,6 +133,13 @@ export default function RootLayout({
       lang="de"
       className={`${satoshi.variable} ${generalSans.variable} antialiased`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var h=window.innerHeight;document.documentElement.style.setProperty('--locked-vh',h+'px');var w=window.innerWidth;window.addEventListener('resize',function(){if(Math.abs(window.innerWidth-w)>10){w=window.innerWidth;document.documentElement.style.setProperty('--locked-vh',window.innerHeight+'px');}},{passive:true});}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white overflow-x-clip">
         <JsonLdSchema />
         <SmoothScroll>

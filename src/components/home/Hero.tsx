@@ -6,6 +6,7 @@ import Link from "next/link";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { HeroVideoCard } from "./HeroVideoCard";
+import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
 
 /**
  * Hero component with Fomic-style scroll interaction:
@@ -19,6 +20,11 @@ export function Hero() {
   const heroCardRef = useRef<HTMLDivElement>(null);
   const wipeColsRef = useRef<(HTMLDivElement | null)[]>([]);
   const wipeContainerRef = useRef<HTMLDivElement>(null);
+
+  // Lock mobile hero height in exact pixels on mount so in-app browsers
+  // (like the Google Search app, Instagram, Telegram) never re-calculate or jerk
+  // the background image when their search bar collapses/expands on scroll.
+  const lockedHeight = useLockedHeroHeight(20);
 
   useGSAP(
     () => {
@@ -107,10 +113,11 @@ export function Hero() {
     <div ref={containerRef} className="relative w-full bg-brand-cream">
       {/* Container wrapper: 10-14px margin on all edges so hero starts right under top header */}
       <div className="w-full p-2.5 sm:p-3.5">
-        {/* Main Hero Card: full viewport height without address bar jitter (svh keeps height constant during scroll) */}
+        {/* Main Hero Card: full viewport height without address bar jitter (svh fallback + exact pixel lock) */}
         <div
           ref={heroCardRef}
-          className="relative w-full h-[calc(100svh-20px)] sm:h-[calc(100svh-28px)] min-h-[540px] rounded-[10px] overflow-hidden bg-brand-cream"
+          style={{ height: lockedHeight ? `${lockedHeight}px` : undefined }}
+          className="relative w-full h-[calc(100svh-20px)] sm:h-[calc(100vh-28px)] min-h-[520px] rounded-[10px] overflow-hidden bg-brand-cream"
         >
           {/* Background Cleaning Image with Full Frame Seating */}
           <div className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[10px] origin-center">

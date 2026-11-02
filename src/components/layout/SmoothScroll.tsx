@@ -55,16 +55,24 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
       lenis.on("scroll", ScrollTrigger.update);
       gsap.ticker.add(update);
-      gsap.ticker.lagSmoothing(0);
     };
 
     initOrCleanup();
     mediaQuery.addEventListener("change", initOrCleanup);
-    window.addEventListener("resize", initOrCleanup);
+
+    let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    const handleResize = () => {
+      // Ignore vertical height changes from mobile search bar collapse
+      if (Math.abs(window.innerWidth - lastWidth) > 10) {
+        lastWidth = window.innerWidth;
+        initOrCleanup();
+      }
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       mediaQuery.removeEventListener("change", initOrCleanup);
-      window.removeEventListener("resize", initOrCleanup);
+      window.removeEventListener("resize", handleResize);
       destroyLenis();
       gsap.ticker.remove(update);
     };

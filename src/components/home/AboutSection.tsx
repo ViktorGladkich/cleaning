@@ -152,6 +152,8 @@ export function AboutSection({
     () => {
       if (!sectionRef.current) return;
 
+      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
+
       // 1. Word-by-word reading scrub animation on scroll
       if (subheadingRef.current) {
         gsap.fromTo(
@@ -165,7 +167,7 @@ export function AboutSection({
               trigger: subheadingRef.current,
               start: "top 82%",
               end: "bottom 48%",
-              scrub: 0.8,
+              scrub: isMobile ? true : 0.8,
             },
           }
         );
@@ -207,7 +209,7 @@ export function AboutSection({
             trigger: sectionRef.current,
             start: "top bottom",
             end: "bottom top",
-            scrub: 1.2,
+            scrub: isMobile ? true : 1.2,
           },
         }
       );

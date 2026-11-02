@@ -3,10 +3,12 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
 
 export function BauHero() {
   const containerRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const lockedHeight = useLockedHeroHeight(0);
 
   useGSAP(
     () => {
@@ -32,6 +34,7 @@ export function BauHero() {
     <section
       ref={containerRef}
       aria-label="Bau & Sanierung"
+      style={{ minHeight: lockedHeight ? `${lockedHeight}px` : undefined }}
       className="relative z-10 w-full min-h-svh flex items-center justify-center overflow-hidden bg-brand-navy"
     >
       {/* 1. Full-bleed Background Image with crisp architectural depth */}
