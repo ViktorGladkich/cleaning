@@ -88,6 +88,31 @@ export const metadata: Metadata = {
       ],
     },
   },
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    url: "https://tadiks-cleaning.de",
+    siteName: COMPANY_INFO.name,
+    title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
+    description:
+      "Meisterhafte Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1376,
+        height: 768,
+        alt: `${COMPANY_INFO.name} Chemnitz — Gebäudereinigung & Innenausbau`,
+        type: "image/jpeg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
+    description:
+      "Meisterhafte Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -98,9 +123,9 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${satoshi.variable} ${generalSans.variable} h-full antialiased`}
+      className={`${satoshi.variable} ${generalSans.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white">
+      <body className="min-h-dvh flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white overflow-x-clip">
         <JsonLdSchema />
         <SmoothScroll>
           <PageTransition>

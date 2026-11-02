@@ -51,10 +51,8 @@ export function ContactPageContent() {
           </>
         }
         subtitle="Rufen Sie uns direkt an. Unser Chemnitzer Büro berät Sie gerne sofort persönlich zu Ihrem Projekt."
-        ctaText={`Jetzt ${COMPANY_INFO.phone} anrufen`}
+        ctaText="Jetzt anrufen"
         ctaHref={`tel:${COMPANY_INFO.phoneRaw}`}
-        secondaryCtaText="E-Mail senden"
-        secondaryCtaHref={`mailto:${COMPANY_INFO.email}`}
         imageSrc="/images/hero_contact_monumental.jpg"
         imageAlt="Tadiks direkte Kundenberatung Chemnitz"
       />

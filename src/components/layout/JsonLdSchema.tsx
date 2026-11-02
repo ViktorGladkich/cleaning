@@ -12,7 +12,7 @@ export function JsonLdSchema() {
         alternateName: "Tadik's Cleaning Chemnitz — Inh. Michel Kislovskij",
         url: "https://tadiks-cleaning.de",
         logo: "https://tadiks-cleaning.de/TADIKS_LOGO_COLOR.svg",
-        image: "https://tadiks-cleaning.de/images/hero_poster.jpg",
+        image: "https://tadiks-cleaning.de/og-image.jpg",
         description:
           "Professionelle Gebäudereinigung (Unterhalts-, Grund-, Glas-, Büro-, Praxis- & Bauendreinigung) sowie Bau-, Trockenbau-, Maler-, Bodenleger- und Sanierungsarbeiten in Chemnitz, Sachsen und überregional.",
         founder: {

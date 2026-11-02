@@ -14,8 +14,6 @@ export interface ClosingCtaSectionProps {
   subtitle?: string;
   ctaText?: string;
   ctaHref?: string;
-  secondaryCtaText?: string;
-  secondaryCtaHref?: string;
   imageSrc?: string;
   imageAlt?: string;
   className?: string;
@@ -28,8 +26,6 @@ export function ClosingCtaSection({
   subtitle = "Trockenbau, Sanierung und Gebäudereinigung in Sachsen. Verbindliche Festpreise und meisterhafte Qualität aus einer Hand.",
   ctaText = "Kostenloses Angebot anfordern",
   ctaHref = "/contacts",
-  secondaryCtaText,
-  secondaryCtaHref,
   imageSrc = "/images/hero_premium_cleaning_bau.jpg",
   imageAlt = "Tadiks Meisterbetrieb für Bau, Sanierung & Reinigung",
   className,
@@ -163,20 +159,11 @@ export function ClosingCtaSection({
           {subtitle}
         </p>
 
-        {/* Centered Action Buttons */}
-        <div className="cta-anim-actions mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+        {/* Centered Action Button */}
+        <div className="cta-anim-actions mt-8 sm:mt-12 flex items-center justify-center w-full">
           <CtaButton href={ctaHref} size="lg">
             {ctaText}
           </CtaButton>
-
-          {secondaryCtaText && secondaryCtaHref && (
-            <a
-              href={secondaryCtaHref}
-              className="inline-flex items-center justify-center gap-2 h-12 sm:h-13 px-6 rounded-lg border border-white/25 hover:border-white/50 text-white hover:bg-white/10 text-sm sm:text-base font-medium transition-all"
-            >
-              <span>{secondaryCtaText}</span>
-            </a>
-          )}
         </div>
       </div>
     </section>

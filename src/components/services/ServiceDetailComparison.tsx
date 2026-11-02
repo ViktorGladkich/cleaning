@@ -83,7 +83,7 @@ export function ServiceDetailComparison({
             </div>
 
             <div>
-              <div className="pb-6 border-b border-white/15 mb-6 pr-32">
+              <div className="pb-6 border-b border-white/15 mb-6 pt-8 sm:pt-0 pr-0 sm:pr-32">
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
                   Tadiks Meisterbetrieb
                 </h3>

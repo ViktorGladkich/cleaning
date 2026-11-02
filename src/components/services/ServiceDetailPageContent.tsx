@@ -171,7 +171,7 @@ export function ServiceDetailPageContent({
           </>
         }
         subtitle="Sichern Sie sich Ihren Wunschtermin und ein garantiertes Festpreisangebot ohne Überraschungen. Individuelle Angebotskalkulation innerhalb von 24 Stunden."
-        ctaText={`Festpreisangebot für ${service.title} anfordern`}
+        ctaText="Unverbindliches Angebot anfordern"
         ctaHref={`/contacts?service=${encodeURIComponent(service.slug)}`}
       />
     </main>

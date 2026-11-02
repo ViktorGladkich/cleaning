@@ -170,7 +170,7 @@ export function CtaButton({
 
   const isFullWidth = className?.includes("w-full");
   const wrapperClasses = cn(
-    "focus:outline-none select-none",
+    "focus:outline-none select-none max-w-full",
     isFullWidth ? "w-full block" : "shrink-0 inline-block"
   );
 
@@ -181,7 +181,7 @@ export function CtaButton({
     <span
       ref={containerRef}
       className={cn(
-        "group relative cursor-pointer select-none overflow-hidden",
+        "group relative cursor-pointer select-none overflow-hidden max-w-full",
         "inline-flex items-center justify-between",
         "bg-brand-lime text-brand-navy border border-brand-lime/80 rounded-lg sm:rounded-xl shadow-xs",
         "active:scale-[0.98] transition-transform duration-150",
@@ -193,7 +193,7 @@ export function CtaButton({
       {/* 1. Text: NAVY text, moves to the right end on hover */}
       <span
         ref={textRef}
-        className="font-medium whitespace-nowrap will-change-transform tracking-tight text-brand-navy select-none"
+        className="font-medium whitespace-nowrap truncate will-change-transform tracking-tight text-brand-navy select-none"
       >
         {labelText}
       </span>

@@ -214,8 +214,8 @@ export function ContactHubSection() {
           <ContactDirectSidebar />
 
           {/* Right Column: Interactive Form & Confirmation Card (7 cols) */}
-          <div className="lg:col-span-7">
-            <div className="hub-reveal bg-white rounded-2xl sm:rounded-3xl border border-brand-navy/10 p-5 xs:p-6 sm:p-9 lg:p-10 shadow-lg shadow-brand-navy/5 relative">
+          <div className="lg:col-span-7 min-w-0">
+            <div className="hub-reveal bg-white rounded-2xl sm:rounded-3xl border border-brand-navy/10 p-5 xs:p-6 sm:p-9 lg:p-10 shadow-lg shadow-brand-navy/5 relative overflow-x-clip">
               {submitted ? (
                 <ContactSuccessCard
                   referenceId={referenceId}
@@ -246,7 +246,7 @@ export function ContactHubSection() {
                   {/* Hidden Anti-Bot Honeypot Fields (Invisible to real users & screen readers) */}
                   <div
                     aria-hidden="true"
-                    className="absolute -left-2499.75 top-auto w-px h-px overflow-hidden opacity-0 pointer-events-none"
+                    className="sr-only pointer-events-none"
                   >
                     <label htmlFor="contact-website-hp">Website</label>
                     <input
