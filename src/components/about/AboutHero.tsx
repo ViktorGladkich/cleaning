@@ -31,14 +31,14 @@ export function AboutHero() {
   return (
     <section
       ref={containerRef}
-      aria-label="Über uns & Meisterphilosophie"
-      className="relative z-10 w-full min-h-[520px] xs:min-h-[560px] sm:min-h-[82vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-brand-navy"
+      aria-label="Über uns & Fachbetrieb"
+      className="relative z-10 w-full min-h-dvh flex items-center justify-center overflow-hidden bg-brand-navy"
     >
       {/* 1. Full-bleed Background Image with crisp architectural depth */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/images/hero_about_monumental.jpg"
-          alt="Tadiks Meisterbetrieb für Bau, Sanierung & Reinigung Chemnitz"
+          alt="Tadiks Fachbetrieb für Bau, Sanierung & Reinigung Chemnitz"
           fill
           priority
           sizes="100vw"
@@ -59,7 +59,7 @@ export function AboutHero() {
         </h1>
 
         <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-          Tadiks Cleaning &amp; Bau vereint meisterhaften Innenausbau und zertifizierte Gebäudereinigung in Chemnitz und Mittelsachsen — für bezugsfertige Perfektion und dauerhaften Werterhalt nahtlos aus einer Hand.
+          Tadiks Cleaning &amp; Bau vereint fachgerechten Innenausbau und gründliche Gebäudereinigung in Chemnitz und Mittelsachsen — für bezugsfertige Perfektion und dauerhaften Werterhalt nahtlos aus einer Hand.
         </p>
       </div>
     </section>

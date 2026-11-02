@@ -35,7 +35,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     category: "02 / 04",
     clientType: "Gewerbliche Projektentwicklung",
     quote:
-      "Die nahtlose Verzahnung aus meisterhaftem Trockenbau und anschließender bezugsfertiger Bauendreinigung spart uns bei jedem Projekt wertvolle Wochen. Keine Schnittstellenverluste, feste deutsche Bauleiter und verbindliche Festpreise.",
+      "Die nahtlose Verzahnung aus präzisem Trockenbau und anschließender bezugsfertiger Bauendreinigung spart uns bei jedem Projekt wertvolle Wochen. Keine Schnittstellenverluste, feste deutsche Bauleiter und verbindliche Festpreise.",
     author: "Dipl.-Ing. Markus Lindner",
     role: "Geschäftsführer & Gesamtprojektleiter",
     company: "Lindner Projektentwicklung GmbH",
@@ -47,7 +47,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     category: "03 / 04",
     clientType: "Privates Denkmalschutzobjekt",
     quote:
-      "Unsere Jugendstil-Villa auf dem Kaßberg erforderte äußerste handwerkliche Präzision. Die Spachtel- und Malerarbeiten auf Q4-Niveau sowie die millimetergenaue Baufeinreinigung vor unserem Einzug waren schlichtweg meisterhaft.",
+      "Unsere Jugendstil-Villa auf dem Kaßberg erforderte äußerste handwerkliche Präzision. Die Spachtel- und Malerarbeiten auf Q4-Niveau sowie die millimetergenaue Baufeinreinigung vor unserem Einzug waren schlichtweg erstklassig.",
     author: "Elena & Thomas Vogel",
     role: "Eigentümer",
     company: "Denkmalgeschützte Villa Kaßberg",

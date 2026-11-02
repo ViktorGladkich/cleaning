@@ -144,7 +144,7 @@ export function ReinigungMinimalProtocol() {
                   <span className="text-brand-navy font-normal">
                     Osmose-Filterung
                   </span>{" "}
-                  und zertifizierte{" "}
+                  und verlässliche{" "}
                   <span className="text-brand-navy font-normal">
                     Hygienestandards
                   </span>

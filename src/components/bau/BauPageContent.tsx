@@ -21,13 +21,13 @@ export function BauPageContent() {
         eyebrow="Bau- &amp; Ausbauleistungen im Überblick"
         title={
           <>
-            Meisterhandwerk nach Maß.{" "}
+            Präzises Handwerk nach Maß.{" "}
             <span className="block font-normal text-brand-navy/80">
               Für Wohnbau, Gewerbe und schlüsselfertige Sanierung.
             </span>
           </>
         }
-        subtitle="Alle Bau- und Ausbaugewerke unseres Meisterbetriebs — millimetergenau kalkuliert, termintreu getaktet und lückenlos aus einer Hand."
+        subtitle="Alle Bau- und Ausbaugewerke unseres Fachbetriebs — millimetergenau kalkuliert, termintreu getaktet und lückenlos aus einer Hand."
         ctaText="Kostenlose Besichtigung"
         ctaHref="/contacts"
         items={BAU_SERVICES_GRID}
@@ -50,7 +50,7 @@ export function BauPageContent() {
         }
         subtitle="Verbindliche Antworten zu Festpreisen, Bauleitung, Staubschutz, Gewerke-Koordination und VOB-Gewährleistung."
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
-        imageAlt="Tadiks Meisterbetrieb für Bau, Trockenbau und Sanierung"
+        imageAlt="Tadiks Fachbetrieb für Bau, Trockenbau und Sanierung"
         items={BAU_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
@@ -69,7 +69,7 @@ export function BauPageContent() {
         ctaText="Kostenlose Besichtigung"
         ctaHref="/contacts"
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
-        imageAlt="Tadiks meisterhafter Bau und Trockenbau in Sachsen"
+        imageAlt="Tadiks professioneller Bau und Trockenbau in Sachsen"
       />
     </div>
   );

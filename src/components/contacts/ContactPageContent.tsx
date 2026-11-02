@@ -15,7 +15,7 @@ export function ContactPageContent() {
       {/* 1. Full-bleed Monumental Hero matching Reinigung, Bau & About */}
       <ContactHero />
 
-      {/* 2. Interactive Inquiry Form & Direct Meister Contact Details */}
+      {/* 2. Interactive Inquiry Form & Direct Contact Details */}
       <ContactHubSection />
 
       {/* 3. Regional Coverage in Chemnitz & Central Saxony */}
@@ -35,7 +35,7 @@ export function ContactPageContent() {
         }
         subtitle="Verbindliche Antworten zur kostenlosen Vor-Ort-Besichtigung, Terminsicherheit und unserem Festpreisversprechen."
         imageSrc="/images/hero_contact_monumental.jpg"
-        imageAlt="Tadiks Meisterbetrieb Kundenberatung und Vor-Ort-Termin Chemnitz"
+        imageAlt="Tadiks Fachbetrieb Kundenberatung und Vor-Ort-Termin Chemnitz"
         items={CONTACT_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />

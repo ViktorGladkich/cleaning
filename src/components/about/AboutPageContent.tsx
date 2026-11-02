@@ -24,10 +24,10 @@ export function AboutPageContent() {
         ctaHref="/contacts"
       />
 
-      {/* 3. The 4 Meister-Standards & Core Pillars */}
+      {/* 3. The 4 Quality Standards & Core Pillars */}
       <AboutValuesSection />
 
-      {/* 4. Werkschau & Meisterdetails (Pinned Gallery with Floating Parallax Cards) */}
+      {/* 4. Werkschau & Projektdetails (Pinned Gallery with Floating Parallax Cards) */}
       <WerkschauSection />
 
       {/* 5. Process / Ablauf (4 Structured Steps from inspection to turnkey handover) */}
@@ -44,13 +44,13 @@ export function AboutPageContent() {
           <>
             Häufige Fragen zu unserem{" "}
             <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
-              Meisterbetrieb.
+              Fachbetrieb.
             </span>
           </>
         }
         subtitle="Erfahren Sie mehr über unsere Arbeitsweise, Qualitätsgarantien, Personalstandards und Versicherungsschutz in Sachsen."
         imageSrc="/images/hero_about_monumental.jpg"
-        imageAlt="Tadiks Meisterbetrieb für Bau und Gebäudereinigung in Chemnitz"
+        imageAlt="Tadiks Fachbetrieb für Bau und Gebäudereinigung in Chemnitz"
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
 
@@ -68,7 +68,7 @@ export function AboutPageContent() {
         ctaText="Kostenlose Beratung anfordern"
         ctaHref="/contacts"
         imageSrc="/images/hero_about_monumental.jpg"
-        imageAlt="Tadiks Meisterbetrieb für Bau und Werterhalt Chemnitz"
+        imageAlt="Tadiks Fachbetrieb für Bau und Werterhalt Chemnitz"
       />
     </div>
   );

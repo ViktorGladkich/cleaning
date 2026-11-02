@@ -73,7 +73,7 @@ export function ContactToast({
             Vielen Dank, {name}! Ihre Nachricht ist bei uns eingegangen.
           </p>
           <p className="text-xs text-white/75 font-light mt-1 leading-relaxed">
-            Unser Chemnitzer Meisterbüro meldet sich innerhalb von 24 Stunden bei Ihnen.
+            Unser Chemnitzer Büro meldet sich innerhalb von 24 Stunden bei Ihnen.
           </p>
         </div>
       </div>

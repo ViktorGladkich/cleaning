@@ -106,7 +106,7 @@ export function AboutValuesSection() {
         {/* Section Header */}
         <div ref={headerRef} className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
           <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block mb-3">
-            Das Meisterprinzip
+            Das Qualitätsprinzip
           </span>
           <h2
             id="values-heading"

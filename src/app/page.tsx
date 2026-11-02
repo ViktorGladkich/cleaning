@@ -24,7 +24,7 @@ export default function HomePage() {
       {/* 3. Services Dual Section (Reinigung & Bau - Option 02 Grid with Parallax) */}
       <ServicesDualSection />
 
-      {/* 4. Werkschau & Meisterdetails (Pinned Gallery with Floating Parallax Cards) */}
+      {/* 4. Werkschau & Handwerksdetails (Pinned Gallery with Floating Parallax Cards) */}
       <WerkschauSection />
 
       {/* 5. Process / Ablauf Section (Awwwards Floating Frosted Cards) */}

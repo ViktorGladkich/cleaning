@@ -140,7 +140,7 @@ export function BauMinimalProtocol() {
                   <span className="text-brand-navy font-normal">
                     millimetergenaue Laser-Ausrichtung
                   </span>
-                  , zertifizierten{" "}
+                  , DIN-gerechten{" "}
                   <span className="text-brand-navy font-normal">
                     Schallschutz
                   </span>{" "}
@@ -157,7 +157,7 @@ export function BauMinimalProtocol() {
                   <span className="text-brand-navy font-normal">Akustikdecken</span> oder{" "}
                   die schlüsselfertige{" "}
                   <span className="text-brand-navy font-normal">Komplettsanierung</span>:{" "}
-                  Wir vereinen alle Gewerke unter einer meisterhaften Bauleitung – termintreu, sauber und ohne Schnittstellenverlust.
+                  Wir vereinen alle Gewerke unter einer erfahrenen Bauleitung – termintreu, sauber und ohne Schnittstellenverlust.
                 </span>
               </p>
             </div>

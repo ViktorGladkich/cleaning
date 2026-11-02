@@ -29,7 +29,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${service.title} Chemnitz — Meisterbetrieb Tadiks`,
+    title: `${service.title} Chemnitz — Fachbetrieb Tadiks`,
     description: service.subtitle,
     openGraph: {
       title: `${service.title} Chemnitz — Tadiks`,

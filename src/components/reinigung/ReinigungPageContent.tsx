@@ -27,7 +27,7 @@ export function ReinigungPageContent() {
             </span>
           </>
         }
-        subtitle="Alle Reinigungsleistungen unseres Meisterbetriebs — transparent kalkuliert, verlässlich getaktet und auf Wunsch flexibel kombinierbar."
+        subtitle="Alle Reinigungsleistungen unseres Fachbetriebs — transparent kalkuliert, verlässlich getaktet und auf Wunsch flexibel kombinierbar."
         ctaText="Kostenlose Besichtigung"
         ctaHref="/contacts"
         items={REINIGUNG_SERVICES_GRID}
@@ -50,7 +50,7 @@ export function ReinigungPageContent() {
         }
         subtitle="Verbindliche Antworten zu Festpreisen, Personal, Schlüsselsicherheit und Materialverträglichkeit auf einen Blick."
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
-        imageAlt="Tadiks Meisterbetrieb für Hygiene und Werterhalt"
+        imageAlt="Tadiks Fachbetrieb für Hygiene und Werterhalt"
         items={REINIGUNG_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
@@ -69,7 +69,7 @@ export function ReinigungPageContent() {
         ctaText="Kostenlose Besichtigung"
         ctaHref="/contacts"
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
-        imageAlt="Tadiks meisterhafte Gebäudereinigung in Sachsen"
+        imageAlt="Tadiks professionelle Gebäudereinigung in Sachsen"
       />
     </div>
   );

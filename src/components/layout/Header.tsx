@@ -275,11 +275,12 @@ export function Header() {
           >
             <Image
               src="/TADIKS_LOGO_COLOR.svg"
-              alt="Tadiks Cleaning Logo"
-              width={145}
-              height={44}
+              alt="Tadiks Cleaning & Bau Logo"
+              width={180}
+              height={84}
+              priority
               loading="eager"
-              className="h-8.5 lg:h-10.5 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
+              className="h-9 lg:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.05]"
             />
           </Link>
 

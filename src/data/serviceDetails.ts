@@ -41,7 +41,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     categoryLabel: "Gebäudereinigung",
     title: "Unterhaltsreinigung",
     subtitle: "Regelmäßige Pflege für gewerbliche und private Räume in Chemnitz",
-    heroHeadline: "Unterhaltsreinigung nach Meister-Standard.",
+    heroHeadline: "Unterhaltsreinigung nach Fachstandard.",
     heroDescription:
       "Kontinuierliche Werterhaltung und makellose Hygiene für Kanzleien, Praxen, Büros und Privathaushalte. Mit festem Stammpersonal, RKI-konformem 4-Farben-System und ökologischen Reinigern.",
     priceNote: "Individuelles Angebot nach Objektgröße & Turnus",
@@ -127,7 +127,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     categoryLabel: "Gebäudereinigung",
     title: "Grundreinigung",
     subtitle: "Intensive Tiefenhygiene bis in die kleinste Fuge",
-    heroHeadline: "Grundreinigung mit meisterhafter Tiefenwirkung.",
+    heroHeadline: "Grundreinigung mit intensiver Tiefenwirkung.",
     heroDescription:
       "Die intensive Komplettreinigung für Wohnungen, Häuser und Gewerberäume. Wir entfernen hartnäckige Kalkablagerungen, Fettfilme, Wachsschichten und Verschmutzungen, die bei der normalen Reinigung unberührt bleiben.",
     priceNote: "Individuelles Angebot nach Fläche & Bedarf",
@@ -517,7 +517,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     categoryLabel: "Bau & Innenausbau",
     title: "Trockenbau & Innenausbau",
     subtitle: "DIN-gerechte Wand- und Deckensysteme, Schallschutz und Raumtrennung",
-    heroHeadline: "Präziser Trockenbau nach Meister-Standard.",
+    heroHeadline: "Präziser Trockenbau nach Fachstandard.",
     heroDescription:
       "Flexible Raumaufteilung, Akustikdecken, Trennwände und Dachgeschossausbau für Wohn- und Gewerbeobjekte in Chemnitz und Umgebung. Mit Rotationslaser-Präzision, geprüftem Schallschutz und makelloser Spachtelung bis Q4.",
     priceNote: "Verbindliches Angebot nach Vor-Ort-Aufmaß",
@@ -593,7 +593,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     categoryLabel: "Bau & Innenausbau",
     title: "Komplettsanierung & Renovierung",
     subtitle: "Ganzheitliche Modernisierung von Wohnungen, Häusern und Gewerberäumen",
-    heroHeadline: "Schlüsselfertige Sanierung aus einer Meisterhand.",
+    heroHeadline: "Schlüsselfertige Sanierung aus einer Hand.",
     heroDescription:
       "Vom Altbau bis zur Gewerbeimmobilie: Wir übernehmen die komplette Sanierung aus einer Hand. Wir koordinieren alle Gewerke, halten vereinbarte Fristen strikt ein und verwandeln sanierungsbedürftige Räume in moderne, werthaltige Wohlfühloasen.",
     priceNote: "Individuelle Projektkalkulation mit Bauzeitenplan",
@@ -764,7 +764,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     ],
     includedTitle: "Material- & Fachstandards",
     included: [
-      "Emissionsarme Verlegewerkstoffe (EC1-Plus zertifiziert)",
+      "Emissionsarme, geprüfte Verlegewerkstoffe (EC1-Plus)",
       "Modernste Schneidetechnik für exakte Fliesenkanten und saubere Gehrung",
       "Entfernung und fachgerechte Entsorgung von Altbelägen auf Wunsch",
       "Herstellerkonforme Verlegung mit voller Garantie",
@@ -842,7 +842,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     included: [
       "Umfassender Objektschutz für Flure, Treppenhäuser und Nachbarräume",
       "Emissionsarme Maschinen für lärm- und erschütterungsreduziertes Arbeiten",
-      "Entsorgung ausschließlich über zertifizierte Entsorgungsfachbetriebe",
+      "Entsorgung ausschließlich über geprüfte Entsorgungsfachbetriebe",
       "Besenreine Übergabe bereit für Trockenbau und Sanierung",
     ],
     processSteps: [

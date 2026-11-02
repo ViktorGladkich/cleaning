@@ -103,7 +103,7 @@ export const metadata: Metadata = {
     siteName: COMPANY_INFO.name,
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
-      "Meisterhafte Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
+      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
     images: [
       {
         url: "/og-image.jpg",
@@ -118,7 +118,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
-      "Meisterhafte Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
+      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
     images: ["/og-image.jpg"],
   },
 };

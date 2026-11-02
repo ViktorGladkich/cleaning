@@ -82,7 +82,7 @@ export const SERVICES: ServiceGridItem[] = [
     imageSrc: "/images/service_grid_trockenbau.webp",
     imageAlt: "Präziser Trockenbau und Akustikbau in Sachsen",
     bullets: [
-      "Zertifizierter Brand-, Schall- & Feuchteschutz",
+      "Brand-, Schall- & Feuchteschutz nach DIN",
       "Akustikdecken & flexible Trennwände",
       "Millimetergenaue Laser-Ausrichtung",
     ],
@@ -264,7 +264,7 @@ export function ServicesGridSection({
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 sm:gap-10 mb-10 sm:mb-14">
           <div className="max-w-2xl">
             <h2 className="services-anim-title text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-brand-navy leading-[1.15]">
-              {title || "Zwei Kernbereiche. Meisterhafte Präzision."}
+              {title || "Zwei Kernbereiche. Höchste Präzision."}
             </h2>
           </div>
 

@@ -27,7 +27,7 @@ const PROCESS_STEPS: ProcessStep[] = [
   },
   {
     step: "03",
-    text: "Meisterhafte Umsetzung aller Gewerke durch feste Handwerker- und Reinigungsteams.",
+    text: "Fachgerechte Umsetzung aller Gewerke durch feste Handwerker- und Reinigungsteams.",
     alignmentClass: "self-start mr-auto",
     offsetClass: "lg:mt-0",
   },
@@ -211,7 +211,7 @@ export function ProcessSection() {
         {/* Bottom Status Line in Brand Navy */}
         <div className="pt-5 border-t border-brand-navy/15 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-navy/70 gap-3 sm:gap-4 select-none text-center sm:text-left">
           <div>
-            <span>Feste Objektleiter &amp; meisterhafter Standard in Chemnitz und Region</span>
+            <span>Feste Objektleiter &amp; verlässliche Qualitätsstandards in Chemnitz und Region</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-7 text-brand-navy/60">

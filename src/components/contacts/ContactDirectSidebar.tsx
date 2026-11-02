@@ -13,7 +13,7 @@ export function ContactDirectSidebar() {
           <h2 className="text-3xl sm:text-4xl font-normal tracking-tight text-brand-navy leading-tight">
             Sprechen Sie direkt mit{" "}
             <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
-              unserem Meister.
+              unserem Team.
             </span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-brand-navy/70 leading-relaxed font-light">

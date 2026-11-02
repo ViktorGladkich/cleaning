@@ -54,7 +54,7 @@ export function ReinigungDualAdvantage() {
             <span className="text-brand-light-blue">oft scheitert</span> – und wie wir es lösen.
           </h2>
           <p className="mt-4 text-slate-300 text-base sm:text-lg leading-relaxed">
-            Als Meisterbetrieb für Reinigung & Bausanierung kennen wir die Materialien,
+            Als Fachbetrieb für Reinigung & Bausanierung kennen wir die Materialien,
             Böden und Oberflächen bis ins Detail. Wir putzen nicht nur oberflächlich –
             wir erhalten nachhaltig den Sachwert Ihrer Immobilie.
           </p>
@@ -107,7 +107,7 @@ export function ReinigungDualAdvantage() {
             <div className="flex items-center justify-between mb-6">
               <span className="text-xs uppercase font-bold tracking-wider text-[#0f182b] bg-brand-lime px-3.5 py-1 rounded-full flex items-center gap-1.5 shadow-sm">
                 <Award className="w-3.5 h-3.5" />
-                Der Tadiks Meister-Standard
+                Der Tadiks Qualitätsstandard
               </span>
               <span className="text-xs font-semibold text-brand-lime">Werterhalt & Hygiene</span>
             </div>

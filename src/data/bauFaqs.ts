@@ -23,7 +23,7 @@ export const BAU_FAQS: FaqItem[] = [
     category: "QUALITÄT & OBERFLÄCHEN",
     question: "Was bedeutet die Spachtelgüte Q1 bis Q4 bei Trockenbauwänden?",
     answer:
-      "Q1 ist die einfache Grundverspachtelung für Fliesenbeläge. Q2 ist der Standard für Raufaser. Q3 genügt feinen Tapeten. Q4 ist die meisterhafte vollflächige Glättung für streiflichtfreie, edel verputzte oder lackierte Wände ohne jeden sichtbaren Übergang.",
+      "Q1 ist die einfache Grundverspachtelung für Fliesenbeläge. Q2 ist der Standard für Raufaser. Q3 genügt feinen Tapeten. Q4 ist die makellose vollflächige Glättung für streiflichtfreie, edel verputzte oder lackierte Wände ohne jeden sichtbaren Übergang.",
   },
   {
     category: "TERMINE & DAUER",

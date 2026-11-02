@@ -109,7 +109,7 @@ export function ServiceDetailPageContent({
                 SYNERGIEN &amp; ERGÄNZUNGEN
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal text-brand-navy tracking-tight">
-                Weitere Gewerke unseres Meisterbetriebs
+                Weitere Gewerke unseres Fachbetriebs
               </h2>
             </div>
             <Link
@@ -162,10 +162,10 @@ export function ServiceDetailPageContent({
       {/* 8. Monumental Closing Call to Action */}
       <ClosingCtaSection
         id="service-cta"
-        eyebrow="TADIKS MEISTERBETRIEB CHEMNITZ"
+        eyebrow="TADIKS FACHBETRIEB CHEMNITZ"
         title={
           <>
-            Bereit für meisterhafte{" "}
+            Bereit für erstklassige{" "}
             <span className="text-brand-lime font-light">{service.title}</span>{" "}
             in Sachsen?
           </>

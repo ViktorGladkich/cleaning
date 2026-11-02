@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useGSAP } from "@gsap/react";
@@ -95,14 +94,20 @@ function FooterLink({
 
   if (isExternal) {
     return (
-      <a href={href} className="group inline-block max-w-full focus:outline-none">
+      <a
+        href={href}
+        className="group inline-block max-w-full focus:outline-none"
+      >
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={href} className="group inline-block max-w-full focus:outline-none">
+    <Link
+      href={href}
+      className="group inline-block max-w-full focus:outline-none"
+    >
       {content}
     </Link>
   );
@@ -222,19 +227,6 @@ export function Footer() {
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Main Split: Brand Header + 4 Link Blocks in 2 Rows (grid-cols-2) on Mobile, 4 Columns on Desktop */}
         <div className="pt-6 pb-14 sm:pb-20 border-b border-white/10">
-          {/* Brand Logo Header */}
-          <div ref={leftColRef} className="mb-8 sm:mb-10 lg:mb-12">
-            <Link href="/" className="inline-block group focus:outline-none">
-              <Image
-                src="/TADIKS_LOGO.svg"
-                alt="Tadiks"
-                width={150}
-                height={40}
-                className="h-8 sm:h-9 w-auto object-contain transition-opacity duration-200 group-hover:opacity-85"
-              />
-            </Link>
-          </div>
-
           {/* 4 Link Blocks: 2 rows of 2 columns on mobile, 4 columns on desktop */}
           <div
             ref={rightGridRef}
@@ -303,14 +295,16 @@ export function Footer() {
         {/* Sub-footer Bar */}
         <div
           ref={bottomBarRef}
-          className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40 font-light"
+          className="pt-8 flex flex-col md:grid md:grid-cols-3 items-center justify-between gap-4 text-xs text-white/40 font-light"
         >
-          <p>
+          {/* Left: Copyright */}
+          <p className="text-center md:text-left order-3 md:order-1">
             &copy; {new Date().getFullYear()} {COMPANY_INFO.name}. Alle Rechte
             vorbehalten.
           </p>
 
-          <div className="flex items-center gap-6">
+          {/* Center: Legal & Cookie Links */}
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 order-1 md:order-2">
             <Link
               href="/impressum"
               className="hover:text-white transition-colors"
@@ -332,11 +326,24 @@ export function Footer() {
                   window.dispatchEvent(new CustomEvent("openCookieSettings"));
                 }
               }}
-              className="hover:text-white transition-colors cursor-pointer text-left"
+              className="hover:text-white transition-colors cursor-pointer"
             >
               Cookie-Einstellungen
             </button>
           </div>
+
+          {/* Right: Created by Inverta */}
+          <p className="text-center md:text-right order-2 md:order-3">
+            Erstellt von{" "}
+            <a
+              href="https://invertadigital.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white font-medium"
+            >
+              Inverta
+            </a>
+          </p>
         </div>
       </div>
     </footer>

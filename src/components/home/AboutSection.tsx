@@ -11,10 +11,10 @@ const STATEMENT_WORDS = [
   "&",
   "Bau",
   "vereint",
-  "meisterhaften",
+  "fachgerechten",
   "Innenausbau",
   "und",
-  "zertifizierte",
+  "gründliche",
   "Gebäudereinigung",
   "in",
   "Chemnitz",
@@ -34,7 +34,7 @@ const STATEMENT_WORDS = [
 const MARQUEE_IMAGES = [
   {
     src: "/images/about_gallery_1.webp",
-    alt: "Meisterhafte Raumhygiene und Badgestaltung",
+    alt: "Erstklassige Raumhygiene und Badgestaltung",
   },
   {
     src: "/images/about_gallery_2.webp",
@@ -70,8 +70,8 @@ const STATS = [
   {
     value: "5",
     suffix: "+",
-    title: "Jahre Meistererfahrung",
-    description: "Festangestellte Fachkräfte und geprüfte Qualität in Chemnitz und Region.",
+    title: "Jahre Branchenerfahrung",
+    description: "Feste Fachkräfte und geprüfte Qualität in Chemnitz und Region.",
   },
   {
     value: "103",
@@ -89,7 +89,7 @@ const STATS = [
     value: "94",
     suffix: "%",
     title: "Kundenzufriedenheit",
-    description: "Verifizierte Empfehlungen, langjährige Partnerschaften und erstklassige Bewertungen.",
+    description: "Zufriedene Stammkunden, langjährige Partnerschaften und erstklassige Bewertungen.",
   },
 ];
 

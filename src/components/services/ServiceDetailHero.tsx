@@ -71,7 +71,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
     <section
       ref={heroRef}
       aria-label={service.title}
-      className="relative w-full min-h-145 xs:min-h-160 sm:min-h-[85vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
+      className="relative w-full min-h-dvh flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
     >
       {/* Full-bleed Background Architectural Image with cinematic grading */}
       <div className="absolute inset-0 w-full h-full">
@@ -111,7 +111,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
           {/* Top Specification Pill */}
           <div className="hero-badge-wrap inline-flex items-center px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm max-w-full">
             <span className="truncate">
-              TADIKS MEISTERBETRIEB — {service.categoryLabel.toUpperCase()}
+              TADIKS FACHBETRIEB — {service.categoryLabel.toUpperCase()}
             </span>
           </div>
 
@@ -119,7 +119,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
           <h1 className="hero-title text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.05] wrap-break-word hyphens-auto">
             {service.title} <br />
             <span className="text-brand-lime font-light">
-              nach Meister-Standard.
+              in höchster Qualität.
             </span>
           </h1>
 
@@ -149,7 +149,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
                 Qualität
               </div>
               <div className="mt-1 text-sm sm:text-base font-bold text-white">
-                Meister-Norm
+                Fach-Qualität
               </div>
               <div className="text-[11px] text-white/70">
                 {service.category === "reinigung"

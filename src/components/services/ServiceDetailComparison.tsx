@@ -75,7 +75,7 @@ export function ServiceDetailComparison({
             </div>
           </div>
 
-          {/* Right: Tadiks Meisterbetrieb (Highlight) */}
+          {/* Right: Tadiks Fachbetrieb (Highlight) */}
           <div className="p-8 sm:p-10 rounded-3xl bg-linear-to-b from-white/15 to-white/10 border-2 border-brand-lime text-white relative shadow-2xl flex flex-col justify-between">
             <div className="absolute top-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-lime text-brand-navy font-bold text-xs shadow-md">
               <Check className="w-3.5 h-3.5 stroke-3" />
@@ -85,7 +85,7 @@ export function ServiceDetailComparison({
             <div>
               <div className="pb-6 border-b border-white/15 mb-6 pt-8 sm:pt-0 pr-0 sm:pr-32">
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  Tadiks Meisterbetrieb
+                  Tadiks Fachbetrieb
                 </h3>
                 <p className="text-xs text-brand-lime mt-1 font-mono">
                   Verbindlichkeit aus Sachsen

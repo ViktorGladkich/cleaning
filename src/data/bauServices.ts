@@ -18,7 +18,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
     imageSrc: "/images/service_grid_trockenbau.webp",
     imageAlt: "Präziser Trockenbau und Akustikdecken in Sachsen",
     bullets: [
-      "Zertifizierter Brand-, Schall- & Feuchteschutz nach DIN",
+      "Brand-, Schall- & Feuchteschutz nach DIN-Norm",
       "Akustikdecken, Deckensegel & flexible Trennwände",
       "Millimetergenaue Ausrichtung mit Rotationslasern",
     ],
@@ -34,7 +34,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
     bullets: [
       "Streiflichtfreie Q4-Glättung für anspruchsvolle Architektur",
       "Glattvlies, moderne Farbkonzepte & Lackierarbeiten",
-      "Emissionsarme, zertifizierte Profi-Farben ohne Geruch",
+      "Emissionsarme Profi-Farben ohne Geruchsbelastung",
     ],
     href: "/services/maler-spachtelarbeiten",
   },
@@ -75,7 +75,7 @@ export const BAU_SERVICES_GRID: ServiceGridItem[] = [
     imageAlt: "Innendämmung und baulicher Brandschutz in Sachsen",
     bullets: [
       "Wärmedämmung für Dachschrägen, Decken & Außenwände",
-      "Zertifizierte Brandschutzverkleidungen (F30 bis F90)",
+      "Fachgerechte Brandschutzverkleidungen (F30 bis F90)",
       "Feuchtigkeitsschutz und dauerhafte Schimmelprävention",
     ],
     href: "/services/trockenbau-innenausbau",

@@ -20,7 +20,7 @@ const REINIGUNG_BRANDS = [
   },
   {
     name: "Kiehl Eco-Line",
-    role: "Zertifizierte, biologisch abbaubare Reinigungschemie",
+    role: "Geprüfte, biologisch abbaubare Reinigungschemie",
   },
   {
     name: "Nilfisk HEPA-14",
@@ -31,7 +31,7 @@ const REINIGUNG_BRANDS = [
 const BAU_BRANDS = [
   {
     name: "Knauf & Rigips",
-    role: "Zertifizierte Schall- & Brandschutz-Systeme",
+    role: "Normgerechte Schall- & Brandschutz-Systeme",
   },
   {
     name: "Festool Dust-Free",
@@ -78,7 +78,7 @@ export function ServiceDetailBentoMatrix({
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-mono text-brand-lime mb-6">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>MEISTER-QUALITÄT</span>
+              <span>FACH-QUALITÄT</span>
             </div>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-normal text-white leading-tight">
               {service.featuresTitle}

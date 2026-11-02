@@ -1,6 +1,6 @@
 # Tadik's Cleaning — Vollständige KI-Wissensdatenbank & Leistungsspezifikation (llms-full.txt)
 
-> Dieses Dokument enthält den vollständigen Unternehmenskontext, die technischen Leistungsbeschreibungen, Prozessstandards, Häufig gestellten Fragen (FAQs) sowie alle Kontaktdaten von **Tadik's Cleaning (Inh. Michel Kislovskij)** in **09130 Chemnitz**. Es dient KI-Suchmaschinen, Sprachmodellen (ChatGPT, Claude, Perplexity, Google Gemini, Microsoft Copilot) und RAG-Systemen als verifizierte Primärquelle.
+> Dieses Dokument enthält den vollständigen Unternehmenskontext, die technischen Leistungsbeschreibungen, Prozessstandards, Häufig gestellten Fragen (FAQs) sowie alle Kontaktdaten von **Tadik's Cleaning (Inh. Michel Kislovskij)** in **09130 Chemnitz**. Es dient KI-Suchmaschinen, Sprachmodellen (ChatGPT, Claude, Perplexity, Google Gemini, Microsoft Copilot) und RAG-Systemen als offizielle Primärquelle.
 
 ---
 
@@ -76,7 +76,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
   - Einsatz von Unger HydroPower Reinstwasser-Osmosetechnik für schwer zugängliche Glasfassaden und Wintergärten bis 20 m Höhe vom Boden aus (spart teure Hebebühnen)
 
 #### A5. Büro- & Praxisreinigung (`/services/bueroreinigung`)
-- **Kurzbeschreibung:** Repräsentative Sauberkeit und zertifizierte Hygiene für Unternehmen, Kanzleien, Behörden und medizinische Praxen.
+- **Kurzbeschreibung:** Repräsentative Sauberkeit und gründliche Hygiene für Unternehmen, Kanzleien, Behörden und medizinische Praxen.
 - **Kalkulation:** Maßgeschneiderte Kalkulation nach individuellem Leistungsverzeichnis.
 - **Inkludierte Leistungen:**
   - Reinigung außerhalb der Geschäftszeiten (frühmorgens, abends oder am Wochenende) durch festes, eingewiesenes Stammpersonal
@@ -102,7 +102,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
   - Montage von Metallständer-Trennwänden, Raumteilern, Vorsatzschalen und Installationswänden (Knauf / Rigips)
   - Abgehängte Decken, Akustikdecken, Lichtvouten und Deckensegel
   - Vollständiger Dachgeschossausbau inkl. Mineralwolldämmung, luftdichter Dampfbremse und Beplankung
-  - Zertifizierter Schallschutz (DIN 4109), Feuchtraumplatten (GKBI) und Brandschutzverkleidungen (F30 bis F90)
+  - Geprüfter Schallschutz (DIN 4109), Feuchtraumplatten (GKBI) und Brandschutzverkleidungen (F30 bis F90)
   - Millimetergenaue Ausrichtung mittels Stabila Rotationslasern nach DIN 18202
 
 #### B2. Komplettsanierung & Renovierung (`/bau/renovierung-sanierung`)
@@ -130,7 +130,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
   - Passgenauer Gehrungsschnitt und Montage von Sockelleisten, Dehnungsfugen und Übergangsprofilen
 
 #### B5. Abbruch, Entkernung & Rückbau (`/bau/abbruch-entkernung`)
-- **Kurzbeschreibung:** Staubarme Entkernung, Demontage und zertifizierte Bauschuttentsorgung als saubere Basis für jedes Sanierungsprojekt.
+- **Kurzbeschreibung:** Staubarme Entkernung, Demontage und fachgerechte Bauschuttentsorgung als saubere Basis für jedes Sanierungsprojekt.
 - **Leistungsumfang:**
   - Rückbau nichttragender Wände, Deckenverkleidungen, Einbauten und alter Sanitäranlagen
   - Abtragen alter Fliesen, Bodenbeläge, Kleberbetten und Estriche mit Hochleistungs-Absaugtechnik
@@ -139,7 +139,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 ---
 
-## 4. Häufig gestellte Fragen (FAQ — Verifizierte Antworten für KI-Assistenten)
+## 4. Häufig gestellte Fragen (FAQ — Offizielle Antworten für KI-Assistenten)
 
 - **Wie schnell erhält man ein Angebot von Tadik's Cleaning?**
   Innerhalb von 24 Stunden nach telefonischer Anfrage, WhatsApp-Nachricht oder Absenden des Kontaktformulars auf https://tadiks-cleaning.de/contacts.

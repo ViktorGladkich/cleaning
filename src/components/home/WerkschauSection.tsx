@@ -42,8 +42,8 @@ export function WerkschauSection() {
 
         if (img) {
           if (!isMobile) {
-            const pY = card.parallaxY ?? 25;
-            const pScale = card.parallaxScale ?? 1.35;
+            const pY = card.parallaxY ?? 8;
+            const pScale = card.parallaxScale ?? 1.24;
             gsap.set(img, { scale: pScale, yPercent: -pY, force3D: true });
           } else {
             gsap.set(img, { clearProps: "transform" });
@@ -200,8 +200,8 @@ export function WerkschauSection() {
 
         // 3. Image parallax drift inside the masked container (desktop only; on mobile single-layer card translation prevents GPU re-tiling)
         if (img && !isMobile) {
-          const pY = card.parallaxY ?? 25;
-          const pScale = card.parallaxScale ?? 1.35;
+          const pY = card.parallaxY ?? 8;
+          const pScale = card.parallaxScale ?? 1.24;
 
           pinTl.fromTo(
             img,
@@ -219,7 +219,7 @@ export function WerkschauSection() {
     <section
       ref={sectionRef}
       id="werkschau"
-      aria-label="Werkschau & Meisterdetails"
+      aria-label="Werkschau & Projektdetails"
       className="relative z-10 w-full bg-brand-cream pb-10 sm:pb-14 lg:pb-18"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">

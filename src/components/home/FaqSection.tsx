@@ -58,7 +58,7 @@ const FAQS: FaqItem[] = [
     question:
       "Welche Reinigungsmittel, Geräte und Hygienestandards kommen zum Einsatz?",
     answer:
-      "Wir arbeiten ausschließlich mit zertifizierten Profi-Systemen von Kärcher und biologisch abbaubaren, materialschonenden Reinigungskonzentraten namhafter deutscher Hersteller. Für sensible Bereiche wie Arztpraxen oder Reinräume wenden wir das streng codierte Vier-Farben-Hygienesystem nach RKI-Vorgaben an.",
+      "Wir arbeiten ausschließlich mit modernen Profi-Systemen von Kärcher und biologisch abbaubaren, materialschonenden Reinigungskonzentraten namhafter deutscher Hersteller. Für sensible Bereiche wie Arztpraxen oder Reinräume wenden wir das streng codierte Vier-Farben-Hygienesystem nach RKI-Vorgaben an.",
   },
   {
     category: "GEWÄHRLEISTUNG & ABNAHME",
@@ -89,7 +89,7 @@ export function FaqSection({
   title,
   subtitle = "Alle wichtigen Details zu Festpreisen, Termintreue, Schnittstellen und Gewährleistung transparent aufgeschlüsselt.",
   imageSrc = "/images/faq_architectural_craft.webp",
-  imageAlt = "Tadiks meisterhafte Architektur & Sauberkeit",
+  imageAlt = "Tadiks professionelle Ausführung & Sauberkeit",
   items = FAQS,
   className,
 }: FaqSectionProps = {}) {

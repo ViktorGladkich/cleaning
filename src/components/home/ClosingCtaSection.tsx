@@ -23,11 +23,11 @@ export function ClosingCtaSection({
   id = "contact-cta",
   eyebrow,
   title,
-  subtitle = "Trockenbau, Sanierung und Gebäudereinigung in Sachsen. Verbindliche Festpreise und meisterhafte Qualität aus einer Hand.",
+  subtitle = "Trockenbau, Sanierung und Gebäudereinigung in Sachsen. Verbindliche Festpreise und erstklassige Qualität aus einer Hand.",
   ctaText = "Kostenloses Angebot anfordern",
   ctaHref = "/contacts",
   imageSrc = "/images/hero_premium_cleaning_bau.jpg",
-  imageAlt = "Tadiks Meisterbetrieb für Bau, Sanierung & Reinigung",
+  imageAlt = "Tadiks Fachbetrieb für Bau, Sanierung & Reinigung",
   className,
 }: ClosingCtaSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
