@@ -21,6 +21,7 @@ html {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-satoshi), var(--font-general-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  max-width: 100%;
   overflow-x: clip;
 }
 
@@ -36,6 +37,7 @@ body {
   font-family: var(--font-general-sans), var(--font-satoshi), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
   overflow-x: clip;
 }
 
@@ -43,6 +45,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-satoshi), sans-serif;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
 }
 
 /* Body copy, descriptions, navigation and inputs use Fontshare General Sans for pristine clarity */

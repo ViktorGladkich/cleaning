@@ -92,31 +92,31 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
         className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between"
       >
         {/* Breadcrumb Navigation */}
-        <div className="mb-6 flex items-center space-x-2 text-xs sm:text-sm text-white/60">
-          <Link href="/" className="hover:text-brand-lime transition-colors">
+        <div className="mb-6 flex items-center space-x-2 text-xs sm:text-sm text-white/60 min-w-0 overflow-hidden">
+          <Link href="/" className="hover:text-brand-lime transition-colors shrink-0">
             Startseite
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-white/40" />
+          <ChevronRight className="w-3.5 h-3.5 text-white/40 shrink-0" />
           <Link
             href={categoryBackLink}
-            className="hover:text-brand-lime transition-colors"
+            className="hover:text-brand-lime transition-colors shrink-0"
           >
             {service.categoryLabel}
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-white/40" />
-          <span className="text-brand-lime truncate">{service.title}</span>
+          <ChevronRight className="w-3.5 h-3.5 text-white/40 shrink-0" />
+          <span className="text-brand-lime truncate min-w-0">{service.title}</span>
         </div>
 
-        <div className="max-w-5xl">
+        <div className="max-w-5xl min-w-0">
           {/* Top Specification Pill */}
-          <div className="hero-badge-wrap inline-flex items-center px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm">
-            <span>
+          <div className="hero-badge-wrap inline-flex items-center px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm max-w-full">
+            <span className="truncate">
               TADIKS MEISTERBETRIEB — {service.categoryLabel.toUpperCase()}
             </span>
           </div>
 
           {/* Monumental Title */}
-          <h1 className="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.02]">
+          <h1 className="hero-title text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.05] wrap-break-word hyphens-auto">
             {service.title} <br />
             <span className="text-brand-lime font-light">
               nach Meister-Standard.
@@ -187,17 +187,17 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
           <div className="hero-action-bar mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <Link
               href={`/contacts?service=${encodeURIComponent(service.slug)}`}
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-lime text-brand-navy font-semibold text-base shadow-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
+              className="inline-flex items-center justify-center gap-3 px-5 sm:px-8 py-4 rounded-xl bg-brand-lime text-brand-navy font-semibold text-sm sm:text-base text-center shadow-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
             >
               <span>Verbindliches Festpreisangebot anfordern</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1 transition-transform" />
             </Link>
 
             <a
               href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-base transition-colors"
+              className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-sm sm:text-base transition-colors"
             >
-              <Phone className="w-4 h-4 text-brand-lime" />
+              <Phone className="w-4 h-4 shrink-0 text-brand-lime" />
               <span>Direkt anrufen: {COMPANY_INFO.phone}</span>
             </a>
           </div>

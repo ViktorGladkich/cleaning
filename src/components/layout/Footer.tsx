@@ -78,9 +78,12 @@ function FooterLink({
   isExternal?: boolean;
 }) {
   const content = (
-    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide wrap-break-word">
+    <span className="inline-flex items-center gap-1.5 py-1 text-[11px] xs:text-xs sm:text-[13px] font-medium tracking-wide max-w-full min-w-0 wrap-break-word">
+      <span className="sm:hidden text-white/60 font-light leading-snug wrap-break-word min-w-0">
+        {children}
+      </span>
       <RollingText
-        className="text-white/60 font-light"
+        className="hidden sm:inline-block text-white/60 font-light max-w-full"
         duplicateClassName="text-white font-medium"
         duration={0.38}
       >
@@ -92,14 +95,14 @@ function FooterLink({
 
   if (isExternal) {
     return (
-      <a href={href} className="group inline-block focus:outline-none">
+      <a href={href} className="group inline-block max-w-full focus:outline-none">
         {content}
       </a>
     );
   }
 
   return (
-    <Link href={href} className="group inline-block focus:outline-none">
+    <Link href={href} className="group inline-block max-w-full focus:outline-none">
       {content}
     </Link>
   );
@@ -214,7 +217,7 @@ export function Footer() {
       ref={footerRef}
       role="contentinfo"
       aria-label="Website-Fußbereich"
-      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16 border-t-0"
+      className="relative z-20 w-full bg-[#0f182b] text-white pt-8 pb-12 sm:pb-16 border-t-0 overflow-x-clip"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
         {/* Main Split: Brand Header + 4 Link Blocks in 2 Rows (grid-cols-2) on Mobile, 4 Columns on Desktop */}
@@ -235,16 +238,16 @@ export function Footer() {
           {/* 4 Link Blocks: 2 rows of 2 columns on mobile, 4 columns on desktop */}
           <div
             ref={rightGridRef}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 sm:gap-x-10 lg:gap-x-12 xl:gap-x-16 gap-y-8 sm:gap-y-10"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 xs:gap-x-6 sm:gap-x-10 lg:gap-x-12 xl:gap-x-16 gap-y-8 sm:gap-y-10"
           >
             {/* 1. ÜBERSICHT */}
-            <div className="space-y-3.5 sm:space-y-4">
+            <div className="space-y-3.5 sm:space-y-4 min-w-0">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 ÜBERSICHT
               </h4>
               <ul className="space-y-1.5 flex flex-col">
                 {COL_INDEX.map((item, idx) => (
-                  <li key={idx}>
+                  <li key={idx} className="min-w-0">
                     <FooterLink href={item.href}>{item.label}</FooterLink>
                   </li>
                 ))}
@@ -252,13 +255,13 @@ export function Footer() {
             </div>
 
             {/* 2. REINIGUNG */}
-            <div className="space-y-3.5 sm:space-y-4">
+            <div className="space-y-3.5 sm:space-y-4 min-w-0">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 REINIGUNG
               </h4>
               <ul className="space-y-1.5 flex flex-col">
                 {COL_REINIGUNG.map((item, idx) => (
-                  <li key={idx}>
+                  <li key={idx} className="min-w-0">
                     <FooterLink href={item.href}>{item.label}</FooterLink>
                   </li>
                 ))}
@@ -266,13 +269,13 @@ export function Footer() {
             </div>
 
             {/* 3. BAU & SANIERUNG */}
-            <div className="space-y-3.5 sm:space-y-4">
+            <div className="space-y-3.5 sm:space-y-4 min-w-0">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 BAU &amp; SANIERUNG
               </h4>
               <ul className="space-y-1.5 flex flex-col">
                 {COL_BAU.map((item, idx) => (
-                  <li key={idx}>
+                  <li key={idx} className="min-w-0">
                     <FooterLink href={item.href}>{item.label}</FooterLink>
                   </li>
                 ))}
@@ -280,13 +283,13 @@ export function Footer() {
             </div>
 
             {/* 4. KONTAKT & STANDORT */}
-            <div className="space-y-3.5 sm:space-y-4">
+            <div className="space-y-3.5 sm:space-y-4 min-w-0">
               <h4 className="text-[11px] font-mono uppercase tracking-widest text-white/80 font-medium">
                 KONTAKT &amp; STANDORT
               </h4>
               <ul className="space-y-1.5 flex flex-col">
                 {COL_CONNECT.map((item, idx) => (
-                  <li key={idx}>
+                  <li key={idx} className="min-w-0">
                     <FooterLink href={item.href} isExternal={item.isExternal}>
                       {item.label}
                     </FooterLink>

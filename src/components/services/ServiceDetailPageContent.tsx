@@ -26,7 +26,7 @@ export function ServiceDetailPageContent({
     service.category === "reinigung" ? "/services" : "/bau";
 
   return (
-    <main className="min-h-screen bg-brand-cream text-brand-navy selection:bg-brand-navy selection:text-white">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip bg-brand-cream text-brand-navy selection:bg-brand-navy selection:text-white">
       {/* 1. Monumental Architectural Hero */}
       <ServiceDetailHero service={service} />
 
@@ -174,6 +174,6 @@ export function ServiceDetailPageContent({
         ctaText="Unverbindliches Angebot anfordern"
         ctaHref={`/contacts?service=${encodeURIComponent(service.slug)}`}
       />
-    </main>
+    </div>
   );
 }

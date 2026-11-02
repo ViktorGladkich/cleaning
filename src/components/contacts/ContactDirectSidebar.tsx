@@ -4,7 +4,7 @@ import { COMPANY_INFO } from "@/lib/constants";
 
 export function ContactDirectSidebar() {
   return (
-    <div className="lg:col-span-5 lg:sticky lg:top-28 xl:top-32 self-start">
+    <div className="lg:col-span-5 lg:sticky lg:top-28 xl:top-32 self-start min-w-0">
       <div className="hub-reveal space-y-5">
         <div>
           <span className="text-xs sm:text-sm font-medium tracking-wider uppercase text-brand-navy/80 block mb-2.5">

@@ -70,7 +70,7 @@ export function RollingText({
     <span
       ref={containerRef}
       className={cn(
-        "relative inline-block h-[1.3em] overflow-hidden align-middle select-none",
+        "relative inline-block max-w-full h-[1.3em] overflow-hidden align-middle select-none",
         isActive && "text-(--color-brand-navy)",
         className
       )}

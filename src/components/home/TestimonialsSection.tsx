@@ -193,7 +193,7 @@ export function TestimonialsSection() {
         {/* Section Header: Aligned horizontally with description text */}
         <div
           ref={headerRef}
-          className="pb-12 sm:pb-16"
+          className="pb-12 sm:pb-16 overflow-x-clip"
         >
           <div className="mb-4">
             <span className="testi-eyebrow text-xs sm:text-sm font-mono tracking-widest text-brand-navy/60 uppercase block will-change-transform">

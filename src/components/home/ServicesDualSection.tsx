@@ -301,8 +301,8 @@ export function ServicesGridSection({
 
               {/* --- Card Top: Title with RollingText + Direct Arrow (relative z-10 above mask) --- */}
               <div className="relative z-10">
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <h3 className="text-xl sm:text-2xl font-normal tracking-tight leading-tight">
+                <div className="flex items-start justify-between gap-4 mb-2 min-w-0">
+                  <h3 className="text-xl sm:text-2xl font-normal tracking-tight leading-tight min-w-0">
                     <RollingText
                       duplicateClassName="text-white"
                       className="text-brand-navy group-hover:text-white transition-colors duration-500 ease-out"
