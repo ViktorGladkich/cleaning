@@ -57,8 +57,16 @@ const generalSans = localFont({
   preload: false,
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://tadiks-cleaning.de");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tadiks-cleaning.de"),
+  metadataBase: new URL(SITE_URL),
   title: {
     template: `%s | ${COMPANY_INFO.name} Chemnitz`,
     default: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
@@ -80,7 +88,7 @@ export const metadata: Metadata = {
     "Tadik's Cleaning",
   ],
   alternates: {
-    canonical: "https://tadiks-cleaning.de",
+    canonical: SITE_URL,
     types: {
       "text/plain": [
         { url: "/llms.txt", title: "LLM Context (Standard)" },
@@ -91,7 +99,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "de_DE",
-    url: "https://tadiks-cleaning.de",
+    url: SITE_URL,
     siteName: COMPANY_INFO.name,
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
@@ -99,8 +107,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.jpg",
-        width: 1376,
-        height: 768,
+        width: 1200,
+        height: 630,
         alt: `${COMPANY_INFO.name} Chemnitz — Gebäudereinigung & Innenausbau`,
         type: "image/jpeg",
       },
