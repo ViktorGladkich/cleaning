@@ -122,7 +122,7 @@ export function WerkschauSection() {
           start: "top top",
           end: "bottom bottom",
           scrub: isMobile ? true : 0.35,
-          invalidateOnRefresh: true,
+          invalidateOnRefresh: !isMobile,
         },
       });
 
@@ -144,6 +144,8 @@ export function WerkschauSection() {
         );
       }
 
+      const galleryHeight = gallery.offsetHeight;
+
       // Animate each floating gallery card (vertical glide + corner unmask on desktop + parallax drift)
       GALLERY_CARDS.forEach((card) => {
         const wrap = gallery.querySelector(`.${card.wrapperClass.split(" ")[0]}`);
@@ -157,12 +159,12 @@ export function WerkschauSection() {
         pinTl.fromTo(
           wrap,
           {
-            y: () => gallery.offsetHeight * 1.15,
+            y: () => galleryHeight * 1.15,
             ...(card.isCenter ? { xPercent: -50 } : {}),
             force3D: true,
           },
           {
-            y: () => -gallery.offsetHeight * 1.35,
+            y: () => -galleryHeight * 1.35,
             ...(card.isCenter ? { xPercent: -50 } : {}),
             force3D: true,
             duration,

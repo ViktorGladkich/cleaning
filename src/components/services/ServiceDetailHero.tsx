@@ -71,7 +71,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
     <section
       ref={heroRef}
       aria-label={service.title}
-      className="relative w-full min-h-dvh flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
+      className="relative w-full min-h-svh flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
     >
       {/* Full-bleed Background Architectural Image with cinematic grading */}
       <div className="absolute inset-0 w-full h-full">

@@ -107,10 +107,10 @@ export function Hero() {
     <div ref={containerRef} className="relative w-full bg-brand-cream">
       {/* Container wrapper: 10-14px margin on all edges so hero starts right under top header */}
       <div className="w-full p-2.5 sm:p-3.5">
-        {/* Main Hero Card: full viewport height, zero shadow, header sits directly on top */}
+        {/* Main Hero Card: full viewport height without address bar jitter (svh keeps height constant during scroll) */}
         <div
           ref={heroCardRef}
-          className="relative w-full h-[calc(100dvh-20px)] sm:h-[calc(100dvh-28px)] min-h-[580px] rounded-[10px] overflow-hidden bg-brand-cream"
+          className="relative w-full h-[calc(100svh-20px)] sm:h-[calc(100svh-28px)] min-h-[540px] rounded-[10px] overflow-hidden bg-brand-cream"
         >
           {/* Background Cleaning Image with Full Frame Seating */}
           <div className="absolute inset-0 z-0 hero-image-container overflow-hidden rounded-[10px] origin-center">
@@ -120,7 +120,7 @@ export function Hero() {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center hero-bg-image transform-gpu"
+              className="object-cover object-center hero-bg-image"
             />
 
             {/* Neutral Cinematic Dark Gradient (enclosed inside image container so no background bleed) */}

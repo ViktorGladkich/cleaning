@@ -133,7 +133,7 @@ export default function RootLayout({
       lang="de"
       className={`${satoshi.variable} ${generalSans.variable} antialiased`}
     >
-      <body className="min-h-dvh flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white overflow-x-clip">
+      <body className="min-h-screen flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white overflow-x-clip">
         <JsonLdSchema />
         <SmoothScroll>
           <PageTransition>
