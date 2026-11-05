@@ -20,7 +20,7 @@ interface TestimonialItem {
 const TESTIMONIALS: TestimonialItem[] = [
   {
     id: "medical",
-    category: "01 / 04",
+    category: "01 / 03",
     clientType: "Praxis & Gesundheitswesen",
     quote:
       "In sensiblen medizinischen Bereichen gibt es keinen Spielraum für Fehler. Tadiks überzeugt seit über zwei Jahren mit kompromissloser Hygiene, geschultem festem Personal und lückenlosen Dokumentationen nach RKI-Richtlinien.",
@@ -28,11 +28,11 @@ const TESTIMONIALS: TestimonialItem[] = [
     role: "Leitender Facharzt & Praxisinhaber",
     company: "Gemeinschaftspraxis am Schlossteich",
     location: "Chemnitz",
-    src: "/images/service_cleaning_card.jpg",
+    src: "/images/services/hero-bueroreinigung.jpg",
   },
   {
     id: "construction",
-    category: "02 / 04",
+    category: "02 / 03",
     clientType: "Gewerbliche Projektentwicklung",
     quote:
       "Die nahtlose Verzahnung aus präzisem Trockenbau und anschließender bezugsfertiger Bauendreinigung spart uns bei jedem Projekt wertvolle Wochen. Keine Schnittstellenverluste, feste deutsche Bauleiter und verbindliche Festpreise.",
@@ -40,23 +40,11 @@ const TESTIMONIALS: TestimonialItem[] = [
     role: "Geschäftsführer & Gesamtprojektleiter",
     company: "Lindner Projektentwicklung GmbH",
     location: "Chemnitz & Leipzig",
-    src: "/images/service_bau_card.jpg",
-  },
-  {
-    id: "residential",
-    category: "03 / 04",
-    clientType: "Privates Denkmalschutzobjekt",
-    quote:
-      "Unsere Jugendstil-Villa auf dem Kaßberg erforderte äußerste handwerkliche Präzision. Die Spachtel- und Malerarbeiten auf Q4-Niveau sowie die millimetergenaue Baufeinreinigung vor unserem Einzug waren schlichtweg erstklassig.",
-    author: "Elena & Thomas Vogel",
-    role: "Eigentümer",
-    company: "Denkmalgeschützte Villa Kaßberg",
-    location: "Chemnitz",
-    src: "/images/about_gallery_3.webp",
+    src: "/images/services/hero-trockenbau-innenausbau.jpg",
   },
   {
     id: "commercial",
-    category: "04 / 04",
+    category: "03 / 03",
     clientType: "Technologiepark & Campus",
     quote:
       "Streifenfreie Panoramafenster und ein täglich makelloses Arbeitsumfeld für über 90 Entwickler. Bemerkenswert ist die Konstanz: dieselben vertrauten Mitarbeiter und ein Objektleiter, der bei Sonderwünschen innerhalb von Minuten reagiert.",
@@ -64,7 +52,7 @@ const TESTIMONIALS: TestimonialItem[] = [
     role: "Head of Operations & Facility Management",
     company: "Technologie Campus Chemnitz",
     location: "Chemnitz",
-    src: "/images/service_grid_glas.webp",
+    src: "/images/services/hero-fensterreinigung.jpg",
   },
 ];
 

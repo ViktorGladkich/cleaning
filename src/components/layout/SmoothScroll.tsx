@@ -5,6 +5,15 @@ import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
+// The hash comes from the URL: querySelector would throw on values like "#123".
+function findHashTarget(hash: string): HTMLElement | null {
+  try {
+    return document.getElementById(decodeURIComponent(hash.slice(1)));
+  } catch {
+    return null;
+  }
+}
+
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
@@ -33,9 +42,12 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
         window.innerWidth < 1024 ||
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0;
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-      // Completely disable Lenis on mobile/tablet screens and touch devices
-      if (isMobileOrTouch) {
+      // Completely disable Lenis on mobile/tablet screens, touch devices and for reduced motion
+      if (isMobileOrTouch || prefersReducedMotion) {
         destroyLenis();
         gsap.ticker.remove(update);
         return;
@@ -61,11 +73,15 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     mediaQuery.addEventListener("change", initOrCleanup);
 
     let lastWidth = typeof window !== "undefined" ? window.innerWidth : 0;
+    let refreshTimer: ReturnType<typeof setTimeout> | undefined;
     const handleResize = () => {
       // Ignore vertical height changes from mobile search bar collapse
       if (Math.abs(window.innerWidth - lastWidth) > 10) {
         lastWidth = window.innerWidth;
         initOrCleanup();
+        // Rotation: wait for the locked heights to re-render before re-measuring.
+        clearTimeout(refreshTimer);
+        refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 250);
       }
     };
     window.addEventListener("resize", handleResize, { passive: true });
@@ -73,6 +89,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     return () => {
       mediaQuery.removeEventListener("change", initOrCleanup);
       window.removeEventListener("resize", handleResize);
+      clearTimeout(refreshTimer);
       destroyLenis();
       gsap.ticker.remove(update);
     };
@@ -83,9 +100,9 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     const hash = typeof window !== "undefined" ? window.location.hash : "";
 
     if (hash) {
-      const target = document.querySelector(hash);
+      const target = findHashTarget(hash);
       if (target && lenisRef.current) {
-        lenisRef.current.scrollTo(target as HTMLElement, { offset: -80 });
+        lenisRef.current.scrollTo(target, { offset: -80 });
       }
     } else {
       if (lenisRef.current) {

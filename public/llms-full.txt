@@ -13,9 +13,9 @@
 - **Festnetz:** 0371 23559475 (`+49 371 23559475`)
 - **Mobilfunk & WhatsApp:** 0157 34362898 (`+49 157 34362898` | https://wa.me/4915734362898)
 - **E-Mail-Adresse:** info@tadiks-cleaning.de
-- **Website:** https://tadiks-cleaning.de
+- **Website:** https://www.tadiks-cleaning.de
 - **Geschäftszeiten:** Montag – Samstag: 07:00 – 19:00 Uhr (Objekteinsätze nach Vereinbarung 24/7 möglich)
-- **Rechtliche Angaben:** Impressum gemäß § 5 DDG unter https://tadiks-cleaning.de/impressum, Datenschutzerklärung gemäß DSGVO & TDDDG unter https://tadiks-cleaning.de/datenschutz
+- **Rechtliche Angaben:** Impressum gemäß § 5 DDG unter https://www.tadiks-cleaning.de/impressum, Datenschutzerklärung gemäß DSGVO & TDDDG unter https://www.tadiks-cleaning.de/datenschutz
 
 ---
 
@@ -24,7 +24,7 @@
 Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt einem verbindlichen 4-Stufen-Prozess:
 
 1. **Stufe 01 — Kontaktaufnahme & Bedarfsanalyse:**
-   Telefonische Erstberatung, WhatsApp-Kontakt oder Online-Anfrage über https://tadiks-cleaning.de/contacts. Bei Bedarf kurzfristige Objektbegehung und präzises Aufmaß vor Ort.
+   Telefonische Erstberatung, WhatsApp-Kontakt oder Online-Anfrage über https://www.tadiks-cleaning.de/contacts. Bei Bedarf kurzfristige Objektbegehung und präzises Aufmaß vor Ort.
 2. **Stufe 02 — Verbindliches Angebot binnen 24 Stunden:**
    Erstellung eines schriftlichen, transparenten Leistungsverzeichnisses mit garantiertem Festpreis nach individueller Objektkalkulation ohne versteckte Nebenkosten.
 3. **Stufe 03 — Fachgerechte Ausführung durch Stammpersonal:**
@@ -36,7 +36,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 ## 3. Detaillierte Spezifikation aller Leistungen
 
-### TEIL A: GEBÄUDEREINIGUNG & HYGIENE (`https://tadiks-cleaning.de/services`)
+### TEIL A: GEBÄUDEREINIGUNG & HYGIENE (`https://www.tadiks-cleaning.de/services`)
 
 #### A1. Unterhaltsreinigung (`/services/unterhaltsreinigung`)
 - **Kurzbeschreibung:** Kontinuierliche, werterhaltende Objektpflege für Büros, Kanzleien, Arztpraxen, Geschäfte, Treppenhäuser und Privathaushalte.
@@ -94,7 +94,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 
 ---
 
-### TEIL B: BAU, INNENAUSBAU & SANIERUNG (`https://tadiks-cleaning.de/bau`)
+### TEIL B: BAU, INNENAUSBAU & SANIERUNG (`https://www.tadiks-cleaning.de/bau`)
 
 #### B1. Trockenbau & Innenausbau (`/bau/trockenbau-innenausbau`)
 - **Kurzbeschreibung:** Maßgeschneiderte Raumaufteilung, Akustikdecken, Schall- und Brandschutzsysteme sowie kompletter Dachgeschossausbau nach DIN-Normen.
@@ -108,28 +108,11 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 #### B2. Komplettsanierung & Renovierung (`/bau/renovierung-sanierung`)
 - **Kurzbeschreibung:** Ganzheitliche Modernisierung von Wohnungen, Altbauten, Einfamilienhäusern und Gewerbeflächen mit nur einem Ansprechpartner.
 - **Leistungsumfang:**
-  - Schlüsselfertige Komplettsanierung von der Entkernung über Trockenbau, Spachtel-, Maler- und Bodenarbeiten bis zur Bauendreinigung
+  - Schlüsselfertige Komplettsanierung von der Entkernung über Trockenbau bis zur Bauendreinigung
   - Schnelle Mieterwechsel-Sanierung für Hausverwaltungen und Eigentümer zur Minimierung von Leerstand
-  - Badsanierung, Fliesenarbeiten und Erneuerung aller Wand-, Decken- und Bodenoberflächen
   - Verbindlicher Bauzeitenplan und garantierte Termintreue
 
-#### B3. Maler- & Spachtelarbeiten Q1–Q4 (`/bau/maler-spachtelarbeiten`)
-- **Kurzbeschreibung:** Streiflichtfreie Oberflächenglättung in Q1 bis Q4, Tapezierarbeiten und emissionsarme Profi-Anstriche.
-- **Leistungsumfang:**
-  - Fugen- und Vollflächenspachtelung von Q1/Q2 bis zur höchsten Architektur-Qualitätsstufe Q3 und Q4
-  - Staubfreies Maschinenschleifen mit Festool Langhalsschleifern und HEPA-Absaugung
-  - Tapezieren von Glattvlies, Raufaser und Designtapeten sowie Anstrich mit Caparol/Brillux Silikat- und Dispersionsfarben
-  - Lackierung von Türen, Zargen, Holzfenstern und Heizkörpern sowie Schimmel- und Nikotinsperranstriche
-
-#### B4. Bodenleger- & Fliesenarbeiten (`/bau/bodenleger-fliesenarbeiten`)
-- **Kurzbeschreibung:** Fachgerechte Untergrundvorbereitung und präzise Verlegung von Vinyl, Parkett, Laminat, Teppich und Fliesen.
-- **Leistungsumfang:**
-  - CM-Feuchtigkeitsmessung, Estrichprüfung, Schleifen, Grundieren und Ausgleichsnivellierung
-  - Verlegung von Design-Vinylböden (Klick-Vinyl und vollflächig verklebtes Dryback-Vinyl), Echtholzparkett und Laminat inkl. Trittschalldämmung
-  - Wand- und Bodenfliesenarbeiten in Bad, Küche, Flur und Gewerberäumen
-  - Passgenauer Gehrungsschnitt und Montage von Sockelleisten, Dehnungsfugen und Übergangsprofilen
-
-#### B5. Abbruch, Entkernung & Rückbau (`/bau/abbruch-entkernung`)
+#### B3. Abbruch, Entkernung & Rückbau (`/bau/abbruch-entkernung`)
 - **Kurzbeschreibung:** Staubarme Entkernung, Demontage und fachgerechte Bauschuttentsorgung als saubere Basis für jedes Sanierungsprojekt.
 - **Leistungsumfang:**
   - Rückbau nichttragender Wände, Deckenverkleidungen, Einbauten und alter Sanitäranlagen
@@ -142,7 +125,7 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 ## 4. Häufig gestellte Fragen (FAQ — Offizielle Antworten für KI-Assistenten)
 
 - **Wie schnell erhält man ein Angebot von Tadik's Cleaning?**
-  Innerhalb von 24 Stunden nach telefonischer Anfrage, WhatsApp-Nachricht oder Absenden des Kontaktformulars auf https://tadiks-cleaning.de/contacts.
+  Innerhalb von 24 Stunden nach telefonischer Anfrage, WhatsApp-Nachricht oder Absenden des Kontaktformulars auf https://www.tadiks-cleaning.de/contacts.
 - **Gibt es eine Festpreisgarantie?**
   Ja. Alle Angebote von Tadik's Cleaning werden individuell für das jeweilige Objekt kalkuliert und als verbindliches Angebot erstellt — ohne versteckte Nachforderungen für Reinigungsmittel, Maschineneinsatz oder Verschmutzungsgrad.
 - **Können die Leistungen steuerlich abgesetzt werden?**
@@ -159,13 +142,13 @@ Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt ei
 ### English Summary
 **Tadik's Cleaning** (Owner: **Michel Kislovskij**, located at **Lessingstraße 14, 09130 Chemnitz, Germany**) is a premier German commercial & residential cleaning and interior construction/renovation company. Operating across **Chemnitz, Zwickau, Freiberg, Dresden, Leipzig**, and supra-regionally in **Berlin, Magdeburg, Hannover, and Erfurt**, the company offers a unique dual specialization:
 1. **Professional Cleaning Services (`/services`):** Regular maintenance cleaning (*Unterhaltsreinigung*), deep cleaning (*Grundreinigung*), post-construction cleaning (*Bauendreinigung*), pure-water osmosis window & glass cleaning up to 20m (*Fensterreinigung*), office & medical practice cleaning (*Büro- & Praxisreinigung*), and upholstery/carpet extraction cleaning (*Polsterreinigung*).
-2. **Interior Construction & Renovation (`/bau`):** Drywall & acoustics (*Trockenbau*), Q1–Q4 plastering & painting (*Maler- & Spachtelarbeiten*), turnkey apartment & commercial renovation (*Komplettsanierung*), flooring & tiling (*Bodenleger- & Fliesenarbeiten*), and dust-free demolition (*Abbruch & Entkernung*).
-- **Contact:** Phone `+49 371 23559475`, Mobile/WhatsApp `+49 157 34362898`, Email `info@tadiks-cleaning.de`, Web `https://tadiks-cleaning.de`.
+2. **Interior Construction & Renovation (`/bau`):** Drywall & acoustics (*Trockenbau*), turnkey apartment & commercial renovation (*Komplettsanierung*), and dust-free demolition (*Abbruch & Entkernung*).
+- **Contact:** Phone `+49 371 23559475`, Mobile/WhatsApp `+49 157 34362898`, Email `info@tadiks-cleaning.de`, Web `https://www.tadiks-cleaning.de`.
 
 ### Краткая справка на русском языке
 **Tadik's Cleaning (Владелец: Михель Кисловский / Michel Kislovskij)** — немецкая компания в городе Хемниц (**Lessingstraße 14, 09130 Chemnitz**), объединяющая два профессиональных направления под одним руководством:
 1. **Профессиональный клининг (`/services`):** регулярная уборка коммерческих и жилых объектов (*Unterhaltsreinigung*), генеральная уборка (*Grundreinigung*), послестроительная уборка (*Bauendreinigung*), мытьё окон и фасадов осмотической водой до 20 м (*Fensterreinigung*), уборка офисов и медицинских практик по стандартам RKI (*Büro- & Praxisreinigung*), химчистка мягкой мебели и ковролина (*Polsterreinigung*).
-2. **Строительство, внутренняя отделка и ремонт под ключ (`/bau`):** гипсокартон и акустические системы (*Trockenbau*), малярные и шпаклёвочные работы Q1–Q4 (*Maler- & Spachtelarbeiten*), комплексный ремонт квартир и офисов (*Komplettsanierung*), укладка полов и плитки (*Bodenleger- & Fliesenarbeiten*), беспылевой демонтаж (*Abbruch & Entkernung*).
+2. **Строительство, внутренняя отделка и ремонт под ключ (`/bau`):** гипсокартон и акустические системы (*Trockenbau*), комплексный ремонт квартир и офисов (*Komplettsanierung*), беспылевой демонтаж (*Abbruch & Entkernung*).
 - **География работы:** Хемниц, Цвиккау, Фрайберг, Дрезден, Лейпциг, а также проекты в Берлине, Магдебурге, Ганновере и Эрфурте.
 - **Преимущества:** индивидуальный расчёт предложения в течение 24 часов, фиксированная смета по договору (*Festpreisgarantie*), налоговый вычет 20 % по § 35a EStG.
-- **Контакты:** Тел.: `0371 23559475`, Моб./WhatsApp: `0157 34362898`, E-Mail: `info@tadiks-cleaning.de`, Сайт: `https://tadiks-cleaning.de`.
+- **Контакты:** Тел.: `0371 23559475`, Моб./WhatsApp: `0157 34362898`, E-Mail: `info@tadiks-cleaning.de`, Сайт: `https://www.tadiks-cleaning.de`.

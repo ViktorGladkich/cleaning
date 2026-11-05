@@ -12,7 +12,7 @@ const VALUES = [
     title: "Integrierte Gewerke ohne Schnittstellenverlust",
     subtitle: "Bau & Reinigung Hand in Hand",
     description:
-      "Verzögerungen auf Baustellen entstehen meist an der Schnittstelle zwischen Handwerkern und Reinigungskräften. Bei uns arbeiten Trockenbauer, Maler und Reinigungsteams nahtlos zusammen — das spart bis zu 30% Zeit und garantiert schlüsselfertige Perfektion.",
+      "Verzögerungen auf Baustellen entstehen meist an der Schnittstelle zwischen Handwerkern und Reinigungskräften. Bei uns arbeiten Trockenbauer und Reinigungsteams nahtlos zusammen — das spart bis zu 30% Zeit und garantiert schlüsselfertige Perfektion.",
     icon: Layers,
     badge: "Kein Koordinationsaufwand",
   },
@@ -39,7 +39,7 @@ const VALUES = [
     title: "Materialgerechte Bausubstanz-Pflege",
     subtitle: "Angewandte Materialwissenschaft",
     description:
-      "Als Handwerker kennen wir Werkstoffe bis ins kleinste Detail. Von VOB-konformen Spachtelqualitäten (Q1–Q4) bis hin zu pH-wert-kalibrierter Chemie für empfindliche Naturstein- und Parkettböden: Wir schützen den Sachwert Ihrer Immobilie dauerhaft.",
+      "Als Handwerker kennen wir Werkstoffe bis ins kleinste Detail. Von normgerechten Trockenbausystemen bis hin zu pH-wert-kalibrierter Chemie für empfindliche Naturstein- und Parkettböden: Wir schützen den Sachwert Ihrer Immobilie dauerhaft.",
     icon: Award,
     badge: "Geprüfter Werterhalt",
   },

@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default function ImpressumPage() {
+  const { legal } = COMPANY_INFO;
+  const hasRegisterDetails = Boolean(
+    legal.commercialRegister || legal.craftRegister || legal.chamber || legal.professionTitle
+  );
+  const hasTaxDetails = Boolean(legal.vatId || legal.economicId);
+
   return (
     <div className="relative w-full min-h-screen bg-brand-cream text-brand-navy pt-28 sm:pt-36 pb-20 sm:pb-28">
       <Container className="relative z-10 max-w-4xl mx-auto">
@@ -43,7 +49,7 @@ export default function ImpressumPage() {
           {/* Company & Owner */}
           <div className="space-y-1">
             <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-2">
-              1. Diensteanbieter (§ 5 DDG)
+              Diensteanbieter (§ 5 DDG)
             </h2>
             <p className="text-lg font-semibold text-brand-navy">
               {COMPANY_INFO.name}
@@ -59,7 +65,7 @@ export default function ImpressumPage() {
           {/* Contact */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-2">
             <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-3">
-              2. Kontaktmöglichkeiten
+              Kontaktmöglichkeiten
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <a
@@ -112,7 +118,7 @@ export default function ImpressumPage() {
           {/* Representation */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-2">
             <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-2">
-              3. Vertretung &amp; Redaktionelle Verantwortung
+              Vertretung &amp; Redaktionelle Verantwortung
             </h2>
             <p>
               Inhaber und vertretungsberechtigt:{" "}
@@ -125,23 +131,67 @@ export default function ImpressumPage() {
             </p>
           </div>
 
+          {/* Register, chamber & tax IDs: rendered only once confirmed in COMPANY_INFO.legal */}
+          {hasRegisterDetails && (
+            <div className="pt-6 border-t border-brand-navy/10 space-y-1">
+              <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-2">
+                Register, Kammer &amp; Berufsbezeichnung
+              </h2>
+              {legal.commercialRegister && <p>Handelsregister: {legal.commercialRegister}</p>}
+              {legal.craftRegister && <p>Eintragung: {legal.craftRegister}</p>}
+              {legal.chamber && <p>Aufsichtsbehörde / Kammer: {legal.chamber}</p>}
+              {legal.professionTitle && <p>Gesetzliche Berufsbezeichnung: {legal.professionTitle}</p>}
+              {(legal.craftRegister || legal.professionTitle) && (
+                <p>
+                  Berufsrechtliche Regelung: Handwerksordnung (HwO), abrufbar unter{" "}
+                  <a
+                    href="https://www.gesetze-im-internet.de/hwo/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-brand-navy"
+                  >
+                    www.gesetze-im-internet.de/hwo
+                  </a>
+                </p>
+              )}
+            </div>
+          )}
+
+          {hasTaxDetails && (
+            <div className="pt-6 border-t border-brand-navy/10 space-y-1">
+              <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-2">
+                Steuerliche Angaben
+              </h2>
+              {legal.vatId && <p>Umsatzsteuer-Identifikationsnummer: {legal.vatId}</p>}
+              {legal.economicId && <p>Wirtschafts-Identifikationsnummer: {legal.economicId}</p>}
+            </div>
+          )}
+
           {/* Insurance */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-2">
             <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-2">
-              4. Betriebshaftpflichtversicherung
+              Betriebshaftpflichtversicherung
             </h2>
             <div className="flex items-start gap-3 p-4 rounded-xl bg-brand-cream/40 border border-brand-navy/10">
               <ShieldCheck className="w-5 h-5 text-brand-navy shrink-0 mt-0.5" />
-              <p className="text-xs sm:text-sm text-brand-navy/80">
-                Es besteht eine gewerbliche Betriebshaftpflichtversicherung für Personen-, Sach- und Vermögensschäden. Räumlicher Geltungsbereich: Bundesrepublik Deutschland.
-              </p>
+              <div className="text-xs sm:text-sm text-brand-navy/80 space-y-1">
+                <p>
+                  Es besteht eine gewerbliche Betriebshaftpflichtversicherung für Personen-, Sach- und Vermögensschäden. Räumlicher Geltungsbereich: Bundesrepublik Deutschland.
+                </p>
+                {legal.insurerName && (
+                  <p>
+                    Versicherer: {legal.insurerName}
+                    {legal.insurerAddress && `, ${legal.insurerAddress}`}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
           {/* Dispute resolution (Updated for 2026: ODR platform discontinued under Regulation (EU) 2024/3228) */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-2">
             <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-1">
-              5. Verbraucherstreitbeilegung (§ 36 VSBG)
+              Verbraucherstreitbeilegung (§ 36 VSBG)
             </h2>
             <p className="text-xs sm:text-sm text-brand-navy/75">
               Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle im Sinne des Verbraucherstreitbeilegungsgesetzes (§ 36 Abs. 1 Nr. 1 VSBG) teilzunehmen.
@@ -151,11 +201,8 @@ export default function ImpressumPage() {
           {/* Liability & Copyright */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3 text-xs text-brand-navy/65">
             <h2 className="text-xs font-mono uppercase tracking-wider text-brand-navy/60 mb-1">
-              6. Haftung für Inhalte, Links &amp; Urheberrecht
+              Urheberrecht
             </h2>
-            <p>
-              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-            </p>
             <p>
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
             </p>

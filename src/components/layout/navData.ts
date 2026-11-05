@@ -25,17 +25,16 @@ export const MEGA_MENU_SECTIONS: MegaMenuSection[] = [
       { label: "Bauendreinigung", href: "/services/bauendreinigung" },
       { label: "Fenster- & Glasreinigung", href: "/services/fensterreinigung" },
       { label: "Büro- & Praxisreinigung", href: "/services/bueroreinigung" },
+      { label: "Hotelreinigung", href: "/services/hotelreinigung" },
     ],
   },
   {
     title: "Bau & Sanierung",
     links: [
       { label: "Übersicht Bauleistungen", href: "/bau" },
-      { label: "Trockenbau & Innenausbau", href: "/services/trockenbau-innenausbau" },
-      { label: "Komplettsanierung", href: "/services/renovierung-sanierung" },
-      { label: "Maler- & Spachtelarbeiten", href: "/services/maler-spachtelarbeiten" },
-      { label: "Bodenleger- & Fliesenarbeiten", href: "/services/bodenleger-fliesenarbeiten" },
-      { label: "Abbruch & Entkernung", href: "/services/abbruch-entkernung" },
+      { label: "Trockenbau & Innenausbau", href: "/bau/trockenbau-innenausbau" },
+      { label: "Komplettsanierung", href: "/bau/renovierung-sanierung" },
+      { label: "Abbruch & Entkernung", href: "/bau/abbruch-entkernung" },
     ],
   },
 ];

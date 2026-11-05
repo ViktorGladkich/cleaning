@@ -40,15 +40,17 @@ export function BauHero() {
       {/* 1. Full-bleed Background Image with crisp architectural depth */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/images/hero_bau_monumental.jpg"
-          alt="Tadiks professioneller Bau, Trockenbau und Sanierung"
+          src="/images/services/overview-bau.jpg"
+          alt="Team mit Schutzhelmen beim Trockenbau im Dachgeschoss eines Altbaus in Chemnitz"
           fill
           priority
           sizes="100vw"
           className="object-cover object-center sm:scale-[1.02]"
         />
         {/* Cinematic dark tint overlay for crystal-clear readability while preserving warm architectural light */}
-        <div className="absolute inset-0 bg-linear-to-b from-brand-navy/70 via-black/45 to-brand-navy/85 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/25 via-black/30 to-black/55 pointer-events-none" />
+        {/* Soft scrim behind the centred text keeps the edges of the photo bright */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_center,rgba(0,0,0,0.5),transparent)] pointer-events-none" />
       </div>
 
       {/* 2. Centered Content: Title & Subtitle only */}
@@ -62,8 +64,12 @@ export function BauHero() {
         </h1>
 
         <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-          Trockenbau, Q1–Q4 Spachtelung, Komplettausbau und schlüsselfertige Sanierung
+          Trockenbau, Komplettausbau und schlüsselfertige Sanierung
           aus einer Hand für Chemnitz und Mittelsachsen.
+        </p>
+
+        <p className="hero-subtitle mt-6 text-xs text-white/80">
+          Symbolbilder auf dieser Seite: KI-generiert.
         </p>
       </div>
     </section>

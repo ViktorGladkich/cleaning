@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, isTouchLayout, useGSAP } from "@/lib/gsap";
 import { RollingText } from "@/components/animations/RollingText";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { cn } from "@/lib/utils";
@@ -28,6 +28,8 @@ export interface ServicesGridSectionProps {
   ctaText?: string;
   ctaHref?: string;
   items?: ServiceGridItem[];
+  /** Lets long titles wrap; the rolling hover effect only fits a single line. */
+  wrapTitles?: boolean;
   className?: string;
 }
 
@@ -37,7 +39,7 @@ export const SERVICES: ServiceGridItem[] = [
     title: "Unterhaltsreinigung",
     tagline: "BÜRO-, KANZLEI- & PRAXISHYGIENE IN SACHSEN",
     category: "REINIGUNG",
-    imageSrc: "/images/service_grid_unterhalt.webp",
+    imageSrc: "/images/services/hero-unterhaltsreinigung.jpg",
     imageAlt: "Professionelle Unterhaltsreinigung in Chemnitz und Sachsen",
     bullets: [
       "Feste Objektleiter & feste Fachkräfte",
@@ -51,7 +53,7 @@ export const SERVICES: ServiceGridItem[] = [
     title: "Glas- & Fassadenreinigung",
     tagline: "STREIFENFREIE SPEZIALREINIGUNG BIS 20M HÖHE",
     category: "REINIGUNG",
-    imageSrc: "/images/service_grid_glas.webp",
+    imageSrc: "/images/services/hero-fensterreinigung.jpg",
     imageAlt: "Streifenfreie Glas- und Fensterreinigung in Sachsen",
     bullets: [
       "Modernste Osmose-Reinstwassertechnik",
@@ -65,7 +67,7 @@ export const SERVICES: ServiceGridItem[] = [
     title: "Bauendreinigung",
     tagline: "BEZUGSFERTIGE SCHLÜSSELÜBERGABE NACH BAU & SANIERUNG",
     category: "REINIGUNG",
-    imageSrc: "/images/service_grid_bauende.webp",
+    imageSrc: "/images/services/hero-bauendreinigung.jpg",
     imageAlt: "Bezugsfertige Bauendreinigung in Sachsen",
     bullets: [
       "Zementschleier- & feinstaubfreie Übergabe",
@@ -79,7 +81,7 @@ export const SERVICES: ServiceGridItem[] = [
     title: "Trockenbau & Akustik",
     tagline: "DIN-GERECHTE WAND- & DECKENSYSTEME, SCHALLSCHUTZ",
     category: "BAU",
-    imageSrc: "/images/service_grid_trockenbau.webp",
+    imageSrc: "/images/services/hero-trockenbau-innenausbau.jpg",
     imageAlt: "Präziser Trockenbau und Akustikbau in Sachsen",
     bullets: [
       "Brand-, Schall- & Feuchteschutz nach DIN",
@@ -89,16 +91,16 @@ export const SERVICES: ServiceGridItem[] = [
     href: "/bau",
   },
   {
-    id: "maler",
-    title: "Maler- & Spachteltechnik",
-    tagline: "HOCHWERTIGE SPACHTELSTUFEN Q1–Q4 & ANSTRICH",
+    id: "abbruch",
+    title: "Abbruch & Entkernung",
+    tagline: "STAUBARME DEMONTAGE & RECYCLINGGERECHTE ENTSORGUNG",
     category: "BAU",
-    imageSrc: "/images/service_grid_maler.webp",
-    imageAlt: "Malerarbeiten und Q1-Q4 Spachteltechnik in Sachsen",
+    imageSrc: "/images/services/hero-abbruch-entkernung.jpg",
+    imageAlt: "Staubarme Entkernung und Rückbauarbeiten",
     bullets: [
-      "Streiflichtfreie Oberflächen für höchste Ansprüche",
-      "Glattvlies, moderne Farbkonzepte & Lackierung",
-      "Schadstofffreie, diffusionsoffene Markenfarben",
+      "Rückbau nichttragender Wände & alter Bodenbeläge",
+      "Einsatz von HEPA-Staubschutzwänden & Luftreinigern",
+      "Sortenreine Entsorgung inklusive Bauschutt-Nachweis",
     ],
     href: "/bau",
   },
@@ -107,10 +109,10 @@ export const SERVICES: ServiceGridItem[] = [
     title: "Komplettsanierung",
     tagline: "ALLES AUS EINER HAND OHNE SCHNITTSTELLENVERLUST",
     category: "BAU",
-    imageSrc: "/images/service_grid_sanierung.webp",
+    imageSrc: "/images/services/hero-renovierung-sanierung.jpg",
     imageAlt: "Komplettsanierung von Altbauten und Gewerbeflächen in Sachsen",
     bullets: [
-      "Entkernung, Trockenbau, Parkett & Feinreinigung",
+      "Entkernung, Trockenbau & Feinreinigung",
       "Spezialisiert auf sächsische Altbauten & Lofts",
       "Fester deutscher Bauleiter & Termingarantie",
     ],
@@ -126,6 +128,7 @@ export function ServicesGridSection({
   ctaText = "Alle Leistungen ansehen",
   ctaHref = "/services",
   items = SERVICES,
+  wrapTitles = false,
   className,
 }: ServicesGridSectionProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -222,20 +225,22 @@ export function ServicesGridSection({
       }
 
       // 2. Continuous smooth parallax drift on card images while scrolling through the section
-      gsap.fromTo(
-        ".service-card-parallax-img",
-        { yPercent: -8 },
-        {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: isMobile ? true : 1.2,
-          },
-        }
-      );
+      if (!isTouchLayout()) {
+        gsap.fromTo(
+          ".service-card-parallax-img",
+          { yPercent: -8 },
+          {
+            yPercent: 8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
+            },
+          }
+        );
+      }
     },
     { scope: sectionRef }
   );
@@ -303,12 +308,18 @@ export function ServicesGridSection({
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4 mb-2 min-w-0">
                   <h3 className="text-xl sm:text-2xl font-normal tracking-tight leading-tight min-w-0">
-                    <RollingText
-                      duplicateClassName="text-white"
-                      className="text-brand-navy group-hover:text-white transition-colors duration-500 ease-out"
-                    >
-                      {card.title}
-                    </RollingText>
+                    {wrapTitles ? (
+                      <span className="text-brand-navy transition-colors duration-500 ease-out group-hover:text-white">
+                        {card.title}
+                      </span>
+                    ) : (
+                      <RollingText
+                        duplicateClassName="text-white"
+                        className="text-brand-navy group-hover:text-white transition-colors duration-500 ease-out"
+                      >
+                        {card.title}
+                      </RollingText>
+                    )}
                   </h3>
 
                   {/* Direct prominent arrow: No circle, unclipped, crisp, slides diagonally on hover */}
@@ -331,7 +342,7 @@ export function ServicesGridSection({
                       src={card.imageSrc}
                       alt={card.imageAlt || card.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 270px, 285px"
                       className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                   </div>

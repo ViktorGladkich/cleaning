@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { ALL_SERVICE_DETAILS } from "@/data/serviceDetails";
+import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://tadiks-cleaning.de";
+  const baseUrl = SITE_URL;
   const lastModified = new Date("2026-11-01T12:00:00Z");
 
   const staticRoutes: MetadataRoute.Sitemap = [

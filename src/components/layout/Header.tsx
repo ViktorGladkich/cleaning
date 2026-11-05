@@ -274,7 +274,7 @@ export function Header() {
             aria-label="Tadiks Cleaning Startseite"
           >
             <Image
-              src="/TADIKS_LOGO_COLOR.svg"
+              src="/TADIKS_LOGO_COLOR.png"
               alt="Tadiks Cleaning & Bau Logo"
               width={180}
               height={84}

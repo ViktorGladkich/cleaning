@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP, isTouchLayout } from "@/lib/gsap";
 import { CtaButton } from "@/components/ui/CtaButton";
 
 const STATEMENT_WORDS = [
@@ -33,36 +33,32 @@ const STATEMENT_WORDS = [
 
 const MARQUEE_IMAGES = [
   {
-    src: "/images/about_gallery_1.webp",
-    alt: "Erstklassige Raumhygiene und Badgestaltung",
+    src: "/images/services/gallery-1.jpg",
+    alt: "Erstklassige Raumhygiene im Bad",
   },
   {
-    src: "/images/about_gallery_2.webp",
-    alt: "Architektur, warme Materialien und Wohnästhetik",
+    src: "/images/services/gallery-2.jpg",
+    alt: "Gründerzeit-Treppenhaus nach der Reinigung",
   },
   {
-    src: "/images/about_gallery_4.webp",
+    src: "/images/services/gallery-4.jpg",
     alt: "Präzises Bauhandwerk und millimetergenaue Ausrichtung",
   },
   {
-    src: "/images/about_gallery_5.webp",
+    src: "/images/services/gallery-5.jpg",
     alt: "Streifenfreie Glasflächen und lichtdurchflutete Räume",
   },
   {
-    src: "/images/about_gallery_3.webp",
-    alt: "Schlüsselfertige Sanierung und bezugsfertige Übergabe",
+    src: "/images/services/hero-bauendreinigung.jpg",
+    alt: "Bezugsfertige Übergabe nach der Bauendreinigung",
   },
   {
-    src: "/images/megamenu_promo_optimized.png",
-    alt: "Oberflächenqualität und millimetergenaue Fugen",
+    src: "/images/services/step-reinigung-2.webp",
+    alt: "Transporter mit Reinigungsausrüstung vor einem Gründerzeithaus",
   },
   {
-    src: "/images/service_grid_maler.webp",
-    alt: "Hochwertige Maler- und Spachtelarbeiten",
-  },
-  {
-    src: "/images/service_bau_card.jpg",
-    alt: "Architektonische Handwerkskunst",
+    src: "/images/services/step-bau-3.webp",
+    alt: "Trockenbau im Altbau mit Staubschutz",
   },
 ];
 
@@ -199,20 +195,22 @@ export function AboutSection({
       }
 
       // 3. Vertical Parallax drift on images during page scroll
-      gsap.fromTo(
-        ".about-marquee-parallax-img",
-        { yPercent: -10 },
-        {
-          yPercent: 10,
-          ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: isMobile ? true : 1.2,
-          },
-        }
-      );
+      if (!isTouchLayout()) {
+        gsap.fromTo(
+          ".about-marquee-parallax-img",
+          { yPercent: -10 },
+          {
+            yPercent: 10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
+            },
+          }
+        );
+      }
 
       // 4. Rolling Odometer numeric counter animation on scroll into view
       const reels = sectionRef.current.querySelectorAll<HTMLElement>(".odometer-reel");

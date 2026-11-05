@@ -25,7 +25,7 @@
 
 ## 🚀 Технологический стек
 
-- **Фреймворк:** [Next.js 16.3.7](https://nextjs.org/) (App Router, SSG / `generateStaticParams`, Route Handlers)
+- **Фреймворк:** [Next.js 16.4.4](https://nextjs.org/) (App Router, SSG / `generateStaticParams`, Route Handlers)
 - **UI-библиотека:** [React 19](https://react.dev/) + строгий [TypeScript 5](https://www.typescriptlang.org/)
 - **Стилизация:** [Tailwind CSS v4](https://tailwindcss.com/) (`@theme inline`, CSS-переменные дизайн-токенов)
 - **Анимации и кинетика:** [GSAP 3](https://gsap.com/) + `@gsap/react` + `ScrollTrigger`
@@ -67,7 +67,7 @@ cleaning/
 │   │   │   ├── page.tsx                        # Раздел «Профессиональный клининг» (/services)
 │   │   │   └── [slug]/page.tsx                 # Детальные страницы услуг клининга (SSG)
 │   │   ├── globals.css                         # Глобальные стили и дизайн-токены Tailwind CSS v4
-│   │   ├── layout.tsx                          # Корневой Layout (Header, Footer, CookieBanner, JSON-LD)
+│   │   ├── layout.tsx                          # Корневой Layout (Header, Footer, JSON-LD)
 │   │   ├── not-found.tsx                       # Кастомная страница 404
 │   │   ├── page.tsx                            # Главная страница (/)
 │   │   ├── robots.ts                           # Генерация robots.txt с поддержкой ИИ-ботов
@@ -78,7 +78,7 @@ cleaning/
 │   │   │   ├── Header.tsx                      # Фиксированная шапка с бургер-анимацией и MegaMenu
 │   │   │   ├── MegaMenu.tsx                    # Десктопное выпадающее меню услуг
 │   │   │   ├── MobileMenu.tsx                  # Мобильное меню с аккордеоном услуг
-│   │   │   ├── Footer.tsx                      # Подвал сайта с навигацией и быстрым вызовом Cookie-настроек
+│   │   │   ├── Footer.tsx                      # Подвал сайта с навигацией и юридическими ссылками
 │   │   │   ├── SmoothScroll.tsx                # Обёртка плавного скролла Lenis + синхронизация ScrollTrigger
 │   │   │   ├── PageTransition.tsx              # Кинематографичный 5-колоночный переход между страницами
 │   │   │   ├── JsonLdSchema.tsx                # Микроразметка Schema.org (LocalBusiness + OfferCatalog)
@@ -116,7 +116,7 @@ cleaning/
 │   │   ├── bau/                                # Специализированные компоненты раздела строительства
 │   │   ├── about/                              # Специализированные компоненты страницы «О нас»
 │   │   ├── animations/                         # Кинетическая типографика (RollingText)
-│   │   └── ui/                                 # Базовые UI-компоненты (CtaButton, CookieBanner, Container и др.)
+│   │   └── ui/                                 # Базовые UI-компоненты (CtaButton, Container и др.)
 │   │
 │   ├── data/                                   # Контентный слой (тексты, услуги, FAQ)
 │   │   ├── serviceDetails.ts                   # Полные спецификации всех детальных страниц услуг
@@ -149,13 +149,13 @@ cleaning/
 2. **Многоуровневая защита формы и API ([`src/app/api/contact/route.ts`](./src/app/api/contact/route.ts)):**
    - **CSRF / Origin Check:** проверка заголовка `Origin` при POST-запросах.
    - **Honeypot-ловушки:** скрытые поля `website` и `companyFax` для отсечения автоматических ботов.
-   - **Контроль времени заполнения (`formLoadedAt`):** блокировка мгновенных сабмитов быстрее 2.5 секунд.
-   - **Защита от DDoS и утечек памяти (Rate Limiting):** ограничение до 5 запросов с одного IP за 15 минут с жёстким лимитом памяти (`MAX_STORE_ENTRIES = 2000`) и автоматическим вытеснением старых записей (FIFO).
+   - **Контроль времени заполнения (`formElapsedMs`):** блокировка мгновенных сабмитов быстрее 2.2 секунды.
+   - **Защита от DDoS и утечек памяти (Rate Limiting):** ограничение до 3 заявок с одного IP за 10 минут (отдельно на каждый инстанс) с жёстким лимитом памяти (`MAX_STORE_ENTRIES = 2000`) и автоматическим вытеснением старых записей (FIFO).
    - **Санитизация и фильтрация ссылок:** очистка управляющих символов, HTML-тегов и блокировка спам-ссылок (`http://`, `https://`, `<script`, `[url=`).
    - **Отсутствие утечки PII:** API возвращает только статус и номер заявки (`referenceId`) без отражения персональных данных в ответе.
-3. **Юридическое соответствие Германии и ЕС (Stand: 01.11.2026):**
-   - **Impressum ([`src/app/impressum/page.tsx`](./src/app/impressum/page.tsx)):** составлен по актуальному **§ 5 DDG** (заменившему старый TMG), **§ 18 Abs. 2 MStV** и **§ 36 VSBG** (без закрытой с июля 2025 года платформы EU-OS).
-   - **Datenschutzerklärung ([`src/app/datenschutz/page.tsx`](./src/app/datenschutz/page.tsx)):** полное соответствие **Art. 13, 14, 21 DSGVO**, **§ 25 TDDDG** и **BDSG**, включая визуально выделенный блок права на возражение (`Art. 21 Abs. 4 DSGVO`) и кнопку прямого изменения Cookie-настроек.
+3. **Юридическое соответствие Германии и ЕС (Stand: 04.11.2026, перед публикацией нужна проверка юристом):**
+   - **Impressum ([`src/app/impressum/page.tsx`](./src/app/impressum/page.tsx)):** составлен по актуальному **§ 5 DDG** (заменившему старый TMG), **§ 18 Abs. 2 MStV** и **§ 36 VSBG** (без закрытой с июля 2025 года платформы EU-OS). Данные, которые может подтвердить только владелец, заполняются в `COMPANY_INFO.legal`.
+   - **Datenschutzerklärung ([`src/app/datenschutz/page.tsx`](./src/app/datenschutz/page.tsx)):** составлена по **Art. 13, 14, 21 DSGVO**, **§ 25 TDDDG** и **BDSG**, включая выделенный блок права на возражение (`Art. 21 Abs. 4 DSGVO`). Cookie и трекеров на сайте нет, поэтому баннера тоже нет: при подключении аналитики или внешних медиа он понадобится снова.
 
 ---
 
@@ -178,8 +178,8 @@ cleaning/
    - Детальные страницы услуг: [`src/data/serviceDetails.ts`](./src/data/serviceDetails.ts)
    - Карточки в каталоге клининга: [`src/data/reinigungServices.ts`](./src/data/reinigungServices.ts)
    - Карточки в каталоге строительства: [`src/data/bauServices.ts`](./src/data/bauServices.ts)
-3. **Подключить отправку заявок на почту / в Telegram / CRM:**
-   Откройте [`src/app/api/contact/route.ts`](./src/app/api/contact/route.ts) — все проверенные и очищенные поля заявки доступны в конце функции `POST(req)`. Достаточно добавить вызов `Resend`, `Nodemailer` или Telegram Bot API.
+3. **Настроить отправку заявок на почту:**
+   Заявки уходят по SMTP (`src/lib/contactMail.ts`). Задайте в Vercel переменные из [`.env.example`](./.env.example). Без них форма не имитирует успех, а просит посетителя позвонить.
 
 ---
 

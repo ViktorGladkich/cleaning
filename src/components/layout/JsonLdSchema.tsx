@@ -1,5 +1,5 @@
 import React from "react";
-import { COMPANY_INFO } from "@/lib/constants";
+import { COMPANY_INFO, SITE_URL } from "@/lib/constants";
 
 export function JsonLdSchema() {
   const schemaData = {
@@ -7,14 +7,14 @@ export function JsonLdSchema() {
     "@graph": [
       {
         "@type": ["LocalBusiness", "HomeAndConstructionBusiness", "ProfessionalService"],
-        "@id": "https://tadiks-cleaning.de/#organization",
+        "@id": `${SITE_URL}/#organization`,
         name: COMPANY_INFO.name,
         alternateName: "Tadik's Cleaning Chemnitz — Inh. Michel Kislovskij",
-        url: "https://tadiks-cleaning.de",
-        logo: "https://tadiks-cleaning.de/TADIKS_LOGO_COLOR.svg",
-        image: "https://tadiks-cleaning.de/og-image.jpg",
+        url: `${SITE_URL}`,
+        logo: `${SITE_URL}/TADIKS_LOGO_COLOR.svg`,
+        image: `${SITE_URL}/og-image.jpg`,
         description:
-          "Professionelle Gebäudereinigung (Unterhalts-, Grund-, Glas-, Büro-, Praxis- & Bauendreinigung) sowie Bau-, Trockenbau-, Maler-, Bodenleger- und Sanierungsarbeiten in Chemnitz, Sachsen und überregional.",
+          "Professionelle Gebäudereinigung (Unterhalts-, Grund-, Glas-, Büro-, Praxis- & Bauendreinigung) sowie Bau-, Trockenbau- und Sanierungsarbeiten in Chemnitz, Sachsen und überregional.",
         founder: {
           "@type": "Person",
           name: COMPANY_INFO.owner,
@@ -97,7 +97,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Unterhaltsreinigung",
-                    url: "https://tadiks-cleaning.de/services/unterhaltsreinigung",
+                    url: `${SITE_URL}/services/unterhaltsreinigung`,
                   },
                 },
                 {
@@ -105,7 +105,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Grundreinigung",
-                    url: "https://tadiks-cleaning.de/services/grundreinigung",
+                    url: `${SITE_URL}/services/grundreinigung`,
                   },
                 },
                 {
@@ -113,7 +113,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Bauendreinigung",
-                    url: "https://tadiks-cleaning.de/services/bauendreinigung",
+                    url: `${SITE_URL}/services/bauendreinigung`,
                   },
                 },
                 {
@@ -121,7 +121,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Fenster- & Glasreinigung",
-                    url: "https://tadiks-cleaning.de/services/fensterreinigung",
+                    url: `${SITE_URL}/services/fensterreinigung`,
                   },
                 },
                 {
@@ -129,7 +129,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Büro- & Praxisreinigung",
-                    url: "https://tadiks-cleaning.de/services/bueroreinigung",
+                    url: `${SITE_URL}/services/bueroreinigung`,
                   },
                 },
                 {
@@ -137,7 +137,39 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Polster- & Teppichreinigung",
-                    url: "https://tadiks-cleaning.de/services/polsterreinigung",
+                    url: `${SITE_URL}/services/polsterreinigung`,
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Hotelreinigung",
+                    url: `${SITE_URL}/services/hotelreinigung`,
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Treppenhausreinigung",
+                    url: `${SITE_URL}/services/treppenhausreinigung`,
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Industrie- & Hallenreinigung",
+                    url: `${SITE_URL}/services/industrie-und-hallenreinigung`,
+                  },
+                },
+                {
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: "Entrümpelungen",
+                    url: `${SITE_URL}/services/entruempelungen`,
                   },
                 },
               ],
@@ -151,7 +183,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Trockenbau & Innenausbau",
-                    url: "https://tadiks-cleaning.de/bau/trockenbau-innenausbau",
+                    url: `${SITE_URL}/bau/trockenbau-innenausbau`,
                   },
                 },
                 {
@@ -159,23 +191,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Komplettsanierung & Renovierung",
-                    url: "https://tadiks-cleaning.de/bau/renovierung-sanierung",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Maler- & Spachtelarbeiten (Q1–Q4)",
-                    url: "https://tadiks-cleaning.de/bau/maler-spachtelarbeiten",
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Bodenleger- & Fliesenarbeiten",
-                    url: "https://tadiks-cleaning.de/bau/bodenleger-fliesenarbeiten",
+                    url: `${SITE_URL}/bau/renovierung-sanierung`,
                   },
                 },
                 {
@@ -183,7 +199,7 @@ export function JsonLdSchema() {
                   itemOffered: {
                     "@type": "Service",
                     name: "Abbruch, Entkernung & Rückbau",
-                    url: "https://tadiks-cleaning.de/bau/abbruch-entkernung",
+                    url: `${SITE_URL}/bau/abbruch-entkernung`,
                   },
                 },
               ],
@@ -193,11 +209,11 @@ export function JsonLdSchema() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://tadiks-cleaning.de/#website",
-        url: "https://tadiks-cleaning.de",
+        "@id": `${SITE_URL}/#website`,
+        url: `${SITE_URL}`,
         name: COMPANY_INFO.name,
         publisher: {
-          "@id": "https://tadiks-cleaning.de/#organization",
+          "@id": `${SITE_URL}/#organization`,
         },
         inLanguage: "de-DE",
       },

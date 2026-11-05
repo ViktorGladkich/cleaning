@@ -18,16 +18,18 @@ import { useState, useEffect } from "react";
  * HORIZONTAL WIDTH changes (e.g. device rotation between portrait & landscape),
  * the container remains 100% rock-solid and motionless during any vertical scroll.
  */
-export function useLockedHeroHeight(paddingY = 0): number | null {
+export function useLockedHeroHeight(paddingY = 0, paddingYWide = paddingY): number | null {
   const [lockedHeight, setLockedHeight] = useState<number | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const lock = () => {
-      // Only lock on mobile / tablet screens (< 640px)
-      if (window.innerWidth < 640) {
-        setLockedHeight(Math.round(window.innerHeight - paddingY));
+      // Lock on phones and on every touch device: tablets and landscape phones
+      // run in-app browsers with collapsing toolbars too.
+      const isNarrow = window.innerWidth < 640;
+      if (isNarrow || window.matchMedia("(pointer: coarse)").matches) {
+        setLockedHeight(Math.round(window.innerHeight - (isNarrow ? paddingY : paddingYWide)));
       } else {
         setLockedHeight(null);
       }
@@ -52,7 +54,7 @@ export function useLockedHeroHeight(paddingY = 0): number | null {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("orientationchange", lock);
     };
-  }, [paddingY]);
+  }, [paddingY, paddingYWide]);
 
   return lockedHeight;
 }

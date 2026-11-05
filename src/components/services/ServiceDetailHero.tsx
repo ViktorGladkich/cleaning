@@ -3,18 +3,10 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Phone,
-  ShieldCheck,
-  Clock,
-  ArrowRight,
-  ChevronRight,
-  BadgePercent,
-  Award,
-} from "lucide-react";
-import { ServiceDetailData } from "@/data/serviceDetails";
-import { COMPANY_INFO } from "@/lib/constants";
+import { ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
+import { ServiceDetailData } from "@/data/serviceDetails";
+import { CtaButton } from "@/components/ui/CtaButton";
 import { gsap } from "@/lib/gsap";
 import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
 
@@ -23,190 +15,170 @@ interface ServiceDetailHeroProps {
 }
 
 export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
-  const heroRef = useRef<HTMLElement>(null);
-  const heroContentRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
   const lockedHeight = useLockedHeroHeight(0);
 
-  const categoryBackLink =
-    service.category === "reinigung" ? "/services" : "/bau";
+  const words = service.title.split(" ");
+
+  const categoryHref = service.category === "reinigung" ? "/services" : "/bau";
+  const contactHref = `/contacts?service=${encodeURIComponent(service.slug)}`;
 
   useGSAP(
     () => {
-      if (!heroRef.current || !heroContentRef.current) return;
+      const mm = gsap.matchMedia();
 
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      mm.add(
+        "(prefers-reduced-motion: no-preference)",
+        () => {
+          // Starts while the page-transition curtain lifts, so the first thing
+          // visitors see is the line clearing the dull image.
+          const timeline = gsap.timeline({
+            delay: 0.55,
+            defaults: { ease: "power4.out" },
+          });
 
-      tl.fromTo(
-        heroContentRef.current.querySelector(".hero-badge-wrap"),
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6 }
-      )
-        .fromTo(
-          heroContentRef.current.querySelector(".hero-title"),
-          { opacity: 0, y: 35 },
-          { opacity: 1, y: 0, duration: 1.0, ease: "power4.out" },
-          "-=0.4"
-        )
-        .fromTo(
-          heroContentRef.current.querySelector(".hero-desc"),
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          "-=0.6"
-        )
-        .fromTo(
-          heroContentRef.current.querySelectorAll(".hero-stat-card"),
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 },
-          "-=0.5"
-        )
-        .fromTo(
-          heroContentRef.current.querySelector(".hero-action-bar"),
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          "-=0.4"
-        );
+          timeline
+            .fromTo(
+              ".hero-clean",
+              { clipPath: "inset(0 100% 0 0)" },
+              { clipPath: "inset(0 0% 0 0)", duration: 1.8, ease: "power2.inOut" },
+              0
+            )
+            .fromTo(
+              ".hero-line",
+              { left: "0%", opacity: 1 },
+              { left: "100%", duration: 1.8, ease: "power2.inOut" },
+              0
+            )
+            .set(".hero-line", { opacity: 0 })
+            .fromTo(
+              ".hero-word",
+              { yPercent: 115 },
+              { yPercent: 0, duration: 1.25, stagger: 0.08 },
+              0.3
+            )
+            .fromTo(
+              ".hero-fade",
+              { opacity: 0, y: 18 },
+              { opacity: 1, y: 0, duration: 0.9, stagger: 0.09 },
+              0.95
+            );
+        },
+        rootRef.current ?? undefined
+      );
+
+      // Desktop only: in-app mobile browsers resize the viewport while scrolling.
+      mm.add(
+        "(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.to(".hero-media", {
+            yPercent: -9,
+            ease: "none",
+            scrollTrigger: {
+              trigger: rootRef.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        },
+        rootRef.current ?? undefined
+      );
     },
-    { scope: heroRef }
+    { scope: rootRef }
   );
 
   return (
     <section
-      ref={heroRef}
+      ref={rootRef}
       aria-label={service.title}
       style={{ minHeight: lockedHeight ? `${lockedHeight}px` : undefined }}
-      className="relative w-full min-h-svh flex items-center justify-center overflow-hidden bg-brand-navy text-white pt-28 pb-20 sm:pt-36 sm:pb-28"
+      className="relative isolate flex min-h-svh w-full flex-col justify-end overflow-hidden bg-brand-ink pb-8 pt-32 text-white sm:pb-12 sm:pt-36"
     >
-      {/* Full-bleed Background Architectural Image with cinematic grading */}
-      <div className="absolute inset-0 w-full h-full">
+      <div
+        aria-hidden="true"
+        className="hero-media absolute inset-x-0 top-0 bottom-[30%] -z-10 max-lg:[mask-image:linear-gradient(to_bottom,black_72%,transparent)] lg:-bottom-[10%]"
+      >
         <Image
           src={service.imageSrc}
-          alt={service.imageAlt}
+          alt=""
           fill
-          priority
           sizes="100vw"
-          className="object-cover object-center sm:scale-[1.03]"
+          style={{ objectPosition: service.imagePosition }}
+          className="object-cover object-center brightness-[0.62] contrast-[0.9] grayscale"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-brand-navy/90 via-black/65 to-brand-navy/95 pointer-events-none" />
-        <div className="absolute inset-0 bg-radial-[circle_at_top_right] from-brand-lime/10 via-transparent to-transparent pointer-events-none" />
+      </div>
+
+      <div className="hero-media absolute inset-x-0 top-0 bottom-[30%] -z-10 max-lg:[mask-image:linear-gradient(to_bottom,black_72%,transparent)] lg:-bottom-[10%]">
+        <div className="hero-clean absolute inset-0">
+          <Image
+            src={service.imageSrc}
+            alt={service.imageAlt}
+            fill
+            preload
+            sizes="100vw"
+            style={{ objectPosition: service.imagePosition }}
+            className="object-cover object-center"
+          />
+        </div>
       </div>
 
       <div
-        ref={heroContentRef}
-        className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between"
-      >
-        {/* Breadcrumb Navigation */}
-        <div className="mb-6 flex items-center space-x-2 text-xs sm:text-sm text-white/60 min-w-0 overflow-hidden">
-          <Link href="/" className="hover:text-brand-lime transition-colors shrink-0">
+        aria-hidden="true"
+        className="hero-line pointer-events-none absolute inset-y-0 -z-10 w-0.5 bg-brand-lime opacity-0 shadow-[0_0_28px_6px_rgba(234,243,178,0.55)]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/40 via-45% to-transparent to-75%"
+      />
+
+      <div className="w-full px-(--pad)">
+        <nav
+          aria-label="Brotkrumen"
+          className="hero-fade mb-5 flex min-w-0 items-center gap-2 text-sm text-white/80"
+        >
+          <Link href="/" className="shrink-0 transition-colors hover:text-brand-lime">
             Startseite
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-white/40 shrink-0" />
-          <Link
-            href={categoryBackLink}
-            className="hover:text-brand-lime transition-colors shrink-0"
-          >
+          <ChevronRight aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-white/50" />
+          <Link href={categoryHref} className="shrink-0 transition-colors hover:text-brand-lime">
             {service.categoryLabel}
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-white/40 shrink-0" />
-          <span className="text-brand-lime truncate min-w-0">{service.title}</span>
-        </div>
+          <ChevronRight aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-white/50" />
+          <span aria-current="page" className="min-w-0 truncate text-white">
+            {service.title}
+          </span>
+        </nav>
 
-        <div className="max-w-5xl min-w-0">
-          {/* Top Specification Pill */}
-          <div className="hero-badge-wrap inline-flex items-center px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[11px] sm:text-sm tracking-widest uppercase font-mono text-brand-lime mb-6 shadow-sm max-w-full">
-            <span className="truncate">
-              TADIKS FACHBETRIEB — {service.categoryLabel.toUpperCase()}
-            </span>
-          </div>
+        {/* Same scale as the home page headline */}
+        <h1 className="text-3xl font-medium leading-[1.1] tracking-tight text-white wrap-break-word hyphens-auto sm:text-5xl lg:text-[54px]">
+          {words.map((word, index) => (
+            <React.Fragment key={`${word}-${index}`}>
+              <span className="inline-block max-w-full overflow-hidden pb-[0.14em] align-bottom -mb-[0.14em]">
+                <span className="hero-word inline-block max-w-full">{word}</span>
+              </span>
+              {index < words.length - 1 ? " " : null}
+            </React.Fragment>
+          ))}
+        </h1>
 
-          {/* Monumental Title */}
-          <h1 className="hero-title text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.05] wrap-break-word hyphens-auto">
-            {service.title} <br />
-            <span className="text-brand-lime font-light">
-              in höchster Qualität.
-            </span>
-          </h1>
-
-          {/* Subtitle & Description */}
-          <p className="hero-desc mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/85 font-light leading-relaxed max-w-3xl">
+        <div className="mt-4 grid grid-cols-1 items-end gap-6 sm:mt-5 lg:grid-cols-12 lg:gap-8">
+          <p className="hero-fade max-w-[58ch] text-sm leading-relaxed text-white/85 sm:text-base lg:col-span-7 lg:text-lg">
             {service.heroDescription}
           </p>
 
-          {/* Live Technical Metrics Cards (Frosted Glass) */}
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl">
-            <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-brand-lime" />
-                Kosten
-              </div>
-              <div className="mt-1 text-sm sm:text-base font-bold text-brand-lime">
-                100% Festpreis
-              </div>
-              <div className="text-[11px] text-white/70">
-                ohne Nachforderungen
-              </div>
-            </div>
-
-            <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5 text-brand-lime" />
-                Qualität
-              </div>
-              <div className="mt-1 text-sm sm:text-base font-bold text-white">
-                Fach-Qualität
-              </div>
-              <div className="text-[11px] text-white/70">
-                {service.category === "reinigung"
-                  ? "RKI-konform"
-                  : "DIN 18180 / 18202"}
-              </div>
-            </div>
-
-            <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-brand-lime" />
-                Reaktion
-              </div>
-              <div className="mt-1 text-sm sm:text-base font-bold text-white">
-                Binnen 24 Std.
-              </div>
-              <div className="text-[11px] text-white/70">
-                Angebot &amp; Begehung
-              </div>
-            </div>
-
-            <div className="hero-stat-card p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-sm">
-              <div className="text-[11px] font-mono uppercase tracking-wider text-white/60 flex items-center gap-1.5">
-                <BadgePercent className="w-3.5 h-3.5 text-brand-lime" />
-                Steuern
-              </div>
-              <div className="mt-1 text-sm sm:text-base font-bold text-brand-lime">
-                20% Abzug
-              </div>
-              <div className="text-[11px] text-white/70">nach § 35a EStG</div>
-            </div>
-          </div>
-
-          {/* Action Bar */}
-          <div className="hero-action-bar mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <Link
-              href={`/contacts?service=${encodeURIComponent(service.slug)}`}
-              className="inline-flex items-center justify-center gap-3 px-5 sm:px-8 py-4 rounded-xl bg-brand-lime text-brand-navy font-semibold text-sm sm:text-base text-center shadow-xl hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group"
-            >
-              <span>Verbindliches Festpreisangebot anfordern</span>
-              <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1 transition-transform" />
-            </Link>
-
-            <a
-              href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-sm sm:text-base transition-colors"
-            >
-              <Phone className="w-4 h-4 shrink-0 text-brand-lime" />
-              <span>Direkt anrufen: {COMPANY_INFO.phone}</span>
-            </a>
+          <div className="hero-fade lg:col-span-5 lg:flex lg:justify-end">
+            <CtaButton href={contactHref} size="md">
+              Termin vereinbaren
+            </CtaButton>
           </div>
         </div>
+
+        <p className="hero-fade mt-6 text-xs text-white/70">
+          Symbolbilder auf dieser Seite: KI-generiert.
+        </p>
       </div>
     </section>
   );
 }
-

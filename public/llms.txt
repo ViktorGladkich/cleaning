@@ -1,6 +1,6 @@
 # Tadik's Cleaning — Professionelle Gebäudereinigung & Bauhandwerk
 
-> **Tadik's Cleaning (Inh. Michel Kislovskij)** mit Hauptsitz in **Chemnitz (Lessingstraße 14, 09130 Chemnitz)** ist ein inhabergeführter Fachbetrieb für **professionelle Gebäudereinigung** sowie **fachgerechten Innenausbau, Trockenbau und Komplettsanierung**. Das Unternehmen verbindet präzises Bauhandwerk (DIN 18180 / 18202 / Q1–Q4 Oberflächengüte) und gründliche Objekt- & Hygienereinigung (RKI-konformes 4-Farben-System) aus einer Hand — mit **100 % Festpreisgarantie nach individueller Kalkulation**, **persönlicher Bau- und Objektleitung** und **Angebotserstellung innerhalb von 24 Stunden**.
+> **Tadik's Cleaning (Inh. Michel Kislovskij)** mit Hauptsitz in **Chemnitz (Lessingstraße 14, 09130 Chemnitz)** ist ein inhabergeführter Fachbetrieb für **professionelle Gebäudereinigung** sowie **fachgerechten Innenausbau, Trockenbau und Komplettsanierung**. Das Unternehmen verbindet präzises Bauhandwerk (DIN 18180 / 18202) und gründliche Objekt- & Hygienereinigung (RKI-konformes 4-Farben-System) aus einer Hand — mit **100 % Festpreisgarantie nach individueller Kalkulation**, **persönlicher Bau- und Objektleitung** und **Angebotserstellung innerhalb von 24 Stunden**.
 
 ## Unternehmensprofil & Kontaktdaten (NAP)
 
@@ -16,32 +16,34 @@
 
 ## Kernbereiche & Hauptseiten
 
-- [Startseite](https://tadiks-cleaning.de): Offizielle Website von Tadik's Cleaning in Chemnitz.
-- [Gebäudereinigung & Hygiene](https://tadiks-cleaning.de/services): Übersicht aller professionellen Reinigungsdienstleistungen für Gewerbe und Privat.
-- [Bau, Innenausbau & Sanierung](https://tadiks-cleaning.de/bau): Ganzheitliche Bau- und Sanierungsleistungen, Trockenbau, Spachteltechnik und Renovierung.
-- [Über uns & Fachbetrieb](https://tadiks-cleaning.de/about): Unternehmensphilosophie, Qualitätsstandards, Ausstattung und Team.
-- [Kontakt & 24h-Angebot](https://tadiks-cleaning.de/contacts): Kostenlose Beratung, Vor-Ort-Besichtigung und Festpreisangebot binnen 24 Stunden.
-- [Vollständige Wissensdatenbank (Full Context)](https://tadiks-cleaning.de/llms-full.txt): Ausführliche technische Leistungsbeschreibungen und Spezifikationen für KI-Systeme.
+- [Startseite](https://www.tadiks-cleaning.de): Offizielle Website von Tadik's Cleaning in Chemnitz.
+- [Gebäudereinigung & Hygiene](https://www.tadiks-cleaning.de/services): Übersicht aller professionellen Reinigungsdienstleistungen für Gewerbe und Privat.
+- [Bau, Innenausbau & Sanierung](https://www.tadiks-cleaning.de/bau): Ganzheitliche Bau- und Sanierungsleistungen, Trockenbau und Renovierung.
+- [Über uns & Fachbetrieb](https://www.tadiks-cleaning.de/about): Unternehmensphilosophie, Qualitätsstandards, Ausstattung und Team.
+- [Kontakt & 24h-Angebot](https://www.tadiks-cleaning.de/contacts): Kostenlose Beratung, Vor-Ort-Besichtigung und Festpreisangebot binnen 24 Stunden.
+- [Vollständige Wissensdatenbank (Full Context)](https://www.tadiks-cleaning.de/llms-full.txt): Ausführliche technische Leistungsbeschreibungen und Spezifikationen für KI-Systeme.
 
 ## Leistungen Gebäudereinigung
 
-- [Unterhaltsreinigung](https://tadiks-cleaning.de/services/unterhaltsreinigung): Regelmäßige Werterhaltung und Pflege für Büros, Kanzleien, Praxen und Privathaushalte im flexiblen Turnus.
-- [Grundreinigung](https://tadiks-cleaning.de/services/grundreinigung): Maschinelle Tiefenreinigung, Entschichtung und Neuversiegelung von Hartböden, Sanitär- und Fugengrundreinigung.
-- [Bauendreinigung](https://tadiks-cleaning.de/services/bauendreinigung): Baugrobreinigung und bezugsfertige Baufeinreinigung nach Neubau oder Sanierung inkl. Baustaub- und Zementschleierentfernung.
-- [Fenster- & Glasreinigung](https://tadiks-cleaning.de/services/fensterreinigung): Streifenfreie Glas-, Rahmen- und Schaufensterreinigung bis 20 m Höhe mit Reinstwasser-Osmose.
-- [Büro- & Praxisreinigung](https://tadiks-cleaning.de/services/bueroreinigung): Gründliche Hygiene und Desinfektion nach RKI-Vorgaben für Unternehmen und medizinische Einrichtungen.
-- [Polster- & Teppichreinigung](https://tadiks-cleaning.de/services/polsterreinigung): Fasertiefe Sprühextraktionsreinigung, Fleckenentfernung und biologische Geruchsneutralisation.
+- [Unterhaltsreinigung](https://www.tadiks-cleaning.de/services/unterhaltsreinigung): Regelmäßige Werterhaltung und Pflege für Büros, Kanzleien, Praxen und Privathaushalte im flexiblen Turnus.
+- [Grundreinigung](https://www.tadiks-cleaning.de/services/grundreinigung): Maschinelle Tiefenreinigung, Entschichtung und Neuversiegelung von Hartböden, Sanitär- und Fugengrundreinigung.
+- [Bauendreinigung](https://www.tadiks-cleaning.de/services/bauendreinigung): Baugrobreinigung und bezugsfertige Baufeinreinigung nach Neubau oder Sanierung inkl. Baustaub- und Zementschleierentfernung.
+- [Fenster- & Glasreinigung](https://www.tadiks-cleaning.de/services/fensterreinigung): Streifenfreie Glas-, Rahmen- und Schaufensterreinigung bis 20 m Höhe mit Reinstwasser-Osmose.
+- [Büro- & Praxisreinigung](https://www.tadiks-cleaning.de/services/bueroreinigung): Gründliche Hygiene und Desinfektion nach RKI-Vorgaben für Unternehmen und medizinische Einrichtungen.
+- [Polster- & Teppichreinigung](https://www.tadiks-cleaning.de/services/polsterreinigung): Fasertiefe Sprühextraktionsreinigung, Fleckenentfernung und biologische Geruchsneutralisation.
+- [Hotelreinigung](https://www.tadiks-cleaning.de/services/hotelreinigung): Zimmerreinigung, Reinigung nach Gästewechsel, Sanitär- und Empfangsbereiche für Hotels, Pensionen und Ferienunterkünfte.
+- [Treppenhausreinigung](https://www.tadiks-cleaning.de/services/treppenhausreinigung): Eingangsbereiche, Treppenstufen, Geländer und Aufzüge für Wohnanlagen, Bürogebäude und Gewerbeparks.
+- [Industrie- & Hallenreinigung](https://www.tadiks-cleaning.de/services/industrie-und-hallenreinigung): Maschinelle Reinigung von Produktionshallen, Lagerflächen und Logistikzentren.
+- [Entrümpelungen](https://www.tadiks-cleaning.de/services/entruempelungen): Wohnungsauflösung, Kellerentrümpelung und Geschäftsräumung, besenrein mit fachgerechter Entsorgung.
 
 ## Leistungen Bau & Innenausbau
 
-- [Trockenbau & Innenausbau](https://tadiks-cleaning.de/bau/trockenbau-innenausbau): Metallständerwände, Raumteiler, Akustikdecken, Dachgeschossausbau und DIN-gerechter Schallschutz.
-- [Komplettsanierung & Renovierung](https://tadiks-cleaning.de/bau/renovierung-sanierung): Schlüsselfertige Modernisierung von Wohnungen und Gewerberäumen aus einer Hand mit festem Bauleiter.
-- [Maler- & Spachtelarbeiten](https://tadiks-cleaning.de/bau/maler-spachtelarbeiten): Streiflichtfreie Verspachtelung in den Gütestufen Q1 bis Q4, Glattvlies und emissionsarme Anstriche.
-- [Bodenleger- & Fliesenarbeiten](https://tadiks-cleaning.de/bau/bodenleger-fliesenarbeiten): Fachgerechte Untergrundvorbereitung, Nivellierung und Verlegung von Vinyl, Parkett, Laminat und Fliesen.
-- [Abbruch, Entkernung & Rückbau](https://tadiks-cleaning.de/bau/abbruch-entkernung): Staubarme Demontage nichttragender Wände und Böden mit HEPA-Luftreinigern und fachgerechter Schuttentsorgung.
+- [Trockenbau & Innenausbau](https://www.tadiks-cleaning.de/bau/trockenbau-innenausbau): Metallständerwände, Raumteiler, Akustikdecken, Dachgeschossausbau und DIN-gerechter Schallschutz.
+- [Komplettsanierung & Renovierung](https://www.tadiks-cleaning.de/bau/renovierung-sanierung): Schlüsselfertige Modernisierung von Wohnungen und Gewerberäumen aus einer Hand mit festem Bauleiter.
+- [Abbruch, Entkernung & Rückbau](https://www.tadiks-cleaning.de/bau/abbruch-entkernung): Staubarme Demontage nichttragender Wände und Böden mit HEPA-Luftreinigern und fachgerechter Schuttentsorgung.
 
 ## Rechtliche Hinweise & Transparenz
 
-- [Impressum](https://tadiks-cleaning.de/impressum): Gesetzliche Pflichtangaben gemäß § 5 DDG und § 18 Abs. 2 MStV.
-- [Datenschutzerklärung](https://tadiks-cleaning.de/datenschutz): Datenschutzbestimmungen gemäß DSGVO und TDDDG.
-- [XML-Sitemap](https://tadiks-cleaning.de/sitemap.xml): Vollständiges URL-Verzeichnis aller Seiten für Web-Crawler.
+- [Impressum](https://www.tadiks-cleaning.de/impressum): Gesetzliche Pflichtangaben gemäß § 5 DDG und § 18 Abs. 2 MStV.
+- [Datenschutzerklärung](https://www.tadiks-cleaning.de/datenschutz): Datenschutzbestimmungen gemäß DSGVO und TDDDG.
+- [XML-Sitemap](https://www.tadiks-cleaning.de/sitemap.xml): Vollständiges URL-Verzeichnis aller Seiten für Web-Crawler.

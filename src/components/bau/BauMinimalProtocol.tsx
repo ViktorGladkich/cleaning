@@ -14,25 +14,25 @@ interface ProtocolStep {
 const BAU_PROTOCOL_STEPS: ProtocolStep[] = [
   {
     num: "01",
-    image: "/images/bau_step_1.jpg",
+    image: "/images/services/step-bau-1.webp",
     title: "Kostenlose Vor-Ort-Analyse: Bausubstanz prüfen, Raummaße erfassen.",
     desc: "Präzises Laser-Aufmaß aller Räume, Feuchtigkeitsmessung und bautechnische Bestandsaufnahme. Verbindliche Fachberatung vor Ort in Chemnitz.",
   },
   {
     num: "02",
-    image: "/images/bau_step_2.jpg",
+    image: "/images/services/step-bau-2.webp",
     title: "Verbindliches Festpreis-Leistungsverzeichnis: Volle Kostensicherheit.",
     desc: "Detailliert aufgeschlüsselte Mengen- und Materialberechnung nach DIN-Normen. Ein garantierter Festpreis für alle Gewerke ohne Nachträge.",
   },
   {
     num: "03",
-    image: "/images/bau_step_3.jpg",
+    image: "/images/services/step-bau-3.webp",
     title: "Präzise Gewerke-Ausführung: Feste Handwerker-Teams & Staubschutz.",
-    desc: "Trockenbau, Akustikdecken und Q4-Spachtelung mit Rotationslasern und mobilen HEPA-Luftreinigern für saubere, termintreue Bauphasen.",
+    desc: "Trockenbau und Akustikdecken mit Rotationslasern und mobilen HEPA-Luftreinigern für saubere, termintreue Bauphasen.",
   },
   {
     num: "04",
-    image: "/images/bau_step_4.jpg",
+    image: "/images/services/step-bau-4.webp",
     title: "Schlüsselfertige VOB-Abnahme: Bauleiter-Audit & bezugsfertige Übergabe.",
     desc: "Gemeinsame Endabnahme nach VOB-Kriterien inklusive bezugsfertiger Bauendreinigung durch unser eigenes Team. Einzug ohne Nacharbeiten.",
   },
@@ -139,14 +139,10 @@ export function BauMinimalProtocol() {
                   Durch{" "}
                   <span className="text-brand-navy font-normal">
                     millimetergenaue Laser-Ausrichtung
-                  </span>
-                  , DIN-gerechten{" "}
+                  </span>{" "}
+                  und DIN-gerechten{" "}
                   <span className="text-brand-navy font-normal">
                     Schallschutz
-                  </span>{" "}
-                  und streiflichtfreie{" "}
-                  <span className="text-brand-navy font-normal">
-                    Q4-Spachtelung
                   </span>
                   .
                 </span>
@@ -183,7 +179,7 @@ export function BauMinimalProtocol() {
                       alt={step.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 480px"
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
                   </div>

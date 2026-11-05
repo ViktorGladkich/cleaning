@@ -1,6 +1,15 @@
+import { randomBytes } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
+import { isMailConfigured, sendContactMail } from "@/lib/contactMail";
+import {
+  CategoryType,
+  SERVICES_BY_CAT,
+  isValidName,
+  validateContactMethods,
+} from "@/lib/contactRules";
 
-// In-memory sliding window rate limiter per IP
+// In-memory sliding window rate limiter per IP.
+// Best effort: each serverless instance keeps its own store.
 interface RateRecord {
   timestamps: number[];
   lastSubmit: number;
@@ -8,13 +17,15 @@ interface RateRecord {
 
 const rateLimitStore = new Map<string, RateRecord>();
 const MAX_STORE_ENTRIES = 2000; // Hard memory cap against spoofed-IP DDoS
-const WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const WINDOW_MS = 10 * 60 * 1000; // 10 minutes (stated in the Datenschutzerklärung)
 const MAX_REQUESTS_PER_WINDOW = 3; // Max 3 submissions per 10 minutes per IP
 const MIN_COOLDOWN_MS = 15 * 1000; // Min 15s between consecutive submissions
 const MIN_DWELL_TIME_MS = 2200; // Humans take at least 2.2s to fill the form
 const MAX_FORM_AGE_MS = 2 * 60 * 60 * 1000; // 2 hours max form session age
 
-const ALLOWED_CATEGORIES = new Set(["reinigung", "bau", "kombi"]);
+function isCategory(value: string): value is CategoryType {
+  return Object.hasOwn(SERVICES_BY_CAT, value);
+}
 
 // Strip HTML tags, control chars, null bytes, and trim excessive whitespace
 function sanitizeInput(value: unknown, maxLen: number): string {
@@ -61,8 +72,8 @@ function getClientIp(req: NextRequest): string {
   return "local-client";
 }
 
+// IPs are dropped as soon as they leave the window, on the next request to this instance.
 function cleanupRateLimitStore(now: number) {
-  if (rateLimitStore.size < 400) return;
   for (const [ip, record] of rateLimitStore.entries()) {
     const valid = record.timestamps.filter((t) => now - t < WINDOW_MS);
     if (valid.length === 0) {
@@ -78,6 +89,8 @@ function cleanupRateLimitStore(now: number) {
     rateLimitStore.delete(oldestKey);
   }
 }
+
+const DELIVERY_FAILED_MESSAGE = `Ihre Anfrage konnte gerade nicht zugestellt werden. Bitte rufen Sie uns an oder schreiben Sie uns direkt per E-Mail.`;
 
 export async function POST(req: NextRequest) {
   try {
@@ -124,7 +137,6 @@ export async function POST(req: NextRequest) {
     // 3. IP Rate Limiting
     const ip = getClientIp(req);
     const existing = rateLimitStore.get(ip) || { timestamps: [], lastSubmit: 0 };
-    existing.timestamps = existing.timestamps.filter((t) => now - t < WINDOW_MS);
 
     if (now - existing.lastSubmit < MIN_COOLDOWN_MS) {
       return NextResponse.json(
@@ -163,14 +175,18 @@ export async function POST(req: NextRequest) {
     if (honeypotWebsite.length > 0 || honeypotFax.length > 0) {
       return NextResponse.json({
         ok: true,
-        referenceId: "TDK-0000",
+        referenceId: "TDK-000000",
       });
     }
 
-    // 6. Human Dwell-Time Verification
-    const formLoadedAt = Number(body.formLoadedAt || 0);
-    const elapsed = now - formLoadedAt;
-    if (!formLoadedAt || elapsed < MIN_DWELL_TIME_MS || elapsed > MAX_FORM_AGE_MS) {
+    // 6. Human Dwell-Time Verification (duration measured by the browser, so a
+    // wrong device clock cannot lock real visitors out)
+    const elapsed = Number(body.formElapsedMs);
+    if (
+      !Number.isFinite(elapsed) ||
+      elapsed < MIN_DWELL_TIME_MS ||
+      elapsed > MAX_FORM_AGE_MS
+    ) {
       return NextResponse.json(
         {
           error:
@@ -189,47 +205,25 @@ export async function POST(req: NextRequest) {
     const address = sanitizeInput(body.address, 100);
     const area = sanitizeInput(body.area, 80);
     const comment = sanitizeInput(body.comment, 1200);
-    const privacyAccepted = body.privacyAccepted === true;
 
-    if (!ALLOWED_CATEGORIES.has(category) || service.length < 2) {
+    if (!isCategory(category) || !SERVICES_BY_CAT[category].includes(service)) {
       return NextResponse.json(
         { error: "Bitte wählen Sie einen gültigen Leistungsbereich." },
         { status: 400 }
       );
     }
 
-    if (name.length < 2 || !/^[\p{L}\s.'-]+$/u.test(name)) {
+    if (!isValidName(name)) {
       return NextResponse.json(
         { error: "Bitte geben Sie Ihren vollständigen Namen korrekt ein." },
         { status: 400 }
       );
     }
 
-    const digitsOnly = phone.replace(/\D/g, "");
-    if (
-      digitsOnly.length < 7 ||
-      digitsOnly.length > 18 ||
-      !/^[+\d\s()/.-]+$/.test(phone)
-    ) {
-      return NextResponse.json(
-        { error: "Bitte geben Sie eine gültige Telefonnummer ein." },
-        { status: 400 }
-      );
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: "Bitte geben Sie eine gültige E-Mail-Adresse ein." },
-        { status: 400 }
-      );
-    }
-
-    if (!privacyAccepted) {
-      return NextResponse.json(
-        { error: "Bitte bestätigen Sie die Datenschutzerklärung." },
-        { status: 400 }
-      );
+    const contactErrors = validateContactMethods(phone, email);
+    const contactError = contactErrors.phone || contactErrors.email;
+    if (contactError) {
+      return NextResponse.json({ error: contactError }, { status: 400 });
     }
 
     // 8. Check for link / bot spam in text fields
@@ -248,14 +242,37 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Record valid request in rate limiter
+    // 9. Deliver. Success is only reported once the mail server accepted the message.
+    if (!isMailConfigured()) {
+      console.error("[contact] SMTP is not configured; submission was not delivered");
+      return NextResponse.json({ error: DELIVERY_FAILED_MESSAGE }, { status: 503 });
+    }
+
     existing.timestamps.push(now);
     existing.lastSubmit = now;
     rateLimitStore.set(ip, existing);
 
-    // Generate clean reference code for user receipt
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const referenceId = `TDK-${randomSuffix}`;
+    const referenceId = `TDK-${randomBytes(3).toString("hex").toUpperCase()}`;
+
+    try {
+      await sendContactMail({
+        referenceId,
+        category,
+        service,
+        name,
+        phone,
+        email,
+        address,
+        area,
+        comment,
+      });
+    } catch (mailError) {
+      // Never log the error object: SMTP errors can echo addresses from the form.
+      const code =
+        mailError instanceof Error && "code" in mailError ? mailError.code : "unknown";
+      console.error(`[contact] Delivery failed for ${referenceId}: ${String(code)}`);
+      return NextResponse.json({ error: DELIVERY_FAILED_MESSAGE }, { status: 502 });
+    }
 
     return NextResponse.json(
       {
@@ -281,4 +298,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-

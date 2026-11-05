@@ -10,6 +10,7 @@
   --color-foreground: var(--foreground);
   --color-brand-cream: #FAFAFA;
   --color-brand-navy: #3D568F;
+  --color-brand-ink: #1A2544;
   --color-brand-light-blue: #9FBAF1;
   --color-brand-lime: #EAF3B2;
   --font-sans: var(--font-satoshi), var(--font-general-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -29,6 +30,17 @@ html {
 @media (min-width: 1024px) {
   html {
     scrollbar-gutter: stable;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -53,6 +65,11 @@ h1, h2, h3, h4, h5, h6 {
 /* Body copy, descriptions, navigation and inputs use Fontshare General Sans for pristine clarity */
 p, span, a, li, button, input, textarea {
   font-family: var(--font-general-sans), var(--font-satoshi), sans-serif;
+}
+
+/* Shared horizontal page margin of the service detail pages */
+.service-page {
+  --pad: clamp(1.25rem, 4.5vw, 4rem);
 }
 
 @keyframes marquee {

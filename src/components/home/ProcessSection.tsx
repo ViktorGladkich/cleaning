@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { gsap, isTouchLayout } from "@/lib/gsap";
 
 interface ProcessStep {
   step: string;
@@ -74,7 +74,7 @@ export function ProcessSection() {
       }
 
       // 2. Smooth architectural Parallax drift without heavy zooming
-      if (bgImgRef.current) {
+      if (bgImgRef.current && !isTouchLayout()) {
         gsap.fromTo(
           bgImgRef.current,
           { yPercent: -8 },

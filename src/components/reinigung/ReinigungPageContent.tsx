@@ -49,7 +49,7 @@ export function ReinigungPageContent() {
           </>
         }
         subtitle="Verbindliche Antworten zu Festpreisen, Personal, Schlüsselsicherheit und Materialverträglichkeit auf einen Blick."
-        imageSrc="/images/hero_premium_cleaning_bau.jpg"
+        imageSrc="/images/services/step-reinigung-4.webp"
         imageAlt="Tadiks Fachbetrieb für Hygiene und Werterhalt"
         items={REINIGUNG_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"

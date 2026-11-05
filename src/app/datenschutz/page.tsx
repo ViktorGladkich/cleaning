@@ -15,13 +15,12 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { CookieSettingsTrigger } from "@/components/ui/CookieSettingsTrigger";
 import { COMPANY_INFO } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung — Tadik's Cleaning Chemnitz",
   description:
-    "Datenschutzerklärung gemäß DSGVO, BDSG und TDDDG (Stand: 01. November 2026) von Tadik's Cleaning, Inh. Michel Kislovskij, Lessingstraße 14, 09130 Chemnitz.",
+    "Datenschutzerklärung gemäß DSGVO, BDSG und TDDDG (Stand: November 2026) von Tadik's Cleaning, Inh. Michel Kislovskij, Lessingstraße 14, 09130 Chemnitz.",
 };
 
 export default function DatenschutzPage() {
@@ -48,7 +47,7 @@ export default function DatenschutzPage() {
             Datenschutzerklärung
           </h1>
           <p className="mt-3 text-sm sm:text-base text-brand-navy/70 leading-relaxed font-light">
-            Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß Art. 13, 14 und 21 der Datenschutz-Grundverordnung (DSGVO), dem Bundesdatenschutzgesetz (BDSG) sowie dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG).
+            Informationen zur Verarbeitung Ihrer personenbezogenen Daten gemäß Art. 13, 14 und 21 der Datenschutz-Grundverordnung (DSGVO), dem Bundesdatenschutzgesetz (BDSG) sowie dem Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz (TDDDG). Stand: November 2026.
           </p>
         </div>
 
@@ -127,10 +126,10 @@ export default function DatenschutzPage() {
               <strong>Übersicht der Rechtsgrundlagen (Art. 13 Abs. 1 lit. c DSGVO):</strong> Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO. Sind Ihre Daten zur Vertragserfüllung oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines Festpreisangebots auf Ihre Anfrage hin) erforderlich, erfolgt die Verarbeitung auf Grundlage des Art. 6 Abs. 1 lit. b DSGVO. Weiterhin verarbeiten wir Ihre Daten auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO, sofern dies zur Erfüllung einer rechtlichen Verpflichtung (z. B. handels- und steuerrechtliche Aufbewahrungspflichten) erforderlich ist, sowie auf Grundlage unseres berechtigten Interesses nach Art. 6 Abs. 1 lit. f DSGVO (z. B. sicherer Betrieb der Website, Abwehr von Spam-Angriffen, zügige Beantwortung von Geschäftsanfragen).
             </p>
             <p>
-              <strong>Speicherdauer (Art. 13 Abs. 2 lit. a DSGVO):</strong> Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder handelsrechtliche Aufbewahrungsfristen von 6 Jahren gemäß § 257 HGB bzw. 8 bis 10 Jahren gemäß § 147 AO); im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe.
+              <strong>Speicherdauer (Art. 13 Abs. 2 lit. a DSGVO):</strong> Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt. Wenn Sie ein berechtigtes Löschersuchen geltend machen oder eine Einwilligung zur Datenverarbeitung widerrufen, werden Ihre Daten gelöscht, sofern wir keine anderen rechtlich zulässigen Gründe für die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- und handelsrechtliche Aufbewahrungsfristen nach § 147 AO und § 257 HGB: 6 Jahre für Handels- und Geschäftsbriefe, 8 Jahre für Buchungsbelege, 10 Jahre für Bücher und Jahresabschlüsse); im letztgenannten Fall erfolgt die Löschung nach Fortfall dieser Gründe.
             </p>
             <p>
-              <strong>Hinweis zur Bereitstellungspflicht und Profiling (Art. 13 Abs. 2 lit. e &amp; f DSGVO):</strong> Die Bereitstellung personenbezogener Daten beim bloßen Besuch unserer Website ist weder gesetzlich noch vertraglich vorgeschrieben. Im Rahmen einer Angebotsanfrage ist die Angabe der als Pflichtfelder gekennzeichneten Kontaktdaten erforderlich, um Ihre Anfrage bearbeiten und ein vorvertragliches Angebot erstellen zu können. Eine automatisierte Entscheidungsfindung einschließlich Profiling gemäß Art. 22 Abs. 1 und 4 DSGVO findet auf unserer Website nicht statt.
+              <strong>Hinweis zur Bereitstellungspflicht und Profiling (Art. 13 Abs. 2 lit. e &amp; f DSGVO):</strong> Die Bereitstellung personenbezogener Daten beim bloßen Besuch unserer Website ist weder gesetzlich noch vertraglich vorgeschrieben. Im Rahmen einer Angebotsanfrage sind Ihr Name und mindestens eine Kontaktmöglichkeit (Telefon oder E-Mail) erforderlich, um Ihre Anfrage bearbeiten und ein vorvertragliches Angebot erstellen zu können. Eine automatisierte Entscheidungsfindung einschließlich Profiling gemäß Art. 22 Abs. 1 und 4 DSGVO findet auf unserer Website nicht statt.
             </p>
           </div>
 
@@ -203,7 +202,7 @@ export default function DatenschutzPage() {
               Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der technisch fehlerfreien Darstellung, Betriebssicherheit, Fehleranalyse und Angriffsabwehr unserer Website).
             </p>
             <p>
-              Die Server-Log-Files werden für die Dauer von <strong>7 Tagen</strong> gespeichert und anschließend automatisch gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten oder dokumentierten Sicherheitsvorfälle entgegenstehen.
+              Die Log-Daten werden von Vercel nur begrenzte Zeit vorgehalten und anschließend automatisch gelöscht. Die Dauer richtet sich nach den Vorgaben von Vercel und dem gebuchten Tarif und beträgt für Laufzeit-Protokolle nach Angaben des Anbieters zwischen einer Stunde und 30 Tagen. Eine längere Speicherung erfolgt nur, soweit gesetzliche Aufbewahrungspflichten oder dokumentierte Sicherheitsvorfälle dies erfordern.
             </p>
           </div>
 
@@ -217,7 +216,7 @@ export default function DatenschutzPage() {
               Bearbeitung von Kunden- und Angebotsanfragen
             </h2>
             <p>
-              Wenn Sie unser Online-Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (gewählter Fachbereich, konkrete Leistung, Name, Telefonnummer, E-Mail-Adresse sowie optional Ort/Postleitzahl, Objektfläche und Ihre Projektnachricht) verschlüsselt über unsere eigene Server-Schnittstelle an uns übermittelt. Alternativ können Sie uns jederzeit direkt per E-Mail (an{" "}
+              Wenn Sie unser Online-Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (gewählter Fachbereich, konkrete Leistung, Name, Telefonnummer und/oder E-Mail-Adresse sowie optional Ort/Postleitzahl, Objektfläche und Ihre Projektnachricht) verschlüsselt an unsere Server-Schnittstelle übertragen und von dort als E-Mail an unser Postfach zugestellt. Alternativ können Sie uns jederzeit direkt per E-Mail (an{" "}
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="underline hover:text-brand-navy"
@@ -227,13 +226,25 @@ export default function DatenschutzPage() {
               , wobei sich Ihr lokales E-Mail-Programm öffnet) oder telefonisch kontaktieren.
             </p>
             <p>
-              Zum Schutz unseres Online-Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots und Brute-Force-Angriffen) setzen wir ausschließlich eigene, datenschutzfreundliche Sicherheitsprüfungen ohne Einbindung externer Drittanbieter-Captchas ein: unsichtbare Honeypot-Felder, eine Zeitstempel-Prüfung sowie eine kurzzeitige, flüchtige Ratenbegrenzung (Rate-Limiting) im Arbeitsspeicher unseres Servers (max. 15 Minuten Vorhaltezeit zur Missbrauchsabwehr gemäß Art. 6 Abs. 1 lit. f DSGVO).
+              Zum Schutz unseres Online-Kontaktformulars vor automatisiertem Missbrauch (Spam-Bots und Brute-Force-Angriffen) setzen wir ausschließlich eigene, datenschutzfreundliche Sicherheitsprüfungen ohne Einbindung externer Drittanbieter-Captchas ein: unsichtbare Honeypot-Felder, eine Prüfung der Ausfülldauer sowie eine kurzzeitige Ratenbegrenzung (Rate-Limiting) gemäß Art. 6 Abs. 1 lit. f DSGVO. Dafür wird Ihre IP-Adresse flüchtig im Arbeitsspeicher der Serverinstanz gehalten. Sie wird nach Ablauf von 10 Minuten bei der nächsten Anfrage an diese Instanz, spätestens beim Beenden der Instanz, gelöscht.
             </p>
             <p>
-              Die Verarbeitung Ihrer Kontaktdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Anbahnung oder Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines verbindlichen Festpreisangebots, Terminvereinbarung zur Besichtigung) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf Ihrer im Formular erteilten Einwilligung (<strong>Art. 6 Abs. 1 lit. a DSGVO</strong>) sowie auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (<strong>Art. 6 Abs. 1 lit. f DSGVO</strong>).
+              Unser E-Mail-Postfach wird bei dem Anbieter <strong>Titan Email</strong> gehostet (Titan Solution Ltd SEZC, c/o CO Services Cayman Limited, P.O. Box 10008, Willow House, Cricket Square, Grand Cayman, KY1-1001, Kaimaninseln). Anfragen aus dem Formular und E-Mails, die Sie uns senden, werden dort gespeichert. Für die Kaimaninseln besteht kein Angemessenheitsbeschluss der Europäischen Kommission. Nach Angaben des Anbieters werden Drittlandübermittlungen durch verbindliche vertragliche Vereinbarungen abgesichert (Art. 46 DSGVO). Rechtsgrundlage ist Art. 6 Abs. 1 lit. b und lit. f DSGVO (berechtigtes Interesse an einer zuverlässigen E-Mail-Kommunikation). Weitere Informationen finden Sie in der{" "}
+              <a
+                href="https://titan.email/privacy-policy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-brand-navy font-medium"
+              >
+                Datenschutzerklärung von Titan
+              </a>
+              .
             </p>
             <p>
-              Die von Ihnen übermittelten Anfragedaten und E-Mails inklusive der darin enthaltenen Kontaktdaten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere handels- und steuerrechtliche Aufbewahrungsfristen – bleiben unberührt.
+              Die Verarbeitung Ihrer Kontaktdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Anbahnung oder Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines verbindlichen Festpreisangebots, Terminvereinbarung zur Besichtigung) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (<strong>Art. 6 Abs. 1 lit. f DSGVO</strong>).
+            </p>
+            <p>
+              Anfragen, aus denen kein Vertrag entsteht, löschen wir spätestens <strong>12 Monate</strong> nach Abschluss der Bearbeitung oder früher, wenn Sie uns dazu auffordern und keine Aufbewahrungspflichten entgegenstehen. Führt Ihre Anfrage zu einem Vertrag, gelten die gesetzlichen handels- und steuerrechtlichen Aufbewahrungsfristen.
             </p>
           </div>
 
@@ -247,7 +258,7 @@ export default function DatenschutzPage() {
               Kommunikation via WhatsApp Messenger
             </h2>
             <p>
-              Für die schnelle und unkomplizierte Kontaktaufnahme bieten wir auch den Messenger-Dienst WhatsApp an. Anbieter für Nutzer im Europäischen Wirtschaftsraum ist die <strong>WhatsApp Ireland Limited</strong>, Merrion Road, Dublin 4, D04 X2K5, Irland (vormals 4 Grand Canal Square, Dublin 2, Irland). Wenn Sie uns aktiv per Klick auf einen WhatsApp-Link oder über unsere Mobilfunknummer ({COMPANY_INFO.mobile}) kontaktieren, werden Ihre Telefonnummer, Ihr öffentlicher Profilname sowie die von Ihnen übermittelten Nachrichteninhalte (Texte, ggf. Fotos zur Schadens- oder Objektbegutachtung) verarbeitet, um Ihr Anliegen zu bearbeiten.
+              Für die schnelle und unkomplizierte Kontaktaufnahme bieten wir auch den Messenger-Dienst WhatsApp an. Anbieter für Nutzer im Europäischen Wirtschaftsraum ist die <strong>WhatsApp Ireland Limited</strong>, Merrion Road, Dublin 4, D04 X2K5, Irland. Wenn Sie uns aktiv über unsere Mobilfunknummer ({COMPANY_INFO.mobile}) per WhatsApp kontaktieren, werden Ihre Telefonnummer, Ihr öffentlicher Profilname sowie die von Ihnen übermittelten Nachrichteninhalte (Texte, ggf. Fotos zur Schadens- oder Objektbegutachtung) verarbeitet, um Ihr Anliegen zu bearbeiten.
             </p>
             <p>
               Dabei kann eine Übermittlung von Verbindungs- und Metadaten an WhatsApp bzw. den Mutterkonzern Meta Platforms Inc. in die USA erfolgen. Meta Platforms Inc. ist unter dem <strong>EU-US Data Privacy Framework (Art. 45 DSGVO)</strong> zertifiziert; zudem stützt sich die Datenübermittlung auf die <strong>EU-Standardvertragsklauseln (Art. 46 DSGVO)</strong>. Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung und Kundenbetreuung) beziehungsweise Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer schnellen, zeitgemäßen Kommunikationsmöglichkeit). Weitere Informationen finden Sie in der{" "}
@@ -270,30 +281,24 @@ export default function DatenschutzPage() {
               <span>7. Cookies &amp; Endgerätespeicherung (§ 25 TDDDG)</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Technisch notwendige Speicherung &amp; Cookie-Einstellungen
+              Keine Cookies, kein Tracking
             </h2>
             <p>
-              Diese Website setzt standardmäßig <strong>keine Tracking-Cookies, keine Werbe-Profile und keine externen Analyse-Skripte</strong> ohne Ihre Zustimmung ein. Um Ihre Auswahl im Hinweisbanner für zukünftige Seitenaufrufe zu speichern, wird in Ihrem Browser ein technisch notwendiger lokaler Speichereintrag (<code>localStorage</code>-Schlüssel: <code>tadiks_cookie_consent_v1</code>) abgelegt. Dieser Eintrag enthält ausschließlich Ihren anonymen Auswahlstatus (Essenziell, Marketing, Analytics, Externe Medien) sowie den Zeitstempel Ihrer Entscheidung und wird nicht an Dritte übertragen.
+              Diese Website setzt <strong>keine Cookies</strong> und verwendet <strong>keine Tracking-, Analyse- oder Marketing-Dienste</strong>. Informationen werden auf Ihrem Endgerät nur gespeichert oder von dort abgerufen, soweit dies für die Bereitstellung der von Ihnen aufgerufenen Seiten unbedingt erforderlich ist (<strong>§ 25 Abs. 2 Nr. 2 TDDDG</strong>). Eine Einwilligung ist dafür nicht erforderlich, weshalb wir auch kein Einwilligungsbanner anzeigen.
             </p>
-            <p>
-              Rechtsgrundlage für den Einsatz technisch notwendiger Cookies und lokaler Speicherfunktionen ist <strong>§ 25 Abs. 2 Nr. 2 TDDDG</strong> (Telekommunikation-Digitale-Dienste-Datenschutz-Gesetz) in Verbindung mit <strong>Art. 6 Abs. 1 lit. c DSGVO</strong> (Nachweispflicht Ihrer Einwilligungsentscheidung) sowie unserem berechtigten Interesse am technisch fehlerfreien Betrieb der Website gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>. Soweit Sie im Banner optional weiteren Kategorien zustimmen, erfolgt dies ausschließlich auf Grundlage Ihrer freiwilligen Einwilligung gemäß <strong>§ 25 Abs. 1 TDDDG i. V. m. Art. 6 Abs. 1 lit. a DSGVO</strong>.
-            </p>
-            <div className="pt-2">
-              <CookieSettingsTrigger />
-            </div>
           </div>
 
           {/* 8. Externe Inhalte / Lokale Webfonts */}
           <div className="pt-6 border-t border-brand-navy/10 space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
               <Type className="w-4 h-4 text-brand-navy shrink-0" />
-              <span>8. Externe Inhalte &amp; Webfonts</span>
+              <span>8. Webfonts</span>
             </div>
             <h2 className="text-xl font-medium text-brand-navy">
-              Webfonts &amp; Google Fonts (100 % lokales Hosting)
+              Lokal eingebundene Schriftarten
             </h2>
             <p>
-              Diese Website nutzt zur einheitlichen und lesefreundlichen Darstellung von Schriftarten moderne Webfonts (u. a. <em>Satoshi</em>, <em>General Sans</em> sowie lokal bereitgestellte System-/Google-Fonts). Sämtliche Schriftdateien (<code>.woff2</code>) sind <strong>vollständig lokal auf unserem eigenen Webserver eingebunden</strong>. Eine Verbindung zu Servern von Google (Google Ireland Limited / Google LLC) oder anderen externen Schriftanbietern findet beim Aufruf unserer Website <strong>nicht</strong> statt; es werden hierbei keinerlei IP-Adressen oder Browserdaten an Drittanbieter übertragen.
+              Diese Website nutzt die Webfonts <em>Satoshi</em> und <em>General Sans</em>. Die Schriftdateien werden zusammen mit der Website über unseren Hoster (siehe Abschnitt 3) ausgeliefert. Eine Verbindung zu Servern von Google oder anderen externen Schriftanbietern findet beim Aufruf unserer Website <strong>nicht</strong> statt.
             </p>
           </div>
 
@@ -335,7 +340,7 @@ export default function DatenschutzPage() {
                 Die für unseren Unternehmenssitz zuständige Aufsichtsbehörde ist:
               </p>
               <p>Sächsische Datenschutz- und Transparenzbeauftragte</p>
-              <p>Devrientstraße 5, 01067 Dresden</p>
+              <p>Maternistraße 17, 01067 Dresden</p>
               <p>Postanschrift: Postfach 11 01 32, 01330 Dresden</p>
               <p>
                 Website:{" "}

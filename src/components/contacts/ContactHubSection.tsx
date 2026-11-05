@@ -23,7 +23,6 @@ export function ContactHubSection() {
   const nameInputRef = useRef<HTMLInputElement>(null);
   const phoneInputRef = useRef<HTMLInputElement>(null);
   const emailInputRef = useRef<HTMLInputElement>(null);
-  const privacyLabelRef = useRef<HTMLLabelElement>(null);
   const formLoadedAtRef = useRef<number>(0);
 
   const [category, setCategory] = useState<CategoryType>("reinigung");
@@ -42,12 +41,27 @@ export function ContactHubSection() {
 
   // Record form mount timestamp for anti-bot dwell-time verification
   useEffect(() => {
-    formLoadedAtRef.current = Date.now();
+    formLoadedAtRef.current = performance.now();
   }, []);
 
   const handleCategoryChange = (cat: CategoryType) => {
     setCategory(cat);
     setSelectedService(SERVICES_BY_CAT[cat][0]);
+  };
+
+  // Phone and e-mail depend on each other (one of them is required), so an
+  // existing error on either field is re-checked against both values.
+  const updateContactField = (field: "phone" | "email", value: string) => {
+    const next = { ...formData, [field]: value };
+    setFormData(next);
+    if (fieldErrors.phone || fieldErrors.email) {
+      const { errors } = validateContactForm(next);
+      setFieldErrors((prev) => ({
+        ...prev,
+        phone: errors.phone,
+        email: errors.email,
+      }));
+    }
   };
 
   const scrollToAndHighlightFirstInvalid = (errors: ContactFieldErrors) => {
@@ -61,9 +75,6 @@ export function ContactHubSection() {
     }
     if (errors.email && emailInputRef.current) {
       invalidTargets.push(emailInputRef.current);
-    }
-    if (errors.privacy && privacyLabelRef.current) {
-      invalidTargets.push(privacyLabelRef.current);
     }
 
     if (invalidTargets.length > 0) {
@@ -122,10 +133,9 @@ export function ContactHubSection() {
           address: formData.address.trim(),
           area: formData.area.trim(),
           comment: formData.comment.trim(),
-          privacyAccepted: formData.privacyAccepted,
           website: formData.website,
           companyFax: formData.companyFax,
-          formLoadedAt: formLoadedAtRef.current,
+          formElapsedMs: Math.round(performance.now() - formLoadedAtRef.current),
         }),
       });
 
@@ -163,7 +173,7 @@ export function ContactHubSection() {
     setShowToast(false);
     setErrorMessage(null);
     setFieldErrors({});
-    formLoadedAtRef.current = Date.now();
+    formLoadedAtRef.current = performance.now();
     setFormData(INITIAL_CONTACT_FORM_STATE);
   };
 
@@ -304,7 +314,10 @@ export function ContactHubSection() {
                   />
 
                   {/* Step 3: Contact Inputs with Sanitization & Inline Error Highlighting */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <p className="text-xs text-brand-navy/70 font-light pt-1">
+                    * Pflichtfeld. Für Rückfragen genügt eine Kontaktmöglichkeit: Telefon oder E-Mail.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
                         htmlFor="contact-name"
@@ -363,7 +376,7 @@ export function ContactHubSection() {
                             : "text-brand-navy/70"
                         }`}
                       >
-                        Telefonnummer *
+                        Telefonnummer
                       </label>
                       <input
                         ref={phoneInputRef}
@@ -371,25 +384,14 @@ export function ContactHubSection() {
                         name="phone"
                         type="tel"
                         inputMode="tel"
-                        required
                         maxLength={30}
                         autoComplete="tel"
                         aria-invalid={Boolean(fieldErrors.phone)}
                         value={formData.phone}
-                        onChange={(e) => {
-                          const val = cleanField(e.target.value, 30);
-                          setFormData({ ...formData, phone: val });
-                          if (
-                            fieldErrors.phone &&
-                            val.replace(/\D/g, "").length >= 7
-                          ) {
-                            setFieldErrors((prev) => ({
-                              ...prev,
-                              phone: undefined,
-                            }));
-                          }
-                        }}
-                        placeholder="z. B. 0157 34362898"
+                        onChange={(e) =>
+                          updateContactField("phone", cleanField(e.target.value, 30))
+                        }
+                        placeholder="z. B. 0371 1234567"
                         className={`w-full px-4 py-3 rounded-xl border text-sm text-brand-navy placeholder:text-brand-navy/35 focus:outline-none transition-all ${
                           fieldErrors.phone
                             ? "border-red-500 bg-red-50/40 ring-2 ring-red-500/15 focus:border-red-600 focus:bg-white"
@@ -418,7 +420,7 @@ export function ContactHubSection() {
                             : "text-brand-navy/70"
                         }`}
                       >
-                        E-Mail-Adresse *
+                        E-Mail-Adresse
                       </label>
                       <input
                         ref={emailInputRef}
@@ -426,24 +428,13 @@ export function ContactHubSection() {
                         name="email"
                         type="email"
                         inputMode="email"
-                        required
                         maxLength={120}
                         autoComplete="email"
                         aria-invalid={Boolean(fieldErrors.email)}
                         value={formData.email}
-                        onChange={(e) => {
-                          const val = cleanField(e.target.value, 120);
-                          setFormData({ ...formData, email: val });
-                          if (
-                            fieldErrors.email &&
-                            /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val.trim())
-                          ) {
-                            setFieldErrors((prev) => ({
-                              ...prev,
-                              email: undefined,
-                            }));
-                          }
-                        }}
+                        onChange={(e) =>
+                          updateContactField("email", cleanField(e.target.value, 120))
+                        }
                         placeholder="ihre.adresse@firma.de"
                         className={`w-full px-4 py-3 rounded-xl border text-sm text-brand-navy placeholder:text-brand-navy/35 focus:outline-none transition-all ${
                           fieldErrors.email
@@ -541,56 +532,19 @@ export function ContactHubSection() {
                     />
                   </div>
 
-                  {/* DSGVO Consent */}
-                  <div>
-                    <label
-                      ref={privacyLabelRef}
-                      className={`flex items-start gap-2.5 text-xs cursor-pointer select-none p-3 rounded-xl border transition-all ${
-                        fieldErrors.privacy
-                          ? "border-red-500 bg-red-50/40 text-red-700 ring-2 ring-red-500/15"
-                          : "border-transparent text-brand-navy/70"
-                      }`}
+                  {/* Data protection notice (Art. 13 DSGVO); processing rests on Art. 6 Abs. 1 lit. b/f, not on consent */}
+                  <p className="text-xs text-brand-navy/70 leading-relaxed">
+                    Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage. Details finden Sie in unserer{" "}
+                    <a
+                      href="/datenschutz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-brand-navy font-medium"
                     >
-                      <input
-                        type="checkbox"
-                        required
-                        checked={formData.privacyAccepted}
-                        onChange={(e) => {
-                          const checked = e.target.checked;
-                          setFormData({
-                            ...formData,
-                            privacyAccepted: checked,
-                          });
-                          if (checked && fieldErrors.privacy) {
-                            setFieldErrors((prev) => ({
-                              ...prev,
-                              privacy: undefined,
-                            }));
-                          }
-                        }}
-                        className="w-4 h-4 rounded text-brand-navy accent-brand-navy mt-0.5 shrink-0"
-                      />
-                      <span className="leading-relaxed">
-                        Ich willige ein, dass meine Angaben zur Kontaktaufnahme und Zuordnung für eventuelle Rückfragen gespeichert und verarbeitet werden. Details siehe{" "}
-                        <a
-                          href="/datenschutz"
-                          className="underline hover:text-brand-navy font-medium"
-                        >
-                          Datenschutz
-                        </a>
-                        .
-                      </span>
-                    </label>
-                    {fieldErrors.privacy && (
-                      <p
-                        role="alert"
-                        className="mt-1.5 text-xs text-red-600 flex items-center gap-1.5 font-normal px-1"
-                      >
-                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
-                        <span>{fieldErrors.privacy}</span>
-                      </p>
-                    )}
-                  </div>
+                      Datenschutzerklärung
+                    </a>
+                    .
+                  </p>
 
                   {/* Submit Button */}
                   <div className="pt-2">

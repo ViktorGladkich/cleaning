@@ -12,6 +12,8 @@ export interface ServiceDetailData {
   durationNote: string;
   imageSrc: string;
   imageAlt: string;
+  /** Horizontal focus of the image, kept in frame on portrait screens. */
+  imagePosition?: string;
   popular?: boolean;
   featuresTitle: string;
   features: string[];
@@ -46,8 +48,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Kontinuierliche Werterhaltung und makellose Hygiene für Kanzleien, Praxen, Büros und Privathaushalte. Mit festem Stammpersonal, RKI-konformem 4-Farben-System und ökologischen Reinigern.",
     priceNote: "Individuelles Angebot nach Objektgröße & Turnus",
     durationNote: "Flexibel nach Turnus (täglich, wöchentlich, 14-tägig)",
-    imageSrc: "/images/service_grid_unterhalt.webp",
-    imageAlt: "Professionelle Unterhaltsreinigung in Chemnitz",
+    imageSrc: "/images/services/hero-unterhaltsreinigung.jpg",
+    imageAlt: "Reinigungskräfte in einheitlicher Tadik's-Arbeitskleidung pflegen den Empfangsbereich einer Kanzlei",
+    imagePosition: "43% center",
     popular: true,
     featuresTitle: "Was ist in der regelmäßigen Unterhaltsreinigung enthalten?",
     features: [
@@ -132,8 +135,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Die intensive Komplettreinigung für Wohnungen, Häuser und Gewerberäume. Wir entfernen hartnäckige Kalkablagerungen, Fettfilme, Wachsschichten und Verschmutzungen, die bei der normalen Reinigung unberührt bleiben.",
     priceNote: "Individuelles Angebot nach Fläche & Bedarf",
     durationNote: "ca. 4–7 Stunden durch unser Profi-Team",
-    imageSrc: "/images/leistungen_reinigung_1.jpg",
-    imageAlt: "Intensive Grundreinigung in Sachsen",
+    imageSrc: "/images/services/hero-grundreinigung.jpg",
+    imageAlt: "Grundreinigung eines Natursteinbodens mit Einscheibenmaschine in einem historischen Saal in Sachsen",
+    imagePosition: "45% center",
     popular: true,
     featuresTitle: "Leistungsumfang der intensiven Grundreinigung",
     features: [
@@ -213,8 +217,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Spezialisierte Baufeinreinigung in Chemnitz und Mittelsachsen. Wir entfernen aggressiven Baustaub, Zementschleier, Farb- und Lackspritzer sowie Etiketten schonend von allen neuen Oberflächen.",
     priceNote: "Individuelles Angebot nach Bauabschnitt & Fläche",
     durationNote: "5–8 Stunden / termintreue Fertigstellung",
-    imageSrc: "/images/service_grid_bauende.webp",
-    imageAlt: "Bauendreinigung und Baufeinreinigung in Chemnitz",
+    imageSrc: "/images/services/hero-bauendreinigung.jpg",
+    imageAlt: "Bauendreinigung in einem sanierten Altbau: Staubsaugen und Entfernen der Schutzfolie vom Fenster",
+    imagePosition: "40% center",
     popular: false,
     featuresTitle: "Was gehört zur fachgerechten Baufeinreinigung?",
     features: [
@@ -294,8 +299,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Kristallklarer Glanz für Privathaushalte, Schaufenster, Bürogebäude und Kanzleien. Wir reinigen Scheiben, Rahmen, Dichtungen, Innenfalzen und Fensterbänke streifenfrei und materialgerecht.",
     priceNote: "Individuelles Angebot für Privat & Gewerbe",
     durationNote: "ca. 1–3 Stunden vor Ort",
-    imageSrc: "/images/service_grid_glas.webp",
-    imageAlt: "Streifenfreie Fenster- und Glasreinigung in Chemnitz",
+    imageSrc: "/images/services/hero-fensterreinigung.jpg",
+    imageAlt: "Fensterreinigung an einer Gründerzeitfassade mit Teleskopstange und Reinstwasser",
+    imagePosition: "49% center",
     popular: false,
     featuresTitle: "Was umfasst unsere professionelle Glasreinigung?",
     features: [
@@ -370,8 +376,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Zuverlässige und diskrete Unterhaltsreinigung für Gewerbeobjekte in Chemnitz und Mittelsachsen. Wir sichern ein repräsentatives Erscheinungsbild und schützen die Gesundheit Ihrer Mitarbeiter und Besucher.",
     priceNote: "Maßgeschneiderte Kalkulation nach Leistungsverzeichnis",
     durationNote: "Nach Vereinbarung (frühmorgens, abends, Wochenende)",
-    imageSrc: "/images/service_cleaning_card.jpg",
-    imageAlt: "Büro- und Praxisreinigung in Chemnitz",
+    imageSrc: "/images/services/hero-bueroreinigung.jpg",
+    imageAlt: "Büroreinigung nach Feierabend in einem Großraumbüro mit Blick über die Stadt",
+    imagePosition: "38% center",
     popular: false,
     featuresTitle: "Leistungen für Büro- und Praxisräume",
     features: [
@@ -446,8 +453,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Tiefenwirksame Reinigung direkt bei Ihnen vor Ort in Chemnitz. Wir beseitigen eingetrocknete Flecken von Kaffee, Rotwein oder Haustieren, vernichten Milben und neutralisieren störende Gerüche nachhaltig.",
     priceNote: "Individuelles Angebot nach Polster- & Teppichfläche",
     durationNote: "ca. 1,5–3 Stunden vor Ort (Trocknung ca. 4–8 Std.)",
-    imageSrc: "/images/leistungen_reinigung_2.jpg",
-    imageAlt: "Polster- und Teppichreinigung in Chemnitz",
+    imageSrc: "/images/services/hero-polsterreinigung.jpg",
+    imageAlt: "Polsterreinigung eines hellen Sofas im Sprühextraktionsverfahren in einer Altbauwohnung",
+    imagePosition: "40% center",
     popular: false,
     featuresTitle: "Was leistet unsere Sprühextraktion?",
     features: [
@@ -519,11 +527,12 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
     subtitle: "DIN-gerechte Wand- und Deckensysteme, Schallschutz und Raumtrennung",
     heroHeadline: "Präziser Trockenbau nach Fachstandard.",
     heroDescription:
-      "Flexible Raumaufteilung, Akustikdecken, Trennwände und Dachgeschossausbau für Wohn- und Gewerbeobjekte in Chemnitz und Umgebung. Mit Rotationslaser-Präzision, geprüftem Schallschutz und makelloser Spachtelung bis Q4.",
+      "Flexible Raumaufteilung, Akustikdecken, Trennwände und Dachgeschossausbau für Wohn- und Gewerbeobjekte in Chemnitz und Umgebung. Mit Rotationslaser-Präzision und geprüftem Schallschutz.",
     priceNote: "Verbindliches Angebot nach Vor-Ort-Aufmaß",
     durationNote: "Termingerecht nach Bauzeitenplan",
-    imageSrc: "/images/service_grid_trockenbau.webp",
-    imageAlt: "Trockenbau und Akustikdecken in Chemnitz",
+    imageSrc: "/images/services/hero-trockenbau-innenausbau.jpg",
+    imageAlt: "Montage einer Gipskartonplatte auf dem Metallständerwerk beim Dachausbau eines Altbaus",
+    imagePosition: "53% center",
     popular: true,
     featuresTitle: "Leistungen im modernen Trockenbau",
     features: [
@@ -532,7 +541,6 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Vollständiger Dachgeschossausbau inkl. Dämmung und Dampfsperre",
       "Feuchtraum-Installationswände für Bäder und Sanitärräume",
       "Brand- und Schallschutzverkleidungen nach DIN 4102 und DIN 4109",
-      "Fugenspachtelung von Q1 (Basis) bis zur streiflichtfreien Edelstufe Q4",
     ],
     includedTitle: "Material- & Handwerksqualität",
     included: [
@@ -552,7 +560,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
         number: "02",
         title: "Detailliertes Festpreisangebot",
         description:
-          "Sie erhalten ein transparentes Angebot mit Aufschlüsselung von Unterkonstruktion, Beplankung und Spachtelstufe.",
+          "Sie erhalten ein transparentes Angebot mit Aufschlüsselung von Unterkonstruktion und Beplankung.",
       },
       {
         number: "03",
@@ -564,7 +572,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
         number: "04",
         title: "Präzisions-Finish",
         description:
-          "Fugen und Schrauben werden nach gewünschter Qualitätsstufe gespachtelt und geschliffen – bereit für Maler oder Fliesen.",
+          "Fugen und Schrauben werden sauber geschlossen und geschliffen – bereit für die weiteren Ausbauarbeiten.",
       },
     ],
     faqs: [
@@ -573,13 +581,8 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
         answer:
           "Trockenbau ist extrem schnell montiert, bringt keinerlei Baufeuchte ins Haus, ist statisch leicht und bietet durch Hohlraumdämmung exzellente Schall- und Wärmedämmwerte.",
       },
-      {
-        question: "Was bedeutet die Spachtelstufe Q3 bzw. Q4?",
-        answer:
-          "Q3 beinhaltet ein breites Ausspachteln der Fugen für matte Anstriche. Q4 ist eine vollflächige Glättung der gesamten Wand für anspruchsvolle Glattvliestapeten oder streiflichtbelastete Designer-Wände.",
-      },
     ],
-    relatedSlugs: ["maler-spachtelarbeiten", "renovierung-sanierung", "bodenleger-fliesenarbeiten"],
+    relatedSlugs: ["renovierung-sanierung", "abbruch-entkernung", "bauendreinigung"],
   },
 
   // ==========================================
@@ -598,15 +601,16 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Vom Altbau bis zur Gewerbeimmobilie: Wir übernehmen die komplette Sanierung aus einer Hand. Wir koordinieren alle Gewerke, halten vereinbarte Fristen strikt ein und verwandeln sanierungsbedürftige Räume in moderne, werthaltige Wohlfühloasen.",
     priceNote: "Individuelle Projektkalkulation mit Bauzeitenplan",
     durationNote: "Schlüsselfertig zum Fixtermin",
-    imageSrc: "/images/service_grid_sanierung.webp",
-    imageAlt: "Komplettsanierung und Altbaumodernisierung in Sachsen",
+    imageSrc: "/images/services/hero-renovierung-sanierung.jpg",
+    imageAlt: "Baubesprechung mit Plänen in einer leeren Gründerzeitwohnung vor der Sanierung",
+    imagePosition: "47% center",
     popular: true,
     featuresTitle: "Gewerkeübergreifende Komplettleistungen",
     features: [
       "Komplettsanierung von Wohnungen, Ein- und Mehrfamilienhäusern",
-      "Badezimmersanierung inkl. Sanitärvorbereitung, Abdichtung und Fliesen",
-      "Erneuerung von Böden, Decken, Türen, Fenstern und Wandflächen",
-      "Altbausanierung mit Erhalt historischer Stilelemente und Stuckarbeiten",
+      "Renovierung nach Mieterwechsel",
+      "Vorbereitung von Immobilien für Verkauf oder Vermietung",
+      "Altbausanierung mit Erhalt historischer Stilelemente",
       "Energetische Modernisierung und effiziente Innendämmung",
       "Gewerbeumbau für moderne Büros, Arztpraxen und Kanzleien",
     ],
@@ -634,7 +638,7 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
         number: "03",
         title: "Gewerkekoordination",
         description:
-          "Rückbau, Trockenbau, Elektrik, Sanitär, Fliesen und Malerarbeiten greifen nahtlos ineinander.",
+          "Rückbau, Trockenbau und Bauendreinigung greifen nahtlos ineinander.",
       },
       {
         number: "04",
@@ -652,166 +656,14 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       {
         question: "Wie sicher ist der vereinbarte Fertigstellungstermin?",
         answer:
-          "Wir arbeiten mit verbindlichen Bauzeitenplänen. Dank eigener eingespielter Teams vermeiden wir die üblichen Schnittstellenverzögerungen fremder Firmen.",
+          "Wir arbeiten mit verbindlichen Bauzeitenplänen und stimmen alle Arbeiten frühzeitig aufeinander ab.",
       },
     ],
-    relatedSlugs: ["trockenbau-innenausbau", "maler-spachtelarbeiten", "bodenleger-fliesenarbeiten"],
+    relatedSlugs: ["trockenbau-innenausbau", "abbruch-entkernung", "bauendreinigung"],
   },
 
   // ==========================================
-  // 9. BAU: MALER- & SPACHTELARBEITEN
-  // ==========================================
-  {
-    id: "malerarbeiten",
-    slug: "maler-spachtelarbeiten",
-    aliases: ["malerarbeiten"],
-    category: "bau",
-    categoryLabel: "Bau & Innenausbau",
-    title: "Maler- & Spachtelarbeiten",
-    subtitle: "Perfekte Wand- und Deckenflächen, Q1–Q4 Qualitätsspachtelung und Farbkonzepte",
-    heroHeadline: "Maler- & Spachteltechnik für anspruchsvolle Räume.",
-    heroDescription:
-      "Präzise Maler- und Tapezierarbeiten für Innenräume in Chemnitz. Ob emissionsarme Dispersions- oder Silikatfarben, Glattvlies oder streiflichtfreie Q4-Spachtelung – wir schaffen samtweiche, makellose Wandflächen.",
-    priceNote: "Individuelle Kalkulation nach Fläche & Spachtelstufe",
-    durationNote: "Termingerecht und sauber",
-    imageSrc: "/images/service_grid_maler.webp",
-    imageAlt: "Maler- und Spachtelarbeiten in Chemnitz",
-    popular: false,
-    featuresTitle: "Leistungsspektrum Maler- & Spachteltechnik",
-    features: [
-      "Flächenspachtelung von Q1 (Grundspachtel) bis Q4 (streiflichtfreie Luxusstufe)",
-      "Streichen von Wänden und Decken mit emissionsarmen Qualitätsfarben (Caparol, Brillux)",
-      "Tapezierarbeiten: Glattvlies, Renoviervlies, Vliestapeten und Raufaser",
-      "Lackieren von Innentüren, Zargen, Fenstern und Heizkörpern",
-      "Schimmel- und Nikotinsperranstriche sowie diffusionsoffene Silikatfarben",
-      "Staubarmes Schleifen mit Hochleistungs-Schleifgiraffen und Absaugung",
-    ],
-    includedTitle: "Sauberkeits- & Qualitätsgarantie",
-    included: [
-      "Vollständiges Abkleben und Schützen aller Böden, Fenster und Möbel",
-      "Geruchsneutrale, allergikergeeignete Profi-Farben (VOC-frei)",
-      "Exakte Farbtonberatung direkt bei Ihnen vor Ort",
-      "Gründliche Schlussreinigung der Baustelle",
-    ],
-    processSteps: [
-      {
-        number: "01",
-        title: "Farb- & Oberflächenberatung",
-        description:
-          "Wir begutachten Untergründe, Lichtverhältnisse und beraten zu passenden Farbtönen und Spachtelqualitäten.",
-      },
-      {
-        number: "02",
-        title: "Sorgfältige Vorbereitung",
-        description:
-          "Böden und Einbauten werden lückenlos mit Schutzvlies abgeklebt, Risse und Unebenheiten grundiert.",
-      },
-      {
-        number: "03",
-        title: "Spachteln & Anstrich",
-        description:
-          "Maschinelles Schleifen mit Absaugung und gleichmäßiger Anstrich mit hochwertigen Roll- und Spritztechniken.",
-      },
-      {
-        number: "04",
-        title: "Lichtprüfung & Übergabe",
-        description:
-          "Prüfung der Wandflächen bei Tages- und Streiflicht auf absolute Gleichmäßigkeit.",
-      },
-    ],
-    faqs: [
-      {
-        question: "Welche Farbe eignet sich am besten für Allergiker?",
-        answer:
-          "Wir empfehlen mineralische Silikatfarben. Sie sind frei von Konservierungsstoffen, Weichmachern und Lösemitteln, hoch atmungsaktiv und wirken auf natürliche Weise antibakteriell und schimmelhemmend.",
-      },
-      {
-        question: "Wie wird verhindert, dass Schleifstaub die Wohnung verschmutzt?",
-        answer:
-          "Unsere Schleifmaschinen sind direkt mit HEPA-Industriesaugern gekoppelt, sodass der Staub unmittelbar an der Wand abgesaugt wird.",
-      },
-    ],
-    relatedSlugs: ["trockenbau-innenausbau", "bodenleger-fliesenarbeiten", "renovierung-sanierung"],
-  },
-
-  // ==========================================
-  // 10. BAU: BODENLEGER- & FLIESENARBEITEN
-  // ==========================================
-  {
-    id: "bodenleger",
-    slug: "bodenleger-fliesenarbeiten",
-    aliases: ["bodenleger"],
-    category: "bau",
-    categoryLabel: "Bau & Innenausbau",
-    title: "Bodenleger- & Fliesenarbeiten",
-    subtitle: "Fachgerechte Verlegung von Vinyl, Parkett, Laminat und Fliesen",
-    heroHeadline: "Bodenbeläge & Fliesen mit millimetergenauer Fuge.",
-    heroDescription:
-      "Ein solider Boden ist das Fundament jedes Raumes. Wir bereiten den Estrich fachgerecht vor (Nivellieren, Schleifen, Grundieren) und verlegen Design-Vinyl, Echtholzparkett sowie moderne Wand- und Bodenfliesen mit höchster Präzision.",
-    priceNote: "Individuelles Angebot nach Raumfläche & Belagsart",
-    durationNote: "Zügige und fachgerechte Ausführung",
-    imageSrc: "/images/service_bau_card.jpg",
-    imageAlt: "Bodenleger und Fliesenarbeiten in Sachsen",
-    popular: false,
-    featuresTitle: "Leistungen im Boden- & Fliesenbereich",
-    features: [
-      "Untergrundvorbereitung: Fräsen, Schleifen, Rissverharzung und Nivellierung",
-      "Verlegung von Klick-Vinyl und vollflächig verklebtem Designbelag",
-      "Verlegung von Echtholzparkett und Laminat inkl. Trittschalldämmung",
-      "Fliesenarbeiten in Bad, Küche, Flur und Außenbereichen (auch Großformate)",
-      "Montage passender Sockelleisten, Alu-Abschlussprofile und Silikonfugen",
-      "Restfeuchte- und CM-Messung des Estrichs vor der Verlegung",
-    ],
-    includedTitle: "Material- & Fachstandards",
-    included: [
-      "Emissionsarme, geprüfte Verlegewerkstoffe (EC1-Plus)",
-      "Modernste Schneidetechnik für exakte Fliesenkanten und saubere Gehrung",
-      "Entfernung und fachgerechte Entsorgung von Altbelägen auf Wunsch",
-      "Herstellerkonforme Verlegung mit voller Garantie",
-    ],
-    processSteps: [
-      {
-        number: "01",
-        title: "Untergrundprüfung",
-        description:
-          "Wir prüfen Ebenheit, Festigkeit und Restfeuchte des Estrichs direkt vor Ort.",
-      },
-      {
-        number: "02",
-        title: "Materialauswahl",
-        description:
-          "Musterberatung für Vinyl, Parkett oder Fliesen passend zu Beanspruchung und Fußbodenheizung.",
-      },
-      {
-        number: "03",
-        title: "Fachgerechte Verlegung",
-        description:
-          "Egalisierung des Untergrunds und saubere Verlegung mit gleichmäßigem Fugenbild.",
-      },
-      {
-        number: "04",
-        title: "Sockel & Silikonfinish",
-        description:
-          "Montage der Leisten und elastische Versiegelung aller Dehnungs- und Randfugen.",
-      },
-    ],
-    faqs: [
-      {
-        question: "Welcher Belag ist am besten für eine Fußbodenheizung?",
-        answer:
-          "Fliesen sowie vollflächig verklebtes Vinyl haben den geringsten Wärmedurchlasswiderstand und leiten die Wärme besonders energieeffizient in den Raum.",
-      },
-      {
-        question: "Übernehmen Sie auch das Entfernen von alten Fliesen oder Teppichen?",
-        answer:
-          "Ja! Wir entfernen alte Teppichböden, Parkett oder Fliesenbeläge, fräsen Klebereste ab und entsorgen den Bauschutt fachgerecht.",
-      },
-    ],
-    relatedSlugs: ["maler-spachtelarbeiten", "trockenbau-innenausbau", "renovierung-sanierung"],
-  },
-
-  // ==========================================
-  // 11. BAU: ABBRUCH, ENTKERNUNG & RÜCKBAU
+  // 9. BAU: ABBRUCH, ENTKERNUNG & RÜCKBAU
   // ==========================================
   {
     id: "abbruch",
@@ -826,8 +678,9 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       "Vor dem Ausbau steht der fachgerechte Rückbau. Wir entkernen Räume und Gebäude schonend, entfernen nichttragende Wände, alte Fliesen, Sanitärobjekte und Decken und entsorgen Bauschutt sortenrein nach gesetzlichen Vorschriften.",
     priceNote: "Individuelles Angebot nach Objektbesichtigung",
     durationNote: "Zügiger Rückbau ohne Stillstand",
-    imageSrc: "/images/service_grid_bauende.webp",
-    imageAlt: "Staubarme Entkernung und Abbruch in Chemnitz",
+    imageSrc: "/images/services/hero-abbruch-entkernung.jpg",
+    imageAlt: "Entkernung einer ehemaligen Backstein-Fabrikhalle mit Schutzhelm, Atemschutz und Bauschuttcontainer",
+    imagePosition: "40% center",
     popular: false,
     featuresTitle: "Leistungen im Bereich Abbruch & Entkernung",
     features: [
@@ -880,10 +733,271 @@ export const ALL_SERVICE_DETAILS: ServiceDetailData[] = [
       {
         question: "Dürfen Sie auch tragende Wände abreißen?",
         answer:
-          "Wir führen den Abbruch nichttragender Wände durch. Bei tragenden Wänden ist ein statisches Gutachten und ein Stahlträger-Einbau erforderlich, den wir gern in Abstimmung mit einem Statiker realisieren.",
+          "Wir führen den Abbruch nichttragender Wände durch. Für tragende Wände sind ein statisches Gutachten und ein dafür zugelassener Fachbetrieb erforderlich.",
       },
     ],
-    relatedSlugs: ["trockenbau-innenausbau", "renovierung-sanierung", "bodenleger-fliesenarbeiten"],
+    relatedSlugs: ["trockenbau-innenausbau", "renovierung-sanierung", "bauendreinigung"],
+  },
+
+  // ==========================================
+  // Carried over from the previous website: statements are limited to what it
+  // already said (see assets/old-site-text), so that ranking pages keep their topic.
+  // ==========================================
+  {
+    id: "hotelreinigung",
+    slug: "hotelreinigung",
+    category: "reinigung",
+    categoryLabel: "Gebäudereinigung",
+    title: "Hotelreinigung",
+    subtitle: "Saubere Zimmer und gepflegte Empfangsbereiche für Hotels, Pensionen und Ferienunterkünfte",
+    heroHeadline: "Hotelreinigung für einen perfekten ersten Eindruck.",
+    heroDescription:
+      "Ihr zuverlässiger Partner für professionelle Hotelreinigung in Chemnitz und Umgebung: diskret, flexibel und mit festen Ansprechpartnern, egal ob tägliche Zimmerreinigung oder Reinigung nach Gästewechsel.",
+    priceNote: "Individuelles Angebot nach Objektgröße & Turnus",
+    durationNote: "Flexibel nach Belegung und Gästewechsel",
+    imageSrc: "/images/services/hero-hotelreinigung.jpg",
+    imageAlt: "Hotelreinigung: frische Bettwäsche und Spiegelpflege in einem Hotelzimmer mit Blick auf Dresden",
+    imagePosition: "37% center",
+    featuresTitle: "Was gehört zur Hotelreinigung?",
+    features: [
+      "Tägliche Zimmerreinigung",
+      "Reinigung nach Gästewechsel",
+      "Hygienische Reinigung der Sanitärbereiche",
+      "Pflege der Empfangsbereiche",
+      "Unterhaltsreinigung und Grundreinigung",
+    ],
+    includedTitle: "Darauf können Sie sich verlassen",
+    included: [
+      "Feste Ansprechpartner",
+      "Schnelle Reaktionszeiten",
+      "Diskretes und flexibles Arbeiten",
+      "Professionelle Arbeitsabläufe",
+    ],
+    processSteps: [
+      {
+        number: "01",
+        title: "Anfrage",
+        description: "Sie schildern uns kurz Ihr Haus und den gewünschten Reinigungsumfang.",
+      },
+      {
+        number: "02",
+        title: "Rückmeldung",
+        description: "Wir melden uns innerhalb von 24 Stunden und klären die Details für Ihr unverbindliches Angebot.",
+      },
+      {
+        number: "03",
+        title: "Abstimmung",
+        description: "Reinigungszeiten und Abläufe stimmen wir auf Ihre Belegung und den Gästewechsel ab.",
+      },
+      {
+        number: "04",
+        title: "Ausführung",
+        description: "Unser Team arbeitet diskret, und Ihr fester Ansprechpartner bleibt für Sie erreichbar.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Für welche Betriebe bieten Sie Hotelreinigung an?",
+        answer:
+          "Wir arbeiten für Hotels, Pensionen und Ferienunterkünfte in Chemnitz und Umgebung.",
+      },
+      {
+        question: "Übernehmen Sie auch die Reinigung nach dem Gästewechsel?",
+        answer:
+          "Ja. Neben der täglichen Zimmerreinigung übernehmen wir auch die Reinigung nach Gästewechsel sowie die Unterhalts- und Grundreinigung.",
+      },
+    ],
+    relatedSlugs: ["unterhaltsreinigung", "grundreinigung", "polsterreinigung"],
+  },
+  {
+    id: "treppenhausreinigung",
+    slug: "treppenhausreinigung",
+    category: "reinigung",
+    categoryLabel: "Gebäudereinigung",
+    title: "Treppenhausreinigung",
+    subtitle: "Gepflegte Eingangsbereiche, Treppenstufen und Aufzüge für Wohnanlagen und Gewerbe",
+    heroHeadline: "Treppenhausreinigung für den ersten Eindruck.",
+    heroDescription:
+      "Das Treppenhaus ist der erste Eindruck für Bewohner, Mieter und Besucher. Wir sorgen dafür, dass Eingangsbereiche, Treppenstufen, Geländer und Aufzüge stets einladend und gepflegt wirken.",
+    priceNote: "Individuelles Angebot nach Objekt & Intervall",
+    durationNote: "In regelmäßigen, zuverlässigen Intervallen",
+    imageSrc: "/images/services/hero-treppenhausreinigung.jpg",
+    imageAlt: "Treppenhausreinigung in einem Gründerzeithaus mit Terrazzoboden und Holzgeländer",
+    imagePosition: "47% center",
+    featuresTitle: "Was gehört zur Treppenhausreinigung?",
+    features: [
+      "Regelmäßige Nassreinigung der Böden",
+      "Wischen von Handläufen und Geländern",
+      "Reinigung von Briefkastenanlagen und Eingangstüren",
+      "Reinigung der Aufzugskabinen",
+      "Winterdienst im Eingangsbereich",
+    ],
+    includedTitle: "Darauf können Sie sich verlassen",
+    included: [
+      "Feste Ansprechpartner",
+      "Zuverlässige Reinigungsintervalle",
+      "Betreuung von Wohnanlagen, Bürogebäuden und Gewerbeparks",
+    ],
+    processSteps: [
+      {
+        number: "01",
+        title: "Anfrage",
+        description: "Sie schildern uns kurz Ihr Objekt und das gewünschte Reinigungsintervall.",
+      },
+      {
+        number: "02",
+        title: "Rückmeldung",
+        description: "Wir melden uns innerhalb von 24 Stunden und klären die Details für Ihr unverbindliches Angebot.",
+      },
+      {
+        number: "03",
+        title: "Abstimmung",
+        description: "Umfang und Intervalle legen wir gemeinsam passend zu Ihrem Objekt fest.",
+      },
+      {
+        number: "04",
+        title: "Regelmäßige Reinigung",
+        description: "Wir reinigen in den vereinbarten Intervallen, mit einem festen Ansprechpartner für Sie.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Welche Objekte betreuen Sie?",
+        answer: "Wir betreuen Wohnanlagen, Bürogebäude und Gewerbeparks gleichermaßen.",
+      },
+      {
+        question: "Gehört auch der Winterdienst dazu?",
+        answer: "Unser Service umfasst auch den Winterdienst im Eingangsbereich.",
+      },
+    ],
+    relatedSlugs: ["unterhaltsreinigung", "grundreinigung", "fensterreinigung"],
+  },
+  {
+    id: "industrie-und-hallenreinigung",
+    slug: "industrie-und-hallenreinigung",
+    category: "reinigung",
+    categoryLabel: "Gebäudereinigung",
+    title: "Industrie- & Hallenreinigung",
+    subtitle: "Leistungsstarke Reinigungstechnik für Produktion, Lager und Logistik",
+    heroHeadline: "Industrie- und Hallenreinigung für große Flächen.",
+    heroDescription:
+      "Produktionshallen, Lagerflächen und Logistikzentren erfordern leistungsstarke Reinigungstechnik und erfahrene Teams. Wir reinigen Industrieflächen jeder Größe, von der kleinen Werkstatt bis zur Großhalle.",
+    priceNote: "Individuelles Angebot nach Fläche & Verschmutzung",
+    durationNote: "Nach Absprache mit Ihrem Betriebsablauf",
+    imageSrc: "/images/services/hero-industrie-und-hallenreinigung.jpg",
+    imageAlt: "Maschinelle Hallenreinigung mit Aufsitz-Scheuersaugmaschine in einer früheren Backsteinfabrik",
+    imagePosition: "50% center",
+    featuresTitle: "Was gehört zur Industrie- und Hallenreinigung?",
+    features: [
+      "Reinigung von Produktionshallen, Lagerflächen und Logistikzentren",
+      "Entfernung von Öl, Fett, Produktionsrückständen und Staub",
+      "Entfettung von Produktionsanlagen",
+      "Reinigung nach Umbauten",
+    ],
+    includedTitle: "Unsere Ausstattung",
+    included: [
+      "Aufsitz-Scheuersaugmaschinen",
+      "Hochdruckreiniger",
+      "Industriesauger",
+      "Spezialgeräte für die Maschinenreinigung",
+    ],
+    processSteps: [
+      {
+        number: "01",
+        title: "Anfrage",
+        description: "Sie schildern uns kurz Ihre Flächen und die Art der Verschmutzung.",
+      },
+      {
+        number: "02",
+        title: "Rückmeldung",
+        description: "Wir melden uns innerhalb von 24 Stunden und klären die Details für Ihr unverbindliches Angebot.",
+      },
+      {
+        number: "03",
+        title: "Abstimmung",
+        description: "Termine und Abläufe stimmen wir mit Ihrem Betrieb ab.",
+      },
+      {
+        number: "04",
+        title: "Ausführung",
+        description: "Unser Team reinigt mit der passenden Technik und sorgt für saubere, sichere Arbeitsbedingungen.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Welche Flächengrößen reinigen Sie?",
+        answer: "Wir reinigen Industrieflächen jeder Größe, von der kleinen Werkstatt bis zur Großhalle.",
+      },
+      {
+        question: "Übernehmen Sie auch Sonderreinigungen?",
+        answer:
+          "Ja. Auch die Entfettung von Produktionsanlagen und die Reinigung nach Umbauten gehören zu unserem Leistungsspektrum.",
+      },
+    ],
+    relatedSlugs: ["grundreinigung", "bauendreinigung", "unterhaltsreinigung"],
+  },
+  {
+    id: "entruempelungen",
+    slug: "entruempelungen",
+    category: "reinigung",
+    categoryLabel: "Gebäudereinigung",
+    title: "Entrümpelungen",
+    subtitle: "Wohnungsauflösung, Kellerentrümpelung und Geschäftsräumung: diskret und besenrein",
+    heroHeadline: "Entrümpelung: diskret, schnell und besenrein.",
+    heroDescription:
+      "Ob Wohnungsauflösung, Kellerentrümpelung oder Geschäftsräumung: Wir übernehmen die komplette Entrümpelung und arbeiten diskret und respektvoll, auch in sensiblen Situationen wie Nachlassräumungen.",
+    priceNote: "Individuelles Angebot nach Umfang",
+    durationNote: "Termingerechter Abschluss nach Absprache",
+    imageSrc: "/images/services/hero-entruempelungen.jpg",
+    imageAlt: "Entrümpelung: Möbel und Umzugskartons werden vor einem Gründerzeithaus in den Transporter geladen",
+    imagePosition: "42% center",
+    featuresTitle: "Was gehört zur Entrümpelung?",
+    features: [
+      "Sichtung und Sortierung des Inventars",
+      "Fachgerechter Abtransport",
+      "Umweltgerechte Entsorgung",
+      "Auf Wunsch anschließende Endreinigung der Räume",
+    ],
+    includedTitle: "Darauf können Sie sich verlassen",
+    included: [
+      "Diskretes und respektvolles Arbeiten",
+      "Besenreine Übergabe",
+      "Dokumentation aller Arbeiten",
+      "Verwertbare Gegenstände werden nach Absprache gespendet oder recycelt",
+    ],
+    processSteps: [
+      {
+        number: "01",
+        title: "Anfrage",
+        description: "Sie schildern uns kurz die Räume und den Umfang der Entrümpelung.",
+      },
+      {
+        number: "02",
+        title: "Rückmeldung",
+        description: "Wir melden uns innerhalb von 24 Stunden und klären die Details für Ihr unverbindliches Angebot.",
+      },
+      {
+        number: "03",
+        title: "Räumung",
+        description: "Wir sichten und sortieren das Inventar, transportieren es ab und entsorgen es umweltgerecht.",
+      },
+      {
+        number: "04",
+        title: "Übergabe",
+        description: "Sie erhalten die Räume besenrein zurück, auf Wunsch mit anschließender Endreinigung.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Was passiert mit verwertbaren Gegenständen?",
+        answer: "Verwertbare Gegenstände werden nach Absprache gespendet oder recycelt.",
+      },
+      {
+        question: "Übernehmen Sie auch Nachlassräumungen?",
+        answer: "Ja. Wir arbeiten diskret und respektvoll, auch in sensiblen Situationen wie Nachlassräumungen.",
+      },
+    ],
+    relatedSlugs: ["grundreinigung", "bauendreinigung", "unterhaltsreinigung"],
   },
 ];
 

@@ -9,21 +9,15 @@ export const BAU_FAQS: FaqItem[] = [
   },
   {
     category: "GEWERKE AUS EINER HAND",
-    question: "Müssen wir Trockenbauer, Maler und Bodenleger separat koordinieren?",
+    question: "Müssen wir Trockenbau, Rückbau und Endreinigung separat koordinieren?",
     answer:
-      "Nein, genau das nehmen wir Ihnen ab. Bei Tadiks greifen alle Gewerke nahtlos ineinander: Trockenbau, Akustikdecken, Q1–Q4 Spachtelung, Malerarbeiten, Bodenbeläge und die abschließende bezugsfertige Bauendreinigung. Sie haben einen einzigen festen deutschen Bauleiter als Ansprechpartner.",
+      "Nein, genau das nehmen wir Ihnen ab. Bei Tadiks greifen die Arbeiten nahtlos ineinander: Rückbau, Trockenbau, Akustikdecken und die abschließende bezugsfertige Bauendreinigung. Sie haben einen einzigen festen deutschen Bauleiter als Ansprechpartner.",
   },
   {
     category: "STAUB- & WOHNSCHUTZ",
     question: "Wie schützen Sie bestehende Räume, Möbel und Böden vor Baustaub?",
     answer:
       "Wir arbeiten mit professionellen Staubschutztüren mit Reißverschluss, mobilen HEPA-Unterdruck-Luftreinigern und staubbindenden Absaugsystemen an Schleifgeräten. Böden und Möbel werden lückenlos mit speziellem Abdeckvlies und Schutzfolien versiegelt.",
-  },
-  {
-    category: "QUALITÄT & OBERFLÄCHEN",
-    question: "Was bedeutet die Spachtelgüte Q1 bis Q4 bei Trockenbauwänden?",
-    answer:
-      "Q1 ist die einfache Grundverspachtelung für Fliesenbeläge. Q2 ist der Standard für Raufaser. Q3 genügt feinen Tapeten. Q4 ist die makellose vollflächige Glättung für streiflichtfreie, edel verputzte oder lackierte Wände ohne jeden sichtbaren Übergang.",
   },
   {
     category: "TERMINE & DAUER",

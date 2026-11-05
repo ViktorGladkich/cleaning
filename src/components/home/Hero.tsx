@@ -24,7 +24,7 @@ export function Hero() {
   // Lock mobile hero height in exact pixels on mount so in-app browsers
   // (like the Google Search app, Instagram, Telegram) never re-calculate or jerk
   // the background image when their search bar collapses/expands on scroll.
-  const lockedHeight = useLockedHeroHeight(20);
+  const lockedHeight = useLockedHeroHeight(20, 28);
 
   useGSAP(
     () => {
@@ -182,6 +182,10 @@ export function Hero() {
                 </div>
               </div>
             </div>
+
+            <p className="mt-4 text-xs text-white/70">
+              Symbolbilder auf dieser Seite: KI-generiert.
+            </p>
           </div>
 
           <HeroVideoCard />

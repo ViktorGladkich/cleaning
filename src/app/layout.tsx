@@ -6,8 +6,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLdSchema } from "@/components/layout/JsonLdSchema";
-import { CookieBanner } from "@/components/ui/CookieBanner";
-import { COMPANY_INFO } from "@/lib/constants";
+import { COMPANY_INFO, SITE_URL } from "@/lib/constants";
 
 // Fontshare - Satoshi (Geometric, Modern, Headlines & UI Elements)
 const satoshi = localFont({
@@ -57,24 +56,18 @@ const generalSans = localFont({
   preload: false,
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://tadiks-cleaning.de");
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    template: `%s | ${COMPANY_INFO.name} Chemnitz`,
-    default: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
-  },
+  // Page titles already contain the brand, so no title.template here.
+  title: `${COMPANY_INFO.name} | Reinigung, Hotelreinigung & Bau in Chemnitz`,
   description:
-    "Professionelle Reinigungsdienste in Chemnitz und Umgebung: Unterhaltsreinigung, Grundreinigung, Büroreinigung, Fensterreinigung und Bauendreinigung mit Zufriedenheitsgarantie.",
+    "Tadik's Cleaning ist Ihr Partner für professionelle Gebäudereinigung, Hotelreinigung und Bauleistungen in Chemnitz und Umgebung.",
   keywords: [
     "Gebäudereinigung Chemnitz",
+    "Hotelreinigung Chemnitz",
+    "Treppenhausreinigung Chemnitz",
+    "Hallenreinigung Chemnitz",
+    "Entrümpelung Chemnitz",
     "Reinigungsfirma Chemnitz",
     "Putzfirma Chemnitz",
     "Unterhaltsreinigung Chemnitz",
@@ -84,11 +77,10 @@ export const metadata: Metadata = {
     "Bauendreinigung Chemnitz",
     "Trockenbau Chemnitz",
     "Komplettsanierung Chemnitz",
-    "Malerarbeiten Chemnitz",
     "Tadik's Cleaning",
   ],
   alternates: {
-    canonical: SITE_URL,
+    canonical: "./",
     types: {
       "text/plain": [
         { url: "/llms.txt", title: "LLM Context (Standard)" },
@@ -103,7 +95,7 @@ export const metadata: Metadata = {
     siteName: COMPANY_INFO.name,
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
-      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
+      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung und Trockenbau aus einer Hand in Chemnitz & Sachsen.",
     images: [
       {
         url: "/og-image.jpg",
@@ -118,7 +110,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
-      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung, Trockenbau und Malerarbeiten aus einer Hand in Chemnitz & Sachsen.",
+      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung und Trockenbau aus einer Hand in Chemnitz & Sachsen.",
     images: ["/og-image.jpg"],
   },
 };
@@ -133,13 +125,6 @@ export default function RootLayout({
       lang="de"
       className={`${satoshi.variable} ${generalSans.variable} antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var h=window.innerHeight;document.documentElement.style.setProperty('--locked-vh',h+'px');var w=window.innerWidth;window.addEventListener('resize',function(){if(Math.abs(window.innerWidth-w)>10){w=window.innerWidth;document.documentElement.style.setProperty('--locked-vh',window.innerHeight+'px');}},{passive:true});}catch(e){}})();`,
-          }}
-        />
-      </head>
       <body className="min-h-screen flex flex-col font-sans text-neutral-900 selection:bg-(--color-brand-navy) selection:text-white overflow-x-clip">
         <JsonLdSchema />
         <SmoothScroll>
@@ -149,7 +134,6 @@ export default function RootLayout({
             <Footer />
           </PageTransition>
         </SmoothScroll>
-        <CookieBanner />
       </body>
     </html>
   );

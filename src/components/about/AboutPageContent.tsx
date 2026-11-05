@@ -49,7 +49,7 @@ export function AboutPageContent() {
           </>
         }
         subtitle="Erfahren Sie mehr über unsere Arbeitsweise, Qualitätsgarantien, Personalstandards und Versicherungsschutz in Sachsen."
-        imageSrc="/images/hero_about_monumental.jpg"
+        imageSrc="/images/services/step-reinigung-1.webp"
         imageAlt="Tadiks Fachbetrieb für Bau und Gebäudereinigung in Chemnitz"
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
@@ -67,8 +67,6 @@ export function AboutPageContent() {
         subtitle="Wir beraten Sie gern unverbindlich vor Ort in Chemnitz und Mittelsachsen. Lassen Sie uns über Ihr Bau- oder Reinigungsvorhaben sprechen."
         ctaText="Kostenlose Beratung anfordern"
         ctaHref="/contacts"
-        imageSrc="/images/hero_about_monumental.jpg"
-        imageAlt="Tadiks Fachbetrieb für Bau und Werterhalt Chemnitz"
       />
     </div>
   );

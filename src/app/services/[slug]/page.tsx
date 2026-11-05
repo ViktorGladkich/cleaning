@@ -31,6 +31,10 @@ export async function generateMetadata({
   return {
     title: `${service.title} Chemnitz — Fachbetrieb Tadiks`,
     description: service.subtitle,
+    // Aliases and Bau services reachable under /services all point to one URL
+    alternates: {
+      canonical: `/${service.category === "bau" ? "bau" : "services"}/${service.slug}`,
+    },
     openGraph: {
       title: `${service.title} Chemnitz — Tadiks`,
       description: service.heroDescription,

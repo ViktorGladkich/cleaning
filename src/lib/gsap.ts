@@ -15,5 +15,13 @@ if (typeof window !== "undefined") {
   });
 }
 
+/**
+ * True where scrolling is native (no Lenis). Scroll-linked translations run on the
+ * main thread and lag the compositor-driven scroll there, which reads as jitter.
+ */
+export function isTouchLayout(): boolean {
+  return window.matchMedia("(max-width: 1023px), (pointer: coarse)").matches;
+}
+
 export { gsap, ScrollTrigger, useGSAP };
 export default gsap;

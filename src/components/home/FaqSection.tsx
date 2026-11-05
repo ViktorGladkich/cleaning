@@ -3,7 +3,7 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { gsap, isTouchLayout } from "@/lib/gsap";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -37,7 +37,7 @@ const FAQS: FaqItem[] = [
     question:
       "Was bedeutet 'Bau, Sanierung und Reinigung aus einer Hand' konkret für unser Projekt?",
     answer:
-      "Bei herkömmlichen Abläufen entstehen Verzögerungen und Streitigkeiten oft an der Schnittstelle zwischen Trockenbauern, Malern und Reinigungsfirmen. Bei uns arbeiten eigene feste Gewerke Hand in Hand unter der Leitung eines festen deutschen Objektleiters. Das spart bis zu 30% Bauzeit und garantiert eine schlüsselfertig bezugsfertige Übergabe ohne Schnittstellenverlust.",
+      "Bei herkömmlichen Abläufen entstehen Verzögerungen und Streitigkeiten oft an der Schnittstelle zwischen Trockenbauern und Reinigungsfirmen. Bei uns arbeiten eigene feste Gewerke Hand in Hand unter der Leitung eines festen deutschen Objektleiters. Das spart bis zu 30% Bauzeit und garantiert eine schlüsselfertig bezugsfertige Übergabe ohne Schnittstellenverlust.",
   },
   {
     category: "QUALITÄT & PERSONAL",
@@ -65,7 +65,7 @@ const FAQS: FaqItem[] = [
     question:
       "Welche Gewährleistung bieten Sie auf handwerkliche Bau- und Sanierungsleistungen?",
     answer:
-      "Auf alle ausgeführten Bau- und Sanierungsleistungen (wie Trockenbau, Maler- und Spachtelarbeiten sowie Bodenverlegung) gewähren wir die volle VOB/BGB-Gewährleistung von bis zu 5 Jahren. Vor der Übergabe erfolgt eine gemeinsame, lückenlose Protokollabnahme mit Ihrem festen Objektleiter.",
+      "Auf alle ausgeführten Bau- und Sanierungsleistungen (wie Trockenbau, Sanierung und Rückbau) gewähren wir die volle VOB/BGB-Gewährleistung von bis zu 5 Jahren. Vor der Übergabe erfolgt eine gemeinsame, lückenlose Protokollabnahme mit Ihrem festen Objektleiter.",
   },
   {
     category: "FLEXIBILITÄT & ZEITPLAN",
@@ -108,7 +108,6 @@ export function FaqSection({
     () => {
       if (!sectionRef.current) return;
 
-      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
 
       // 1. Header entrance reveal
       if (headerRef.current) {
@@ -171,7 +170,7 @@ export function FaqSection({
       const imgInner = imageContainerRef.current?.querySelector(
         ".faq-parallax-photo",
       );
-      if (imgInner) {
+      if (imgInner && !isTouchLayout()) {
         gsap.fromTo(
           imgInner,
           { yPercent: -8 },
@@ -182,7 +181,7 @@ export function FaqSection({
               trigger: sectionRef.current,
               start: "top bottom",
               end: "bottom top",
-              scrub: isMobile ? true : 1.2,
+              scrub: 1.2,
             },
           },
         );

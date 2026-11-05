@@ -14,25 +14,25 @@ interface ProtocolStep {
 const PROTOCOL_STEPS: ProtocolStep[] = [
   {
     num: "01",
-    image: "/images/protocol_step_1.jpg",
+    image: "/images/services/step-reinigung-1.webp",
     title: "Kostenloses Vor-Ort-Audit: Flächen erfassen, Bausubstanz schützen.",
     desc: "Präzise Bestandsaufnahme aller Oberflächen und Materialien (Parkett, Naturstein, Glas). Verbindliche Festpreiskalkulation innerhalb von 24 Stunden.",
   },
   {
     num: "02",
-    image: "/images/protocol_step_2.jpg",
+    image: "/images/services/step-reinigung-2.webp",
     title: "Verbindliches Festpreis-Konzept: Volle Kostensicherheit ohne Überraschungen.",
     desc: "Transparent aufgeschlüsseltes Leistungsverzeichnis mit flexiblen Intervallen. Ein garantierter Festpreis ohne versteckte Nebenkosten.",
   },
   {
     num: "03",
-    image: "/images/protocol_step_3.jpg",
+    image: "/images/services/step-reinigung-3.webp",
     title: "Feste Stammpersonal-Teams: Höchste Diskretion und geschulte Fachkräfte.",
     desc: "Reinigung durch fest zugeteilte Mitarbeiter mit Kärcher Professional-Technik und 4-Farben-Mikrofaserhygiene nach RKI-Vorgaben.",
   },
   {
     num: "04",
-    image: "/images/protocol_step_4.jpg",
+    image: "/images/services/step-reinigung-4.webp",
     title: "Lückenloser Qualitätsnachweis: Objektleiter-Audit und 24h-Abnahmegarantie.",
     desc: "Laufende Audits durch Ihren festen deutschen Objektleiter. Sollte etwas nicht perfekt sein, bessern wir binnen 24 Stunden kostenfrei nach.",
   },
@@ -183,7 +183,7 @@ export function ReinigungMinimalProtocol() {
                       alt={step.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 480px"
-                      className="object-cover object-center"
+                      className="object-cover object-top"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
                   </div>

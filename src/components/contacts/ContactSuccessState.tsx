@@ -146,7 +146,7 @@ export function ContactSuccessCard({
       {/* Confirmation Message */}
       <p className="text-sm sm:text-base text-brand-navy/75 leading-relaxed font-light">
         Vielen Dank,{" "}
-        <span className="font-medium text-brand-navy">{name}</span>. Wir haben Ihre Anfrage erhalten und an unseren zuständigen Objektleiter in Chemnitz weitergeleitet.
+        <span className="font-medium text-brand-navy">{name}</span>. Wir haben Ihre Anfrage erhalten und melden uns bei Ihnen.
       </p>
 
       {/* Responsive Summary Grid */}
@@ -160,23 +160,27 @@ export function ContactSuccessCard({
           </span>
         </div>
 
-        <div className="space-y-0.5 min-w-0">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-brand-navy/50 block">
-            Rückrufnummer
-          </span>
-          <span className="text-sm sm:text-[15px] font-medium text-brand-navy block truncate">
-            {phone}
-          </span>
-        </div>
+        {phone && (
+          <div className="space-y-0.5 min-w-0">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-brand-navy/50 block">
+              Rückrufnummer
+            </span>
+            <span className="text-sm sm:text-[15px] font-medium text-brand-navy block truncate">
+              {phone}
+            </span>
+          </div>
+        )}
 
-        <div className="space-y-0.5 min-w-0">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-brand-navy/50 block">
-            E-Mail-Bestätigung
-          </span>
-          <span className="text-sm sm:text-[15px] font-medium text-brand-navy block truncate">
-            {email}
-          </span>
-        </div>
+        {email && (
+          <div className="space-y-0.5 min-w-0">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-brand-navy/50 block">
+              Ihre E-Mail
+            </span>
+            <span className="text-sm sm:text-[15px] font-medium text-brand-navy block truncate">
+              {email}
+            </span>
+          </div>
+        )}
 
         <div className="space-y-0.5 min-w-0">
           <span className="text-[11px] font-mono uppercase tracking-wider text-brand-navy/50 block">

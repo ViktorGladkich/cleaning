@@ -49,7 +49,7 @@ export function BauPageContent() {
           </>
         }
         subtitle="Verbindliche Antworten zu Festpreisen, Bauleitung, Staubschutz, Gewerke-Koordination und VOB-Gewährleistung."
-        imageSrc="/images/hero_premium_cleaning_bau.jpg"
+        imageSrc="/images/services/step-bau-4.webp"
         imageAlt="Tadiks Fachbetrieb für Bau, Trockenbau und Sanierung"
         items={BAU_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"

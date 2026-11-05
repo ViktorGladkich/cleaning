@@ -1,7 +1,13 @@
 import React from "react";
 import { Building2, Hammer, Layers } from "lucide-react";
+import {
+  CategoryType,
+  isValidName,
+  validateContactMethods,
+} from "@/lib/contactRules";
 
-export type CategoryType = "reinigung" | "bau" | "kombi";
+export type { CategoryType } from "@/lib/contactRules";
+export { EMAIL_PATTERN, SERVICES_BY_CAT } from "@/lib/contactRules";
 
 export interface CategoryOption {
   id: CategoryType;
@@ -14,7 +20,6 @@ export interface ContactFieldErrors {
   name?: string;
   phone?: string;
   email?: string;
-  privacy?: string;
 }
 
 export interface ContactFormState {
@@ -24,7 +29,6 @@ export interface ContactFormState {
   address: string;
   area: string;
   comment: string;
-  privacyAccepted: boolean;
   // Honeypot fields (must remain empty for real users)
   website: string;
   companyFax: string;
@@ -37,7 +41,6 @@ export const INITIAL_CONTACT_FORM_STATE: ContactFormState = {
   address: "",
   area: "",
   comment: "",
-  privacyAccepted: false,
   website: "",
   companyFax: "",
 };
@@ -52,7 +55,7 @@ export const CATEGORY_OPTIONS: CategoryOption[] = [
   {
     id: "bau",
     label: "Bau & Ausbau",
-    subtitle: "Trockenbau, Maler, Boden & Komplettsanierung",
+    subtitle: "Trockenbau, Abbruch & Komplettsanierung",
     Icon: Hammer,
   },
   {
@@ -62,29 +65,6 @@ export const CATEGORY_OPTIONS: CategoryOption[] = [
     Icon: Layers,
   },
 ];
-
-export const SERVICES_BY_CAT: Record<CategoryType, string[]> = {
-  reinigung: [
-    "Unterhaltsreinigung",
-    "Grundreinigung",
-    "Bauendreinigung",
-    "Fenster- & Glasreinigung",
-    "Büro- & Praxisreinigung",
-    "Fassaden- & Spezialreinigung",
-  ],
-  bau: [
-    "Trockenbau & Akustik",
-    "Maler- & Spachtelarbeiten (Q1–Q4)",
-    "Komplettsanierung",
-    "Bodenleger- & Fliesenarbeiten",
-    "Abbruch & Entkernung",
-  ],
-  kombi: [
-    "Komplettausbau inkl. Bauendreinigung",
-    "Praxis- & Bürosanierung mit Turnusreinigung",
-    "Mieterwechsel-Renovierung mit Endreinigung",
-  ],
-};
 
 /**
  * Strips HTML tags and control characters from user input on the client side.
@@ -107,32 +87,16 @@ export function validateContactForm(formData: ContactFormState): {
   const errors: ContactFieldErrors = {};
   let generalError: string | null = null;
 
-  const trimmedName = formData.name.trim();
-  const trimmedPhone = formData.phone.trim();
-  const trimmedEmail = formData.email.trim();
-
-  if (trimmedName.length < 2 || !/^[\p{L}\s.'-]+$/u.test(trimmedName)) {
+  if (!isValidName(formData.name.trim())) {
     errors.name = "Bitte geben Sie Ihren Vor- und Nachnamen korrekt ein.";
   }
 
-  const phoneDigits = trimmedPhone.replace(/\D/g, "");
-  if (
-    phoneDigits.length < 7 ||
-    phoneDigits.length > 18 ||
-    !/^[+\d\s()/.-]+$/.test(trimmedPhone)
-  ) {
-    errors.phone = "Bitte geben Sie eine gültige Telefonnummer ein.";
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  if (!emailRegex.test(trimmedEmail)) {
-    errors.email = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
-  }
-
-  if (!formData.privacyAccepted) {
-    errors.privacy =
-      "Bitte bestätigen Sie die Datenschutzerklärung, um die Anfrage abzusenden.";
-  }
+  const contactErrors = validateContactMethods(
+    formData.phone.trim(),
+    formData.email.trim()
+  );
+  if (contactErrors.phone) errors.phone = contactErrors.phone;
+  if (contactErrors.email) errors.email = contactErrors.email;
 
   if (
     /(https?:\/\/|www\.|<script|\[url=)/i.test(

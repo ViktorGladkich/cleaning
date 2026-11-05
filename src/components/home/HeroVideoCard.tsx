@@ -1,12 +1,25 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Play, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function HeroVideoCard() {
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // The card is hidden below md: without this, phones would still download the video.
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 768px)");
+    const load = () => {
+      const video = videoRef.current;
+      if (!media.matches || !video || video.getAttribute("src")) return;
+      video.src = "/videos/hero-video-card.mp4";
+    };
+    load();
+    media.addEventListener("change", load);
+    return () => media.removeEventListener("change", load);
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -30,7 +43,6 @@ export function HeroVideoCard() {
         <div className="relative rounded-[10px] overflow-hidden aspect-4/3 w-full bg-brand-navy/50 cursor-pointer group" onClick={togglePlay}>
           <video
             ref={videoRef}
-            src="/videos/hero-video.mp4"
             autoPlay
             loop
             muted

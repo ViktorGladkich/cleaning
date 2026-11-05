@@ -1,0 +1,52 @@
+URL: /datenschutz
+TITLE: Datenschutzerklärung | Tadik's Cleaning
+DESCRIPTION: Datenschutzerklärung von Tadik's Cleaning – Informationen zur Verarbeitung personenbezogener Daten gemäß DSGVO.
+
+Datenschutz­erklärung
+1. Verantwortlicher
+Verantwortlich für die Datenverarbeitung auf dieser Website ist:
+Tadik's Cleaning Inh. Michel Kislovskij Lessingstraße 14 09130 Chemnitz Telefon: 0371 23559475 Mobil: 0157 34362898 E-Mail: info@tadiks-cleaning.de
+2. Allgemeine Hinweise zur Datenverarbeitung
+Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis.
+3. Hosting
+Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf der Website verarbeitet Vercel technisch notwendige Daten, insbesondere IP-Adressen, Server-Logdaten, Meta- und Kommunikationsdaten sowie Daten zum Websitezugriff, um die Website sicher und zuverlässig bereitzustellen.
+Der Einsatz des Hosters erfolgt im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+Vercel kann Daten auch in den USA und weiteren Ländern verarbeiten. Soweit erforderlich, erfolgt die Verarbeitung auf Grundlage geeigneter Garantien nach Art. 44 ff. DSGVO, insbesondere Standardvertragsklauseln. Weitere Informationen: https://vercel.com/legal/privacy-policy https://vercel.com/legal/dpa
+4. Server-Log-Files
+Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:
+Browsertyp und Browserversion
+Verwendetes Betriebssystem
+Referrer URL
+Hostname des zugreifenden Rechners
+Uhrzeit der Serveranfrage
+IP-Adresse
+Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Grundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO.
+Die Server-Log-Files werden für die Dauer von 7 Tagen gespeichert und anschließend automatisch gelöscht, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+5. Kontaktformular
+Wenn Sie unser Kontaktformular nutzen, öffnet sich Ihr E-Mail-Programm mit einer vorbereiteten Nachricht. Die Anfrage wird erst an uns übermittelt, wenn Sie diese E-Mail in Ihrem E-Mail-Programm absenden.
+Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).
+Die von Ihnen übermittelte E-Mail inklusive der darin enthaltenen Kontaktdaten verbleibt bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt. Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.
+Eine serverseitige Formularverarbeitung über diese Website und ein Versand über einen zusätzlichen Formular- oder SMTP-Dienst findet dabei nicht statt.
+6. Kontaktaufnahme über WhatsApp
+Für die Kontaktaufnahme bieten wir auch den Messenger WhatsApp an. Anbieter ist die WhatsApp Ireland Limited, 4 Grand Canal Square, Dublin 2, Irland. Wenn Sie uns über WhatsApp kontaktieren, werden Ihre Telefonnummer sowie die übermittelten Nachrichteninhalte verarbeitet, um Ihre Anfrage zu bearbeiten.
+Dabei kann eine Übermittlung von Daten in die USA beziehungsweise an Meta erfolgen; sie stützt sich auf die EU-Standardvertragsklauseln (Art. 46 DSGVO). Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO beziehungsweise Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen finden Sie in der Datenschutzrichtlinie von WhatsApp .
+7. Cookies
+Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools. Es werden lediglich technisch notwendige Cookies eingesetzt, die für den Betrieb der Website erforderlich sind. Diese Cookies werden nach Ende Ihrer Browser-Sitzung automatisch gelöscht.
+Rechtsgrundlage für den Einsatz technisch notwendiger Cookies ist § 25 Abs. 2 TDDDG sowie unser berechtigtes Interesse am technisch fehlerfreien Betrieb der Website (Art. 6 Abs. 1 lit. f DSGVO).
+8. Externe Inhalte
+Google Fonts
+Diese Website nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts. Die Google Fonts werden lokal eingebunden. Eine Verbindung zu Servern von Google findet dabei nicht statt.
+9. Ihre Rechte
+Sie haben jederzeit das Recht:
+Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten zu erhalten (Art. 15 DSGVO)
+Berichtigung unrichtiger Daten zu verlangen (Art. 16 DSGVO)
+Löschung Ihrer bei uns gespeicherten Daten zu verlangen (Art. 17 DSGVO)
+Einschränkung der Verarbeitung zu verlangen (Art. 18 DSGVO)
+Datenübertragbarkeit zu verlangen (Art. 20 DSGVO)
+Widerspruch gegen die Verarbeitung einzulegen (Art. 21 DSGVO)
+Darüber hinaus steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde zu (Art. 77 DSGVO).
+Die zuständige Aufsichtsbehörde ist: Sächsische Datenschutz- und Transparenzbeauftragte Devrientstraße 5, 01067 Dresden www.datenschutz.sachsen.de
+10. SSL- bzw. TLS-Verschlüsselung
+Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+Stand: Juni 2026

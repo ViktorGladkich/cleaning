@@ -24,24 +24,20 @@ const COL_REINIGUNG = [
   { label: "Bauendreinigung", href: "/services/bauendreinigung" },
   { label: "Fenster- & Glasreinigung", href: "/services/fensterreinigung" },
   { label: "Büro- & Praxisreinigung", href: "/services/bueroreinigung" },
+  { label: "Hotelreinigung", href: "/services/hotelreinigung" },
+  { label: "Treppenhausreinigung", href: "/services/treppenhausreinigung" },
+  { label: "Industrie- & Hallenreinigung", href: "/services/industrie-und-hallenreinigung" },
+  { label: "Entrümpelungen", href: "/services/entruempelungen" },
 ];
 
 const COL_BAU = [
   { label: "Übersicht Bauleistungen", href: "/bau" },
   {
     label: "Trockenbau & Innenausbau",
-    href: "/services/trockenbau-innenausbau",
+    href: "/bau/trockenbau-innenausbau",
   },
-  { label: "Komplettsanierung", href: "/services/renovierung-sanierung" },
-  {
-    label: "Maler- & Spachtelarbeiten",
-    href: "/services/maler-spachtelarbeiten",
-  },
-  {
-    label: "Bodenleger- & Fliesenarbeiten",
-    href: "/services/bodenleger-fliesenarbeiten",
-  },
-  { label: "Abbruch & Entkernung", href: "/services/abbruch-entkernung" },
+  { label: "Komplettsanierung", href: "/bau/renovierung-sanierung" },
+  { label: "Abbruch & Entkernung", href: "/bau/abbruch-entkernung" },
 ];
 
 const COL_CONNECT = [
@@ -295,7 +291,7 @@ export function Footer() {
         {/* Sub-footer Bar */}
         <div
           ref={bottomBarRef}
-          className="pt-8 flex flex-col md:grid md:grid-cols-3 items-center justify-between gap-4 text-xs text-white/40 font-light"
+          className="pt-8 flex flex-col md:grid md:grid-cols-3 items-center justify-between gap-4 text-xs text-white/70 font-light"
         >
           {/* Left: Copyright */}
           <p className="text-center md:text-left order-3 md:order-1">
@@ -303,7 +299,7 @@ export function Footer() {
             vorbehalten.
           </p>
 
-          {/* Center: Legal & Cookie Links */}
+          {/* Center: Legal Links */}
           <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6 order-1 md:order-2">
             <Link
               href="/impressum"
@@ -318,18 +314,6 @@ export function Footer() {
             >
               Datenschutz
             </Link>
-
-            <button
-              type="button"
-              onClick={() => {
-                if (typeof window !== "undefined") {
-                  window.dispatchEvent(new CustomEvent("openCookieSettings"));
-                }
-              }}
-              className="hover:text-white transition-colors cursor-pointer"
-            >
-              Cookie-Einstellungen
-            </button>
           </div>
 
           {/* Right: Created by Inverta */}
@@ -339,7 +323,7 @@ export function Footer() {
               href="https://invertadigital.de/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white font-medium"
+              className="text-white/80 hover:text-white transition-colors underline underline-offset-4 decoration-white/25 hover:decoration-white font-medium"
             >
               Inverta Digital
             </a>

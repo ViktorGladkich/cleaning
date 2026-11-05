@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
+import { gsap, isTouchLayout } from "@/lib/gsap";
 import { CtaButton } from "@/components/ui/CtaButton";
 import { cn } from "@/lib/utils";
 
@@ -38,10 +38,8 @@ export function ClosingCtaSection({
     () => {
       if (!sectionRef.current) return;
 
-      const isMobile = window.matchMedia("(max-width: 1023px)").matches;
-
       // 1. Smooth parallax on the architectural background image
-      if (bgImgRef.current) {
+      if (bgImgRef.current && !isTouchLayout()) {
         gsap.fromTo(
           bgImgRef.current,
           { yPercent: -8, scale: 1.05 },
@@ -53,7 +51,7 @@ export function ClosingCtaSection({
               trigger: sectionRef.current,
               start: "top bottom",
               end: "bottom top",
-              scrub: isMobile ? true : 0.8,
+              scrub: 0.8,
             },
           }
         );
