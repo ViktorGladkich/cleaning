@@ -86,6 +86,27 @@ p, span, a, li, button, input, textarea {
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
+/* Werkschau gallery on phones: the browser moves the cards from the scroll position
+   (same segments as the GSAP timeline used everywhere else). */
+@keyframes werkschau-float {
+  from { transform: translate3d(var(--shift-x), calc(var(--gallery-h) * 1.15), 0); }
+  to { transform: translate3d(var(--shift-x), calc(var(--gallery-h) * -1.35), 0); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (max-width: 767px) {
+    .werkschau-track {
+      view-timeline: --werkschau block;
+    }
+
+    .werkschau-card {
+      animation: werkschau-float linear both;
+      animation-timeline: --werkschau;
+      animation-range: contain var(--from) contain var(--to);
+    }
+  }
+}
+
 /* Smooth Accordion Grid Collapse */
 .faq-accordion-grid {
   display: grid;

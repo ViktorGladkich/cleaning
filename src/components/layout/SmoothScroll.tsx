@@ -86,7 +86,22 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     };
     window.addEventListener("resize", handleResize, { passive: true });
 
+    // Accordions above a section change the page height; without a refresh its
+    // animation would start at the old position, too early or too late.
+    let heightTimer: ReturnType<typeof setTimeout> | undefined;
+    let lastHeight = document.body.offsetHeight;
+    const heightObserver = new ResizeObserver(() => {
+      const height = document.body.offsetHeight;
+      if (Math.abs(height - lastHeight) < 2) return;
+      lastHeight = height;
+      clearTimeout(heightTimer);
+      heightTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+    });
+    heightObserver.observe(document.body);
+
     return () => {
+      heightObserver.disconnect();
+      clearTimeout(heightTimer);
       mediaQuery.removeEventListener("change", initOrCleanup);
       window.removeEventListener("resize", handleResize);
       clearTimeout(refreshTimer);

@@ -76,23 +76,31 @@ export function ClosingCtaSection({
           );
         }
 
+        // Touch devices get opacity and movement only: animating blur and scale
+        // on large text re-rasterises it every frame and stutters in mobile Safari.
+        const touch = isTouchLayout();
+        const soft = (blur: number, scale = 1) =>
+          touch ? {} : { filter: `blur(${blur}px)`, ...(scale !== 1 ? { scale } : {}) };
+        const sharp = (withScale = false) =>
+          touch ? {} : { filter: "blur(0px)", ...(withScale ? { scale: 1 } : {}) };
+
         ctaTl
           .fromTo(
             ".cta-anim-title",
-            { opacity: 0, y: 45, filter: "blur(10px)", scale: 0.96 },
-            { opacity: 1, y: 0, filter: "blur(0px)", scale: 1, duration: 1.1, ease: "power3.out" },
+            { opacity: 0, y: touch ? 28 : 45, ...soft(10, 0.96) },
+            { opacity: 1, y: 0, ...sharp(true), duration: touch ? 0.9 : 1.1, ease: "power3.out", clearProps: "filter" },
             eyebrowEl ? "-=0.4" : "0"
           )
           .fromTo(
             ".cta-anim-desc",
-            { opacity: 0, y: 30, filter: "blur(6px)" },
-            { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.95, ease: "power3.out" },
+            { opacity: 0, y: touch ? 20 : 30, ...soft(6) },
+            { opacity: 1, y: 0, ...sharp(), duration: touch ? 0.8 : 0.95, ease: "power3.out", clearProps: "filter" },
             "-=0.6"
           )
           .fromTo(
             ".cta-anim-actions",
-            { opacity: 0, y: 25, scale: 0.92 },
-            { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: "back.out(1.5)" },
+            { opacity: 0, y: touch ? 16 : 25, ...(touch ? {} : { scale: 0.92 }) },
+            { opacity: 1, y: 0, ...(touch ? {} : { scale: 1 }), duration: touch ? 0.7 : 0.85, ease: touch ? "power3.out" : "back.out(1.5)" },
             "-=0.5"
           );
       }

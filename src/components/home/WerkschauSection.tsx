@@ -4,6 +4,9 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { GALLERY_CARDS } from "./about/aboutData";
+
+// Length of the GSAP card timeline: the CSS version maps the same segments onto the scroll.
+const TIMELINE_LENGTH = Math.max(...GALLERY_CARDS.map((card) => card.startTime + (card.duration ?? 0.46)));
 import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
 
 export function WerkschauSection() {
@@ -22,6 +25,9 @@ export function WerkschauSection() {
       if (!scrollTrack || !gallery) return;
 
       const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      // Phones with scroll-driven animations: the cards move in CSS, in step with the
+      // scroll. Moving them from JS inside a sticky stage lags behind on iOS.
+      const cssDriven = isMobile && CSS.supports("animation-timeline: view()");
 
       // Set initial off-screen position for all floating cards immediately on mount
       GALLERY_CARDS.forEach((card) => {
@@ -29,7 +35,7 @@ export function WerkschauSection() {
         const mask = gallery.querySelector(`.${card.maskClass}`);
         const img = gallery.querySelector(`.${card.imageClass}`);
 
-        if (wrap) {
+        if (wrap && !cssDriven) {
           gsap.set(wrap, {
             y: () => gallery.offsetHeight * 1.15,
             ...(card.isCenter ? { xPercent: -50 } : {}),
@@ -161,7 +167,7 @@ export function WerkschauSection() {
         const duration = card.duration ?? 0.46;
 
         // 1. Float from beneath the bottom of the screen up and off top using pixel values
-        pinTl.fromTo(
+        if (!cssDriven) pinTl.fromTo(
           wrap,
           {
             y: () => galleryHeight * 1.15,
@@ -234,11 +240,16 @@ export function WerkschauSection() {
         <div
           ref={scrollTrackRef}
           style={{ height: lockedGalleryHeight ? `${lockedGalleryHeight * 3.6}px` : undefined }}
-          className="relative w-full h-[360svh] min-h-650"
+          className="werkschau-track relative w-full h-[360svh] min-h-650"
         >
           <div
             ref={galleryRef}
-            style={{ height: lockedGalleryHeight ? `${lockedGalleryHeight}px` : undefined }}
+            style={
+              {
+                height: lockedGalleryHeight ? `${lockedGalleryHeight}px` : undefined,
+                "--gallery-h": lockedGalleryHeight ? `${lockedGalleryHeight}px` : "100svh",
+              } as React.CSSProperties
+            }
             className="sticky top-0 w-full h-svh sm:h-screen sm:min-h-160 max-h-270 overflow-hidden"
           >
             {/* Static background / text stage: promoted to its own hardware layer, completely decoupled from moving cards */}
@@ -310,7 +321,17 @@ export function WerkschauSection() {
               }}
             >
               {GALLERY_CARDS.map((card) => (
-                <div key={card.id} className={card.wrapperClass}>
+                <div
+                  key={card.id}
+                  className={`werkschau-card ${card.wrapperClass}`}
+                  style={
+                    {
+                      "--from": `${(card.startTime / TIMELINE_LENGTH) * 100}%`,
+                      "--to": `${((card.startTime + (card.duration ?? 0.46)) / TIMELINE_LENGTH) * 100}%`,
+                      "--shift-x": card.isCenter ? "-50%" : "0px",
+                    } as React.CSSProperties
+                  }
+                >
                   <div
                     className={`relative ${card.maskClass} ${card.widthClass} ${card.aspectClass} rounded sm:rounded-md overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-100 md:opacity-0`}
                   >
