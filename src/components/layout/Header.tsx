@@ -12,17 +12,6 @@ import { CtaButton } from "@/components/ui/CtaButton";
 import { MAIN_NAV_LINKS } from "./navData";
 import { MegaMenu } from "./MegaMenu";
 import { MobileMenu } from "./MobileMenu";
-import { EmergencyBanner } from "./EmergencyBanner";
-
-/** Pages where the urgent-cleaning notice is shown below the navigation. */
-function showsEmergencyBanner(pathname: string): boolean {
-  return (
-    pathname === "/" ||
-    pathname === "/reinigung" ||
-    pathname === "/services" ||
-    pathname.startsWith("/services/")
-  );
-}
 
 /**
  * Header — Primary navigation bar with frosted-glass pill styling,
@@ -373,9 +362,6 @@ export function Header() {
         {/* Mobile menu dropdown */}
         <MobileMenu isOpen={mobileMenuOpen} onClose={closeMenu} />
       </nav>
-
-      {/* Urgent-cleaning notice (cleaning pages only, hidden while a menu is open) */}
-      {showsEmergencyBanner(pathname) && !isOpen && !mobileMenuOpen && <EmergencyBanner />}
 
       {/* Floating Mega Menu Capsule */}
       <MegaMenu

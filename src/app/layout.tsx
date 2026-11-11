@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { EmergencyBanner } from "@/components/layout/EmergencyBanner";
 import { JsonLdSchema } from "@/components/layout/JsonLdSchema";
 import { COMPANY_INFO, SITE_URL } from "@/lib/constants";
 
@@ -138,6 +139,7 @@ export default function RootLayout({
             <Footer />
           </PageTransition>
         </SmoothScroll>
+        <EmergencyBanner />
       </body>
     </html>
   );
