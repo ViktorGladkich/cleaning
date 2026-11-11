@@ -4,7 +4,7 @@ import { ContactPageContent } from "@/components/contacts/ContactPageContent";
 export const metadata: Metadata = {
   title: "Kontakt & Beratung — Tadiks Cleaning & Bau Chemnitz",
   description:
-    "Kontaktieren Sie unseren Chemnitzer Fachbetrieb für ein kostenloses Vor-Ort-Aufmaß und verbindliches Festpreisangebot für Reinigung & Bauhandwerk.",
+    "Kontakt zu TADIK’S Cleaning & BAU in Chemnitz: Anfrage für Reinigung, Bauprojekte oder dringende Reinigungseinsätze. Telefon 0371 23559475.",
 };
 
 export default function ContactsPage() {

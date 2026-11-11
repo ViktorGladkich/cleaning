@@ -26,60 +26,46 @@ export interface FaqSectionProps {
 
 const FAQS: FaqItem[] = [
   {
-    category: "ANGEBOT & PREISE",
-    question:
-      "Wie schnell erhalten wir ein verbindliches Angebot und fallen dafür Kosten an?",
+    category: "ANFRAGE & ANGEBOT",
+    question: "Wie erhalte ich ein Angebot?",
     answer:
-      "Die Erstbesichtigung und Bedarfsanalyse bei Ihnen vor Ort in Chemnitz und Region sind für Sie zu 100% kostenlos und unverbindlich. Innerhalb von 24 Stunden nach der Besichtigung erhalten Sie ein transparent aufgeschlüsseltes Festpreisangebot — ohne versteckte Nebenkosten oder nachträgliche Aufschläge.",
+      "Schildern Sie uns Ihr Vorhaben telefonisch, per E-Mail oder über das Anfrageformular. Wir besprechen Bedarf und Umfang – bei Bedarf bei einem Termin vor Ort – und erstellen Ihnen ein individuell abgestimmtes Angebot.",
   },
   {
-    category: "BAU & REINIGUNG AUS EINER HAND",
-    question:
-      "Was bedeutet 'Bau, Sanierung und Reinigung aus einer Hand' konkret für unser Projekt?",
+    category: "REINIGUNG & BAU",
+    question: "Bieten Sie Reinigung und Bauleistungen an?",
     answer:
-      "Bei herkömmlichen Abläufen entstehen Verzögerungen und Streitigkeiten oft an der Schnittstelle zwischen Trockenbauern und Reinigungsfirmen. Bei uns arbeiten eigene feste Gewerke Hand in Hand unter der Leitung eines festen deutschen Objektleiters. Das spart bis zu 30% Bauzeit und garantiert eine schlüsselfertig bezugsfertige Übergabe ohne Schnittstellenverlust.",
+      "Ja. TADIK’S Cleaning übernimmt Reinigungsleistungen für Gewerbe und Privatkunden, TADIK’S BAU unterstützt bei Trockenbau, Rückbau, Entkernung, Renovierung und Beräumung. So können Sie zum Beispiel nach Bauarbeiten auch die Bauendreinigung bei uns anfragen.",
   },
   {
-    category: "QUALITÄT & PERSONAL",
-    question:
-      "Arbeiten bei Ihnen feste Teams oder wechseln die Reinigungskräfte ständig?",
+    category: "LEISTUNGSUMFANG",
+    question: "Kann ich auch Leistungen anfragen, die nicht auf der Webseite stehen?",
     answer:
-      "Wir setzen konsequent auf feste, festangestellte Fachkräfte und feste Objektleiter für jedes Objekt. Gerade in Praxen, Büros oder privaten Wohnräumen sind Diskretion, Vertrautheit und gleichbleibend hohe Qualität unverzichtbar. Im Urlaubs- oder Krankheitsfall greift ein nahtloser, vorab eingearbeiteter Vertretungsplan.",
+      "Ja, gern. Beschreiben Sie uns Ihr Vorhaben – wir prüfen die Möglichkeiten. Bei Bauprojekten prüfen wir für weitere Gewerke auch die Zusammenarbeit mit geeigneten Partnerunternehmen.",
   },
   {
-    category: "SICHERHEIT & VERSICHERUNG",
-    question:
-      "Sind unsere Räumlichkeiten und Sachwerte während der Arbeiten abgesichert?",
+    category: "KURZFRISTIGE EINSÄTZE",
+    question: "Ist auch eine kurzfristige Reinigung möglich?",
     answer:
-      "Selbstverständlich. Tadiks ist umfassend gewerblich betriebshaftpflichtversichert. Alle Mitarbeiter sind tarifvertraglich angemeldet, sozialversichert und werden regelmäßig in Arbeitsschutz, Materialkunde und Datenschutz (DSGVO) geschult.",
+      "Kurzfristige Einsätze prüfen wir gern – abhängig von Art, Umfang und verfügbarer Kapazität. Am schnellsten erreichen Sie uns telefonisch unter 0371 23559475.",
   },
   {
-    category: "HYGIENE & STANDARDS",
-    question:
-      "Welche Reinigungsmittel, Geräte und Hygienestandards kommen zum Einsatz?",
+    category: "ANSPRECHPARTNER",
+    question: "Wer ist mein Ansprechpartner?",
     answer:
-      "Wir arbeiten ausschließlich mit modernen Profi-Systemen von Kärcher und biologisch abbaubaren, materialschonenden Reinigungskonzentraten namhafter deutscher Hersteller. Für sensible Bereiche wie Arztpraxen oder Reinräume wenden wir das streng codierte Vier-Farben-Hygienesystem nach RKI-Vorgaben an.",
+      "Ihr direkter Ansprechpartner ist Michel Kislovskij, Inhaber von TADIK’S Cleaning & BAU. Er bespricht mit Ihnen Ihren Bedarf und die Rahmenbedingungen.",
   },
   {
-    category: "GEWÄHRLEISTUNG & ABNAHME",
-    question:
-      "Welche Gewährleistung bieten Sie auf handwerkliche Bau- und Sanierungsleistungen?",
+    category: "EINSATZGEBIET",
+    question: "Wo sind Sie im Einsatz?",
     answer:
-      "Auf alle ausgeführten Bau- und Sanierungsleistungen (wie Trockenbau, Sanierung und Rückbau) gewähren wir die volle VOB/BGB-Gewährleistung von bis zu 5 Jahren. Vor der Übergabe erfolgt eine gemeinsame, lückenlose Protokollabnahme mit Ihrem festen Objektleiter.",
+      "Wir sind in Chemnitz und Umgebung tätig. Aufträge außerhalb der Region prüfen wir auf Anfrage.",
   },
   {
-    category: "FLEXIBILITÄT & ZEITPLAN",
-    question:
-      "Können Arbeiten auch außerhalb unserer regulären Geschäftszeiten oder am Wochenende stattfinden?",
+    category: "KARRIERE",
+    question: "Suchen Sie Mitarbeiter?",
     answer:
-      "Ja, absolut. Sowohl im Bauhandwerk als auch in der Gebäudereinigung richten wir uns flexibel nach Ihrem Betriebsablauf. Arbeiten in den Abendstunden, nachts oder an Wochenenden sind für uns Standard, um Ihren laufenden Praxis-, Büro- oder Kundenbetrieb nicht zu beeinträchtigen.",
-  },
-  {
-    category: "EINSATZGEBIET & VERTRÄGE",
-    question:
-      "Welche Regionen bedienen Sie und gibt es langfristige Knebelverträge?",
-    answer:
-      "Unser Hauptfokus liegt auf Chemnitz, Zwickau, Freiberg, Mittweida und dem gesamten sächsischen Raum. Bei regelmäßigen Unterhaltsreinigungen arbeiten wir mit fairen, flexiblen Vereinbarungen mit transparenten Kündigungsfristen. Wir binden Kunden durch messbare Qualität, nicht durch starre Vertragslaufzeiten.",
+      "Wir freuen uns über Bewerbungen für die Bereiche Reinigung und Bau – mit Berufserfahrung oder als Quereinsteiger. Bewerben Sie sich unkompliziert über unser Online-Formular auf der Karriereseite.",
   },
 ];
 
@@ -87,7 +73,7 @@ export function FaqSection({
   id = "faq",
   eyebrow = "Klarheit & Transparenz",
   title,
-  subtitle = "Alle wichtigen Details zu Festpreisen, Termintreue, Schnittstellen und Gewährleistung transparent aufgeschlüsselt.",
+  subtitle = "Antworten zu Anfrage, Leistungen, kurzfristigen Einsätzen und Ihrem Ansprechpartner.",
   imageSrc = "/images/faq_architectural_craft.webp",
   imageAlt = "Tadiks professionelle Ausführung & Sauberkeit",
   items = FAQS,

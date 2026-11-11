@@ -9,39 +9,39 @@ import { Container } from "@/components/ui/Container";
 const VALUES = [
   {
     num: "01",
-    title: "Integrierte Gewerke ohne Schnittstellenverlust",
-    subtitle: "Bau & Reinigung Hand in Hand",
+    title: "Reinigung und Bau unter einem Dach",
+    subtitle: "TADIK’S Cleaning & TADIK’S BAU",
     description:
-      "Verzögerungen auf Baustellen entstehen meist an der Schnittstelle zwischen Handwerkern und Reinigungskräften. Bei uns arbeiten Trockenbauer und Reinigungsteams nahtlos zusammen — das spart bis zu 30% Zeit und garantiert schlüsselfertige Perfektion.",
+      "Wir unterstützen bei Reinigungsaufgaben ebenso wie bei Trockenbau, Rückbau, Entkernung und Renovierung. Nach Bauarbeiten können Sie die Bauendreinigung direkt mit anfragen.",
     icon: Layers,
-    badge: "Kein Koordinationsaufwand",
+    badge: "Zwei Bereiche",
   },
   {
     num: "02",
-    title: "Festes, tariflich angestelltes Stammpersonal",
-    subtitle: "Verlässlichkeit & Vertrauen",
+    title: "Ein direkter Ansprechpartner",
+    subtitle: "Persönlich für Sie da",
     description:
-      "Keine anonymen Kolonnen oder ständig wechselnde Gesichter. Wir setzen konsequent auf festangestellte Chemnitzer Fachkräfte mit einwandfreiem Leumund, umfassender Versicherung und festem deutschem Objektleiter für jedes Projekt.",
+      "Inhaber Michel Kislovskij bespricht mit Ihnen Ihren Bedarf, klärt die Rahmenbedingungen und bleibt Ihr Kontakt von der Anfrage bis zur Ausführung.",
     icon: Users,
-    badge: "100% Festes Personal",
+    badge: "Persönlicher Kontakt",
   },
   {
     num: "03",
-    title: "100% Verbindliche Festpreisgarantie",
-    subtitle: "Absolute Planungssicherheit",
+    title: "Individuell abgestimmte Angebote",
+    subtitle: "Klare Absprachen",
     description:
-      "Vor Beginn jedes Auftrags führen wir eine kostenlose Vor-Ort-Besichtigung durch. Innerhalb von 24 Stunden erhalten Sie ein transparentes, verbindliches Leistungsverzeichnis. Keine versteckten Kosten, keine nachträglichen Aufschläge.",
+      "Wir besprechen Umfang, Intervalle und Zeiten mit Ihnen – bei Bedarf bei einem Termin vor Ort – und erstellen ein Angebot mit dem vereinbarten Leistungsumfang.",
     icon: ShieldCheck,
-    badge: "Transparenz ohne Aufschläge",
+    badge: "Nach Vereinbarung",
   },
   {
     num: "04",
-    title: "Materialgerechte Bausubstanz-Pflege",
-    subtitle: "Angewandte Materialwissenschaft",
+    title: "Ehrliche Prüfung jeder Anfrage",
+    subtitle: "Was wir können – und was nicht",
     description:
-      "Als Handwerker kennen wir Werkstoffe bis ins kleinste Detail. Von normgerechten Trockenbausystemen bis hin zu pH-wert-kalibrierter Chemie für empfindliche Naturstein- und Parkettböden: Wir schützen den Sachwert Ihrer Immobilie dauerhaft.",
+      "Wir sagen offen, welche Leistungen wir selbst übernehmen. Für weitere Bau-Gewerke prüfen wir die Zusammenarbeit mit geeigneten Fach- und Partnerunternehmen.",
     icon: Award,
-    badge: "Geprüfter Werterhalt",
+    badge: "Transparente Abstimmung",
   },
 ];
 
@@ -114,11 +114,11 @@ export function AboutValuesSection() {
           >
             Vier Grundsätze für{" "}
             <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
-              kompromisslose Qualität.
+              unsere Zusammenarbeit.
             </span>
           </h2>
           <p className="mt-4 sm:mt-5 text-base sm:text-lg text-brand-navy/70 leading-relaxed font-light max-w-2xl mx-auto">
-            Wir haben Tadiks gegründet, um Bauhandwerk und Gebäudereinigung aus Silos zu befreien. Das Ergebnis: Höhere Effizienz, absolute Termintreue und Räume, die begeistern.
+            TADIK’S Cleaning &amp; BAU steht für Reinigung und Bauleistungen in Chemnitz und Umgebung – mit klaren Absprachen und einem festen Ansprechpartner.
           </p>
         </div>
 

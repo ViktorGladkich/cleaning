@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Play, Star } from "lucide-react";
+import { Play, UserCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function HeroVideoCard() {
@@ -65,14 +65,14 @@ export function HeroVideoCard() {
       {/* Trust Badge Below */}
       <div className="mt-4 lg:mt-5 w-full flex items-center gap-3 p-1.5 pr-5 rounded-md bg-white/10 hover:bg-white/20 backdrop-blur-md [-webkit-backdrop-filter:blur(12px)] border border-white/25 hover:border-white/40 transition-colors duration-200 shadow-xs cursor-default">
         <div className="w-9 h-9 rounded bg-brand-lime flex items-center justify-center shrink-0">
-          <Star className="w-4 h-4 text-brand-navy" fill="currentColor" />
+          <UserCheck className="w-4 h-4 text-brand-navy" />
         </div>
         <div className="flex flex-col">
           <span className="text-[13.5px] font-medium text-white/90 leading-tight">
-            Top Bewertungen
+            Persönlicher Ansprechpartner
           </span>
           <span className="text-[11.5px] font-medium text-white/60 leading-tight">
-            94% Kundenzufriedenheit
+            Inhaber Michel Kislovskij
           </span>
         </div>
       </div>

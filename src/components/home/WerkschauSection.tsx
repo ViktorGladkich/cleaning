@@ -296,7 +296,7 @@ export function WerkschauSection() {
               {/* Corner Text: Bottom-Right */}
               <div className="px-4 sm:px-8 lg:px-12 flex justify-end">
                 <div className="werkschau-corner-text-bottom max-w-xs sm:max-w-sm text-xs sm:text-sm text-brand-navy/60 font-light leading-relaxed text-left sm:text-right pointer-events-auto">
-                  Keine Kompromisse bei Material, Hygiene und Ausführung. Festangestellte Fachkräfte und lückenlose Qualitätskontrolle bei jedem Schritt.
+                  Sorgfältige Arbeitsweise und klare Abstimmung der vereinbarten Leistungen – bei Reinigung und Bau.
                 </div>
               </div>
             </div>

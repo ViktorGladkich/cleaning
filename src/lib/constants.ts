@@ -6,7 +6,7 @@ export const SITE_URL =
 export const COMPANY_INFO: CompanyInfo = {
   name: "Tadik's Cleaning",
   owner: "Michel Kislovskij",
-  tagline: "Professionelle Gebäudereinigung & Bau- und Ausbauarbeiten in Chemnitz und Umgebung",
+  tagline: "Reinigung für Gewerbe & Privat sowie Trockenbau, Rückbau & Renovierung in Chemnitz und Umgebung",
   phone: "0371 23559475",
   phoneRaw: "+4937123559475",
   mobile: "0157 34362898",
@@ -34,5 +34,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Reinigung", href: "/services" },
   { label: "Bau", href: "/bau" },
   { label: "Über uns", href: "/about" },
+  { label: "Karriere", href: "/karriere" },
   { label: "Kontakt", href: "/contacts" },
 ];

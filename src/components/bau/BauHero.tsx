@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { useLockedHeroHeight } from "@/hooks/useLockedHeroHeight";
+import { CtaButton } from "@/components/ui/CtaButton";
 
 export function BauHero() {
   const containerRef = useRef<HTMLElement>(null);
@@ -58,15 +59,31 @@ export function BauHero() {
         ref={contentRef}
         className="relative z-10 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center pt-32 pb-20 sm:pt-40 sm:pb-28"
       >
-        <h1 className="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.05]">
-          Bau &amp; Sanierung <br />
-          <span className="text-brand-lime font-light">nach Fachstandard.</span>
+        <h1 className="hero-title text-4xl sm:text-6xl md:text-7xl font-normal text-white tracking-tight leading-[1.05]">
+          TADIK’S BAU <br />
+          <span className="block mt-3 text-2xl sm:text-4xl md:text-5xl text-brand-lime font-light leading-tight">
+            Trockenbau, Rückbau &amp; Bauleistungen in Chemnitz
+          </span>
         </h1>
 
-        <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-          Trockenbau, Komplettausbau und schlüsselfertige Sanierung
-          aus einer Hand für Chemnitz und Mittelsachsen.
-        </p>
+        <div className="hero-subtitle">
+          <p className="mt-6 sm:mt-8 text-lg sm:text-2xl text-white font-normal leading-relaxed max-w-3xl mx-auto">
+            Ihr Ansprechpartner für Bauprojekte jeder Größe.
+          </p>
+          <p className="mt-4 text-sm sm:text-base md:text-lg text-white/85 font-light leading-relaxed max-w-3xl mx-auto">
+            TADIK’S BAU unterstützt private und gewerbliche Auftraggeber bei Trockenbau,
+            Innenausbau, Abbruch, Rückbau, Entkernung und weiteren Bauarbeiten. Ob einzelne
+            Maßnahmen, Renovierungen oder größere Bauvorhaben – wir prüfen Ihre Anfrage individuell
+            und stimmen den Leistungsumfang auf Ihr Projekt ab. Je nach Anforderungen erfolgt die
+            Umsetzung mit unserem eigenen Team oder in Zusammenarbeit mit geeigneten Fach- und
+            Partnerunternehmen.
+          </p>
+          <div className="mt-8 flex justify-center">
+            <CtaButton href="/contacts?service=bauprojekt#anfrage" size="md">
+              Jetzt Bauprojekt anfragen
+            </CtaButton>
+          </div>
+        </div>
 
         <p className="hero-subtitle mt-6 text-xs text-white/80">
           Symbolbilder auf dieser Seite: KI-generiert.

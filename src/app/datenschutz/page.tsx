@@ -216,7 +216,7 @@ export default function DatenschutzPage() {
               Bearbeitung von Kunden- und Angebotsanfragen
             </h2>
             <p>
-              Wenn Sie unser Online-Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (gewählter Fachbereich, konkrete Leistung, Name, Telefonnummer und/oder E-Mail-Adresse sowie optional Ort/Postleitzahl, Objektfläche und Ihre Projektnachricht) verschlüsselt an unsere Server-Schnittstelle übertragen und von dort als E-Mail an unser Postfach zugestellt. Alternativ können Sie uns jederzeit direkt per E-Mail (an{" "}
+              Wenn Sie unser Online-Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (gewählter Bereich, konkrete Leistung, Name, Telefonnummer und/oder E-Mail-Adresse sowie optional Ort/Postleitzahl, Fläche/Umfang, gewünschter Zeitpunkt bzw. Zeitraum und Ihre Nachricht; bei dringenden Reinigungsanfragen ist die Telefonnummer erforderlich) verschlüsselt an unsere Server-Schnittstelle übertragen und von dort als E-Mail an unser Postfach zugestellt. Alternativ können Sie uns jederzeit direkt per E-Mail (an{" "}
               <a
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="underline hover:text-brand-navy"
@@ -241,10 +241,33 @@ export default function DatenschutzPage() {
               .
             </p>
             <p>
-              Die Verarbeitung Ihrer Kontaktdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Anbahnung oder Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines verbindlichen Festpreisangebots, Terminvereinbarung zur Besichtigung) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (<strong>Art. 6 Abs. 1 lit. f DSGVO</strong>).
+              Die Verarbeitung Ihrer Kontaktdaten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Anbahnung oder Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z. B. Erstellung eines Angebots, Terminvereinbarung zur Besichtigung) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (<strong>Art. 6 Abs. 1 lit. f DSGVO</strong>).
             </p>
             <p>
               Anfragen, aus denen kein Vertrag entsteht, löschen wir spätestens <strong>12 Monate</strong> nach Abschluss der Bearbeitung oder früher, wenn Sie uns dazu auffordern und keine Aufbewahrungspflichten entgegenstehen. Führt Ihre Anfrage zu einem Vertrag, gelten die gesetzlichen handels- und steuerrechtlichen Aufbewahrungsfristen.
+            </p>
+          </div>
+
+          {/* 5a. Bewerbungen über das Online-Formular */}
+          <div id="bewerbung" className="pt-6 border-t border-brand-navy/10 space-y-3 scroll-mt-32">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-navy/60">
+              <Mail className="w-4 h-4 text-brand-navy shrink-0" />
+              <span>5a. Bewerbungen</span>
+            </div>
+            <h2 className="text-xl font-medium text-brand-navy">
+              Datenverarbeitung im Bewerbungsverfahren
+            </h2>
+            <p>
+              Wenn Sie sich über unser Online-Bewerbungsformular auf der Karriereseite bewerben, verarbeiten wir die von Ihnen angegebenen Daten: Vor- und Nachname, Telefonnummer, optional E-Mail-Adresse, Wohnort, gewünschter Bereich (Cleaning/BAU), gewünschte Beschäftigungsart, frühestmöglicher Arbeitsbeginn, Angaben zu Führerschein und eigenem Auto, Sprachkenntnisse, bisherige Erfahrung, Ihre Nachricht sowie – freiwillig – einen hochgeladenen Lebenslauf. Bitte übermitteln Sie uns keine besonderen Kategorien personenbezogener Daten (z. B. Angaben zu Gesundheit, Religion oder ethnischer Herkunft), die für die Bewerbung nicht erforderlich sind.
+            </p>
+            <p>
+              Die Angaben werden verschlüsselt an unsere Server-Schnittstelle übertragen und von dort ohne weitere Speicherung auf dem Webserver als E-Mail (mit dem Lebenslauf als Anhang) an unser Postfach bei Titan Email zugestellt (siehe Abschnitt 5). Für den Schutz des Formulars gelten dieselben Sicherheitsprüfungen wie beim Kontaktformular (Honeypot-Felder, Prüfung der Ausfülldauer, kurzzeitige Ratenbegrenzung über die IP-Adresse; Löschung nach 10 Minuten). Hochgeladene Dateien werden auf zulässige Dateiformate geprüft.
+            </p>
+            <p>
+              Zweck der Verarbeitung ist die Durchführung des Bewerbungsverfahrens und die Entscheidung über die Begründung eines Beschäftigungsverhältnisses. Rechtsgrundlage ist <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Anbahnung eines Beschäftigungsverhältnisses) in Verbindung mit <strong>§ 26 Abs. 1 BDSG</strong>. Zugriff auf Ihre Bewerbung hat ausschließlich der Inhaber bzw. die für die Personalauswahl zuständigen Personen.
+            </p>
+            <p>
+              Kommt kein Beschäftigungsverhältnis zustande, löschen wir Ihre Bewerbungsunterlagen spätestens <strong>6 Monate</strong> nach Abschluss des Bewerbungsverfahrens, soweit keine längere Aufbewahrung zur Verteidigung gegen Rechtsansprüche (z. B. nach dem Allgemeinen Gleichbehandlungsgesetz) erforderlich ist. Eine längere Speicherung für künftige Stellen erfolgt nur mit Ihrer ausdrücklichen Einwilligung. Wird ein Beschäftigungsverhältnis begründet, werden die erforderlichen Daten in die Personalakte übernommen. Die Bereitstellung der Daten ist freiwillig; ohne Name und Telefonnummer können wir Ihre Bewerbung jedoch nicht bearbeiten.
             </p>
           </div>
 

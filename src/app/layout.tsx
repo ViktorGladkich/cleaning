@@ -66,8 +66,8 @@ export const metadata: Metadata = {
     "Gebäudereinigung Chemnitz",
     "Hotelreinigung Chemnitz",
     "Treppenhausreinigung Chemnitz",
-    "Hallenreinigung Chemnitz",
     "Entrümpelung Chemnitz",
+    "Jobs Reinigung Chemnitz",
     "Reinigungsfirma Chemnitz",
     "Putzfirma Chemnitz",
     "Unterhaltsreinigung Chemnitz",
@@ -76,7 +76,11 @@ export const metadata: Metadata = {
     "Grundreinigung Sachsen",
     "Bauendreinigung Chemnitz",
     "Trockenbau Chemnitz",
-    "Komplettsanierung Chemnitz",
+    "Rückbau Chemnitz",
+    "Entkernung Chemnitz",
+    "Fassadenreinigung Chemnitz",
+    "Haushaltsreinigung Chemnitz",
+    "Praxisreinigung Chemnitz",
     "Tadik's Cleaning",
   ],
   alternates: {
@@ -95,7 +99,7 @@ export const metadata: Metadata = {
     siteName: COMPANY_INFO.name,
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
-      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung und Trockenbau aus einer Hand in Chemnitz & Sachsen.",
+      "Reinigung für Gewerbe und Privatkunden sowie Trockenbau, Rückbau und Renovierung in Chemnitz und Umgebung – mit persönlichem Ansprechpartner.",
     images: [
       {
         url: "/og-image.jpg",
@@ -110,7 +114,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${COMPANY_INFO.name} Chemnitz — ${COMPANY_INFO.tagline}`,
     description:
-      "Professionelle Gebäudereinigung, Glas- & Bauendreinigung sowie Komplettsanierung und Trockenbau aus einer Hand in Chemnitz & Sachsen.",
+      "Reinigung für Gewerbe und Privatkunden sowie Trockenbau, Rückbau und Renovierung in Chemnitz und Umgebung – mit persönlichem Ansprechpartner.",
     images: ["/og-image.jpg"],
   },
 };

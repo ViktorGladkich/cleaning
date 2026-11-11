@@ -13,9 +13,12 @@ const partners = [
   { name: "Hildebrand Partner", src: "/logos/hildebrand-partner-logo.svg", width: 140 },
   { name: "Edeka", src: "/logos/Edeka.webp", width: 110 },
   { name: "Luxor", src: "/logos/logo_luxor.svg", width: 110 },
+  { name: "Netto Marken-Discount", src: "/logos/netto_logo.png", width: 102 },
+  { name: "CPSV", src: "/logos/cpsv_logo.png", width: 50 },
+  { name: "Köder Fachgroßhandel Hygiene und Reinigung", src: "/logos/koeder_logo.png", width: 174 },
 ];
 
-// Doubled partner list so all 8 logos seamlessly populate any viewport width
+// Doubled partner list so all logos seamlessly populate any viewport width
 const marqueeList = [...partners, ...partners];
 
 export function PartnersMarquee() {
@@ -91,7 +94,7 @@ export function PartnersMarquee() {
         {/* Track 1 */}
         <div
           className="flex animate-marquee items-center min-w-max gap-12 sm:gap-16 lg:gap-20 pr-12 sm:pr-16 lg:pr-20 hover:[animation-play-state:paused]"
-          style={{ animationDuration: "40s" }}
+          style={{ animationDuration: "55s" }}
         >
           {marqueeList.map((partner, idx) => (
             <div
@@ -112,7 +115,7 @@ export function PartnersMarquee() {
         {/* Track 2: Duplicate for seamless looping */}
         <div
           className="flex animate-marquee items-center min-w-max gap-12 sm:gap-16 lg:gap-20 pr-12 sm:pr-16 lg:pr-20 hover:[animation-play-state:paused]"
-          style={{ animationDuration: "40s" }}
+          style={{ animationDuration: "55s" }}
           aria-hidden="true"
         >
           {marqueeList.map((partner, idx) => (

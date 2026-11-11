@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { AboutPageContent } from "@/components/about/AboutPageContent";
 
 export const metadata: Metadata = {
-  title: "Über uns & Fachbetrieb — Tadiks Cleaning & Bau Chemnitz",
+  title: "Über uns — TADIK’S Cleaning & BAU Chemnitz",
   description:
-    "Erfahren Sie mehr über unseren Chemnitzer Fachbetrieb: Fachgerechtes Bauhandwerk und gründliche Gebäudereinigung aus einer Hand mit 100% Festpreisgarantie.",
+    "TADIK’S Cleaning & BAU aus Chemnitz: Reinigung für Gewerbe und Privatkunden sowie Trockenbau, Rückbau und Renovierung – mit persönlichem Ansprechpartner.",
 };
 
 export default function AboutPage() {

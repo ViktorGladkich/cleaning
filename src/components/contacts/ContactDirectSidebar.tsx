@@ -17,7 +17,7 @@ export function ContactDirectSidebar() {
             </span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-brand-navy/70 leading-relaxed font-light">
-            Keine langen Warteschleifen. Rufen Sie uns an oder schreiben Sie uns — wir melden uns innerhalb von 24 Stunden verlässlich zurück.
+            Rufen Sie uns an oder schreiben Sie uns. Ihr Ansprechpartner ist Michel Kislovskij, Inhaber von TADIK’S Cleaning & BAU.
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export function ContactDirectSidebar() {
                 {COMPANY_INFO.email}
               </span>
               <span className="text-[11px] text-brand-navy/60 mt-0.5 block">
-                Antwortgarantie innerhalb von 24 Stunden
+                Für Anfragen, Fotos und Unterlagen
               </span>
             </div>
           </a>
@@ -78,7 +78,7 @@ export function ContactDirectSidebar() {
                 {COMPANY_INFO.address}
               </span>
               <span className="text-[11px] text-brand-navy/60 mt-0.5 block">
-                Hauptsitz Chemnitz, Einsatz in Sachsen &amp; überregional
+                Einsatz in Chemnitz und Umgebung
               </span>
             </div>
           </div>

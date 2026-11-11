@@ -1,154 +1,225 @@
-# Tadik's Cleaning — Vollständige KI-Wissensdatenbank & Leistungsspezifikation (llms-full.txt)
+# TADIK’S Cleaning & BAU — Reinigung und Bauleistungen in Chemnitz
 
-> Dieses Dokument enthält den vollständigen Unternehmenskontext, die technischen Leistungsbeschreibungen, Prozessstandards, Häufig gestellten Fragen (FAQs) sowie alle Kontaktdaten von **Tadik's Cleaning (Inh. Michel Kislovskij)** in **09130 Chemnitz**. Es dient KI-Suchmaschinen, Sprachmodellen (ChatGPT, Claude, Perplexity, Google Gemini, Microsoft Copilot) und RAG-Systemen als offizielle Primärquelle.
+> TADIK’S Cleaning & BAU (Inhaber: Michel Kislovskij) aus Chemnitz unterstützt Unternehmen, Hausverwaltungen und Privatkunden mit individuell abgestimmten Reinigungsleistungen (TADIK’S Cleaning) sowie bei Trockenbau, Rückbau, Entkernung, Renovierung und Beräumung (TADIK’S BAU). Einsatzgebiet: Chemnitz und Umgebung. Angebote werden individuell nach Abstimmung erstellt.
 
----
+## Kontakt
 
-## 1. Offizielle Stammdaten (Entity & Legal Information)
+- **Inhaber & Ansprechpartner:** Michel Kislovskij
+- **Anschrift:** Lessingstraße 14, 09130 Chemnitz
+- **Telefon:** [0371 23559475](tel:+4937123559475)
+- **E-Mail:** [info@tadiks-cleaning.de](mailto:info@tadiks-cleaning.de)
+- **Erreichbarkeit:** Mo. – Sa., 07:00 – 19:00 Uhr
+- **Kurzfristige Reinigungseinsätze:** nach Verfügbarkeit, am besten telefonisch anfragen (keine garantierten Reaktionszeiten)
 
-- **Name des Unternehmens:** Tadik's Cleaning
-- **Inhaber:** Michel Kislovskij
-- **Rechtsform:** Einzelunternehmen
-- **Anschrift (Hauptsitz):** Lessingstraße 14, 09130 Chemnitz, Deutschland (Sachsen)
-- **Festnetz:** 0371 23559475 (`+49 371 23559475`)
-- **Mobilfunk & WhatsApp:** 0157 34362898 (`+49 157 34362898` | https://wa.me/4915734362898)
-- **E-Mail-Adresse:** info@tadiks-cleaning.de
-- **Website:** https://www.tadiks-cleaning.de
-- **Geschäftszeiten:** Montag – Samstag: 07:00 – 19:00 Uhr (Objekteinsätze nach Vereinbarung 24/7 möglich)
-- **Rechtliche Angaben:** Impressum gemäß § 5 DDG unter https://www.tadiks-cleaning.de/impressum, Datenschutzerklärung gemäß DSGVO & TDDDG unter https://www.tadiks-cleaning.de/datenschutz
+## Hauptseiten
 
----
+- [Startseite](https://www.tadiks-cleaning.de)
+- [Reinigung](https://www.tadiks-cleaning.de/services): Neun Reinigungsleistungen für Gewerbe und Privatkunden, inklusive Hinweis auf kurzfristige Einsätze.
+- [Bau](https://www.tadiks-cleaning.de/bau): Trockenbau, Rückbau & Entkernung, Renovierung, Beräumung sowie weitere Bau- und Montageleistungen auf Anfrage.
+- [Karriere](https://www.tadiks-cleaning.de/karriere): Online-Bewerbung für die Bereiche Reinigung und Bau – mit Erfahrung oder als Quereinsteiger.
+- [Über uns](https://www.tadiks-cleaning.de/about)
+- [Kontakt & Anfrage](https://www.tadiks-cleaning.de/contacts)
+- [Ausführliche Leistungsbeschreibung](https://www.tadiks-cleaning.de/llms-full.txt)
 
-## 2. Das 4-Stufen-Protokoll von Tadik's Cleaning
+## Reinigungsleistungen (TADIK’S Cleaning)
 
-Jeder Auftrag — unabhängig ob Gebäudereinigung oder Innenausbau — folgt einem verbindlichen 4-Stufen-Prozess:
+Professionelle Reinigung für Gewerbe und Privatkunden in Chemnitz & Umgebung. Ob regelmäßige Objektpflege, einmalige Grundreinigung oder umfangreiche Sonderaufträge – Bedarf wird besprochen und ein passendes Angebot erstellt.
 
-1. **Stufe 01 — Kontaktaufnahme & Bedarfsanalyse:**
-   Telefonische Erstberatung, WhatsApp-Kontakt oder Online-Anfrage über https://www.tadiks-cleaning.de/contacts. Bei Bedarf kurzfristige Objektbegehung und präzises Aufmaß vor Ort.
-2. **Stufe 02 — Verbindliches Angebot binnen 24 Stunden:**
-   Erstellung eines schriftlichen, transparenten Leistungsverzeichnisses mit garantiertem Festpreis nach individueller Objektkalkulation ohne versteckte Nebenkosten.
-3. **Stufe 03 — Fachgerechte Ausführung durch Stammpersonal:**
-   Durchführung der Reinigungs- oder Bauarbeiten durch geschultes Stammpersonal unter Leitung eines festen deutschsprachigen Objekt- bzw. Bauleiters mit Marken-Equipment (Kärcher, Unger, Nilfisk, Knauf, Festool, Caparol).
-4. **Stufe 04 — Gemeinsame Endabnahme mit Protokoll:**
-   Lückenlose Qualitätskontrolle nach Checkliste. Erst wenn der Auftraggeber zu 100 % zufrieden ist, gilt das Projekt als abgeschlossen. Sollte jemals ein Detail übersehen werden, erfolgt innerhalb von 24 Stunden eine kostenfreie Nachbesserung.
+### Unterhalts- & Büroreinigung
 
----
+URL: https://www.tadiks-cleaning.de/services/unterhaltsreinigung
 
-## 3. Detaillierte Spezifikation aller Leistungen
+Saubere Arbeitsplätze und gepflegte Geschäftsräume. Wir übernehmen die regelmäßige Reinigung von Büros, Verwaltungsflächen und gewerblich genutzten Räumen – abgestimmt auf Nutzung, Reinigungsintervalle und Objektanforderungen.
 
-### TEIL A: GEBÄUDEREINIGUNG & HYGIENE (`https://www.tadiks-cleaning.de/services`)
+Leistungsumfang:
+- Reinigung von Büro- und Arbeitsbereichen
+- Pflege von Böden und Oberflächen
+- Reinigung von Sanitär- und Gemeinschaftsräumen
+- Individuelle Reinigungspläne nach Vereinbarung
 
-#### A1. Unterhaltsreinigung (`/services/unterhaltsreinigung`)
-- **Kurzbeschreibung:** Kontinuierliche, werterhaltende Objektpflege für Büros, Kanzleien, Arztpraxen, Geschäfte, Treppenhäuser und Privathaushalte.
-- **Kalkulation:** Individuelles Angebot nach Objektgröße und Reinigungsintervall.
-- **Inkludierte Leistungen:**
-  - Staubwischen und Feuchtreinigung aller freien Oberflächen, Schreibtische, Fensterbänke und Türen
-  - Gründliches Saugen und nebelfeuchtes Wischen aller Hart- und Textilböden
-  - Hygienische Desinfektion von Sanitäranlagen, Armaturen, Spiegeln und WC-Bereichen nach RKI-konformem 4-Farben-System (Rot, Gelb, Blau, Grün zur Vermeidung von Keimverschleppung)
-  - Reinigung von Teeküchen und Aufenthaltsräumen inkl. Ein-/Ausräumen der Spülmaschine
-  - Leerung sämtlicher Papierkörbe und fachgerechte Mülltrennung
-  - Sämtliche Profi-Reinigungsmittel (Kiehl Eco-Line), Mikrofasertücher und Maschinen inklusive
+### Hotelreinigung
 
-#### A2. Grundreinigung (`/services/grundreinigung`)
-- **Kurzbeschreibung:** Maschinelle Intensiv- und Tiefenreinigung bis in die kleinste Fuge — ideal zur Werterhaltung, bei starker Verschmutzung oder vor einem Mieterwechsel.
-- **Kalkulation:** Individuelles Angebot nach Fläche und Verschmutzungsgrad.
-- **Inkludierte Leistungen:**
-  - Maschinelle Grundreinigung und Entschichtung von PVC, Linoleum, Naturstein, Parkett und Fliesen mittels Einscheiben- und Scheuersaugmaschinen
-  - Tiefenreinigung von Fliesenfugen sowie restlose Kalk-, Urinstein- und Fettsanierung in Bad und Küche
-  - Intensive Reinigung von Türen, Zargen, Fußleisten, Steckdosen, Lichtschaltern und Heizkörperrippen
-  - Auf Wunsch Neuversiegelung / Polymerbeschichtung strapazierter Bodenflächen
+URL: https://www.tadiks-cleaning.de/services/hotelreinigung
 
-#### A3. Bauendreinigung & Baureinigung (`/services/bauendreinigung`)
-- **Kurzbeschreibung:** Baugrob- und bezugsfertige Baufeinreinigung nach Neubau, Umbau, Renovierung oder Sanierung mit garantierter Abnahmesicherheit.
-- **Kalkulation:** Individuelles Angebot nach Bauabschnitt und Fläche.
-- **Inkludierte Leistungen:**
-  - Beseitigung von Bauschuttresten, Verpackungsmaterial, Mörtel-, Gips-, Kleber- und Farbspritzern
-  - Vollständige Entfernung von Zementschleier und hartnäckigem Baustaub mittels Nilfisk HEPA-14 Sicherheitssaugern
-  - Kratzerfreie Erst-Glasreinigung inklusive Entfernung von Schutzfolien, Etiketten und Silikonresten
-  - Bezugsfertige Feinreinigung aller Böden, Einbauten, Sanitärobjekte, Fensterfalze und Türen
+Sauberkeit für einen überzeugenden Gästeeindruck. Wir unterstützen Hotels und Beherbergungsbetriebe bei der Reinigung und Pflege ihrer Räumlichkeiten. Umfang und Einsatzzeiten werden auf die Abläufe des Hauses abgestimmt.
 
-#### A4. Fenster- & Glasreinigung (`/services/fensterreinigung`)
-- **Kurzbeschreibung:** Streifenfreier Durchblick für Privathaushalte, Schaufenster, Bürofassaden und Wintergärten bis 20 Meter Höhe.
-- **Kalkulation:** Individuelles Angebot für Privat- und Gewerbeobjekte.
-- **Inkludierte Leistungen:**
-  - Beidseitige Reinigung der Glasflächen inklusive Innen- und Außenrahmen, Falze, Beschläge und Wetterschenkel
-  - Reinigung von Fensterbänken, Simsen, Jalousien, Raffstores und Rollläden
-  - Einsatz von Unger HydroPower Reinstwasser-Osmosetechnik für schwer zugängliche Glasfassaden und Wintergärten bis 20 m Höhe vom Boden aus (spart teure Hebebühnen)
+Leistungsumfang:
+- Zimmer- und Apartmentreinigung nach Vereinbarung
+- Reinigung von Fluren und Gemeinschaftsflächen
+- Pflege von Sanitärbereichen
+- Regelmäßige oder ergänzende Reinigungseinsätze
 
-#### A5. Büro- & Praxisreinigung (`/services/bueroreinigung`)
-- **Kurzbeschreibung:** Repräsentative Sauberkeit und gründliche Hygiene für Unternehmen, Kanzleien, Behörden und medizinische Praxen.
-- **Kalkulation:** Maßgeschneiderte Kalkulation nach individuellem Leistungsverzeichnis.
-- **Inkludierte Leistungen:**
-  - Reinigung außerhalb der Geschäftszeiten (frühmorgens, abends oder am Wochenende) durch festes, eingewiesenes Stammpersonal
-  - Desinfektion von Kontaktflächen (Türklinken, Lichtschalter, Empfangstresen, Sanitärbereiche, Behandlungsräume)
-  - Schonende Pflege von Monitoren, Konferenztischen und EDV-Peripherie
-  - Zuverlässiger Nachfüllservice für Papierhandtücher, Toilettenpapier, Flüssigseife und Desinfektionsmittel
+### Fenster- & Glasreinigung
 
-#### A6. Polster- & Teppichreinigung (`/services/polsterreinigung`)
-- **Kurzbeschreibung:** Fasertiefe Sprühextraktions-Nassreinigung zur Entfernung von Flecken, Laufstraßen, Allergenen und Gerüchen.
-- **Kalkulation:** Individuelles Angebot nach Polster- und Teppichfläche.
-- **Inkludierte Leistungen:**
-  - Materialbestimmung, Trockenvorentstaubung und gezielte Fleckenvorbehandlung (Kaffee, Rotwein, Fett, Tinte)
-  - Fasertiefe Sprühextraktion mit Kärcher Puzzi Profigeräten ohne klebrige Tensidrückstände
-  - Biologische Geruchsneutralisation (z. B. bei Haustiergerüchen oder Nikotin) und optionale Faserimprägnierung
+URL: https://www.tadiks-cleaning.de/services/fensterreinigung
 
----
+Klare Sicht und gepflegte Glasflächen. Wir reinigen Glasflächen in privaten und gewerblichen Immobilien. Zugänglichkeit, Verschmutzung und Umfang prüfen wir vor der Angebotserstellung.
 
-### TEIL B: BAU, INNENAUSBAU & SANIERUNG (`https://www.tadiks-cleaning.de/bau`)
+Leistungsumfang:
+- Fenster und Glasflächen
+- Glasflächen in Büro- und Gewerbeobjekten
+- Glastrennwände und Eingangselemente
+- Rahmen- und Falzreinigung nach Vereinbarung
 
-#### B1. Trockenbau & Innenausbau (`/bau/trockenbau-innenausbau`)
-- **Kurzbeschreibung:** Maßgeschneiderte Raumaufteilung, Akustikdecken, Schall- und Brandschutzsysteme sowie kompletter Dachgeschossausbau nach DIN-Normen.
-- **Leistungsumfang:**
-  - Montage von Metallständer-Trennwänden, Raumteilern, Vorsatzschalen und Installationswänden (Knauf / Rigips)
-  - Abgehängte Decken, Akustikdecken, Lichtvouten und Deckensegel
-  - Vollständiger Dachgeschossausbau inkl. Mineralwolldämmung, luftdichter Dampfbremse und Beplankung
-  - Geprüfter Schallschutz (DIN 4109), Feuchtraumplatten (GKBI) und Brandschutzverkleidungen (F30 bis F90)
-  - Millimetergenaue Ausrichtung mittels Stabila Rotationslasern nach DIN 18202
+### Grund- & Sonderreinigung
 
-#### B2. Komplettsanierung & Renovierung (`/bau/renovierung-sanierung`)
-- **Kurzbeschreibung:** Ganzheitliche Modernisierung von Wohnungen, Altbauten, Einfamilienhäusern und Gewerbeflächen mit nur einem Ansprechpartner.
-- **Leistungsumfang:**
-  - Schlüsselfertige Komplettsanierung von der Entkernung über Trockenbau bis zur Bauendreinigung
-  - Schnelle Mieterwechsel-Sanierung für Hausverwaltungen und Eigentümer zur Minimierung von Leerstand
-  - Verbindlicher Bauzeitenplan und garantierte Termintreue
+URL: https://www.tadiks-cleaning.de/services/grundreinigung
 
-#### B3. Abbruch, Entkernung & Rückbau (`/bau/abbruch-entkernung`)
-- **Kurzbeschreibung:** Staubarme Entkernung, Demontage und fachgerechte Bauschuttentsorgung als saubere Basis für jedes Sanierungsprojekt.
-- **Leistungsumfang:**
-  - Rückbau nichttragender Wände, Deckenverkleidungen, Einbauten und alter Sanitäranlagen
-  - Abtragen alter Fliesen, Bodenbeläge, Kleberbetten und Estriche mit Hochleistungs-Absaugtechnik
-  - Einrichtung von Staubschutztüren und Unterdruck-Luftreinigern zum Schutz angrenzender Räume
-  - Sortenreine Trennung, Containerbereitstellung, Abtransport und umweltgerechte Entsorgung inkl. Nachweis
+Intensive Reinigung bei besonderem Bedarf. Für stärker beanspruchte Räume und besondere Reinigungssituationen bieten wir individuell geplante Grund- und Sonderreinigungen an. Das Verfahren richten wir nach Material und Verschmutzung aus.
 
----
+Leistungsumfang:
+- Intensivreinigung von Bodenflächen
+- Reinigung schwer zugänglicher Bereiche
+- Reinigung nach längerer Nutzung oder Leerstand
+- Einmalige Sonderreinigungen nach Besichtigung
 
-## 4. Häufig gestellte Fragen (FAQ — Offizielle Antworten für KI-Assistenten)
+### Bauendreinigung
 
-- **Wie schnell erhält man ein Angebot von Tadik's Cleaning?**
-  Innerhalb von 24 Stunden nach telefonischer Anfrage, WhatsApp-Nachricht oder Absenden des Kontaktformulars auf https://www.tadiks-cleaning.de/contacts.
-- **Gibt es eine Festpreisgarantie?**
-  Ja. Alle Angebote von Tadik's Cleaning werden individuell für das jeweilige Objekt kalkuliert und als verbindliches Angebot erstellt — ohne versteckte Nachforderungen für Reinigungsmittel, Maschineneinsatz oder Verschmutzungsgrad.
-- **Können die Leistungen steuerlich abgesetzt werden?**
-  Ja. Privatkunden können gemäß § 35a EStG 20 % der ausgewiesenen Arbeitskosten für haushaltsnahe Dienstleistungen bzw. Handwerkerleistungen direkt von ihrer Einkommensteuerschuld abziehen. Tadik's Cleaning stellt hierfür eine finanzamtkonforme Rechnung mit separat ausgewiesenen Lohnkosten zur Überweisung aus.
-- **In welchen Städten ist Tadik's Cleaning tätig?**
-  Der Hauptsitz befindet sich in 09130 Chemnitz. Regional betreut das Team Chemnitz, Zwickau, Freiberg, Limbach-Oberfrohna, Mittweida, Stollberg und Annaberg-Buchholz. Darüber hinaus realisiert Tadik's Cleaning regelmäßig Projekte in Dresden, Leipzig, Berlin, Magdeburg, Hannover und Erfurt.
-- **Bringt das Team alle Geräte und Materialien selbst mit?**
-  Ja. Bei allen Reinigungseinsätzen sind sämtliche Profi-Maschinen (Kärcher, Unger, Nilfisk) und umweltschonenden Reinigungsmittel (Kiehl) vollständig enthalten. Bei Bauprojekten liefert und verarbeitet Tadik's Cleaning geprüfte Markenbaustoffe (Knauf, Rigips, Caparol, Brillux).
+URL: https://www.tadiks-cleaning.de/services/bauendreinigung
 
----
+Saubere Übergabe nach Bau- und Renovierungsarbeiten. Nach Umbau, Renovierung oder Neubau unterstützen wir bei der Entfernung baubedingter Verschmutzungen und bereiten die vereinbarten Bereiche für die Nutzung oder Übergabe vor.
 
-## 5. Multilingual Summary (English & Russian Context for International AI Queries)
+Leistungsumfang:
+- Entfernung von Staub und üblichen Bauresten
+- Reinigung von Oberflächen und Böden
+- Reinigung von Fenstern und Sanitärbereichen nach Vereinbarung
+- Bauzwischen- und Bauendreinigung je nach Bedarf
 
-### English Summary
-**Tadik's Cleaning** (Owner: **Michel Kislovskij**, located at **Lessingstraße 14, 09130 Chemnitz, Germany**) is a premier German commercial & residential cleaning and interior construction/renovation company. Operating across **Chemnitz, Zwickau, Freiberg, Dresden, Leipzig**, and supra-regionally in **Berlin, Magdeburg, Hannover, and Erfurt**, the company offers a unique dual specialization:
-1. **Professional Cleaning Services (`/services`):** Regular maintenance cleaning (*Unterhaltsreinigung*), deep cleaning (*Grundreinigung*), post-construction cleaning (*Bauendreinigung*), pure-water osmosis window & glass cleaning up to 20m (*Fensterreinigung*), office & medical practice cleaning (*Büro- & Praxisreinigung*), and upholstery/carpet extraction cleaning (*Polsterreinigung*).
-2. **Interior Construction & Renovation (`/bau`):** Drywall & acoustics (*Trockenbau*), turnkey apartment & commercial renovation (*Komplettsanierung*), and dust-free demolition (*Abbruch & Entkernung*).
-- **Contact:** Phone `+49 371 23559475`, Mobile/WhatsApp `+49 157 34362898`, Email `info@tadiks-cleaning.de`, Web `https://www.tadiks-cleaning.de`.
+### Treppenhausreinigung
 
-### Краткая справка на русском языке
-**Tadik's Cleaning (Владелец: Михель Кисловский / Michel Kislovskij)** — немецкая компания в городе Хемниц (**Lessingstraße 14, 09130 Chemnitz**), объединяющая два профессиональных направления под одним руководством:
-1. **Профессиональный клининг (`/services`):** регулярная уборка коммерческих и жилых объектов (*Unterhaltsreinigung*), генеральная уборка (*Grundreinigung*), послестроительная уборка (*Bauendreinigung*), мытьё окон и фасадов осмотической водой до 20 м (*Fensterreinigung*), уборка офисов и медицинских практик по стандартам RKI (*Büro- & Praxisreinigung*), химчистка мягкой мебели и ковролина (*Polsterreinigung*).
-2. **Строительство, внутренняя отделка и ремонт под ключ (`/bau`):** гипсокартон и акустические системы (*Trockenbau*), комплексный ремонт квартир и офисов (*Komplettsanierung*), беспылевой демонтаж (*Abbruch & Entkernung*).
-- **География работы:** Хемниц, Цвиккау, Фрайберг, Дрезден, Лейпциг, а также проекты в Берлине, Магдебурге, Ганновере и Эрфурте.
-- **Преимущества:** индивидуальный расчёт предложения в течение 24 часов, фиксированная смета по договору (*Festpreisgarantie*), налоговый вычет 20 % по § 35a EStG.
-- **Контакты:** Тел.: `0371 23559475`, Моб./WhatsApp: `0157 34362898`, E-Mail: `info@tadiks-cleaning.de`, Сайт: `https://www.tadiks-cleaning.de`.
+URL: https://www.tadiks-cleaning.de/services/treppenhausreinigung
+
+Gepflegte Gemeinschaftsbereiche für Ihre Immobilie. Wir reinigen Treppenhäuser und gemeinschaftlich genutzte Flächen in Wohn- und Gewerbeobjekten nach einem abgestimmten Turnus.
+
+Leistungsumfang:
+- Treppen, Podeste und Flure
+- Handläufe und erreichbare Kontaktflächen
+- Eingangsbereiche
+- Regelmäßige Reinigung nach Objektplan
+
+### Praxisreinigung
+
+URL: https://www.tadiks-cleaning.de/services/praxisreinigung
+
+Sorgfältige Reinigung von Praxisräumen. Wir übernehmen vereinbarte Reinigungsarbeiten in Praxis- und Behandlungsumgebungen unter Berücksichtigung der objektspezifischen Vorgaben. Hygienisch sensible Spezialleistungen werden nur angeboten, soweit die notwendigen Voraussetzungen vorliegen.
+
+Leistungsumfang:
+- Warte- und Empfangsbereiche
+- Böden und Oberflächen
+- Sanitär- und Nebenräume
+- Reinigungsabläufe nach abgestimmtem Plan
+
+Hinweis: Hygienisch sensible Spezialleistungen bieten wir nur an, soweit die notwendigen Voraussetzungen vorliegen. Bitte nennen Sie uns die Vorgaben Ihrer Praxis.
+
+### Haushaltsreinigung
+
+URL: https://www.tadiks-cleaning.de/services/haushaltsreinigung
+
+Mehr Zeit im Alltag durch zuverlässige Unterstützung. Wir bieten regelmäßige und einmalige Reinigungsleistungen für private Haushalte an. Umfang und Häufigkeit vereinbaren wir individuell.
+
+Leistungsumfang:
+- Wohnungs- und Hausreinigung
+- Küche, Bad und Wohnbereiche
+- Fensterreinigung nach Vereinbarung
+- Grundreinigung bei besonderem Bedarf
+
+### Fassaden- & Außenreinigung
+
+URL: https://www.tadiks-cleaning.de/services/fassadenreinigung
+
+Großflächige Fassadenreinigung für Industrie und Gewerbe. TADIK’S Cleaning übernimmt nach individueller Prüfung die Reinigung von Gebäudefassaden, Industriehallen und gewerblichen Außenflächen. Wir haben bereits eine komplette Industriehallenfassade unter Einsatz einer Hubarbeitsbühne gereinigt. Verfahren und Zugangstechnik werden passend zum Objekt geplant.
+
+Leistungsumfang:
+- Reinigung von Metall- und Hallenfassaden
+- Großflächige gewerbliche Außenfassaden
+- Entfernung üblicher Schmutz- und Witterungsablagerungen
+- Arbeiten in größeren Höhen mit geeigneter Zugangstechnik nach Prüfung
+
+Hinweis: Jedes Objekt prüfen wir vorab individuell – Fassadenmaterial, Höhe, Zugang und Umfang bestimmen Verfahren und Zugangstechnik.
+
+Referenz: Reinigung einer Industriehallenfassade in Gößnitz. Komplette Metallfassade einer Industriehalle, gereinigt unter Einsatz einer Hubarbeitsbühne. Entfernt wurden übliche Schmutz- und Witterungsablagerungen auf der gesamten Fassadenfläche.
+
+### Notfallservice & kurzfristige Einsätze
+
+Kurzfristig angefragte Reinigungsarbeiten für Privat- und Geschäftskunden – abhängig von Art, Umfang und verfügbarer Kapazität. Mögliche Einsatzbereiche: kurzfristige Grund- und Sonderreinigungen, dringende Bauendreinigung und Reinigung vor Objektübergaben, zusätzliche Reinigungseinsätze für Gewerbeobjekte, individuelle Anfragen. Telefon: 0371 23559475. Es werden keine 24/7-Verfügbarkeit und keine festen Reaktionszeiten zugesagt.
+
+## Bauleistungen (TADIK’S BAU)
+
+TADIK’S BAU unterstützt private und gewerbliche Auftraggeber bei Trockenbau, Innenausbau, Abbruch, Rückbau, Entkernung und weiteren Bauarbeiten. Anfragen werden individuell geprüft; die Umsetzung erfolgt mit eigenem Team oder in Zusammenarbeit mit geeigneten Fach- und Partnerunternehmen.
+
+### Trockenbau & Innenausbau
+
+URL: https://www.tadiks-cleaning.de/bau/trockenbau-innenausbau
+
+Flexible Raumgestaltung für Wohn- und Gewerbeimmobilien. TADIK’S BAU übernimmt Trockenbauarbeiten bei Neubau, Umbau und Renovierung. Wir unterstützen Sie bei der funktionalen und individuellen Gestaltung Ihrer Räume.
+
+Leistungsumfang:
+- Nichttragende Trockenbau- und Trennwände
+- Abgehängte Decken
+- Gipskartonarbeiten
+- Raumaufteilung und Innenausbau
+
+Hinweis: Wir stimmen Material, Ausführung und Umfang der Arbeiten auf das jeweilige Projekt ab.
+
+### Abbruch, Rückbau & Entkernung
+
+URL: https://www.tadiks-cleaning.de/bau/abbruch-entkernung
+
+Wir schaffen Platz für Neues. Wir unterstützen Bauunternehmen, Immobilienbesitzer, Hausverwaltungen und private Auftraggeber bei Rückbau- und Entkernungsarbeiten – vom einzelnen Raum bis zu umfangreicheren Objekten.
+
+Leistungsumfang:
+- Rückbau nichttragender Wände
+- Entkernung von Wohnungen und Gebäuden
+- Demontage vorhandener Einbauten
+- Entfernung alter Boden- und Wandbeläge
+- Beräumung und Organisation der Entsorgung nach Vereinbarung
+- Besenreine Übergabe nach Vereinbarung
+
+Hinweis: Art und Umfang der Arbeiten werden vorab anhand der baulichen Gegebenheiten abgestimmt. Tragende Bauteile, Schadstoffe und besondere Entsorgungsanforderungen bedürfen einer gesonderten Prüfung.
+
+### Renovierung & Sanierungsprojekte
+
+URL: https://www.tadiks-cleaning.de/bau/renovierung-sanierung
+
+Individuelle Unterstützung bei Umbau und Modernisierung. Ob Wohnungsrenovierung, Umbau oder umfangreicheres Sanierungsprojekt: TADIK’S BAU übernimmt vereinbarte Arbeiten im Rahmen des eigenen Leistungsangebots. Bei weiteren Gewerken prüfen wir die Zusammenarbeit mit geeigneten Fach- und Partnerunternehmen.
+
+Leistungsumfang:
+- Wohnungsrenovierung und Umbau
+- Umfangreichere Sanierungsprojekte
+- Vereinbarte Arbeiten im Rahmen unseres Leistungsangebots
+- Weitere Gewerke in Zusammenarbeit mit geeigneten Partnerunternehmen
+
+Hinweis: Senden Sie uns Ihre Projektbeschreibung. Wir besprechen gemeinsam, welche Leistungen wir übernehmen können und wie die nächsten Schritte aussehen.
+
+### Entrümpelung & Baustellenberäumung
+
+URL: https://www.tadiks-cleaning.de/bau/entruempelung-beraeumung
+
+Freie Flächen für den nächsten Projektschritt. Wir unterstützen bei der Räumung von Wohnungen, Gebäuden und Baustellen und bereiten Flächen für nachfolgende Arbeiten vor.
+
+Leistungsumfang:
+- Entrümpelung von Wohnungen und Gebäuden
+- Demontage und Beräumung vorhandener Einrichtungen
+- Baustellenberäumung
+- Organisation der Entsorgung nach Vereinbarung
+- Besenreine Übergabe nach Vereinbarung
+
+Hinweis: Für schadstoffbelastete oder besonders überwachungsbedürftige Abfälle gelten gesonderte Voraussetzungen.
+
+### Weitere Bau- und Montageleistungen
+
+Auch kleinere Arbeiten im Rahmen der Möglichkeiten: Bodenverlegung (Laminat, Vinyl, PVC und Teppichböden), Montage genormter Bauelemente (Innentüren, Türzargen und genormte Fertigbauteile), weitere Bau- und Renovierungsarbeiten auf individuelle Anfrage.
+
+### Zusammenarbeit mit Bauunternehmen
+
+Projektbezogene Zusammenarbeit mit Bauunternehmen, Generalunternehmern und Immobilienprojekten bei Trockenbau, Rückbau, Entkernung und vorbereitenden Bauarbeiten. Leistungsumfang, Personalbedarf und Einsatzmöglichkeiten werden individuell besprochen.
+
+## Karriere
+
+Bewerbungen für die Bereiche Reinigung (Cleaning), Bau (BAU) oder beides – mit Berufserfahrung oder als Quereinsteiger, in Vollzeit, Teilzeit oder als Minijob. Bewerbung über das Online-Formular unter https://www.tadiks-cleaning.de/karriere; ein Lebenslauf ist freiwillig.
+
+## Rechtliches
+
+- [Impressum](https://www.tadiks-cleaning.de/impressum)
+- [Datenschutzerklärung](https://www.tadiks-cleaning.de/datenschutz)
+- [Sitemap](https://www.tadiks-cleaning.de/sitemap.xml)

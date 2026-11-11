@@ -153,7 +153,7 @@ export function Hero() {
             {/* Subtitle */}
             <p className="text-white/85 text-sm sm:text-base lg:text-lg max-w-xl mb-6 sm:mb-8 leading-relaxed overflow-hidden">
               <span className="block hero-subtitle will-change-transform">
-                Professionelle Gebäudereinigung sowie Bau- und Sanierungsarbeiten – zuverlässig, termintreu und präzise umgesetzt.
+                Professionelle Reinigung für Gewerbe und Privatkunden sowie Trockenbau, Rückbau und Renovierung in Chemnitz und Umgebung.
               </span>
             </p>
 

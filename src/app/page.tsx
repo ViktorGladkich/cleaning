@@ -5,9 +5,9 @@ import { AboutSection } from "@/components/home/AboutSection";
 import { ServicesDualSection } from "@/components/home/ServicesDualSection";
 import { WerkschauSection } from "@/components/home/WerkschauSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
-import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
+import { ContactPersonSection } from "@/components/shared/ContactPersonSection";
 
 export default function HomePage() {
   return (
@@ -30,8 +30,8 @@ export default function HomePage() {
       {/* 5. Process / Ablauf Section (Awwwards Floating Frosted Cards) */}
       <ProcessSection />
 
-      {/* 6. Kundenstimmen / Social Proof (Authentic Editorial Grid) */}
-      <TestimonialsSection />
+      {/* 6. Inhaber & persönlicher Ansprechpartner */}
+      <ContactPersonSection />
 
       {/* 7. Häufig gestellte Fragen / FAQ (Split Screen Editorial Accordion) */}
       <FaqSection />

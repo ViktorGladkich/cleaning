@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Send, AlertCircle, X, Loader2 } from "lucide-react";
+import { Send, AlertCircle, X, Loader2, Phone } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { Container } from "@/components/ui/Container";
+import { COMPANY_INFO } from "@/lib/constants";
 import {
   CategoryType,
   ContactFieldErrors,
@@ -12,8 +13,10 @@ import {
   INITIAL_CONTACT_FORM_STATE,
   SERVICES_BY_CAT,
   cleanField,
+  getPreselection,
   validateContactForm,
 } from "./contactHubData";
+import { getServiceDetailBySlug } from "@/data/serviceDetails";
 import { ContactDirectSidebar } from "./ContactDirectSidebar";
 import { ContactServiceSelects } from "./ContactServiceSelects";
 import { ContactToast, ContactSuccessCard } from "./ContactSuccessState";
@@ -39,10 +42,19 @@ export function ContactHubSection() {
     INITIAL_CONTACT_FORM_STATE
   );
 
-  // Record form mount timestamp for anti-bot dwell-time verification
+  // Record form mount timestamp for anti-bot dwell-time verification and
+  // preselect the service when a request button linked here (?service=…).
   useEffect(() => {
     formLoadedAtRef.current = performance.now();
+    const preselection = getPreselection(window.location.search, getServiceDetailBySlug);
+    if (preselection) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- URL is only readable after mount on this static page
+      setCategory(preselection.category);
+      setSelectedService(preselection.service);
+    }
   }, []);
+
+  const isUrgent = category === "notfall";
 
   const handleCategoryChange = (cat: CategoryType) => {
     setCategory(cat);
@@ -55,7 +67,7 @@ export function ContactHubSection() {
     const next = { ...formData, [field]: value };
     setFormData(next);
     if (fieldErrors.phone || fieldErrors.email) {
-      const { errors } = validateContactForm(next);
+      const { errors } = validateContactForm(next, isUrgent);
       setFieldErrors((prev) => ({
         ...prev,
         phone: errors.phone,
@@ -105,7 +117,7 @@ export function ContactHubSection() {
     if (isSubmitting) return;
 
     setErrorMessage(null);
-    const { errors, generalError } = validateContactForm(formData);
+    const { errors, generalError } = validateContactForm(formData, isUrgent);
     setFieldErrors(errors);
 
     if (Object.keys(errors).length > 0 || generalError) {
@@ -132,6 +144,7 @@ export function ContactHubSection() {
           email: formData.email.trim(),
           address: formData.address.trim(),
           area: formData.area.trim(),
+          timing: formData.timing.trim(),
           comment: formData.comment.trim(),
           website: formData.website,
           companyFax: formData.companyFax,
@@ -243,14 +256,25 @@ export function ContactHubSection() {
                 >
                   <div>
                     <span className="text-xs font-mono uppercase tracking-wider text-brand-navy/50 block mb-1">
-                      Kostenlose Bedarfsanalyse
+                      {isUrgent ? "Kurzfristiger Einsatz" : "Anfrageformular"}
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-brand-navy">
-                      Angebot unverbindlich anfragen
+                      {isUrgent ? "Dringende Reinigung anfragen" : "Unverbindlich anfragen"}
                     </h3>
                     <p className="text-xs sm:text-sm text-brand-navy/70 mt-1 font-light">
-                      Wählen Sie Ihr gewünschtes Gewerk — wir erstellen Ihnen innerhalb von 24h ein verbindliches Festpreisangebot.
+                      {isUrgent
+                        ? "Kurzfristige Einsätze sind nach Verfügbarkeit möglich. Für eine schnelle Abstimmung rufen Sie uns am besten direkt an."
+                        : "Beschreiben Sie uns Ihr Vorhaben – auch wenn die gewünschte Leistung nicht ausdrücklich aufgeführt ist. Wir prüfen die Möglichkeiten und melden uns zur weiteren Abstimmung."}
                     </p>
+                    {isUrgent && (
+                      <a
+                        href={`tel:${COMPANY_INFO.phoneRaw}`}
+                        className="mt-3 inline-flex items-center gap-2 rounded-lg bg-brand-lime px-3.5 py-2 text-sm font-medium text-brand-navy hover:bg-brand-navy hover:text-white transition-colors"
+                      >
+                        <Phone className="w-4 h-4" />
+                        Jetzt anrufen: {COMPANY_INFO.phone}
+                      </a>
+                    )}
                   </div>
 
                   {/* Hidden Anti-Bot Honeypot Fields (Invisible to real users & screen readers) */}
@@ -315,7 +339,9 @@ export function ContactHubSection() {
 
                   {/* Step 3: Contact Inputs with Sanitization & Inline Error Highlighting */}
                   <p className="text-xs text-brand-navy/70 font-light pt-1">
-                    * Pflichtfeld. Für Rückfragen genügt eine Kontaktmöglichkeit: Telefon oder E-Mail.
+                    {isUrgent
+                      ? "* Pflichtfeld. Bei dringenden Anfragen benötigen wir Ihre Telefonnummer."
+                      : "* Pflichtfeld. Für Rückfragen genügt eine Kontaktmöglichkeit: Telefon oder E-Mail."}
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -376,7 +402,7 @@ export function ContactHubSection() {
                             : "text-brand-navy/70"
                         }`}
                       >
-                        Telefonnummer
+                        Telefonnummer{isUrgent ? " *" : ""}
                       </label>
                       <input
                         ref={phoneInputRef}
@@ -458,7 +484,7 @@ export function ContactHubSection() {
                         htmlFor="contact-address"
                         className="block text-xs font-mono font-normal uppercase tracking-wider text-brand-navy/70 mb-1.5"
                       >
-                        Ort / Postleitzahl
+                        {isUrgent ? "Objektort / PLZ" : "Ort / Postleitzahl"}
                       </label>
                       <input
                         id="contact-address"
@@ -479,12 +505,13 @@ export function ContactHubSection() {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
                     <label
                       htmlFor="contact-area"
                       className="block text-xs font-mono font-normal uppercase tracking-wider text-brand-navy/70 mb-1.5"
                     >
-                      Fläche / Quadratmeter (optional)
+                      Fläche / Umfang (optional)
                     </label>
                     <input
                       id="contact-area"
@@ -498,9 +525,34 @@ export function ContactHubSection() {
                           area: cleanField(e.target.value, 80),
                         })
                       }
-                      placeholder="z. B. ca. 180 m² Büro oder 4 Zimmer Wohnung"
+                      placeholder="z. B. ca. 180 m² Büro"
                       className="w-full px-4 py-3 rounded-xl border border-brand-navy/15 bg-brand-cream/30 text-sm text-brand-navy placeholder:text-brand-navy/35 focus:outline-none focus:border-brand-navy focus:bg-white transition-colors"
                     />
+                  </div>
+
+                    <div>
+                      <label
+                        htmlFor="contact-timing"
+                        className="block text-xs font-mono font-normal uppercase tracking-wider text-brand-navy/70 mb-1.5"
+                      >
+                        {isUrgent ? "Gewünschter Zeitpunkt" : "Gewünschter Zeitraum (optional)"}
+                      </label>
+                      <input
+                        id="contact-timing"
+                        name="timing"
+                        type="text"
+                        maxLength={100}
+                        value={formData.timing}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            timing: cleanField(e.target.value, 100),
+                          })
+                        }
+                        placeholder={isUrgent ? "z. B. morgen Vormittag" : "z. B. ab März 2027"}
+                        className="w-full px-4 py-3 rounded-xl border border-brand-navy/15 bg-brand-cream/30 text-sm text-brand-navy placeholder:text-brand-navy/35 focus:outline-none focus:border-brand-navy focus:bg-white transition-colors"
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -527,7 +579,11 @@ export function ContactHubSection() {
                           comment: cleanField(e.target.value, 1200),
                         })
                       }
-                      placeholder="Beschreiben Sie kurz Ihr Vorhaben, den gewünschten Starttermin oder spezielle Wünsche..."
+                      placeholder={
+                        isUrgent
+                          ? "Was ist passiert und welche Bereiche sollen gereinigt werden?"
+                          : "Beschreiben Sie kurz Ihr Vorhaben, Art der gewünschten Arbeiten oder besondere Wünsche …"
+                      }
                       className="w-full px-4 py-3 rounded-xl border border-brand-navy/15 bg-brand-cream/30 text-sm text-brand-navy placeholder:text-brand-navy/35 focus:outline-none focus:border-brand-navy focus:bg-white transition-colors resize-none"
                     />
                   </div>
@@ -557,13 +613,13 @@ export function ContactHubSection() {
                         <>
                           <Loader2 className="w-4 h-4 text-brand-lime animate-spin shrink-0" />
                           <span className="text-brand-lime font-medium">
-                            Anfrage wird sicher übertragen...
+                            Anfrage wird gesendet …
                           </span>
                         </>
                       ) : (
                         <>
                           <span className="text-brand-lime font-medium">
-                            Unverbindliches Festpreisangebot anfordern
+                            {isUrgent ? "Dringende Anfrage senden" : "Anfrage unverbindlich senden"}
                           </span>
                           <Send className="w-4 h-4 text-brand-lime group-hover:translate-x-1 transition-transform shrink-0" />
                         </>

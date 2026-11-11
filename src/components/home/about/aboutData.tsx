@@ -85,7 +85,7 @@ export const GALLERY_CARDS: GalleryCardConfig[] = [
     initialClipPath: "inset(100% 0% 0% 100% round 4px)",
     finalClipPath: "inset(0% 0% 0% 0% round 4px)",
     src: "/images/services/gallery-5.jpg",
-    alt: "Streifenfreie Fenster- und Glasfassadenreinigung Chemnitz",
+    alt: "Fenster- und Glasreinigung in Chemnitz",
     sizes: "(max-width: 768px) 180px, 280px",
     startTime: 0.68,
     duration: 0.46,

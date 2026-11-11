@@ -64,7 +64,7 @@ export function AboutHero() {
         </h1>
 
         <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-          Tadiks Cleaning &amp; Bau vereint fachgerechten Innenausbau und gründliche Gebäudereinigung in Chemnitz und Mittelsachsen — für bezugsfertige Perfektion und dauerhaften Werterhalt nahtlos aus einer Hand.
+          TADIK’S Cleaning &amp; BAU unterstützt Unternehmen, Hausverwaltungen und Privatkunden in Chemnitz und Umgebung – mit individuell abgestimmter Reinigung sowie Trockenbau, Rückbau und Renovierung.
         </p>
 
         <p className="hero-subtitle mt-6 text-xs text-white/80">

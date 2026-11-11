@@ -7,87 +7,19 @@ import {
   isValidName,
   validateContactMethods,
 } from "@/lib/contactRules";
+import {
+  containsSpamPatterns,
+  createRateLimiter,
+  getClientIp,
+  isPlausibleDwellTime,
+  isSameOrigin,
+  sanitizeInput,
+} from "@/lib/formGuard";
 
-// In-memory sliding window rate limiter per IP.
-// Best effort: each serverless instance keeps its own store.
-interface RateRecord {
-  timestamps: number[];
-  lastSubmit: number;
-}
-
-const rateLimitStore = new Map<string, RateRecord>();
-const MAX_STORE_ENTRIES = 2000; // Hard memory cap against spoofed-IP DDoS
-const WINDOW_MS = 10 * 60 * 1000; // 10 minutes (stated in the Datenschutzerklärung)
-const MAX_REQUESTS_PER_WINDOW = 3; // Max 3 submissions per 10 minutes per IP
-const MIN_COOLDOWN_MS = 15 * 1000; // Min 15s between consecutive submissions
-const MIN_DWELL_TIME_MS = 2200; // Humans take at least 2.2s to fill the form
-const MAX_FORM_AGE_MS = 2 * 60 * 60 * 1000; // 2 hours max form session age
+const rateLimiter = createRateLimiter();
 
 function isCategory(value: string): value is CategoryType {
   return Object.hasOwn(SERVICES_BY_CAT, value);
-}
-
-// Strip HTML tags, control chars, null bytes, and trim excessive whitespace
-function sanitizeInput(value: unknown, maxLen: number): string {
-  if (typeof value !== "string") return "";
-  return value
-    .replace(/\0/g, "")
-    .replace(/<[^>]*>/g, "")
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
-    .trim()
-    .slice(0, maxLen);
-}
-
-// Detect URLs, HTML injection, BBCode, or common spam patterns
-function containsSpamPatterns(text: string): boolean {
-  const lower = text.toLowerCase();
-  // Block links in name/comment/address fields (major vector for contact form spam)
-  if (/(https?:\/\/|www\.|\[url=|<a\s+href|bit\.ly|tinyurl\.com)/i.test(lower)) {
-    return true;
-  }
-  // Block common automated SEO / crypto / casino spam terms
-  if (
-    /(viagra|cialis|casino|crypto\s*airdrop|bitcoin\s*investment|seo\s*rank|backlinks\s*service|telegram\s*@|whatsapp\s*\+\d{10,})/i.test(
-      lower
-    )
-  ) {
-    return true;
-  }
-  // Block excessive character repetition (e.g., "aaaaaaaaaaaaaaa")
-  if (/(.)\1{14,}/.test(text)) {
-    return true;
-  }
-  return false;
-}
-
-function getClientIp(req: NextRequest): string {
-  const forwarded = req.headers.get("x-forwarded-for");
-  if (forwarded) {
-    return forwarded.split(",")[0].trim().slice(0, 64);
-  }
-  const realIp = req.headers.get("x-real-ip");
-  if (realIp) {
-    return realIp.trim().slice(0, 64);
-  }
-  return "local-client";
-}
-
-// IPs are dropped as soon as they leave the window, on the next request to this instance.
-function cleanupRateLimitStore(now: number) {
-  for (const [ip, record] of rateLimitStore.entries()) {
-    const valid = record.timestamps.filter((t) => now - t < WINDOW_MS);
-    if (valid.length === 0) {
-      rateLimitStore.delete(ip);
-    } else {
-      record.timestamps = valid;
-    }
-  }
-  // Enforce hard upper bound on Map size to prevent memory exhaustion
-  while (rateLimitStore.size >= MAX_STORE_ENTRIES) {
-    const oldestKey = rateLimitStore.keys().next().value;
-    if (!oldestKey) break;
-    rateLimitStore.delete(oldestKey);
-  }
 }
 
 const DELIVERY_FAILED_MESSAGE = `Ihre Anfrage konnte gerade nicht zugestellt werden. Bitte rufen Sie uns an oder schreiben Sie uns direkt per E-Mail.`;
@@ -112,33 +44,20 @@ export async function POST(req: NextRequest) {
     }
 
     // 2. Same-Origin Check (CSRF defense)
-    const origin = req.headers.get("origin");
-    const host = req.headers.get("host");
-    if (origin && host) {
-      try {
-        const originHost = new URL(origin).host;
-        if (originHost !== host) {
-          return NextResponse.json(
-            { error: "Ungültige Herkunft der Anfrage." },
-            { status: 403 }
-          );
-        }
-      } catch {
-        return NextResponse.json(
-          { error: "Ungültige Herkunft der Anfrage." },
-          { status: 403 }
-        );
-      }
+    if (!isSameOrigin(req)) {
+      return NextResponse.json(
+        { error: "Ungültige Herkunft der Anfrage." },
+        { status: 403 }
+      );
     }
 
     const now = Date.now();
-    cleanupRateLimitStore(now);
 
     // 3. IP Rate Limiting
     const ip = getClientIp(req);
-    const existing = rateLimitStore.get(ip) || { timestamps: [], lastSubmit: 0 };
+    const rate = rateLimiter.check(ip, now);
 
-    if (now - existing.lastSubmit < MIN_COOLDOWN_MS) {
+    if (rate === "cooldown") {
       return NextResponse.json(
         {
           error:
@@ -148,7 +67,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (existing.timestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    if (rate === "limit") {
       return NextResponse.json(
         {
           error:
@@ -181,12 +100,7 @@ export async function POST(req: NextRequest) {
 
     // 6. Human Dwell-Time Verification (duration measured by the browser, so a
     // wrong device clock cannot lock real visitors out)
-    const elapsed = Number(body.formElapsedMs);
-    if (
-      !Number.isFinite(elapsed) ||
-      elapsed < MIN_DWELL_TIME_MS ||
-      elapsed > MAX_FORM_AGE_MS
-    ) {
+    if (!isPlausibleDwellTime(body.formElapsedMs)) {
       return NextResponse.json(
         {
           error:
@@ -204,6 +118,7 @@ export async function POST(req: NextRequest) {
     const email = sanitizeInput(body.email, 120);
     const address = sanitizeInput(body.address, 100);
     const area = sanitizeInput(body.area, 80);
+    const timing = sanitizeInput(body.timing, 100);
     const comment = sanitizeInput(body.comment, 1200);
 
     if (!isCategory(category) || !SERVICES_BY_CAT[category].includes(service)) {
@@ -220,7 +135,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const contactErrors = validateContactMethods(phone, email);
+    const contactErrors = validateContactMethods(phone, email, category === "notfall");
     const contactError = contactErrors.phone || contactErrors.email;
     if (contactError) {
       return NextResponse.json({ error: contactError }, { status: 400 });
@@ -231,6 +146,7 @@ export async function POST(req: NextRequest) {
       containsSpamPatterns(name) ||
       containsSpamPatterns(address) ||
       containsSpamPatterns(area) ||
+      containsSpamPatterns(timing) ||
       containsSpamPatterns(comment)
     ) {
       return NextResponse.json(
@@ -248,9 +164,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: DELIVERY_FAILED_MESSAGE }, { status: 503 });
     }
 
-    existing.timestamps.push(now);
-    existing.lastSubmit = now;
-    rateLimitStore.set(ip, existing);
+    rateLimiter.record(ip, now);
 
     const referenceId = `TDK-${randomBytes(3).toString("hex").toUpperCase()}`;
 
@@ -264,6 +178,7 @@ export async function POST(req: NextRequest) {
         email,
         address,
         area,
+        timing,
         comment,
       });
     } catch (mailError) {

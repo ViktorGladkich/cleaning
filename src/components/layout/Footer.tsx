@@ -8,36 +8,32 @@ import { gsap } from "@/lib/gsap";
 import { ArrowUpRight } from "lucide-react";
 import { RollingText } from "@/components/animations";
 import { COMPANY_INFO } from "@/lib/constants";
+import { getServicePath, getServicesByCategory } from "@/data/serviceDetails";
 
 const COL_INDEX = [
   { label: "Startseite", href: "/" },
   { label: "Über uns", href: "/about" },
   { label: "Reinigung", href: "/services" },
-  { label: "Bau & Sanierung", href: "/bau" },
+  { label: "Dringende Reinigung", href: "/services#notfall" },
+  { label: "Bau", href: "/bau" },
+  { label: "Karriere & Bewerbung", href: "/karriere" },
   { label: "Kontakt & Anfahrt", href: "/contacts" },
 ];
 
 const COL_REINIGUNG = [
   { label: "Übersicht Reinigung", href: "/services" },
-  { label: "Unterhaltsreinigung", href: "/services/unterhaltsreinigung" },
-  { label: "Grundreinigung", href: "/services/grundreinigung" },
-  { label: "Bauendreinigung", href: "/services/bauendreinigung" },
-  { label: "Fenster- & Glasreinigung", href: "/services/fensterreinigung" },
-  { label: "Büro- & Praxisreinigung", href: "/services/bueroreinigung" },
-  { label: "Hotelreinigung", href: "/services/hotelreinigung" },
-  { label: "Treppenhausreinigung", href: "/services/treppenhausreinigung" },
-  { label: "Industrie- & Hallenreinigung", href: "/services/industrie-und-hallenreinigung" },
-  { label: "Entrümpelungen", href: "/services/entruempelungen" },
+  ...getServicesByCategory("reinigung").map((s) => ({
+    label: s.title,
+    href: getServicePath(s),
+  })),
 ];
 
 const COL_BAU = [
-  { label: "Übersicht Bauleistungen", href: "/bau" },
-  {
-    label: "Trockenbau & Innenausbau",
-    href: "/bau/trockenbau-innenausbau",
-  },
-  { label: "Komplettsanierung", href: "/bau/renovierung-sanierung" },
-  { label: "Abbruch & Entkernung", href: "/bau/abbruch-entkernung" },
+  { label: "Übersicht Bau", href: "/bau" },
+  ...getServicesByCategory("bau").map((s) => ({
+    label: s.title,
+    href: getServicePath(s),
+  })),
 ];
 
 const COL_CONNECT = [

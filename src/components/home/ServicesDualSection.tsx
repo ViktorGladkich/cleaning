@@ -18,6 +18,11 @@ export interface ServiceGridItem {
   imageAlt?: string;
   bullets: string[];
   href: string;
+  /** Short claim shown under the tagline. */
+  description?: string;
+  /** Optional request button, e.g. "Büroreinigung anfragen". */
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export interface ServicesGridSectionProps {
@@ -36,87 +41,87 @@ export interface ServicesGridSectionProps {
 export const SERVICES: ServiceGridItem[] = [
   {
     id: "unterhalt",
-    title: "Unterhaltsreinigung",
-    tagline: "BÜRO-, KANZLEI- & PRAXISHYGIENE IN SACHSEN",
+    title: "Unterhalts- & Büroreinigung",
+    tagline: "REINIGUNG",
     category: "REINIGUNG",
-    imageSrc: "/images/services/hero-unterhaltsreinigung.jpg",
-    imageAlt: "Professionelle Unterhaltsreinigung in Chemnitz und Sachsen",
+    imageSrc: "/images/services/hero-bueroreinigung.jpg",
+    imageAlt: "Büroreinigung in einem Großraumbüro",
     bullets: [
-      "Feste Objektleiter & feste Fachkräfte",
-      "Tägliche, wöchentliche oder flexible Intervalle",
-      "RKI- & DIN-konforme Dokumentation",
+      "Büro- und Arbeitsbereiche",
+      "Sanitär- und Gemeinschaftsräume",
+      "Reinigungspläne nach Vereinbarung",
     ],
-    href: "/services",
+    href: "/services/unterhaltsreinigung",
   },
   {
     id: "glas",
-    title: "Glas- & Fassadenreinigung",
-    tagline: "STREIFENFREIE SPEZIALREINIGUNG BIS 20M HÖHE",
+    title: "Fenster- & Glasreinigung",
+    tagline: "REINIGUNG",
     category: "REINIGUNG",
     imageSrc: "/images/services/hero-fensterreinigung.jpg",
-    imageAlt: "Streifenfreie Glas- und Fensterreinigung in Sachsen",
+    imageAlt: "Fensterreinigung an einer Gründerzeitfassade",
     bullets: [
-      "Modernste Osmose-Reinstwassertechnik",
-      "Inklusive Rahmen-, Falz- & Simsreinigung",
-      "Schaufenster, Wintergärten & Glasfassaden",
+      "Fenster und Glasflächen",
+      "Glastrennwände und Eingangselemente",
+      "Rahmen- und Falzreinigung nach Vereinbarung",
     ],
-    href: "/services",
+    href: "/services/fensterreinigung",
   },
   {
-    id: "bauende",
-    title: "Bauendreinigung",
-    tagline: "BEZUGSFERTIGE SCHLÜSSELÜBERGABE NACH BAU & SANIERUNG",
+    id: "fassade",
+    title: "Fassaden- & Außenreinigung",
+    tagline: "REINIGUNG · NEU",
     category: "REINIGUNG",
-    imageSrc: "/images/services/hero-bauendreinigung.jpg",
-    imageAlt: "Bezugsfertige Bauendreinigung in Sachsen",
+    imageSrc: "/images/references/fassade-goessnitz-nachher.webp",
+    imageAlt: "Gereinigte Metallfassade einer Industriehalle in Gößnitz",
     bullets: [
-      "Zementschleier- & feinstaubfreie Übergabe",
-      "Für Bauherren, Architekten & Wohnungsbau",
-      "Verlässliche Abnahmegarantie nach VOB",
+      "Metall- und Hallenfassaden",
+      "Gewerbliche Außenfassaden",
+      "Zugangstechnik passend zum Objekt",
     ],
-    href: "/services",
+    href: "/services/fassadenreinigung",
   },
   {
     id: "trockenbau",
-    title: "Trockenbau & Akustik",
-    tagline: "DIN-GERECHTE WAND- & DECKENSYSTEME, SCHALLSCHUTZ",
+    title: "Trockenbau & Innenausbau",
+    tagline: "BAU",
     category: "BAU",
     imageSrc: "/images/services/hero-trockenbau-innenausbau.jpg",
-    imageAlt: "Präziser Trockenbau und Akustikbau in Sachsen",
+    imageAlt: "Trockenbau beim Dachausbau eines Altbaus",
     bullets: [
-      "Brand-, Schall- & Feuchteschutz nach DIN",
-      "Akustikdecken & flexible Trennwände",
-      "Millimetergenaue Laser-Ausrichtung",
+      "Nichttragende Trocken- und Trennwände",
+      "Abgehängte Decken & Gipskartonarbeiten",
+      "Raumaufteilung und Innenausbau",
     ],
-    href: "/bau",
+    href: "/bau/trockenbau-innenausbau",
   },
   {
     id: "abbruch",
-    title: "Abbruch & Entkernung",
-    tagline: "STAUBARME DEMONTAGE & RECYCLINGGERECHTE ENTSORGUNG",
+    title: "Rückbau & Entkernung",
+    tagline: "BAU",
     category: "BAU",
     imageSrc: "/images/services/hero-abbruch-entkernung.jpg",
-    imageAlt: "Staubarme Entkernung und Rückbauarbeiten",
+    imageAlt: "Entkernung einer ehemaligen Fabrikhalle",
     bullets: [
-      "Rückbau nichttragender Wände & alter Bodenbeläge",
-      "Einsatz von HEPA-Staubschutzwänden & Luftreinigern",
-      "Sortenreine Entsorgung inklusive Bauschutt-Nachweis",
+      "Rückbau nichttragender Wände",
+      "Entkernung von Wohnungen und Gebäuden",
+      "Besenreine Übergabe nach Vereinbarung",
     ],
-    href: "/bau",
+    href: "/bau/abbruch-entkernung",
   },
   {
     id: "sanierung",
-    title: "Komplettsanierung",
-    tagline: "ALLES AUS EINER HAND OHNE SCHNITTSTELLENVERLUST",
+    title: "Renovierung & Sanierung",
+    tagline: "BAU",
     category: "BAU",
     imageSrc: "/images/services/hero-renovierung-sanierung.jpg",
-    imageAlt: "Komplettsanierung von Altbauten und Gewerbeflächen in Sachsen",
+    imageAlt: "Baubesprechung in einer leeren Altbauwohnung",
     bullets: [
-      "Entkernung, Trockenbau & Feinreinigung",
-      "Spezialisiert auf sächsische Altbauten & Lofts",
-      "Fester deutscher Bauleiter & Termingarantie",
+      "Wohnungsrenovierung und Umbau",
+      "Individuelle Projektprüfung",
+      "Weitere Gewerke mit Partnerunternehmen",
     ],
-    href: "/bau",
+    href: "/bau/renovierung-sanierung",
   },
 ];
 
@@ -124,7 +129,7 @@ export function ServicesGridSection({
   id = "services",
   eyebrow = "Unsere Leistungen",
   title,
-  subtitle = "Professionelle Gebäudereinigung und erstklassiges Bauhandwerk vereint unter einem Dach. Feste Ansprechpartner und verbindliche Festpreise in Chemnitz und ganz Sachsen.",
+  subtitle = "Gebäudereinigung und Bauleistungen für Gewerbe und Privatkunden in Chemnitz und Umgebung – mit persönlichem Ansprechpartner und individuell abgestimmtem Angebot.",
   ctaText = "Alle Leistungen ansehen",
   ctaHref = "/services",
   items = SERVICES,
@@ -269,7 +274,7 @@ export function ServicesGridSection({
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 sm:gap-10 mb-10 sm:mb-14">
           <div className="max-w-2xl">
             <h2 className="services-anim-title text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-brand-navy leading-[1.15]">
-              {title || "Zwei Kernbereiche. Höchste Präzision."}
+              {title || "Zwei Bereiche. Ein Ansprechpartner."}
             </h2>
           </div>
 
@@ -293,9 +298,8 @@ export function ServicesGridSection({
         {/* --- Card Editorial Grid --- */}
         <div className="services-editorial-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-brand-navy/20 bg-brand-cream">
           {items.map((card) => (
-            <Link
+            <article
               key={card.id}
-              href={card.href}
               className="service-editorial-card group relative border-r border-b border-brand-navy/20 p-6 sm:p-7 lg:p-8 flex flex-col justify-between overflow-hidden min-h-115 lg:min-h-122.5 bg-brand-cream text-brand-navy"
             >
               {/* Smooth mask fill layer: smoothly descends from the TOP of the card on hover */}
@@ -308,6 +312,11 @@ export function ServicesGridSection({
               <div className="relative z-10">
                 <div className="flex items-start justify-between gap-4 mb-2 min-w-0">
                   <h3 className="text-xl sm:text-2xl font-normal tracking-tight leading-tight min-w-0">
+                    {/* Stretched link: the whole card opens the service page */}
+                    <Link
+                      href={card.href}
+                      className="before:absolute before:inset-0 before:z-20 focus-visible:outline-none focus-visible:before:ring-2 focus-visible:before:ring-inset focus-visible:before:ring-brand-navy"
+                    >
                     {wrapTitles ? (
                       <span className="text-brand-navy transition-colors duration-500 ease-out group-hover:text-white">
                         {card.title}
@@ -320,6 +329,7 @@ export function ServicesGridSection({
                         {card.title}
                       </RollingText>
                     )}
+                    </Link>
                   </h3>
 
                   {/* Direct prominent arrow: No circle, unclipped, crisp, slides diagonally on hover */}
@@ -332,6 +342,11 @@ export function ServicesGridSection({
                 <p className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider font-normal text-brand-navy/60 group-hover:text-white/70 transition-colors duration-500 ease-out">
                   {card.tagline}
                 </p>
+                {card.description && (
+                  <p className="mt-2 text-sm leading-snug text-brand-navy/80 group-hover:text-white/85 transition-colors duration-500 ease-out">
+                    {card.description}
+                  </p>
+                )}
               </div>
 
               {/* --- Card Center: Photographic Asset with Parallax (relative z-10) --- */}
@@ -361,8 +376,17 @@ export function ServicesGridSection({
                     </li>
                   ))}
                 </ul>
+                {card.ctaLabel && card.ctaHref && (
+                  <Link
+                    href={card.ctaHref}
+                    className="relative z-30 mt-5 inline-flex items-center gap-1.5 rounded-lg bg-brand-lime px-3.5 py-2 text-xs sm:text-[13px] font-medium text-brand-navy transition-colors hover:bg-white"
+                  >
+                    {card.ctaLabel}
+                    <ArrowUpRight className="w-3.5 h-3.5 stroke-2" />
+                  </Link>
+                )}
               </div>
-            </Link>
+            </article>
           ))}
         </div>
       </div>

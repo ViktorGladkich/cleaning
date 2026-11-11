@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import { ReinigungPageContent } from "@/components/reinigung/ReinigungPageContent";
 
 export const metadata: Metadata = {
-  title: "Gebäudereinigung & Hygiene Chemnitz — Fachbetrieb Tadiks",
+  title: "Reinigung in Chemnitz & Umgebung — TADIK’S Cleaning",
   description:
-    "Professionelle Unterhalts-, Glas-, Bau- und Spezialreinigung für Gewerbe und Privat in Chemnitz & Mittelsachsen. 100% Festpreisgarantie & höchste RKI-Hygienestandards.",
+    "Büro-, Hotel-, Glas-, Grund-, Bauend-, Treppenhaus-, Praxis-, Haushalts- sowie Fassaden- & Außenreinigung für Gewerbe und Privatkunden in Chemnitz und Umgebung.",
+  alternates: { canonical: "/services" },
 };
 
 export default function ServicesPage() {

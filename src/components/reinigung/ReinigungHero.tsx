@@ -59,13 +59,13 @@ export function ReinigungHero() {
         className="relative z-10 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 text-center pt-32 pb-20 sm:pt-40 sm:pb-28"
       >
         <h1 className="hero-title text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal text-white tracking-tight leading-[1.05]">
-          Gebäudereinigung <br />
-          <span className="text-brand-lime font-light">nach Fachstandard.</span>
+          Professionelle Reinigung <br />
+          <span className="text-brand-lime font-light">in Chemnitz &amp; Umgebung.</span>
         </h1>
 
         <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-          RKI-konforme Hygienestandards, modernste Osmose-Technik und festes Stammpersonal
-          für Gewerbe, Kanzleien, Praxen und anspruchsvolle Privathäuser.
+          Für Gewerbe, Hausverwaltungen und Privatkunden – von der regelmäßigen
+          Objektpflege bis zur Fassaden- &amp; Außenreinigung.
         </p>
 
         <p className="hero-subtitle mt-6 text-xs text-white/80">

@@ -1,31 +1,45 @@
 // Validation rules shared by the contact form (client) and /api/contact (server).
 
-export type CategoryType = "reinigung" | "bau" | "kombi";
+export type CategoryType = "reinigung" | "bau" | "kombi" | "notfall";
 
 export const SERVICES_BY_CAT: Record<CategoryType, string[]> = {
   reinigung: [
-    "Unterhaltsreinigung",
-    "Grundreinigung",
-    "Bauendreinigung",
-    "Fenster- & Glasreinigung",
-    "Büro- & Praxisreinigung",
+    "Unterhalts- & Büroreinigung",
     "Hotelreinigung",
+    "Fenster- & Glasreinigung",
+    "Grund- & Sonderreinigung",
+    "Bauendreinigung",
     "Treppenhausreinigung",
-    "Industrie- & Hallenreinigung",
-    "Entrümpelungen",
-    "Fassaden- & Spezialreinigung",
+    "Praxisreinigung",
+    "Haushaltsreinigung",
+    "Fassaden- & Außenreinigung",
+    "Sonstige Reinigungsanfrage",
   ],
   bau: [
-    "Trockenbau & Akustik",
-    "Komplettsanierung",
-    "Abbruch & Entkernung",
+    "Trockenbau & Innenausbau",
+    "Abbruch, Rückbau & Entkernung",
+    "Renovierung & Sanierung",
+    "Entrümpelung & Baustellenberäumung",
+    "Bodenverlegung / Montage von Bauelementen",
+    "Zusammenarbeit für Bauunternehmen",
+    "Sonstiges Bauvorhaben",
   ],
   kombi: [
-    "Komplettausbau inkl. Bauendreinigung",
-    "Praxis- & Bürosanierung mit Turnusreinigung",
-    "Mieterwechsel-Renovierung mit Endreinigung",
+    "Renovierung mit anschließender Bauendreinigung",
+    "Rückbau mit Beräumung und Reinigung",
+    "Sonstiges Kombi-Projekt",
+  ],
+  notfall: [
+    "Kurzfristige Grund- & Sonderreinigung",
+    "Dringende Bauendreinigung / Reinigung vor Übergabe",
+    "Zusätzlicher Reinigungseinsatz für Gewerbeobjekte",
+    "Individuelle Reinigungsanfrage",
   ],
 };
+
+/** Urgent requests are answered by phone, so a number is required there. */
+export const PHONE_REQUIRED_MESSAGE =
+  "Für kurzfristige Einsätze benötigen wir Ihre Telefonnummer.";
 
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -55,8 +69,15 @@ export const INVALID_EMAIL_MESSAGE =
  */
 export function validateContactMethods(
   phone: string,
-  email: string
+  email: string,
+  phoneRequired = false
 ): { phone?: string; email?: string } {
+  if (phoneRequired && !phone) {
+    return {
+      phone: PHONE_REQUIRED_MESSAGE,
+      email: email && !EMAIL_PATTERN.test(email) ? INVALID_EMAIL_MESSAGE : undefined,
+    };
+  }
   if (!phone && !email) {
     return {
       phone: CONTACT_METHOD_REQUIRED_MESSAGE,

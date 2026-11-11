@@ -15,26 +15,26 @@ const BAU_PROTOCOL_STEPS: ProtocolStep[] = [
   {
     num: "01",
     image: "/images/services/step-bau-1.webp",
-    title: "Kostenlose Vor-Ort-Analyse: Bausubstanz prüfen, Raummaße erfassen.",
-    desc: "Präzises Laser-Aufmaß aller Räume, Feuchtigkeitsmessung und bautechnische Bestandsaufnahme. Verbindliche Fachberatung vor Ort in Chemnitz.",
+    title: "Projektanfrage: Sie beschreiben uns Ihr Vorhaben.",
+    desc: "Name, Ort des Bauvorhabens, Art der Arbeiten und gewünschter Zeitraum – gern mit Fotos oder Leistungsverzeichnis per E-Mail.",
   },
   {
     num: "02",
     image: "/images/services/step-bau-2.webp",
-    title: "Verbindliches Festpreis-Leistungsverzeichnis: Volle Kostensicherheit.",
-    desc: "Detailliert aufgeschlüsselte Mengen- und Materialberechnung nach DIN-Normen. Ein garantierter Festpreis für alle Gewerke ohne Nachträge.",
+    title: "Individuelle Prüfung: Was ist möglich und sinnvoll?",
+    desc: "Wir prüfen die baulichen Gegebenheiten, bei Bedarf vor Ort, und klären, welche Arbeiten wir selbst übernehmen.",
   },
   {
     num: "03",
     image: "/images/services/step-bau-3.webp",
-    title: "Präzise Gewerke-Ausführung: Feste Handwerker-Teams & Staubschutz.",
-    desc: "Trockenbau und Akustikdecken mit Rotationslasern und mobilen HEPA-Luftreinigern für saubere, termintreue Bauphasen.",
+    title: "Abstimmung: Leistungsumfang und nächste Schritte.",
+    desc: "Sie erhalten ein Angebot zum vereinbarten Leistungsumfang. Weitere Gewerke stimmen wir mit geeigneten Partnerunternehmen ab.",
   },
   {
     num: "04",
     image: "/images/services/step-bau-4.webp",
-    title: "Schlüsselfertige VOB-Abnahme: Bauleiter-Audit & bezugsfertige Übergabe.",
-    desc: "Gemeinsame Endabnahme nach VOB-Kriterien inklusive bezugsfertiger Bauendreinigung durch unser eigenes Team. Einzug ohne Nacharbeiten.",
+    title: "Umsetzung: mit eigenem Team oder Partnerunternehmen.",
+    desc: "Die vereinbarten Arbeiten werden sorgfältig ausgeführt – auf Wunsch mit anschließender Bauendreinigung durch TADIK’S Cleaning.",
   },
 ];
 
@@ -113,7 +113,7 @@ export function BauMinimalProtocol() {
     <section
       ref={sectionRef}
       id="bau-protocol"
-      aria-label="Bau-Qualitätsstandard & Ablauf"
+      aria-label="Ablauf Bauprojekt"
       className="relative z-10 w-full bg-brand-cream text-brand-navy py-20 sm:py-28 lg:py-36 border-t border-brand-navy/10"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -126,34 +126,28 @@ export function BauMinimalProtocol() {
           >
             <div className="w-full max-w-2xl xl:max-w-3xl">
               <span className="protocol-statement-chunk text-xs sm:text-sm font-mono uppercase tracking-widest text-brand-navy/60 block mb-4">
-                Bau-Qualitätsstandard &amp; Methodik
+                So läuft Ihr Bauprojekt ab
               </span>
               <p className="text-2xl sm:text-3xl xl:text-[38px] font-normal text-brand-navy leading-[1.28] tracking-tight">
                 <span className="block protocol-statement-chunk mb-4">
-                  Wir bauen nicht nur Wände –{" "}
+                  Jedes Bauvorhaben ist anders –{" "}
                   <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
-                    wir schaffen bleibende Werte.
+                    deshalb prüfen wir jede Anfrage individuell.
                   </span>
                 </span>
                 <span className="block protocol-statement-chunk font-light text-brand-navy/85 mb-5">
-                  Durch{" "}
-                  <span className="text-brand-navy font-normal">
-                    millimetergenaue Laser-Ausrichtung
-                  </span>{" "}
-                  und DIN-gerechten{" "}
-                  <span className="text-brand-navy font-normal">
-                    Schallschutz
-                  </span>
-                  .
+                  Wir stimmen{" "}
+                  <span className="text-brand-navy font-normal">Material</span>,{" "}
+                  <span className="text-brand-navy font-normal">Ausführung</span> und{" "}
+                  <span className="text-brand-navy font-normal">Umfang</span>{" "}
+                  auf Ihr Projekt ab.
                 </span>
                 <span className="block protocol-statement-chunk font-light text-brand-navy/70 text-lg sm:text-xl xl:text-[21px] leading-relaxed">
-                  Ob anspruchsvoller{" "}
+                  Ob{" "}
                   <span className="text-brand-navy font-normal">Trockenbau</span>,{" "}
-                  schallschluckende{" "}
-                  <span className="text-brand-navy font-normal">Akustikdecken</span> oder{" "}
-                  die schlüsselfertige{" "}
-                  <span className="text-brand-navy font-normal">Komplettsanierung</span>:{" "}
-                  Wir vereinen alle Gewerke unter einer erfahrenen Bauleitung – termintreu, sauber und ohne Schnittstellenverlust.
+                  <span className="text-brand-navy font-normal">Rückbau &amp; Entkernung</span> oder{" "}
+                  <span className="text-brand-navy font-normal">Renovierung</span>:{" "}
+                  Je nach Anforderungen setzen wir Ihr Projekt mit unserem eigenen Team oder in Zusammenarbeit mit geeigneten Fach- und Partnerunternehmen um.
                 </span>
               </p>
             </div>

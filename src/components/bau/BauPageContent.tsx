@@ -8,6 +8,7 @@ import { BauMinimalProtocol } from "./BauMinimalProtocol";
 import { FaqSection } from "@/components/home/FaqSection";
 import { BAU_FAQS } from "@/data/bauFaqs";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
+import { BauExtrasSection } from "./BauExtrasSection";
 
 export function BauPageContent() {
   return (
@@ -15,23 +16,28 @@ export function BauPageContent() {
       {/* 1. Full-bleed Monumental Hero with centered typography */}
       <BauHero />
 
-      {/* 2. Editorial 6-card grid reusing master ServicesGridSection */}
+      {/* 2. Main services: Trockenbau, Rückbau/Entkernung, Renovierung, Beräumung */}
       <ServicesGridSection
         id="bau-leistungen"
-        eyebrow="Bau- &amp; Ausbauleistungen im Überblick"
+        eyebrow="Unsere Schwerpunkte"
+        wrapTitles
         title={
           <>
-            Präzises Handwerk nach Maß.{" "}
+            Trockenbau, Rückbau &amp; Renovierung.{" "}
             <span className="block font-normal text-brand-navy/80">
-              Für Wohnbau, Gewerbe und schlüsselfertige Sanierung.
+              Für private und gewerbliche Auftraggeber.
             </span>
           </>
         }
-        subtitle="Alle Bau- und Ausbaugewerke unseres Fachbetriebs — millimetergenau kalkuliert, termintreu getaktet und lückenlos aus einer Hand."
-        ctaText="Kostenlose Besichtigung"
-        ctaHref="/contacts"
+        subtitle="Weitere Bauanfragen sind ausdrücklich willkommen. Wir prüfen jedes Vorhaben individuell und stimmen den Leistungsumfang mit Ihnen ab."
+        ctaText="Bauprojekt anfragen"
+        ctaHref="/contacts?service=bauprojekt#anfrage"
         items={BAU_SERVICES_GRID}
+        className="pb-6 sm:pb-8"
       />
+
+      {/* 2.5 Smaller services, cooperation, equipment */}
+      <BauExtrasSection />
 
       {/* 3. Deep Navy architectural statement with 4-step stacking protocol */}
       <BauMinimalProtocol />
@@ -39,18 +45,18 @@ export function BauPageContent() {
       {/* 4. Minimalist FAQ reusing master FaqSection */}
       <FaqSection
         id="bau-faq"
-        eyebrow="Klarheit &amp; Verbindlichkeit"
+        eyebrow="Häufige Fragen"
         title={
           <>
-            Häufige Fragen zu Ablauf &amp;{" "}
+            Fragen zu Anfrage &amp;{" "}
             <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
-              Bauausführung.
+              Bauprojekt.
             </span>
           </>
         }
-        subtitle="Verbindliche Antworten zu Festpreisen, Bauleitung, Staubschutz, Gewerke-Koordination und VOB-Gewährleistung."
+        subtitle="Antworten zu Projektprüfung, Partnerunternehmen, Rückbau und Unterlagen für Ihre Anfrage."
         imageSrc="/images/services/step-bau-4.webp"
-        imageAlt="Tadiks Fachbetrieb für Bau, Trockenbau und Sanierung"
+        imageAlt="TADIK’S BAU Trockenbau und Renovierung"
         items={BAU_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
@@ -58,18 +64,18 @@ export function BauPageContent() {
       {/* 5. Cinematic Closing CTA reusing master ClosingCtaSection */}
       <ClosingCtaSection
         id="bau-cta"
-        eyebrow="Kostenloses Vor-Ort-Aufmaß"
+        eyebrow="Kontakt & Anfrage"
         title={
           <>
-            Präziser Ausbau. <br className="hidden sm:inline" />
-            <span className="text-white/70">Garantierter Festpreis.</span>
+            Sie planen ein Bauprojekt? <br className="hidden sm:inline" />
+            <span className="text-white/70">Wir freuen uns auf Ihre Anfrage.</span>
           </>
         }
-        subtitle="Wir prüfen Ihre Bausubstanz vor Ort in Chemnitz und Mittelsachsen und erstellen innerhalb von 24 Stunden Ihr verbindliches Festpreisangebot."
-        ctaText="Kostenlose Besichtigung"
-        ctaHref="/contacts"
+        subtitle="Beschreiben Sie uns Ihr Vorhaben – auch wenn die gewünschte Leistung nicht ausdrücklich auf der Webseite aufgeführt ist. Wir prüfen die Möglichkeiten und melden uns zur weiteren Abstimmung. Telefon 0371 23559475 · info@tadiks-cleaning.de"
+        ctaText="Jetzt Bauprojekt anfragen"
+        ctaHref="/contacts?service=bauprojekt#anfrage"
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
-        imageAlt="Tadiks professioneller Bau und Trockenbau in Sachsen"
+        imageAlt="TADIK’S BAU in Chemnitz"
       />
     </div>
   );

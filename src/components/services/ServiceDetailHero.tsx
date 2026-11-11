@@ -21,7 +21,7 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
   const words = service.title.split(" ");
 
   const categoryHref = service.category === "reinigung" ? "/services" : "/bau";
-  const contactHref = `/contacts?service=${encodeURIComponent(service.slug)}`;
+  const contactHref = `/contacts?service=${encodeURIComponent(service.slug)}#anfrage`;
 
   useGSAP(
     () => {
@@ -170,13 +170,15 @@ export function ServiceDetailHero({ service }: ServiceDetailHeroProps) {
 
           <div className="hero-fade lg:col-span-5 lg:flex lg:justify-end">
             <CtaButton href={contactHref} size="md">
-              Termin vereinbaren
+              {service.ctaLabel}
             </CtaButton>
           </div>
         </div>
 
         <p className="hero-fade mt-6 text-xs text-white/70">
-          Symbolbilder auf dieser Seite: KI-generiert.
+          {service.heroIsProjectPhoto
+            ? "Titelbild: eigenes Projektfoto. Weitere Symbolbilder auf dieser Seite: KI-generiert."
+            : "Symbolbilder auf dieser Seite: KI-generiert."}
         </p>
       </div>
     </section>

@@ -62,7 +62,7 @@ export function ContactHero() {
         </h1>
 
         <p className="hero-subtitle mt-6 sm:mt-8 text-base sm:text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-3xl mx-auto">
-          Kostenlose Vor-Ort-Besichtigung, verbindliche Festpreisangebote innerhalb von 24 Stunden und feste persönliche Ansprechpartner für Ihr Bau- oder Reinigungsvorhaben.
+          Ein direkter Ansprechpartner für Ihre Reinigungs- oder Bauanfrage. Wir besprechen Ihren Bedarf und erstellen ein individuell abgestimmtes Angebot.
         </p>
       </div>
     </section>

@@ -15,26 +15,26 @@ const PROTOCOL_STEPS: ProtocolStep[] = [
   {
     num: "01",
     image: "/images/services/step-reinigung-1.webp",
-    title: "Kostenloses Vor-Ort-Audit: Flächen erfassen, Bausubstanz schützen.",
-    desc: "Präzise Bestandsaufnahme aller Oberflächen und Materialien (Parkett, Naturstein, Glas). Verbindliche Festpreiskalkulation innerhalb von 24 Stunden.",
+    title: "Anfrage: Sie schildern uns Ihren Reinigungsbedarf.",
+    desc: "Telefonisch, per E-Mail oder über das Anfrageformular – auch wenn die gewünschte Leistung nicht ausdrücklich aufgeführt ist.",
   },
   {
     num: "02",
     image: "/images/services/step-reinigung-2.webp",
-    title: "Verbindliches Festpreis-Konzept: Volle Kostensicherheit ohne Überraschungen.",
-    desc: "Transparent aufgeschlüsseltes Leistungsverzeichnis mit flexiblen Intervallen. Ein garantierter Festpreis ohne versteckte Nebenkosten.",
+    title: "Abstimmung: Flächen, Umfang und Intervalle klären.",
+    desc: "Wir besprechen Nutzung, Material und Zeiten. Wo nötig, sehen wir uns das Objekt vor Ort an.",
   },
   {
     num: "03",
     image: "/images/services/step-reinigung-3.webp",
-    title: "Feste Stammpersonal-Teams: Höchste Diskretion und geschulte Fachkräfte.",
-    desc: "Reinigung durch fest zugeteilte Mitarbeiter mit Kärcher Professional-Technik und 4-Farben-Mikrofaserhygiene nach RKI-Vorgaben.",
+    title: "Angebot: individuell auf Ihr Objekt abgestimmt.",
+    desc: "Sie erhalten ein Angebot mit dem vereinbarten Leistungsumfang und können in Ruhe entscheiden.",
   },
   {
     num: "04",
     image: "/images/services/step-reinigung-4.webp",
-    title: "Lückenloser Qualitätsnachweis: Objektleiter-Audit und 24h-Abnahmegarantie.",
-    desc: "Laufende Audits durch Ihren festen deutschen Objektleiter. Sollte etwas nicht perfekt sein, bessern wir binnen 24 Stunden kostenfrei nach.",
+    title: "Ausführung: Reinigung nach Vereinbarung.",
+    desc: "Regelmäßig nach Reinigungsplan oder als einmaliger Einsatz – mit einem festen Ansprechpartner für Rückfragen.",
   },
 ];
 
@@ -113,7 +113,7 @@ export function ReinigungMinimalProtocol() {
     <section
       ref={sectionRef}
       id="reinigung-protocol"
-      aria-label="Qualitätsstandard & Ablauf"
+      aria-label="Ablauf"
       className="relative z-10 w-full bg-brand-cream text-brand-navy py-20 sm:py-28 lg:py-36 border-t border-brand-navy/10"
     >
       <div className="max-w-360 mx-auto w-full px-4 sm:px-6 lg:px-8">
@@ -126,38 +126,28 @@ export function ReinigungMinimalProtocol() {
           >
             <div className="w-full max-w-2xl xl:max-w-3xl">
               <span className="protocol-statement-chunk text-xs sm:text-sm font-mono uppercase tracking-widest text-brand-navy/60 block mb-4">
-                Qualitätsstandard &amp; Methodik
+                So arbeiten wir
               </span>
               <p className="text-2xl sm:text-3xl xl:text-[38px] font-normal text-brand-navy leading-[1.28] tracking-tight">
                 <span className="block protocol-statement-chunk mb-4">
-                  Wir putzen nicht nur oberflächlich –{" "}
+                  Jedes Objekt ist anders –{" "}
                   <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-normal ml-0">
-                    wir schützen die Bausubstanz.
+                    deshalb stimmen wir die Reinigung individuell ab.
                   </span>
                 </span>
                 <span className="block protocol-statement-chunk font-light text-brand-navy/85 mb-5">
-                  Durch{" "}
-                  <span className="text-brand-navy font-normal">
-                    materialgerechte pH-Werte
-                  </span>
-                  , modernste{" "}
-                  <span className="text-brand-navy font-normal">
-                    Osmose-Filterung
-                  </span>{" "}
-                  und verlässliche{" "}
-                  <span className="text-brand-navy font-normal">
-                    Hygienestandards
-                  </span>
-                  .
+                  Umfang,{" "}
+                  <span className="text-brand-navy font-normal">Intervalle</span> und{" "}
+                  <span className="text-brand-navy font-normal">Einsatzzeiten</span>{" "}
+                  richten sich nach Nutzung und Anforderungen Ihrer Räume.
                 </span>
                 <span className="block protocol-statement-chunk font-light text-brand-navy/70 text-lg sm:text-xl xl:text-[21px] leading-relaxed">
-                  Ob empfindlicher{" "}
-                  <span className="text-brand-navy font-normal">Naturstein</span>,{" "}
-                  versiegeltes{" "}
-                  <span className="text-brand-navy font-normal">Echtholzparkett</span> oder{" "}
-                  weitläufige{" "}
-                  <span className="text-brand-navy font-normal">Glasfassaden</span>:{" "}
-                  Wir stimmen Chemie, Mechanik und Intervalle exakt auf die Werkstoffe Ihrer Immobilie ab – für makellose Reinheit und dauerhaften Werterhalt.
+                  Ob{" "}
+                  <span className="text-brand-navy font-normal">Büro</span>,{" "}
+                  <span className="text-brand-navy font-normal">Hotel</span>,{" "}
+                  <span className="text-brand-navy font-normal">Treppenhaus</span> oder{" "}
+                  <span className="text-brand-navy font-normal">Privathaushalt</span>:{" "}
+                  Wir besprechen Ihren Bedarf und erstellen ein passendes Angebot.
                 </span>
               </p>
             </div>

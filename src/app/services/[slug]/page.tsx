@@ -29,14 +29,14 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${service.title} Chemnitz — Fachbetrieb Tadiks`,
-    description: service.subtitle,
+    title: `${service.title} Chemnitz — TADIK’S ${service.category === "bau" ? "BAU" : "Cleaning"}`,
+    description: service.heroDescription,
     // Aliases and Bau services reachable under /services all point to one URL
     alternates: {
       canonical: `/${service.category === "bau" ? "bau" : "services"}/${service.slug}`,
     },
     openGraph: {
-      title: `${service.title} Chemnitz — Tadiks`,
+      title: `${service.title} Chemnitz — TADIK’S`,
       description: service.heroDescription,
       images: [service.imageSrc],
     },

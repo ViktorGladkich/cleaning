@@ -8,6 +8,7 @@ import { ReinigungMinimalProtocol } from "./ReinigungMinimalProtocol";
 import { FaqSection } from "@/components/home/FaqSection";
 import { REINIGUNG_FAQS } from "@/data/reinigungFaqs";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
+import { EmergencySection } from "./EmergencySection";
 
 export function ReinigungPageContent() {
   return (
@@ -15,23 +16,27 @@ export function ReinigungPageContent() {
       {/* 1. Ultra-clean full-frame hero with monumental typography & 4 minimalist metrics */}
       <ReinigungHero />
 
-      {/* 2. Editorial 6-card grid reusing master ServicesGridSection */}
+      {/* 2. All nine cleaning services, each with its own request button */}
       <ServicesGridSection
         id="leistungen"
         eyebrow="Reinigungsleistungen im Überblick"
+        wrapTitles
         title={
           <>
-            Hygienestandards nach Maß.{" "}
+            Professionelle Reinigung{" "}
             <span className="block font-normal text-brand-navy/80">
-              Für Gewerbe, Industrie und anspruchsvolle Privatobjekte.
+              für Gewerbe und Privatkunden in Chemnitz &amp; Umgebung.
             </span>
           </>
         }
-        subtitle="Alle Reinigungsleistungen unseres Fachbetriebs — transparent kalkuliert, verlässlich getaktet und auf Wunsch flexibel kombinierbar."
-        ctaText="Kostenlose Besichtigung"
-        ctaHref="/contacts"
+        subtitle="TADIK’S Cleaning unterstützt Unternehmen, Hausverwaltungen und Privatkunden mit individuell abgestimmten Reinigungsleistungen. Ob regelmäßige Objektpflege, einmalige Grundreinigung oder umfangreiche Sonderaufträge – wir besprechen Ihren Bedarf und erstellen ein passendes Angebot."
+        ctaText="Reinigung anfragen"
+        ctaHref="/contacts#anfrage"
         items={REINIGUNG_SERVICES_GRID}
       />
+
+      {/* 2.5 Urgent cleaning: phone + request form */}
+      <EmergencySection />
 
       {/* 3. Deep Navy architectural statement with 4-step sequence */}
       <ReinigungMinimalProtocol />
@@ -39,18 +44,18 @@ export function ReinigungPageContent() {
       {/* 4. Minimalist FAQ reusing master FaqSection */}
       <FaqSection
         id="reinigung-faq"
-        eyebrow="Klarheit & Transparenz"
+        eyebrow="Häufige Fragen"
         title={
           <>
-            Häufige Fragen zu Ablauf &amp;{" "}
+            Fragen zu Anfrage &amp;{" "}
             <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
-              Hygienestandards.
+              Reinigungsablauf.
             </span>
           </>
         }
-        subtitle="Verbindliche Antworten zu Festpreisen, Personal, Schlüsselsicherheit und Materialverträglichkeit auf einen Blick."
+        subtitle="Antworten zu Angebot, Umfang, kurzfristigen Einsätzen und Einsatzgebiet."
         imageSrc="/images/services/step-reinigung-4.webp"
-        imageAlt="Tadiks Fachbetrieb für Hygiene und Werterhalt"
+        imageAlt="Reinigungsteam von TADIK’S Cleaning bei der Arbeit"
         items={REINIGUNG_FAQS}
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
@@ -58,18 +63,18 @@ export function ReinigungPageContent() {
       {/* 5. Cinematic Closing CTA reusing master ClosingCtaSection */}
       <ClosingCtaSection
         id="reinigung-cta"
-        eyebrow="Kostenlose Erstbesichtigung"
+        eyebrow="Reinigung anfragen"
         title={
           <>
-            Spürbare Reinheit. <br className="hidden sm:inline" />
-            <span className="text-white/70">Dauerhafter Werterhalt.</span>
+            Sauberkeit nach Vereinbarung. <br className="hidden sm:inline" />
+            <span className="text-white/70">Persönlich abgestimmt.</span>
           </>
         }
-        subtitle="Wir analysieren Ihre Flächen vor Ort in Chemnitz und Region und erstellen innerhalb von 24 Stunden Ihr verbindliches Festpreis-Leistungsverzeichnis."
-        ctaText="Kostenlose Besichtigung"
-        ctaHref="/contacts"
+        subtitle="Schildern Sie uns Ihren Reinigungsbedarf in Chemnitz und Umgebung – wir melden uns zur Abstimmung und erstellen Ihnen ein passendes Angebot."
+        ctaText="Jetzt anfragen"
+        ctaHref="/contacts#anfrage"
         imageSrc="/images/hero_premium_cleaning_bau.jpg"
-        imageAlt="Tadiks professionelle Gebäudereinigung in Sachsen"
+        imageAlt="TADIK’S Cleaning Gebäudereinigung in Chemnitz"
       />
     </div>
   );

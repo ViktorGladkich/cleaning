@@ -2,33 +2,33 @@ import { FaqItem } from "@/components/home/FaqSection";
 
 export const BAU_FAQS: FaqItem[] = [
   {
-    category: "KOSTEN & FESTPREIS",
-    question: "Gibt es beim Trockenbau und der Sanierung ein garantiertes Festpreisangebot?",
+    category: "ANFRAGE",
+    question: "Kann ich auch Bauarbeiten anfragen, die hier nicht aufgeführt sind?",
     answer:
-      "Ja, zu 100%. Nach der kostenlosen Vor-Ort-Analyse erstellen wir ein detailliert aufgeschlüsseltes Leistungsverzeichnis nach DIN-Normen. Sie erhalten einen verbindlichen Festpreis — ohne versteckte Nebenkosten, Materialaufschläge oder unerwartete Nachberechnungen.",
+      "Ja, Bauanfragen sind ausdrücklich willkommen. Beschreiben Sie uns Ihr Vorhaben – wir prüfen, ob eine Umsetzung mit unserem Team oder geeigneten Partnerunternehmen möglich ist.",
   },
   {
-    category: "GEWERKE AUS EINER HAND",
-    question: "Müssen wir Trockenbau, Rückbau und Endreinigung separat koordinieren?",
+    category: "PARTNERUNTERNEHMEN",
+    question: "Führen Sie alle Arbeiten selbst aus?",
     answer:
-      "Nein, genau das nehmen wir Ihnen ab. Bei Tadiks greifen die Arbeiten nahtlos ineinander: Rückbau, Trockenbau, Akustikdecken und die abschließende bezugsfertige Bauendreinigung. Sie haben einen einzigen festen deutschen Bauleiter als Ansprechpartner.",
+      "Wir übernehmen die vereinbarten Arbeiten im Rahmen unseres eigenen Leistungsangebots. Für weitere Gewerke prüfen wir die Zusammenarbeit mit geeigneten Fach- und Partnerunternehmen und besprechen das transparent mit Ihnen.",
   },
   {
-    category: "STAUB- & WOHNSCHUTZ",
-    question: "Wie schützen Sie bestehende Räume, Möbel und Böden vor Baustaub?",
+    category: "RÜCKBAU",
+    question: "Was muss beim Rückbau und bei der Entkernung vorab geklärt werden?",
     answer:
-      "Wir arbeiten mit professionellen Staubschutztüren mit Reißverschluss, mobilen HEPA-Unterdruck-Luftreinigern und staubbindenden Absaugsystemen an Schleifgeräten. Böden und Möbel werden lückenlos mit speziellem Abdeckvlies und Schutzfolien versiegelt.",
+      "Art und Umfang der Arbeiten stimmen wir vorab anhand der baulichen Gegebenheiten ab. Tragende Bauteile, Schadstoffe und besondere Entsorgungsanforderungen bedürfen einer gesonderten Prüfung.",
   },
   {
-    category: "TERMINE & DAUER",
-    question: "Wie stellen Sie die Einhaltung vereinbarter Bauzeiten sicher?",
+    category: "UNTERLAGEN",
+    question: "Welche Unterlagen helfen bei der Anfrage?",
     answer:
-      "Durch unsere integrierte Gewerke-Koordination entfallen typische Schnittstellen-Wartezeiten zwischen fremden Subunternehmern. Unser Bauzeitenplan ist verbindlich und vertraglich garantiert — bis zur bezugsfertigen Schlüsselübergabe.",
+      "Hilfreich sind Ort des Bauvorhabens, Art der gewünschten Arbeiten, eine kurze Projektbeschreibung und der gewünschte Zeitraum. Fotos, Pläne oder ein Leistungsverzeichnis können Sie uns gern an info@tadiks-cleaning.de senden.",
   },
   {
-    category: "ABNAHME & GEWÄHRLEISTUNG",
-    question: "Welche Gewährleistung gilt für die ausgeführten Bau- und Sanierungsarbeiten?",
+    category: "BAUUNTERNEHMEN",
+    question: "Arbeiten Sie auch mit Bauunternehmen und Generalunternehmern zusammen?",
     answer:
-      "Alle Leistungen werden nach den anerkannten Regeln der Technik und VOB/BGB ausgeführt. Sie erhalten ein förmliches Abnahmeprotokoll und die gesetzliche Gewährleistung von bis zu 5 Jahren auf alle Bauleistungen.",
+      "Ja. Für Trockenbau, Rückbau, Entkernung und vorbereitende Bauarbeiten stehen wir auch für projektbezogene Zusammenarbeit zur Verfügung. Leistungsumfang, Personalbedarf und Einsatzmöglichkeiten besprechen wir individuell.",
   },
 ];

@@ -6,7 +6,7 @@ import { AboutSection } from "@/components/home/AboutSection";
 import { AboutValuesSection } from "./AboutValuesSection";
 import { WerkschauSection } from "@/components/home/WerkschauSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
-import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { ContactPersonSection } from "@/components/shared/ContactPersonSection";
 import { FaqSection } from "@/components/home/FaqSection";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
 
@@ -33,24 +33,24 @@ export function AboutPageContent() {
       {/* 5. Process / Ablauf (4 Structured Steps from inspection to turnkey handover) */}
       <ProcessSection />
 
-      {/* 6. Kundenstimmen / Authentic Social Proof */}
-      <TestimonialsSection />
+      {/* 6. Inhaber & persönlicher Ansprechpartner */}
+      <ContactPersonSection />
 
       {/* 7. Comprehensive Company & Standards FAQ */}
       <FaqSection
         id="about-faq"
-        eyebrow="Klarheit & Verlässlichkeit"
+        eyebrow="Häufige Fragen"
         title={
           <>
-            Häufige Fragen zu unserem{" "}
+            Häufige Fragen zu{" "}
             <span className="inline-block bg-brand-lime rounded-lg text-brand-navy font-medium ml-0">
-              Fachbetrieb.
+              TADIK’S.
             </span>
           </>
         }
-        subtitle="Erfahren Sie mehr über unsere Arbeitsweise, Qualitätsgarantien, Personalstandards und Versicherungsschutz in Sachsen."
+        subtitle="Antworten zu Anfrage, Leistungen, Ansprechpartner und Karriere."
         imageSrc="/images/services/step-reinigung-1.webp"
-        imageAlt="Tadiks Fachbetrieb für Bau und Gebäudereinigung in Chemnitz"
+        imageAlt="TADIK’S Cleaning & BAU in Chemnitz"
         className="z-20 pt-20 sm:pt-28 lg:pt-36 border-t border-slate-200/80"
       />
 

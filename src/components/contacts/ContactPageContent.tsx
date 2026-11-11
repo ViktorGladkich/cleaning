@@ -8,6 +8,7 @@ import { FaqSection } from "@/components/home/FaqSection";
 import { CONTACT_FAQS } from "@/data/contactFaqs";
 import { ClosingCtaSection } from "@/components/home/ClosingCtaSection";
 import { COMPANY_INFO } from "@/lib/constants";
+import { ContactPersonSection } from "@/components/shared/ContactPersonSection";
 
 export function ContactPageContent() {
   return (
@@ -18,10 +19,13 @@ export function ContactPageContent() {
       {/* 2. Interactive Inquiry Form & Direct Contact Details */}
       <ContactHubSection />
 
+      {/* 2.5 Owner & personal contact */}
+      <ContactPersonSection ctaHref="#anfrage" />
+
       {/* 3. Regional Coverage in Chemnitz & Central Saxony */}
       <ContactCoverageSection />
 
-      {/* 4. Contact, Inspection & Festpreis FAQ */}
+      {/* 4. Contact & inquiry FAQ */}
       <FaqSection
         id="contact-faq"
         eyebrow="Ablauf & Besichtigung"
@@ -33,7 +37,7 @@ export function ContactPageContent() {
             </span>
           </>
         }
-        subtitle="Verbindliche Antworten zur kostenlosen Vor-Ort-Besichtigung, Terminsicherheit und unserem Festpreisversprechen."
+        subtitle="Antworten zu Anfrage, Besichtigung, Angebot und Einsatzgebiet."
         imageSrc="/images/hero_contact_monumental.jpg"
         imageAlt="Tadiks Fachbetrieb Kundenberatung und Vor-Ort-Termin Chemnitz"
         items={CONTACT_FAQS}
@@ -50,7 +54,7 @@ export function ContactPageContent() {
             <span className="text-white/70">Wir sind für Sie erreichbar.</span>
           </>
         }
-        subtitle="Rufen Sie uns direkt an. Unser Chemnitzer Büro berät Sie gerne sofort persönlich zu Ihrem Projekt."
+        subtitle="Rufen Sie uns direkt an – wir beraten Sie gern persönlich zu Ihrem Vorhaben."
         ctaText="Jetzt anrufen"
         ctaHref={`tel:${COMPANY_INFO.phoneRaw}`}
         imageSrc="/images/hero_contact_monumental.jpg"

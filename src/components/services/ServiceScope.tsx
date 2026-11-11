@@ -39,7 +39,7 @@ export function ServiceScope({ service }: ServiceScopeProps) {
   const terms = [
     { label: "Angebot", value: service.priceNote },
     { label: "Ablauf", value: service.durationNote },
-    { label: "Antwort", value: "Innerhalb von 24 Stunden" },
+    { label: "Anfrage", value: "Telefonisch oder über das Anfrageformular" },
   ];
 
   return (
@@ -90,12 +90,22 @@ export function ServiceScope({ service }: ServiceScopeProps) {
         ))}
       </dl>
 
+      {service.scopeNote && (
+        <p
+          data-reveal
+          className="mt-10 max-w-[70ch] px-(--pad) text-base leading-relaxed text-brand-ink sm:text-lg"
+        >
+          {service.scopeNote}
+        </p>
+      )}
+
       <p
         data-reveal
-        className="mt-10 max-w-[70ch] px-(--pad) text-sm leading-relaxed text-brand-ink/80 sm:text-base"
+        className="mt-8 max-w-[70ch] px-(--pad) text-sm leading-relaxed text-brand-ink/80 sm:text-base"
       >
-        Private Auftraggeber können 20 % der ausgewiesenen Arbeitskosten nach § 35a EStG von der
-        Einkommensteuer abziehen. Gewerbliche Kunden erhalten eine ordentliche Rechnung mit
+        Private Auftraggeber können für Handwerker- und haushaltsnahe Dienstleistungen nach
+        § 35a EStG 20 % der ausgewiesenen Arbeitskosten (bis zu den gesetzlichen Höchstbeträgen)
+        von der Einkommensteuer abziehen. Gewerbliche Kunden erhalten eine Rechnung mit
         ausgewiesener Umsatzsteuer.
       </p>
     </section>

@@ -1,5 +1,5 @@
 import React from "react";
-import { ServiceDetailData } from "@/data/serviceDetails";
+import { ServiceDetailData, getServicePath } from "@/data/serviceDetails";
 import { ServicesGridSection } from "@/components/home/ServicesDualSection";
 
 interface ServiceRelatedProps {
@@ -14,17 +14,18 @@ export function ServiceRelated({ services, categoryHref }: ServiceRelatedProps) 
       eyebrow=""
       wrapTitles
       title="Weitere Leistungen"
-      subtitle="Ergänzende Leistungen von Tadik's Cleaning in Chemnitz und Sachsen."
+      subtitle="Ergänzende Leistungen von TADIK’S Cleaning & BAU in Chemnitz und Umgebung."
       ctaText="Alle Leistungen ansehen"
       ctaHref={categoryHref}
       items={services.map((service) => ({
         id: service.slug,
         title: service.title,
-        tagline: service.subtitle,
+        tagline: service.categoryLabel.toUpperCase(),
+        description: service.subtitle,
         imageSrc: service.imageSrc,
         imageAlt: service.imageAlt,
         bullets: service.features.slice(0, 3),
-        href: `/${service.category === "bau" ? "bau" : "services"}/${service.slug}`,
+        href: getServicePath(service),
       }))}
     />
   );

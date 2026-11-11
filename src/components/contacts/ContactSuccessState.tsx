@@ -73,7 +73,7 @@ export function ContactToast({
             Vielen Dank, {name}! Ihre Nachricht ist bei uns eingegangen.
           </p>
           <p className="text-xs text-white/75 font-light mt-1 leading-relaxed">
-            Unser Chemnitzer Büro meldet sich innerhalb von 24 Stunden bei Ihnen.
+            Wir melden uns zur weiteren Abstimmung bei Ihnen.
           </p>
         </div>
       </div>
@@ -188,7 +188,7 @@ export function ContactSuccessCard({
           </span>
           <span className="text-sm sm:text-[15px] font-medium text-brand-navy flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-brand-navy shrink-0" />
-            <span>Innerhalb von 24 Stunden</span>
+            <span>Wir melden uns schnellstmöglich</span>
           </span>
         </div>
       </div>

@@ -15,25 +15,25 @@ interface ProcessStep {
 const PROCESS_STEPS: ProcessStep[] = [
   {
     step: "01",
-    text: "Kostenlose Vor-Ort-Besichtigung und detaillierte Bedarfsanalyse in Chemnitz.",
+    text: "Ihre Anfrage per Telefon, E-Mail oder Formular – auch für Leistungen, die nicht aufgeführt sind.",
     alignmentClass: "self-start mr-auto",
     offsetClass: "lg:mt-0",
   },
   {
     step: "02",
-    text: "Verbindliches Festpreisangebot innerhalb von 24 Stunden ohne versteckte Kosten.",
+    text: "Gemeinsame Abstimmung von Bedarf und Umfang, bei Bedarf mit Besichtigung vor Ort.",
     alignmentClass: "self-end ml-auto",
     offsetClass: "lg:mt-[calc(75%+2px)]",
   },
   {
     step: "03",
-    text: "Fachgerechte Umsetzung aller Gewerke durch feste Handwerker- und Reinigungsteams.",
+    text: "Individuell abgestimmtes Angebot mit dem vereinbarten Leistungsumfang.",
     alignmentClass: "self-start mr-auto",
     offsetClass: "lg:mt-0",
   },
   {
     step: "04",
-    text: "Bezugsfertige schlüsselfertige Übergabe mit garantierter Qualitätsabnahme.",
+    text: "Sorgfältige Ausführung nach Vereinbarung – mit einem festen Ansprechpartner.",
     alignmentClass: "self-end ml-auto",
     offsetClass: "lg:mt-[calc(75%+2px)]",
   },
@@ -211,13 +211,13 @@ export function ProcessSection() {
         {/* Bottom Status Line in Brand Navy */}
         <div className="pt-5 border-t border-brand-navy/15 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-navy/70 gap-3 sm:gap-4 select-none text-center sm:text-left">
           <div>
-            <span>Feste Objektleiter &amp; verlässliche Qualitätsstandards in Chemnitz und Region</span>
+            <span>Reinigung &amp; Bau in Chemnitz und Umgebung</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-7 text-brand-navy/60">
-            <span>Festpreisgarantie</span>
-            <span>Gewerblich haftpflichtversichert</span>
-            <span>100% Termintreue</span>
+            <span>Persönlicher Ansprechpartner</span>
+            <span>Individuelles Angebot</span>
+            <span>Gewerbe &amp; Privat</span>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { COMPANY_INFO, SITE_URL } from "@/lib/constants";
+import { getServicePath, getServicesByCategory } from "@/data/serviceDetails";
 
 export function JsonLdSchema() {
   const schemaData = {
@@ -14,7 +15,7 @@ export function JsonLdSchema() {
         logo: `${SITE_URL}/TADIKS_LOGO_COLOR.svg`,
         image: `${SITE_URL}/og-image.jpg`,
         description:
-          "Professionelle Gebäudereinigung (Unterhalts-, Grund-, Glas-, Büro-, Praxis- & Bauendreinigung) sowie Bau-, Trockenbau- und Sanierungsarbeiten in Chemnitz, Sachsen und überregional.",
+          "Reinigung für Gewerbe und Privatkunden (Büro-, Hotel-, Glas-, Grund-, Bauend-, Treppenhaus-, Praxis-, Haushalts- sowie Fassaden- & Außenreinigung) und Bauleistungen (Trockenbau, Rückbau & Entkernung, Renovierung, Beräumung) in Chemnitz und Umgebung.",
         founder: {
           "@type": "Person",
           name: COMPANY_INFO.owner,
@@ -86,125 +87,20 @@ export function JsonLdSchema() {
         sameAs: [COMPANY_INFO.socials.whatsapp].filter(Boolean),
         hasOfferCatalog: {
           "@type": "OfferCatalog",
-          name: "Leistungsverzeichnis Gebäudereinigung & Bau",
-          itemListElement: [
-            {
-              "@type": "OfferCatalog",
-              name: "Gebäudereinigung & Hygiene",
-              itemListElement: [
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Unterhaltsreinigung",
-                    url: `${SITE_URL}/services/unterhaltsreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Grundreinigung",
-                    url: `${SITE_URL}/services/grundreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Bauendreinigung",
-                    url: `${SITE_URL}/services/bauendreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Fenster- & Glasreinigung",
-                    url: `${SITE_URL}/services/fensterreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Büro- & Praxisreinigung",
-                    url: `${SITE_URL}/services/bueroreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Polster- & Teppichreinigung",
-                    url: `${SITE_URL}/services/polsterreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Hotelreinigung",
-                    url: `${SITE_URL}/services/hotelreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Treppenhausreinigung",
-                    url: `${SITE_URL}/services/treppenhausreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Industrie- & Hallenreinigung",
-                    url: `${SITE_URL}/services/industrie-und-hallenreinigung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Entrümpelungen",
-                    url: `${SITE_URL}/services/entruempelungen`,
-                  },
-                },
-              ],
-            },
-            {
-              "@type": "OfferCatalog",
-              name: "Bau, Innenausbau & Sanierung",
-              itemListElement: [
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Trockenbau & Innenausbau",
-                    url: `${SITE_URL}/bau/trockenbau-innenausbau`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Komplettsanierung & Renovierung",
-                    url: `${SITE_URL}/bau/renovierung-sanierung`,
-                  },
-                },
-                {
-                  "@type": "Offer",
-                  itemOffered: {
-                    "@type": "Service",
-                    name: "Abbruch, Entkernung & Rückbau",
-                    url: `${SITE_URL}/bau/abbruch-entkernung`,
-                  },
-                },
-              ],
-            },
-          ],
+          name: "Leistungen Reinigung & Bau",
+          itemListElement: (["reinigung", "bau"] as const).map((category) => ({
+            "@type": "OfferCatalog",
+            name: category === "reinigung" ? "TADIK’S Cleaning – Reinigung" : "TADIK’S BAU – Bauleistungen",
+            itemListElement: getServicesByCategory(category).map((service) => ({
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: service.title,
+                description: service.subtitle,
+                url: `${SITE_URL}${getServicePath(service)}`,
+              },
+            })),
+          })),
         },
       },
       {
